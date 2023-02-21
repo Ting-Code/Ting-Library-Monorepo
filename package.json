@@ -4,9 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "commit": "git add . && ./configs/lint/node_modules/cz-customizable/standalone.js",
+    "build": "pnpm -r --filter ./configs run build",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build && pnpm release:only",
+    "preinstall": "npx only-allow pnpm",
+    "format": "pnpm run lint:eslint & pnpm run lint:stylelint & pnpm run lint:prettier",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write  \"{packages,apps,configs}/**/*.{js,json,ts,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\"",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./configs/lint/node_modules/cz-customizable"
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "@config/lint": "workspace:*",
+    "typescript": "^4.9.5"
+  }
 }
