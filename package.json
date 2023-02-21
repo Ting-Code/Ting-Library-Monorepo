@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "commit": "git add . && ./configs/lint/node_modules/cz-customizable/standalone.js",
+    "commit": "git add . && git cz",
     "build": "pnpm -r --filter ./configs run build",
     "changeset": "changeset",
     "version-packages": "changeset version",
@@ -21,7 +21,10 @@
   "license": "ISC",
   "config": {
     "commitizen": {
-      "path": "./configs/lint/node_modules/cz-customizable"
+      "path": "configs/lint/node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "configs/lint/cz-config.js"
     }
   },
   "devDependencies": {
