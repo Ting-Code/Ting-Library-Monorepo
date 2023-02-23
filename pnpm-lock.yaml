@@ -6,6 +6,7 @@ importers:
       '@changesets/cli': ^2.26.0
       '@config/lint': workspace:*
       esno: ^0.16.3
+      rimraf: ^4.1.2
       ts-node: ^10.9.1
       turbo: ^1.8.2
       typescript: ^4.9.5
@@ -13,6 +14,7 @@ importers:
       '@changesets/cli': 2.26.0
       '@config/lint': link:configs/lint
       esno: 0.16.3
+      rimraf: 4.1.2
       ts-node: 10.9.1_typescript@4.9.5
       turbo: 1.8.2
       typescript: 4.9.5
@@ -5304,6 +5306,15 @@ packages:
     dependencies:
       glob: 7.2.3
     dev: false
+
+  /rimraf/4.1.2:
+    resolution:
+      {
+        integrity: sha512-BlIbgFryTbw3Dz6hyoWFhKk+unCcHMSkZGrTFVAx2WmttdBSonsdtRlwiuTbDqTKr+UlXIUqJVS4QT5tUzGENQ==
+      }
+    engines: { node: '>=14' }
+    hasBin: true
+    dev: true
 
   /run-async/2.4.1:
     resolution:
