@@ -1,11 +1,16 @@
 {
   "name": "ting-library-monorepo",
   "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TINGCYGF/Ting-Library-Monorepo.git"
+  },
   "scripts": {
+    "bootstrap": "pnpm install",
     "commit": "git add . && git cz",
     "build": "pnpm -r --filter ./configs run build",
+    "clean": "turbo run clean && rimraf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm build && pnpm release:only",
@@ -30,6 +35,9 @@
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
     "@config/lint": "workspace:*",
+    "esno": "^0.16.3",
+    "ts-node": "^10.9.1",
+    "turbo": "^1.8.2",
     "typescript": "^4.9.5"
   }
 }
