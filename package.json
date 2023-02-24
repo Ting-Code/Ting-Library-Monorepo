@@ -34,7 +34,7 @@
     }
   },
   "devDependencies": {
-    "tsconfig": "workspace:*",
+    "@config/tsconfig": "workspace:*",
     "@config/lint": "workspace:*",
     "@changesets/cli": "^2.26.0",
     "esno": "^0.16.3",

@@ -1,0 +1,17 @@
+{
+  "name": "@common/utils",
+  "version": "0.0.1",
+  "main": "index.ts",
+  "module": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/lodash-es": "^4.17.6",
+    "dayjs": "^1.11.7",
+    "lodash-es": "^4.17.21"
+  }
+}
