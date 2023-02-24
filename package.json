@@ -8,8 +8,9 @@
   },
   "scripts": {
     "bootstrap": "pnpm install",
+    "dev": "pnpm --filter scripts dev",
+    "build": "pnpm --filter scripts build",
     "commit": "git add . && git cz",
-    "build": "pnpm -r --filter ./configs run build",
     "clean": "turbo run clean & rimraf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",
@@ -33,9 +34,11 @@
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
+    "tsconfig": "workspace:*",
     "@config/lint": "workspace:*",
+    "@changesets/cli": "^2.26.0",
     "esno": "^0.16.3",
+    "execa": "^6.1.0",
     "rimraf": "^4.1.2",
     "ts-node": "^10.9.1",
     "turbo": "^1.8.2",
@@ -45,5 +48,8 @@
     "node": ">=16",
     "pnpm": ">=7"
   },
-  "packageManager": "pnpm@7.27.1"
+  "packageManager": "pnpm@7.27.1",
+  "dependencies": {
+    "@types/prompts": "^2.4.0"
+  }
 }

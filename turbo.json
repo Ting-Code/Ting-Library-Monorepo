@@ -6,6 +6,7 @@
       "dependsOn": ["^build"]
     },
     "clean": {
+      "outputs": [],
       "dependsOn": ["^clean"]
     },
     "test": {

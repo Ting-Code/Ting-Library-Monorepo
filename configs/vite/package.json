@@ -1,0 +1,14 @@
+{
+  "name": "@config/vite",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/index.cjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
+    "prepack": "pnpm unbuild --stub"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
