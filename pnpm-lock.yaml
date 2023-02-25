@@ -153,6 +153,12 @@ importers:
       '@common/utils': link:../../utils
       vue: 3.2.47
 
+  packages/request:
+    specifiers:
+      '@common/utils': workspace:^0.0.1
+    dependencies:
+      '@common/utils': link:../utils
+
   packages/utils:
     specifiers:
       '@types/lodash-es': ^4.17.6
