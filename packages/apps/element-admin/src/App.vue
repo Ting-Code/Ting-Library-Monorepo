@@ -1,11 +1,12 @@
 <script setup lang="ts">
   import HelloWorld from './components/HelloWorld.vue'
+  import { Icon } from '@components/common'
 </script>
 
 <template>
   <div>
     <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
+      <Icon icon="common-vite" size="38" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img :src="CommonVue" alt="" />

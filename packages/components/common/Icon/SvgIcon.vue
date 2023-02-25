@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
   import type { CSSProperties } from 'vue'
-  import { PropType, defineProps, computed } from 'vue'
+  import { PropType, computed } from 'vue'
 
   const props = defineProps({
     name: {

@@ -67,7 +67,7 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           charset: false,
-          additionalData: `@use "./src/design/global.scss" as *;`
+          additionalData: `@use "./src/styles/global.scss" as *;`
         }
       }
     },
@@ -84,7 +84,7 @@ export default defineConfig(({ command, mode }) => {
         },
         {
           find: '@s',
-          replacement: pathResolve('src') + '/design/'
+          replacement: pathResolve('src') + '/styles/'
         }
       ]
     },
