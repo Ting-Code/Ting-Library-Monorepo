@@ -1,4 +1,4 @@
-import type { InternalAxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
 import axios from 'axios'
 import { AxiosCanceler } from './axiosCancel'
@@ -50,8 +50,8 @@ export class VAxios {
   /**
    * @description:   请求方法
    */
-  request<T = any>(config: InternalAxiosRequestConfig, options?: RequestOptions): Promise<T> {
-    let conf: InternalAxiosRequestConfig = cloneDeep(config)
+  request<T = any>(config: AxiosRequestConfig, options?: RequestOptions): Promise<T> {
+    let conf: AxiosRequestConfig = cloneDeep(config)
     const transform = this.getTransform()
 
     const { requestOptions } = this.options
@@ -109,7 +109,7 @@ export class VAxios {
   /**
    * @description:  文件上传
    */
-  uploadFile<T = any>(config: InternalAxiosRequestConfig, params: UploadFileParams) {
+  uploadFile<T = any>(config: AxiosRequestConfig, params: UploadFileParams) {
     const formData = new window.FormData()
     const customFilename = params.name || 'file'
 
@@ -162,7 +162,7 @@ export class VAxios {
     const axiosCanceler = new AxiosCanceler()
 
     // 请求拦截器配置处理
-    this.axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
+    this.axiosInstance.interceptors.request.use((config) => {
       const {
         headers: { ignoreCancelToken } = {
           ignoreCancelToken: this.options.requestOptions?.ignoreCancelToken
@@ -175,7 +175,7 @@ export class VAxios {
 
       !ignoreCancel && axiosCanceler.addPending(config)
       if (requestInterceptors && isFunction(requestInterceptors)) {
-        config = requestInterceptors(config, this.options)
+        config = requestInterceptors(config, this.options) as any
       }
       return config
     }, undefined)

@@ -1,10 +1,10 @@
 /**
  * 数据处理类，可以根据项目自行配置
  */
-import type { InternalAxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosRequestConfig, AxiosResponse } from 'axios'
 import type { RequestOptions, Result } from './types'
 
-export interface CreateAxiosOptions extends InternalAxiosRequestConfig {
+export interface CreateAxiosOptions extends AxiosRequestConfig {
   authenticationScheme?: string
   transform?: AxiosTransform
   requestOptions?: RequestOptions
@@ -15,10 +15,7 @@ export abstract class AxiosTransform {
    * @description: 请求之前处理配置
    * @description: Process configuration before request
    */
-  beforeRequestHook?: (
-    config: InternalAxiosRequestConfig,
-    options: RequestOptions
-  ) => InternalAxiosRequestConfig
+  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig
 
   /**
    * @description: 请求成功处理
@@ -34,9 +31,9 @@ export abstract class AxiosTransform {
    * @description: 请求之前的拦截器
    */
   requestInterceptors?: (
-    config: InternalAxiosRequestConfig,
+    config: AxiosRequestConfig,
     options: CreateAxiosOptions
-  ) => InternalAxiosRequestConfig
+  ) => AxiosRequestConfig
 
   /**
    * @description: 请求之后的拦截器

@@ -9,9 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@components/common": "workspace:*",
+    "@common/request": "workspace:*",
+    "@common/utils": "workspace:*",
+    "@common/components": "workspace:*",
     "@config/tsconfig": "workspace:*",
-    "axios": "^1.3.4",
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.32",
     "lodash-es": "^4.17.21",

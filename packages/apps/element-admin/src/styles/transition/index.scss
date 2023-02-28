@@ -1,0 +1,10 @@
+@use 'base' as *;
+@use 'fade';
+@use 'scale';
+@use 'slide';
+@use 'scroll';
+@use 'zoom';
+
+.collapse-transition {
+  transition: 0.2s height ease-in-out, 0.2s padding-top ease-in-out, 0.2s padding-bottom ease-in-out;
+}

@@ -1,0 +1,25 @@
+// global 会被全局引用 可以写scss变量mixin 等
+@use 'theme/index' as *;
+@use 'transition/index' as *;
+@use 'mixin/config' as *;
+@use 'mixin/mixin' as *;
+@use 'mixin/function' as *;
+// 改变 element 的命名空间
+@forward 'element-plus/theme-chalk/src/mixins/config.scss' with (
+  $namespace: $namespace
+);
+
+//通过css变量来改变主题
+//:root {
+//  --el-color-primary: #76b99f,
+//}
+
+// 通过scss变量改变主题颜色
+//@forward "element-plus/theme-chalk/src/common/var.scss" with (
+//  $colors: (
+//    "primary": (
+//      "base": $app-theme-color,
+//    ),
+//  ),
+//
+//);
