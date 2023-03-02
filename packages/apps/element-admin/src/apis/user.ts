@@ -1,4 +1,4 @@
-import { request } from '../request'
+import { request } from './index'
 
 export interface BasicResponseModel<T = any> {
   code: number
