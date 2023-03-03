@@ -1,4 +1,4 @@
-import { adminMenus } from '@/apis/src/user'
+import { adminMenus } from '@/apis/user'
 import { RouteRecordRaw } from 'vue-router'
 import { Layout, ParentLayout } from '@/router/routerBase.js'
 import type { AppRouteRecordRaw } from '@/router/type'

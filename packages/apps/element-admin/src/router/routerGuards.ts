@@ -9,8 +9,9 @@ import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN
+const ERROR_PAGE_NAME = PageEnum.ERROR_PAGE_NAME
 
-const whitePathList = [LOGIN_PATH] // no redirect whitelist
+const whitePathList = [LOGIN_PATH] // 一级白名单
 
 export function createRouterGuards(router: Router) {
   const userStore = useUserStoreWidthOut()
@@ -18,21 +19,21 @@ export function createRouterGuards(router: Router) {
 
   router.beforeEach(async (to, from, next) => {
     NProgress.start()
-    if (from.path === LOGIN_PATH && to.name === 'errorPage') {
+    // 登录后如果重定向失败即重定向到首页
+    if (from.path === LOGIN_PATH && to.name === ERROR_PAGE_NAME) {
       next(PageEnum.BASE_HOME)
       return
     }
-
-    // Whitelist can be directly entered
+    // Whitelist can be directly entered 白名单
     if (whitePathList.includes(to.path as PageEnum)) {
       next()
       return
     }
-
+    debugger
     const token = storage.get(ACCESS_TOKEN)
 
     if (!token) {
-      // You can access without permissions. You need to set the routing meta.ignoreAuth to true
+      // 无token情况下可配置ignoreAuth跳过路由鉴权
       if (to.meta.ignoreAuth) {
         next()
         return
@@ -58,7 +59,6 @@ export function createRouterGuards(router: Router) {
     }
 
     const userInfo = await userStore.GetInfo()
-
     const routes = await asyncRouteStore.generateRoutes(userInfo)
 
     // 动态添加可访问路由表
@@ -100,6 +100,13 @@ export function createRouterGuards(router: Router) {
       }
     }
     asyncRouteStore.setKeepAliveComponents(keepAliveComponents)
+    console.log(
+      '打印after',
+      keepAliveComponents,
+      asyncRouteStore.getRouters(),
+      asyncRouteStore.getMenus,
+      asyncRouteStore.keepAliveComponents
+    )
     NProgress.done()
   })
 

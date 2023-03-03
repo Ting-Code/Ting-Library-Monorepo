@@ -9,8 +9,9 @@
 </template>
 
 <script setup lang="ts">
+  import { onMounted } from 'vue'
   onMounted(() => {
-    console.log('打印')
+    console.log('404页面')
   })
 </script>
 

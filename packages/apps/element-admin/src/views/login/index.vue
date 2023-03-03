@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
   import { useUserStore } from '@/store/modules/user'
-  import { PageEnum } from '@/enums/pageEnum'
+  import { PageEnum } from '@/router/type'
 
   import { ElMessage } from 'element-plus'
   import { useRoute, useRouter } from 'vue-router'

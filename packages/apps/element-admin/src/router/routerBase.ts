@@ -28,7 +28,7 @@ export const publicRoutes: AppRouteRecordRaw[] = [
 export const ErrorPageRoute: AppRouteRecordRaw = {
   path: '/:path(.*)*',
   name: 'ErrorPage',
-  component: Layout,
+  component: ErrorPage,
   meta: {
     title: 'ErrorPage',
     hideBreadcrumb: true

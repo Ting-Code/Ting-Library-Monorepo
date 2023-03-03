@@ -17,14 +17,12 @@ import {
 } from '@common/request'
 import { useGlobSetting } from '@/hooks/setting'
 import { deepMerge, setObjToUrlParams, storage } from '@common/utils'
-
-const globSetting = useGlobSetting()
-const urlPrefix: string = globSetting.urlPrefix || ''
-
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStoreWidthOut } from '@/store/modules/user.js'
 import router from '@/router'
 import { PageEnum } from '@/router/type'
+const globSetting = useGlobSetting()
+const urlPrefix: string = globSetting.urlPrefix || ''
 
 /**
  * @description: 数据处理，方便区分多种处理方式

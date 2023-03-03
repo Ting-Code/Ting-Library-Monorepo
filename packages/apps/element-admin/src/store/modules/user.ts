@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { createStorage } from '@common/utils'
 import { store } from '@/store'
 import { ResultEnum } from '@common/request'
-import { getUserInfo, login } from '@/apis/src/user'
+import { getUserInfo, login } from '@/apis/user'
 
 export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
@@ -88,7 +88,6 @@ export const useUserStore = defineStore({
       return new Promise((resolve, reject) => {
         getUserInfo()
           .then((res) => {
-            console.log(res, '用户信息')
             const result = res
             if (result.permissions && result.permissions.length) {
               const permissionsList = result.permissions
