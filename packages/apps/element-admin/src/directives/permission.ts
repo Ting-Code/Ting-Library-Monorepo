@@ -1,5 +1,5 @@
 import { ObjectDirective, App } from 'vue'
-import { usePermission } from '@/hooks/web/usePermission'
+import { index } from '@/hooks/use-permission'
 import { isArray, isObject, isString } from '@common/utils'
 
 const accessesVerified = (value) => {
@@ -24,7 +24,7 @@ export const permission: ObjectDirective = {
     } else {
       accesses = accessesVerified(value)
     }
-    const { hasPermission } = usePermission()
+    const { hasPermission } = index()
     if (!hasPermission(accesses)) {
       if (disabled) {
         el.disabled = true

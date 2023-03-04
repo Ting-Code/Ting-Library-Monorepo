@@ -4,7 +4,7 @@ import { RouteRecordRaw } from 'vue-router'
 import { store } from '@/store'
 import { asyncRoutes, constantRouter } from '@/router'
 import { generatorDynamicRouter } from '@/router/routerUtils.js'
-import { useProjectSetting } from '@/hooks/setting/useProjectSetting'
+import { useProjectSetting } from '@/hooks/use-setting/useProjectSetting'
 
 interface TreeHelperConfig {
   id: string

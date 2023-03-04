@@ -1,5 +1,5 @@
 import { InjectionKey, Ref } from 'vue'
-import { createContext, useContext } from '@/hooks/core/useContext'
+import { createContext, index } from '@/hooks/use-context'
 
 export interface AppProviderContextProps {
   namespace: Ref<string>
@@ -13,5 +13,5 @@ export function createAppProviderContext(context: AppProviderContextProps) {
 }
 
 export function useAppProviderContext() {
-  return useContext<AppProviderContextProps>(key)
+  return index<AppProviderContextProps>(key)
 }

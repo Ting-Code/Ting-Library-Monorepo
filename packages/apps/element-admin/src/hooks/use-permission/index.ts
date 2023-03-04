@@ -1,6 +1,6 @@
 import { useUserStore } from '@/store/modules/user'
 
-export function usePermission() {
+export function index() {
   const userStore = useUserStore()
 
   /**
