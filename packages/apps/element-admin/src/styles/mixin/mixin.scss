@@ -41,6 +41,12 @@
   @each $unit in $modifier {
     $currentSelector: #{$currentSelector + $selector + $modifier-separator + $unit + ','};
   }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
 }
 
 @mixin when($state) {
@@ -60,7 +66,7 @@
   }
 }
 
-// set css var value, because we need translate value to string
+// 设置CSS var value，因为我们需要将value转换为字符串
 // for example:
 // @include set-css-var-value(('color', 'primary'), red);
 // --el-color-primary: red;
@@ -87,7 +93,7 @@
   @include set-css-var-value(('color', $type, 'dark-2'), map.get($colors, $type, 'dark-2'));
 }
 
-// set all css var for component by map
+// 设置css全局变量  例如：--ting-color-primary: #409EFF;
 @mixin set-component-css-var($name, $variables) {
   @each $attribute, $value in $variables {
     @if $attribute == 'default' {
@@ -103,9 +109,7 @@
   @include set-css-var-value(('color', $type, 'rgb'), #{red($color), green($color), blue($color)});
 }
 
-// generate css var from existing css var
-// for example:
-// @include css-var-from-global(('button', 'text-color'), ('color', $type))
+// 现有的CSS变量生成CSS变量 @include css-var-from-global(('button', 'text-color'), ('color', $type))
 // --el-button-text-color: var(--el-color-#{$type});
 @mixin css-var-from-global($var, $gVar) {
   $varName: joinVarName($var);

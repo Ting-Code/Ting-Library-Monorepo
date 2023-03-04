@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+// CSS3 var
+@use '../mixin/mixin' as *;
+@use 'default/var' as *;
+
+// common
+:root {
+  @include set-component-css-var('color-demo', $color-demo);
+}

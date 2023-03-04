@@ -1,0 +1,11 @@
+@use 'sass:map';
+
+$color-demo: () !default;
+$color-demo: map.merge(
+  (
+    'page': #5b0909,
+    '': #542626,
+    'overlay': #65696e
+  ),
+  $color-demo
+);

@@ -1,4 +1,9 @@
-@use './default/index.scss' as *;
+// 该文件废弃 改为css变量主题模式
+$theme-default: (
+  layout: (
+    background: red
+  )
+);
 
 $themes: (
   default: $theme-default

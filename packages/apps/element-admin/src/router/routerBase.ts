@@ -1,7 +1,7 @@
 import type { AppRouteRecordRaw } from '@/router/type'
 import { PageEnum } from '@/router/type'
 export const RedirectName = 'Redirect'
-export const ErrorPage = () => import('@/views/error/404.vue')
+export const ErrorPage = () => import('@/views/common/error/404.vue')
 export const Layout = () => import('@/components/layouts/default/index.vue')
 export const ParentLayout = () => import('@/components/layouts/parentLayout/index.vue')
 
@@ -9,7 +9,7 @@ export const publicRoutes: AppRouteRecordRaw[] = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import('@/views/login/index.vue'),
+    component: () => import('@/views/common/login/index.vue'),
     meta: {
       title: '登录'
     }
@@ -58,7 +58,7 @@ export const RedirectRoute: AppRouteRecordRaw = {
     {
       path: '/redirect/:path(.*)',
       name: RedirectName,
-      component: () => import('@/views/redirect/index.vue'),
+      component: () => Layout,
       meta: {
         title: RedirectName,
         hideBreadcrumb: true

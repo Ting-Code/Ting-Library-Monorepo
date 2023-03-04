@@ -1,3 +1,2 @@
 // index会被全局引用但是不能写scss变量等需要未编译功能 如@mixin
 // 若需要定义公共变量需要到global.scss
-@use './base/index.scss';
