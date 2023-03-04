@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import { AppProvider } from '@/components/Application'
+  import { AppProvider } from '@/components/application'
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const change = () => {
     document.documentElement.style.setProperty('--ting-color-primary', 'red')

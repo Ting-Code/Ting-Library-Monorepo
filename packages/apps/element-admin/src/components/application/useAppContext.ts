@@ -2,7 +2,7 @@ import { InjectionKey, Ref } from 'vue'
 import { createContext, useContext } from '@/hooks/core/useContext'
 
 export interface AppProviderContextProps {
-  prefixCls: Ref<string>
+  namespace: Ref<string>
   isMobile: Ref<boolean>
 }
 

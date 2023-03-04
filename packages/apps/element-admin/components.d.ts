@@ -10,7 +10,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AdminMain: typeof import('./src/components/layouts/default/admin-main/index.vue')['default']
-    Application: typeof import('./src/components/Application/Application.vue')['default']
+    Application: typeof import('./src/components/application/Application.vue')['default']
     Default: typeof import('./src/components/layouts/default/index.vue')['default']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']

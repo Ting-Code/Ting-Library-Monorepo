@@ -9,8 +9,8 @@
   import { ref } from 'vue'
   import { createAppProviderContext } from './useAppContext'
   const isMobile = ref(false)
-  const prefixCls = ref('ting')
+  const namespace = ref('ting')
 
   // 变量注入全局
-  createAppProviderContext({ prefixCls, isMobile })
+  createAppProviderContext({ namespace, isMobile })
 </script>
