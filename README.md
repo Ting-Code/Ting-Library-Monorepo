@@ -24,7 +24,8 @@ pnpm lint:lint-staged
 
 ### 工程类需求
 
-| 类型 | 内容                   | 完成情况 | 在哪个版本实现的                                   |
-| ---- | ---------------------- | -------- | -------------------------------------------------- |
-| 构建 | 自动化脚本构建多环境包 | ✅       | [v1](https://gitee.com/TINGCYGF/ting-library-vue3) |
-| 架构 | monorepo（pnpm 实现）  | ⬜️      |                                                    |
+| 类型 | 内容 | 完成情况 | 在哪个版本实现的 |
+| --- | --- | --- | --- |
+| 构建 | 自动化脚本构建多环境包 | ✅ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
+| 架构 | monorepo（pnpm 实现） | ✅ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
+| 架构 | scss 实现主题切换 | ⬜️ |  |
