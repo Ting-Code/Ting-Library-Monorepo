@@ -28,4 +28,5 @@ pnpm lint:lint-staged
 | --- | --- | --- | --- |
 | 构建 | 自动化脚本构建多环境包 | ✅ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
 | 架构 | monorepo（pnpm 实现） | ✅ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
-| 架构 | scss 实现主题切换 | ⬜️ |  |
+| 架构 | 实现主题切换 | ✅ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
+| 架构 | 实现主页布局 | ⬜️ | [v1](https://gitee.com/TINGCYGF/ting-library-monorepo) |
