@@ -29,9 +29,7 @@ export function createRouterGuards(router: Router) {
       next()
       return
     }
-    debugger
     const token = storage.get(ACCESS_TOKEN)
-
     if (!token) {
       // 无token情况下可配置ignoreAuth跳过路由鉴权
       if (to.meta.ignoreAuth) {
@@ -57,7 +55,6 @@ export function createRouterGuards(router: Router) {
       next()
       return
     }
-
     const userInfo = await userStore.GetInfo()
     const routes = await asyncRouteStore.generateRoutes(userInfo)
 

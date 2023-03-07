@@ -16,7 +16,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/system',
     name: 'System',
-    redirect: '/system/menu',
+    redirect: '/system/home',
     component: Layout,
     meta: {
       title: '系统设置',
@@ -25,18 +25,10 @@ const routes: Array<RouteRecordRaw> = [
     },
     children: [
       {
-        path: 'menu',
-        name: 'system_menu',
+        path: 'home',
+        name: 'system_home',
         meta: {
           title: '菜单权限管理'
-        },
-        component: Layout
-      },
-      {
-        path: 'role',
-        name: 'system_role',
-        meta: {
-          title: '角色权限管理'
         },
         component: Layout
       }

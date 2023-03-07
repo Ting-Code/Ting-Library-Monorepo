@@ -1,11 +1,10 @@
 <template>
-  <el-container>
+  <el-container :class="ns.b()">
     <el-aside width="200px">Aside</el-aside>
     <el-container>
       <el-header>Header</el-header>
       <el-main>
         <main>
-          <img :src="Logo" />
           <admin-main />
         </main>
       </el-main>
@@ -15,6 +14,9 @@
 </template>
 <script setup lang="ts">
   import AdminMain from './admin-main/index.vue'
+  import { useNamespace } from '@/hooks/use-namespace'
+
+  const ns = useNamespace('default-layout')
 </script>
 
 <style scoped lang="scss"></style>

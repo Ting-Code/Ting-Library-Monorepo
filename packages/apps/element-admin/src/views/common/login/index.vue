@@ -44,17 +44,17 @@
     const toPath = decodeURIComponent((route.query?.redirect as string) || '/')
     ElMessage.success('登录成功，即将进入系统')
     if (route.name === LOGIN_NAME) {
-      router.replace('/')
-    } else router.replace(toPath)
+      await router.replace('/')
+    } else await router.replace(toPath)
   }
 
   const ns = useNamespace('test')
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @use 'sass:map';
-  @use '@/styles/mixin/mixin.scss' as *;
-  @use '@/styles/mixin/function.scss' as *;
+  //@use '@/styles/mixin/mixin.scss' as *;
+  //@use '@/styles/mixin/function.scss' as *;
 
   $button: () !default;
   $button: map.merge(

@@ -7,6 +7,7 @@ const modules: any = import.meta.globEager('./modules/**/*.ts')
 const routeModuleList: RouteRecordRaw[] = []
 // 私有路由(需要权限才能放行)
 Object.keys(modules).forEach((key) => {
+  console.log(modules[key])
   const mod = modules[key].default || {}
   const modList = Array.isArray(mod) ? [...mod] : [mod]
   routeModuleList.push(...modList)
@@ -23,7 +24,6 @@ getRouteNames(publicRoutes)
 
 //需要验证权限
 export const asyncRoutes = [...routeModuleList]
-
 //普通路由 无需验证权限
 export const constantRouter: any[] = [...publicRoutes]
 

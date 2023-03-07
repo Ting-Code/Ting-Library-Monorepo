@@ -1,16 +1,5 @@
 // global 会被全局引用 可以写scss变量mixin 等
 //  @use 'theme/index' as *; // 已废弃
 // 改变 element 的命名空间
-
 @use 'transition/index' as *;
-@use 'mixin/config' as *;
-@use 'mixin/mixin' as *;
-@use 'mixin/function' as *;
-
-@forward 'element-plus/theme-chalk/src/mixins/config.scss' with (
-  $namespace: $namespace
-);
-@use 'theme/var' as *;
-@use 'theme/dark' as *;
-// 导入dark变量
-@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
+@use 'base/element';
