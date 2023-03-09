@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router'
 import { Layout, ParentLayout } from '@/router/routerBase.js'
 import type { AppRouteRecordRaw } from '@/router/type'
 
-const Iframe = () => import('@/views/iframe/index.vue')
+const Iframe = () => import('@/views/common/iframe/index.vue')
 // @ts-ignore
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
 

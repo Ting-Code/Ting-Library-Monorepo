@@ -23,11 +23,7 @@ export interface GlobEnvConfig {
  * 获取配置文件变量名称
  * @param env
  */
-export const getConfigFileName = (env: Record<string, any>) => {
-  return `__PRODUCTION__${env.VITE_GLOB_APP_SHORT_NAME || '__APP'}__CONF__`
-    .toUpperCase()
-    .replace(/\s/g, '')
-}
+
 export function getCommonStoragePrefix() {
   const { VITE_GLOB_APP_SHORT_NAME } = getAppEnvConfig()
   return `${VITE_GLOB_APP_SHORT_NAME}__${getEnv()}`.toUpperCase()
@@ -39,12 +35,7 @@ export function getStorageShortName() {
 }
 
 export function getAppEnvConfig() {
-  const ENV_NAME = getConfigFileName(import.meta.env)
-
-  const ENV = (import.meta.env.DEV
-    ? // Get the global configuration (the configuration will be extracted independently when packaging)
-      (import.meta.env as unknown as GlobEnvConfig)
-    : window[ENV_NAME as any]) as unknown as GlobEnvConfig
+  const ENV = import.meta.env
 
   const {
     VITE_GLOB_APP_TITLE,
