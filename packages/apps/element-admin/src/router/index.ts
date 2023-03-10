@@ -3,11 +3,10 @@ import { createRouterGuards } from './routerGuards.js'
 import { App } from 'vue'
 import { publicRoutes } from '@/router/routerBase.js'
 
-const modules: any = import.meta.globEager('./modules/**/*.ts')
+const modules: any = import.meta.glob('./modules/**/*.ts', { eager: true })
 const routeModuleList: RouteRecordRaw[] = []
 // 私有路由(需要权限才能放行)
 Object.keys(modules).forEach((key) => {
-  console.log(modules[key])
   const mod = modules[key].default || {}
   const modList = Array.isArray(mod) ? [...mod] : [mod]
   routeModuleList.push(...modList)
