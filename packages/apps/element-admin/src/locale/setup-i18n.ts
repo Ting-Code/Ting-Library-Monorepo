@@ -5,13 +5,13 @@ import { setHtmlPageLang, setLoadLocalePool } from './helper'
 import { computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 
-export type LocaleType = 'zh_CN' | 'en'
+export type LocaleType = 'zh-CN' | 'en'
 export const LOCALE_KEY = 'LOCALE'
 const store = useLocalStorage(LOCALE_KEY, {
   showPicker: true,
-  locale: 'zh_CN' as LocaleType,
-  fallback: 'zh_CN',
-  availableLocales: ['zh_CN', 'en']
+  locale: 'zh-CN' as LocaleType,
+  fallback: 'zh-CN',
+  availableLocales: ['zh-CN', 'en']
 })
 
 export const getLocale = computed(() => store.value.locale)

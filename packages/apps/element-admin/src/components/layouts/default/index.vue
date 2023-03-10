@@ -19,10 +19,7 @@
   import AdminMain from './admin-main/index.vue'
   import { useNamespace } from '@/hooks/use-namespace'
   import { useI18n } from '@/locale/use-i18n'
-  import { setLocale } from '@/locale/setup-i18n'
   const { t } = useI18n()
-
-  setLocale('en')
 
   const ns = useNamespace('default-layout')
 </script>
