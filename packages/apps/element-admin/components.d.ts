@@ -14,13 +14,16 @@ declare module '@vue/runtime-core' {
     Default: typeof import('./src/components/layouts/default/index.vue')['default']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
+    ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElMain: typeof import('element-plus/es')['ElMain']
+    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Feature: typeof import('./src/components/layouts/default/feature/index.vue')['default']
     ParentLayout: typeof import('./src/components/layouts/parentLayout/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./src/components/layouts/default/feature/setting/index.vue')['default']
+    Theme: typeof import('./src/components/layouts/default/feature/setting/theme/index.vue')['default']
   }
 }
