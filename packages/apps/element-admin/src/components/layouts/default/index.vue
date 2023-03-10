@@ -1,8 +1,7 @@
 <template>
   <el-container :class="ns.b()">
-    <el-aside width="200px">Aside</el-aside>
+    <LayoutFeature />
     <el-container>
-      <el-header>Header</el-header>
       <el-main>
         <main>
           <admin-main />
@@ -16,6 +15,7 @@
   </el-container>
 </template>
 <script setup lang="ts">
+  import LayoutFeature from './feature/index.vue'
   import AdminMain from './admin-main/index.vue'
   import { useNamespace } from '@/hooks/use-namespace'
   import { useI18n } from '@/locale/use-i18n'

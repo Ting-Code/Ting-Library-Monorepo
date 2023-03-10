@@ -57,12 +57,10 @@ export function createRouterGuards(router: Router) {
     }
     const userInfo = await userStore.GetInfo()
     const routes = await asyncRouteStore.generateRoutes(userInfo)
-
     // 动态添加可访问路由表
     routes.forEach((item) => {
       router.addRoute(item as unknown as RouteRecordRaw)
     })
-
     //添加404
     const isErrorPage = router.getRoutes().findIndex((item) => item.name === ErrorPageRoute.name)
     if (isErrorPage === -1) {
@@ -73,6 +71,7 @@ export function createRouterGuards(router: Router) {
     const redirect = decodeURIComponent(redirectPath)
     const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect }
     asyncRouteStore.setDynamicAddedRoute(true) // 设置为true那么就不会刷新权限
+    console.log('Whether the route has been dynamically added', routes)
     next(nextData)
     NProgress.done()
   })
@@ -97,13 +96,6 @@ export function createRouterGuards(router: Router) {
       }
     }
     asyncRouteStore.setKeepAliveComponents(keepAliveComponents)
-    console.log(
-      '打印after',
-      keepAliveComponents,
-      asyncRouteStore.getRouters(),
-      asyncRouteStore.getMenus,
-      asyncRouteStore.keepAliveComponents
-    )
     NProgress.done()
   })
 

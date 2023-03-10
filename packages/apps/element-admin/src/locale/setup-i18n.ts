@@ -23,7 +23,6 @@ export const setLocale = (locale: LocaleType) => {
 export let i18n: ReturnType<typeof createI18n>
 const createI18nOptions = async (): Promise<I18nOptions> => {
   const locale = getLocale.value
-  console.log(locale, store.value, 'locale')
   const defaultLocal = await import(`./lang/${locale}.ts`)
   const message = defaultLocal.default?.message ?? {}
 

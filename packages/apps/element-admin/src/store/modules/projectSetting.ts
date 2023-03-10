@@ -2,10 +2,6 @@ import { defineStore } from 'pinia'
 import { store } from '@/store'
 import projectSetting from '@/settings/projectSetting'
 
-export interface IbodySetting {
-  fixed: boolean
-}
-
 export interface IheaderSetting {
   bgColor: string
   fixed: boolean
