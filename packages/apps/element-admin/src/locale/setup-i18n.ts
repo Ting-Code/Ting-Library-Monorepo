@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import type { I18n, I18nOptions } from 'vue-i18n'
-import { createI18n } from 'vue-i18n'
+import { createI18n } from 'vue-i18n/dist/vue-i18n.cjs'
 import { setHtmlPageLang, setLoadLocalePool } from './helper'
 import { computed } from 'vue'
 import { useLocalStorage } from '@vueuse/core'

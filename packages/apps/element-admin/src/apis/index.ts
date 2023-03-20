@@ -15,13 +15,13 @@ import {
   joinTimestamp,
   axios
 } from '@common/request'
-import { useGlobSetting } from '@/hooks/use-setting'
+import { useEnvSetting } from '@/hooks/use-setting'
 import { deepMerge, setObjToUrlParams, storage } from '@common/utils'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStoreWidthOut } from '@/store/modules/user.js'
 import router from '@/router'
 import { PageEnum } from '@/router/type'
-const globSetting = useGlobSetting()
+const globSetting = useEnvSetting()
 const urlPrefix: string = globSetting.urlPrefix || ''
 
 /**

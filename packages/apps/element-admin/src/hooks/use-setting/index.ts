@@ -1,7 +1,7 @@
 import { warn } from '@common/utils'
 import { getAppEnvConfig } from '@/utils/env'
 
-export interface GlobConfig {
+export interface EnvConfig {
   title: string
   apiUrl: string
   shortName: string
@@ -11,7 +11,7 @@ export interface GlobConfig {
   imgUrl?: string
 }
 
-export const useGlobSetting = (): Readonly<GlobConfig> => {
+export const useEnvSetting = (): Readonly<EnvConfig> => {
   const {
     VITE_GLOB_APP_TITLE,
     VITE_GLOB_API_URL,
@@ -29,7 +29,7 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
   }
 
   // Take global configuration
-  const glob: Readonly<GlobConfig> = {
+  const glob: Readonly<EnvConfig> = {
     title: VITE_GLOB_APP_TITLE,
     apiUrl: VITE_GLOB_API_URL,
     shortName: VITE_GLOB_APP_SHORT_NAME,
@@ -38,5 +38,5 @@ export const useGlobSetting = (): Readonly<GlobConfig> => {
     prodMock: VITE_GLOB_PROD_MOCK,
     imgUrl: VITE_GLOB_IMG_URL
   }
-  return glob as Readonly<GlobConfig>
+  return glob as Readonly<EnvConfig>
 }

@@ -6,6 +6,7 @@ import { setupRouter } from '@/router'
 import { setupGlobDirectives } from '@/directives'
 import 'virtual:svg-icons-register'
 import { setupI18n } from '@/locale/setup-i18n'
+
 async function bootstrap() {
   const app = createApp(App)
   setupStore(app)

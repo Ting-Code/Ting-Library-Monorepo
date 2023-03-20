@@ -1,10 +1,9 @@
-import { toRaw, unref } from 'vue'
+import { toRaw } from 'vue'
 import { defineStore } from 'pinia'
 import { RouteRecordRaw } from 'vue-router'
 import { store } from '@/store'
 import { asyncRoutes, constantRouter } from '@/router'
 import { generatorDynamicRouter } from '@/router/routerUtils.js'
-import { useProjectSetting } from '@/hooks/use-setting/useProjectSetting'
 
 interface TreeHelperConfig {
   id: string
@@ -98,10 +97,10 @@ export const useAsyncRouteStore = defineStore({
         if (!permissions) return true
         return permissionsList.some((item: any) => permissions.includes(item.value))
       }
-      // 获取 路由模式
-      const { getPermissionMode } = useProjectSetting()
-      const permissionMode = unref(getPermissionMode)
+      // 获取 路由模式  FIXED 前端固定路由  BACK 动态获取
+      const permissionMode = 'FIXED'
       // 后台路由模式 （菜单树）
+      // @ts-ignore
       if (permissionMode === 'BACK') {
         // 动态获取菜单
         try {

@@ -71,7 +71,6 @@ export function createRouterGuards(router: Router) {
     const redirect = decodeURIComponent(redirectPath)
     const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect }
     asyncRouteStore.setDynamicAddedRoute(true) // 设置为true那么就不会刷新权限
-    console.log('Whether the route has been dynamically added', routes)
     next(nextData)
     NProgress.done()
   })

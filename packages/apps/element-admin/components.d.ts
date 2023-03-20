@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     ElDivider: typeof import('element-plus/es')['ElDivider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
     ElMain: typeof import('element-plus/es')['ElMain']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Feature: typeof import('./src/components/layouts/default/feature/index.vue')['default']
