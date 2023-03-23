@@ -4,12 +4,14 @@ import { useDark } from '@vueuse/core'
 
 interface RootSettingState {
   rootTheme: string // 主题
+  projectConfig: null // 项目配置
 }
 
 export const useRootSettingStore = defineStore({
   id: 'app-root-setting',
   state: (): RootSettingState => ({
-    rootTheme: 'light'
+    rootTheme: 'light',
+    projectConfig: null
   }),
   getters: {
     getRootTheme(): string {

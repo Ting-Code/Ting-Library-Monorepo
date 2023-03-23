@@ -1,11 +1,26 @@
 @use 'sass:map';
 
-$color-demo: () !default;
-$color-demo: map.merge(
+$text-color: () !default;
+$text-color: map.merge(
   (
-    'page': #eecfcf,
-    '': #fa7d7d,
-    'overlay': #197fe5
+    'primary': #303133,
+    'regular': #606266,
+    'secondary': #909399,
+    'placeholder': #a8abb2,
+    'disabled': #c0c4cc
   ),
-  $color-demo
+  $text-color
+);
+
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    '': #dcdfe6,
+    'light': #e4e7ed,
+    'lighter': #ebeef5,
+    'extra-light': #f2f6fc,
+    'dark': #d4d7de,
+    'darker': #cdd0d6
+  ),
+  $border-color
 );

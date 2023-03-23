@@ -6,5 +6,6 @@
 
 // common
 html.dark {
-  @include set-component-css-var('color-demo', $color-demo);
+  @include set-component-css-var('text-color', $text-color);
+  @include set-component-css-var('border-color', $border-color);
 }

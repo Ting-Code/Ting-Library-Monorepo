@@ -1,11 +1,30 @@
 @use 'sass:map';
 
-$color-demo: () !default;
-$color-demo: map.merge(
+// text
+$text-color-base: #f0f5ff;
+$text-color: () !default;
+$text-color: map.merge(
   (
-    'page': #5b0909,
-    '': #542626,
-    'overlay': #65696e
+    'primary': rgba($text-color-base, 0.95),
+    'regular': rgba($text-color-base, 0.85),
+    'secondary': rgba($text-color-base, 0.65),
+    'placeholder': rgba($text-color-base, 0.55),
+    'disabled': rgba($text-color-base, 0.4)
   ),
-  $color-demo
+  $text-color
+);
+
+// border
+$border-color-base: #f5f8ff;
+$border-color: () !default;
+$border-color: map.merge(
+  (
+    'darker': rgba($border-color-base, 0.35),
+    'dark': rgba($border-color-base, 0.3),
+    '': rgba($border-color-base, 0.25),
+    'light': rgba($border-color-base, 0.2),
+    'lighter': rgba($border-color-base, 0.15),
+    'extra-light': rgba($border-color-base, 0.1)
+  ),
+  $border-color
 );
