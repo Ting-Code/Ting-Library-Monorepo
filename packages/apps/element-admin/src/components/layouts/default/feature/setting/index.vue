@@ -8,8 +8,13 @@
       <div :class="ns.b()">
         <!--    主题切换    -->
         <Theme />
-        <!--    主题颜色    -->
+        <!--    菜单模式    -->
         <div>aaaaaa</div>
+        <!--    菜单模式    -->
+        <div>aaaaaa</div>
+        <!--    菜单模式    -->
+        <div>aaaaaa</div>
+        <!--    菜单模式    -->
         <div>aaaaaa</div>
       </div>
     </template>
@@ -21,17 +26,17 @@
   import { Icon } from '@common/components'
   import { useI18n } from '@/locale/use-i18n'
   import { useNamespace } from '@/hooks/use-namespace'
+  const ns = useNamespace('setting-drawer')
+
   const { t } = useI18n()
 
   const isOpenSetting = ref(false)
   const handleClick = () => {
     isOpenSetting.value = true
   }
-
-  const ns = useNamespace('setting-drawer')
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   @include b(setting-drawer) {
     display: flex;
     flex-direction: column;
