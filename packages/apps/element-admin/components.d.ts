@@ -22,11 +22,14 @@ declare module '@vue/runtime-core' {
     ElMain: typeof import('element-plus/es')['ElMain']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Feature: typeof import('./src/components/layouts/default/feature/index.vue')['default']
+    HeaderTrigger: typeof import('./src/components/layouts/default/herder/trigger/HeaderTrigger.vue')['default']
     Herder: typeof import('./src/components/layouts/default/herder/index.vue')['default']
     ParentLayout: typeof import('./src/components/layouts/parentLayout/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./src/components/layouts/default/feature/setting/index.vue')['default']
+    SideTrigger: typeof import('./src/components/layouts/default/herder/trigger/SideTrigger.vue')['default']
     Theme: typeof import('./src/components/layouts/default/feature/setting/theme/index.vue')['default']
+    Trigger: typeof import('./src/components/layouts/default/herder/trigger/index.vue')['default']
   }
 }

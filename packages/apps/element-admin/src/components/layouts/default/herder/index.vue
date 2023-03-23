@@ -4,12 +4,15 @@
     <div>
       <!--   logo   -->
       <AppLogo />
+      <!--   折叠按钮   -->
+      <LayoutTrigger />
     </div>
   </el-header>
 </template>
 
 <script setup lang="ts">
   import AppLogo from './app-logo/index.vue'
+  import LayoutTrigger from './trigger/index.vue'
   import { useNamespace } from '@/hooks/use-namespace'
 
   const ns = useNamespace('layout-herder')
