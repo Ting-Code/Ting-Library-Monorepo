@@ -1,6 +1,8 @@
 {
+  "name": "@apps/umi",
   "private": true,
-  "author": "TING <1127163160@qq.com>",
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",

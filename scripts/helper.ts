@@ -15,7 +15,7 @@ async function getPackages() {
 }
 
 async function runScript(pkg: WorkspacePackage, script: string) {
-  execa('pnpm', ['run', script, '--filter', `${pkg.name}...`, '--parallel'], {
+  execa('pnpm', ['--filter', `${pkg.name}...`, '--parallel', script], {
     stdio: 'inherit',
     preferLocal: true
   })
@@ -53,6 +53,7 @@ export async function run(command: string) {
         })
       }
     ])
+    console.log('选择后')
 
     runScript(
       packages.find((p) => p.name === name),
