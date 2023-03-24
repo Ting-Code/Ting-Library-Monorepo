@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     Application: typeof import('./src/components/application/Application.vue')['default']
     AppLogo: typeof import('./src/components/layouts/default/herder/app-logo/index.vue')['default']
     Default: typeof import('./src/components/layouts/default/index.vue')['default']
+    ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDivider: typeof import('element-plus/es')['ElDivider']
