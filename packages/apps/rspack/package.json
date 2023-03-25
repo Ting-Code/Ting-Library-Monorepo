@@ -1,5 +1,5 @@
 {
-  "name": "rspack-react-starter",
+  "name": "@apps/rspack",
   "private": true,
   "version": "0.0.0",
   "scripts": {
