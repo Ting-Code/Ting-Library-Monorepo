@@ -51,7 +51,9 @@ const config = (env, argv): Configuration => {
                 }
               }
             },
-            'less-loader'
+            {
+              loader: 'less-loader'
+            }
           ],
           type: 'css'
         }

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "rspack serve",
+    "dev": "rspack serve TAILWIND_MODE=watch",
     "build": "rspack build"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@config/tsconfig": "workspace:*",
     "@rspack/cli": "latest",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
