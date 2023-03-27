@@ -53,7 +53,6 @@ export async function run(command: string) {
         })
       }
     ])
-    console.log('选择后')
 
     runScript(
       packages.find((p) => p.name === name),
