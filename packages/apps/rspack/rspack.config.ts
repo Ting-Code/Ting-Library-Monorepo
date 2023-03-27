@@ -1,6 +1,3 @@
-/**
- * @type {import('@rspack/cli').Configuration}
- */
 import { Configuration } from '@rspack/cli'
 import * as path from 'path'
 
@@ -9,15 +6,18 @@ const config = (env, argv): Configuration => {
   return {
     context: __dirname,
     entry: {
-      main: './src/main.jsx'
+      main: './index.tsx'
     },
     output: {
-      publicPath: '/assets/',
       path: path.resolve(__dirname, 'dist'),
-      filename: 'index.js',
       chunkFilename: 'js/[name]-[hash].js',
       cssChunkFilename: 'css/[name]-[hash].css',
-      assetModuleFilename: '[ext]/[name][ext]'
+      assetModuleFilename: '[ext]/[name]-[ext]'
+    },
+    optimization: {
+      splitChunks: {
+        chunks: 'all' // import('./xxx') 会被分包
+      }
     },
     builtins: {
       html: [
@@ -26,11 +26,34 @@ const config = (env, argv): Configuration => {
         }
       ]
     },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.', 'src')
+      }
+    },
     module: {
       rules: [
         {
           test: /\.svg$/,
           type: 'asset/resource'
+        },
+        {
+          test: /\.less$/i,
+          use: [
+            {
+              loader: 'postcss-loader',
+              options: {
+                postcssOptions: {
+                  plugins: {
+                    tailwindcss: {},
+                    autoprefixer: {}
+                  }
+                }
+              }
+            },
+            'less-loader'
+          ],
+          type: 'css'
         }
       ]
     }
