@@ -1,5 +1,6 @@
 import { Configuration } from '@rspack/cli'
 import * as path from 'path'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 
 const config = (env, argv): Configuration => {
   console.log('env配置项', env, argv)
@@ -10,16 +11,24 @@ const config = (env, argv): Configuration => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'index.js',
+      filename: 'main.js',
       chunkFilename: 'js/[name]-[hash:6].js',
       cssChunkFilename: 'css/[name]-[hash:6].css',
       assetModuleFilename: '[ext]/[name][ext]'
     },
-    // optimization: {
-    //   splitChunks: {
-    //     chunks: 'all' // import('./xxx') 会被分包
-    //   }
-    // },
+    optimization: {
+      splitChunks: {
+        chunks: 'async', //all 所有 ； async  import('./xxx') 会被分包
+        minSize: 300 * 1024,
+        cacheGroups: {
+          lodash: {
+            name: 'lodash',
+            test: /lodash/,
+            chunks: 'all'
+          }
+        }
+      }
+    },
     builtins: {
       html: [
         {
@@ -59,7 +68,8 @@ const config = (env, argv): Configuration => {
           type: 'css'
         }
       ]
-    }
+    },
+    plugins: [new CleanWebpackPlugin()] as any
   }
 }
 
