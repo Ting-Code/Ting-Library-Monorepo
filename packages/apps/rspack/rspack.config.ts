@@ -10,15 +10,16 @@ const config = (env, argv): Configuration => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      chunkFilename: 'js/[name]-[hash].js',
-      cssChunkFilename: 'css/[name]-[hash].css',
-      assetModuleFilename: '[ext]/[name]-[ext]'
+      filename: 'index.js',
+      chunkFilename: 'js/[name]-[hash:6].js',
+      cssChunkFilename: 'css/[name]-[hash:6].css',
+      assetModuleFilename: '[ext]/[name][ext]'
     },
-    optimization: {
-      splitChunks: {
-        chunks: 'all' // import('./xxx') 会被分包
-      }
-    },
+    // optimization: {
+    //   splitChunks: {
+    //     chunks: 'all' // import('./xxx') 会被分包
+    //   }
+    // },
     builtins: {
       html: [
         {
@@ -34,7 +35,7 @@ const config = (env, argv): Configuration => {
     module: {
       rules: [
         {
-          test: /\.svg$/,
+          test: /\.(png|svg|jpg|jpeg|gif|webp)$/,
           type: 'asset/resource'
         },
         {

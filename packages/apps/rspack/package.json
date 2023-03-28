@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "rspack serve TAILWIND_MODE=watch",
+    "dev": "rspack serve",
     "build": "rspack build"
   },
   "dependencies": {
