@@ -1,13 +1,12 @@
-import { Configuration } from '@rspack/cli'
-import * as path from 'path'
-import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const path = require('path')
 
-const config = (env, argv): Configuration => {
+module.exports = function (env, argv) {
   console.log('env配置项', env, argv)
   return {
     context: __dirname,
     entry: {
-      main: './index.tsx'
+      main: './src/main.tsx'
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -69,8 +68,6 @@ const config = (env, argv): Configuration => {
         }
       ]
     },
-    plugins: [new CleanWebpackPlugin()] as any
+    plugins: [new CleanWebpackPlugin()]
   }
 }
-
-export = config
