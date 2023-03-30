@@ -8,8 +8,10 @@
       "@/*": ["src/*"]
     },
     "lib": ["dom", "esnext"],
+    "types": ["@common/types"],
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "mock"]
+
+  "include": ["src", "mock", "@/types/module.d.ts"]
 }

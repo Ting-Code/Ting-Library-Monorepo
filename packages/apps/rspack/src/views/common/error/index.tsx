@@ -1,20 +1,19 @@
-import './index.less'
-
+import s from './index.module.css'
 const ErrorPage = () => {
   return (
-    <div className="error-page-wrapper">
-      <div className="error-page">
+    <>
+      <div className={s.errorPage}>
         <div>
-          <h1 className="text-num" data-h1="404">
+          <h1 className={s.textNum} data-h1="404">
             404
           </h1>
-          <p className="text-fun" data-p="NOT FOUND">
+          <p className={s.textFun} data-p="NOT FOUND">
             NOT FOUND
           </p>
         </div>
       </div>
-      <div id="particles-js"></div>
-    </div>
+      <div id={s.particles}></div>
+    </>
   )
 }
 

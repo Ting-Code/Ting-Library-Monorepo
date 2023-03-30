@@ -37,7 +37,12 @@ module.exports = function (env, argv) {
         {
           template: './index.html'
         }
-      ]
+      ],
+      css: {
+        modules: {
+          localsConvention: 'camelCaseOnly'
+        }
+      }
     },
     resolve: {
       alias: {
