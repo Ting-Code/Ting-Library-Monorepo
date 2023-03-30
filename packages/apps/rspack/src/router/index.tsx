@@ -1,8 +1,4 @@
-const routers = [
-  {
-    path: '/',
-    element: <div>Hello world!</div>
-  }
-]
+import { createBrowserRouter } from 'react-router-dom'
+import { routers } from '@/router/baseRouters'
 
-export { routers }
+export const router: any = createBrowserRouter(routers)

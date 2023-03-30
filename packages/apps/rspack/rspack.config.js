@@ -1,3 +1,4 @@
+/** @type {import('@rspack/cli').Configuration} */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
 
@@ -5,6 +6,9 @@ module.exports = function (env, argv) {
   console.log('env配置项', env, argv)
   return {
     context: __dirname,
+    devServer: {
+      historyApiFallback: true
+    },
     entry: {
       main: './src/main.tsx'
     },

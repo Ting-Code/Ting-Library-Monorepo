@@ -154,7 +154,8 @@ importers:
   packages/apps/rspack:
     specifiers:
       '@config/tsconfig': workspace:*
-      '@rspack/cli': latest
+      '@react-spring/web': ^9.7.1
+      '@rspack/cli': 0.1.1
       '@types/react': ^18.0.25
       '@types/react-dom': ^18.0.8
       autoprefixer: ^10.4.14
@@ -174,6 +175,7 @@ importers:
       react-router-dom: 6.9.0_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@config/tsconfig': link:../../../configs/tsconfig
+      '@react-spring/web': 9.7.1_biqbaboplfbrettd7655fr4n2y
       '@rspack/cli': 0.1.1
       '@types/react': 18.0.28
       '@types/react-dom': 18.0.11
@@ -2084,6 +2086,78 @@ packages:
       {
         integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
       }
+    dev: true
+
+  /@react-spring/animated/9.7.1_react@18.2.0:
+    resolution:
+      {
+        integrity: sha512-EX5KAD9y7sD43TnLeTNG1MgUVpuRO1YaSJRPawHNRgUWYfILge3s85anny4S4eTJGpdp5OoFV2kx9fsfeo0qsw==
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/shared': 9.7.1_react@18.2.0
+      '@react-spring/types': 9.7.1
+      react: 18.2.0
+    dev: true
+
+  /@react-spring/core/9.7.1_react@18.2.0:
+    resolution:
+      {
+        integrity: sha512-8K9/FaRn5VvMa24mbwYxwkALnAAyMRdmQXrARZLcBW2vxLJ6uw9Cy3d06Z8M12kEqF2bDlccaCSDsn2bSz+Q4A==
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/animated': 9.7.1_react@18.2.0
+      '@react-spring/rafz': 9.7.1
+      '@react-spring/shared': 9.7.1_react@18.2.0
+      '@react-spring/types': 9.7.1
+      react: 18.2.0
+    dev: true
+
+  /@react-spring/rafz/9.7.1:
+    resolution:
+      {
+        integrity: sha512-JSsrRfbEJvuE3w/uvU3mCTuWwpQcBXkwoW14lBgzK9XJhuxmscGo59AgJUpFkGOiGAVXFBGB+nEXtSinFsopgw==
+      }
+    dev: true
+
+  /@react-spring/shared/9.7.1_react@18.2.0:
+    resolution:
+      {
+        integrity: sha512-R2kZ+VOO6IBeIAYTIA3C1XZ0ZVg/dDP5FKtWaY8k5akMer9iqf5H9BU0jyt3Qtxn0qQY7whQdf6MTcWtKeaawg==
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/rafz': 9.7.1
+      '@react-spring/types': 9.7.1
+      react: 18.2.0
+    dev: true
+
+  /@react-spring/types/9.7.1:
+    resolution:
+      {
+        integrity: sha512-yBcyfKUeZv9wf/ZFrQszvhSPuDx6Py6yMJzpMnS+zxcZmhXPeOCKZSHwqrUz1WxvuRckUhlgb7eNI/x5e1e8CA==
+      }
+    dev: true
+
+  /@react-spring/web/9.7.1_biqbaboplfbrettd7655fr4n2y:
+    resolution:
+      {
+        integrity: sha512-6uUE5MyKqdrJnIJqlDN/AXf3i8PjOQzUuT26nkpsYxUGOk7c+vZVPcfrExLSoKzTb9kF0i66DcqzO5fXz/Z1AA==
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@react-spring/animated': 9.7.1_react@18.2.0
+      '@react-spring/core': 9.7.1_react@18.2.0
+      '@react-spring/shared': 9.7.1_react@18.2.0
+      '@react-spring/types': 9.7.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
     dev: true
 
   /@remix-run/router/1.4.0:
@@ -5712,6 +5786,7 @@ packages:
         integrity: sha512-dJ6oBr5SQ1VSd9qkk7ByRgb/1SH4JZjCHSW/mr63/QcXO9zLVxvJ6Oy13nio03rxpSnVDDjFor75SjVeZWPW/A==
       }
     hasBin: true
+    requiresBuild: true
     dependencies:
       prr: 1.0.1
     dev: true
@@ -7574,6 +7649,7 @@ packages:
       }
     engines: { node: '>=0.10.0' }
     hasBin: true
+    requiresBuild: true
     dev: true
 
   /immutable/4.2.4:
@@ -8798,7 +8874,6 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
-    dev: false
 
   /lru-cache/4.1.5:
     resolution:
@@ -10589,7 +10664,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
 
   /react-refresh/0.14.0:
     resolution:
@@ -10636,7 +10710,6 @@ packages:
     engines: { node: '>=0.10.0' }
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /read-cache/1.0.0:
     resolution:
@@ -11066,7 +11139,6 @@ packages:
       }
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /schema-utils/3.1.1:
     resolution:
@@ -13376,7 +13448,7 @@ packages:
       sockjs: 0.3.24
       spdy: 4.0.2
       webpack-dev-middleware: 5.3.3
-      ws: 8.8.1
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -13427,7 +13499,7 @@ packages:
       spdy: 4.0.2
       webpack: 5.74.0
       webpack-dev-middleware: 5.3.3_webpack@5.74.0
-      ws: 8.8.1
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -13634,6 +13706,22 @@ packages:
     peerDependencies:
       bufferutil: ^4.0.1
       utf-8-validate: ^5.0.2
+    peerDependenciesMeta:
+      bufferutil:
+        optional: true
+      utf-8-validate:
+        optional: true
+    dev: true
+
+  /ws/8.13.0:
+    resolution:
+      {
+        integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==
+      }
+    engines: { node: '>=10.0.0' }
+    peerDependencies:
+      bufferutil: ^4.0.1
+      utf-8-validate: '>=5.0.2'
     peerDependenciesMeta:
       bufferutil:
         optional: true
