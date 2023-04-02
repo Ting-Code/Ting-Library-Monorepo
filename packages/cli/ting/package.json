@@ -1,10 +1,17 @@
 {
-  "name": "@ting/cli",
-  "version": "0.0.1",
+  "name": "@tingcygf/cli",
+  "version": "0.0.4",
   "description": "",
-  "main": "index.ts",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
   "bin": {
-    "@ting/cli": "index.ts"
+    "@tingcygf": "lib/index.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "test": "node dist/index.js",

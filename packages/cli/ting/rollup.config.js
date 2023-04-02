@@ -8,11 +8,11 @@ const extensions = ['.js', '.ts']
 module.exports = {
   input: ['index.ts'],
   output: {
-    dir: './dist',
+    dir: './lib',
     format: 'cjs'
   },
   plugins: [
-    cleandir('./dist'),
+    cleandir('./lib'),
     typescript({
       tsconfigOverride: {
         compilerOptions: {
