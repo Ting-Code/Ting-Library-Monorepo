@@ -20,11 +20,11 @@ module.exports = {
     { value: ':tada: version', name: '🎉 version:   发布版本' }
   ],
   scopes: [
-    { name: '业务' },
-    { name: '封装' },
-    { name: '架构' },
-    { name: '配置' },
-    { name: '文档' }
+    { name: 'business' },
+    { name: 'packaging' },
+    { name: 'framework' },
+    { name: 'configuration' },
+    { name: 'document' }
   ],
   //消息步骤
   messages: {
