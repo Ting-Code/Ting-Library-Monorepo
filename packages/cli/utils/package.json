@@ -1,6 +1,7 @@
 {
   "name": "@cli/utils",
   "version": "0.0.0",
+  "types": "module",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^10.0.0"
+    "commander": "^10.0.0",
+    "execa": "^7.1.1"
   }
 }
