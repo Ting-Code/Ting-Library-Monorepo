@@ -1,0 +1,28 @@
+{
+  "name": "@cli/create",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "@ting-create": "bin/index.mjs"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "cross-env DEBUG=taze:* esno ./src/cli.ts",
+    "start": "esno ./src/cli.ts",
+    "build": "unbuild"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "esno": "^0.16.3",
+    "typescript": "^5.0.3",
+    "unbuild": "^1.2.0"
+  }
+}

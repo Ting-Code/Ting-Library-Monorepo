@@ -11,7 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "^10.0.0",
     "execa": "^7.1.1"
   }
 }
