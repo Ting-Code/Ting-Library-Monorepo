@@ -1,5 +1,5 @@
 {
-  "name": "@cli/create",
+  "name": "@tingcygf/cli",
   "type": "module",
   "version": "0.0.1",
   "description": "",
@@ -7,7 +7,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "@ting-create": "bin/index.mjs"
+    "@ting": "bin/index.mjs"
   },
   "files": [
     "dist"
@@ -22,7 +22,9 @@
   "license": "ISC",
   "dependencies": {
     "@tingcygf/cli-utils": "workspace:^0.0.0",
-    "commander": "^10.0.0"
+    "chalk": "^5.2.0",
+    "commander": "^10.0.0",
+    "semver": "^7.3.8"
   },
   "devDependencies": {
     "esno": "^0.16.3",

@@ -194,13 +194,17 @@ importers:
   packages/cli/create:
     specifiers:
       '@tingcygf/cli-utils': workspace:^0.0.0
+      chalk: ^5.2.0
       commander: ^10.0.0
       esno: ^0.16.3
+      semver: ^7.3.8
       typescript: ^5.0.3
       unbuild: ^1.2.0
     dependencies:
       '@tingcygf/cli-utils': link:../utils
+      chalk: 5.2.0
       commander: 10.0.0
+      semver: 7.3.8
     devDependencies:
       esno: 0.16.3
       typescript: 5.0.3
