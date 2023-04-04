@@ -1,16 +1,20 @@
 {
-  "name": "@cli/utils",
+  "name": "@tingcygf/cli-utils",
+  "type": "module",
   "version": "0.0.0",
-  "types": "module",
-  "description": "",
-  "main": "index.ts",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "unbuild",
+    "up": "npm publish"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "execa": "^7.1.1"
+    "execa": "^7.1.1",
+    "npmlog": "^7.0.1",
+    "unbuild": "^1.2.0"
   }
 }

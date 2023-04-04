@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "cross-env DEBUG=taze:* esno ./src/cli.ts",
+    "dev": "esno ./src/cli.ts",
     "start": "esno ./src/cli.ts",
     "build": "unbuild"
   },
@@ -21,10 +21,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@tingcygf/cli-utils": "workspace:^0.0.0",
     "commander": "^10.0.0"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "esno": "^0.16.3",
     "typescript": "^5.0.3",
     "unbuild": "^1.2.0"
