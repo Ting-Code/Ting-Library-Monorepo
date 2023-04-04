@@ -1,3 +1,4 @@
+// @ts-ignore
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({

@@ -193,10 +193,13 @@ importers:
 
   packages/cli/create:
     specifiers:
+      commander: ^10.0.0
       cross-env: ^7.0.3
       esno: ^0.16.3
       typescript: ^5.0.3
       unbuild: ^1.2.0
+    dependencies:
+      commander: 10.0.0
     devDependencies:
       cross-env: 7.0.3
       esno: 0.16.3
