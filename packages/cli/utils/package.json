@@ -25,6 +25,7 @@
     "unbuild": "^1.2.0"
   },
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "@types/npmlog": "^4.1.4"
   }
 }

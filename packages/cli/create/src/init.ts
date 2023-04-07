@@ -27,7 +27,6 @@ export function init() {
     .hook('preAction', preAction)
 
   program.on('option:debug', function () {
-    console.log(program.opts())
     if (program.opts().debug) {
       log.verbose('debug', 'launch debug mode')
     }

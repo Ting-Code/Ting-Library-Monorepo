@@ -235,6 +235,7 @@ importers:
 
   packages/cli/utils:
     specifiers:
+      '@types/inquirer': ^9.0.3
       '@types/npmlog': ^4.1.4
       execa: ^7.1.1
       npmlog: ^7.0.1
@@ -244,6 +245,7 @@ importers:
       npmlog: 7.0.1
       unbuild: 1.2.0
     devDependencies:
+      '@types/inquirer': registry.npmjs.org/@types/inquirer/9.0.3
       '@types/npmlog': registry.npmjs.org/@types/npmlog/4.1.4
 
   packages/components:
@@ -16475,6 +16477,20 @@ packages:
       '@types/node': registry.npmjs.org/@types/node/18.15.11
     dev: true
 
+  registry.npmjs.org/@types/inquirer/9.0.3:
+    resolution:
+      {
+        integrity: sha512-CzNkWqQftcmk2jaCWdBTf9Sm7xSw4rkI1zpU/Udw3HX5//adEZUIm9STtoRP1qgWj0CWQtJ9UTvqmO2NNjhMJw==,
+        registry: https://registry.npmjs.com/,
+        tarball: https://registry.npmjs.org/@types/inquirer/-/inquirer-9.0.3.tgz
+      }
+    name: '@types/inquirer'
+    version: 9.0.3
+    dependencies:
+      '@types/through': registry.npmjs.org/@types/through/0.0.30
+      rxjs: registry.npmjs.org/rxjs/7.8.0
+    dev: true
+
   registry.npmjs.org/@types/json-schema/7.0.11:
     resolution:
       {
@@ -16599,6 +16615,19 @@ packages:
       }
     name: '@types/sockjs'
     version: 0.3.33
+    dependencies:
+      '@types/node': registry.npmjs.org/@types/node/18.15.11
+    dev: true
+
+  registry.npmjs.org/@types/through/0.0.30:
+    resolution:
+      {
+        integrity: sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==,
+        registry: https://registry.npmjs.com/,
+        tarball: https://registry.npmjs.org/@types/through/-/through-0.0.30.tgz
+      }
+    name: '@types/through'
+    version: 0.0.30
     dependencies:
       '@types/node': registry.npmjs.org/@types/node/18.15.11
     dev: true
@@ -20184,6 +20213,19 @@ packages:
     dependencies:
       queue-microtask: registry.npmjs.org/queue-microtask/1.2.3
     dev: false
+
+  registry.npmjs.org/rxjs/7.8.0:
+    resolution:
+      {
+        integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==,
+        registry: https://registry.npmjs.com/,
+        tarball: https://registry.npmjs.org/rxjs/-/rxjs-7.8.0.tgz
+      }
+    name: rxjs
+    version: 7.8.0
+    dependencies:
+      tslib: registry.npmjs.org/tslib/2.5.0
+    dev: true
 
   registry.npmjs.org/safe-buffer/5.1.2:
     resolution:
