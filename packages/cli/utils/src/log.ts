@@ -1,4 +1,3 @@
-// @ts-ignore
 import log from 'npmlog'
 
 export function isDebug() {
