@@ -32,7 +32,6 @@ const transform: AxiosTransform = {
    * @description: 处理请求数据
    */
   transformRequestData: (res: AxiosResponse<Result>, options: RequestOptions) => {
-    // @ts-ignore
     const {
       isShowMessage = true,
       isShowErrorMessage,

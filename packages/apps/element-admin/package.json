@@ -12,6 +12,7 @@
     "@common/components": "workspace:*",
     "@common/request": "workspace:*",
     "@common/utils": "workspace:*",
+    "@config/lint": "workspace:^0.0.0",
     "@config/tsconfig": "workspace:*",
     "dayjs": "^1.11.7",
     "element-plus": "^2.2.32",
