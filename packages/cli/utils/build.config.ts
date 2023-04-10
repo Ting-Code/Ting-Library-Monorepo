@@ -2,7 +2,7 @@
 import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
-  entries: ['src/index', 'src/pkg', 'src/log'],
+  entries: ['src/index'],
   rollup: {
     inlineDependencies: true
   },

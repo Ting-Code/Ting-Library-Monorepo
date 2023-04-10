@@ -1,7 +1,7 @@
 import inquirer from 'inquirer'
 
 export interface Params {
-  type?: 'list' | 'input' | 'password'
+  type?: 'list' | 'input' | 'password' | 'confirm' | 'expand' | 'checkbox' | 'editor'
   choices?: any[]
   message?: string
   mask?: string
