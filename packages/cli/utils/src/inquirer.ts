@@ -41,7 +41,7 @@ export function inquirerInput({
   if (type === 'list') {
     options.choices = choices
   }
-  return inquirer.prompt(options).then((answer) => answer.name)
+  return inquirer.prompt(options)
 }
 
 interface SelectParams extends Params {

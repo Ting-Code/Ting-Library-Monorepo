@@ -1,6 +1,6 @@
 import { isDebug, log } from '@tingcli/cli-utils'
 
-export function printErrorLog(e: Error, type: string) {
+function printErrorLog(e: Error, type: string) {
   if (isDebug()) {
     log.error(type, e as any)
   } else {

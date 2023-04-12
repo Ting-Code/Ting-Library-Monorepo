@@ -1,12 +1,15 @@
 import { inquirerSelect, inquirerInput } from '@tingcli/cli-utils'
+
+export const TYPE = [
+  { name: 'cli', value: 'cli' },
+  { name: 'monorepo', value: 'monorepo' }
+]
 export const getSelectType = () => {
   return inquirerSelect({
     type: 'list',
     name: 'type',
-    choices: [
-      { name: 'cli', value: 'cli' },
-      { name: 'monorepo', value: 'monorepo' }
-    ]
+    message: '项目类型',
+    choices: TYPE
   })
 }
 
