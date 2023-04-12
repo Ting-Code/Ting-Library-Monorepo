@@ -54,3 +54,7 @@ export const inquirerSelect = (params: SelectParams) => {
     ...params
   })
 }
+
+export const test = (a: any) => {
+  return a
+}
