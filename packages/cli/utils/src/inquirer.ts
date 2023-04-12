@@ -1,21 +1,23 @@
 import inquirer from 'inquirer'
 
 export interface Params {
-  type?: 'list' | 'input' | 'password' | 'confirm' | 'expand' | 'checkbox' | 'editor'
+  type: 'list' | 'input' | 'password' | 'confirm' | 'expand' | 'checkbox' | 'editor'
   choices?: any[]
   message?: string
   mask?: string
-  validate?: () => boolean
+  validate?: (value: string) => boolean
+  filter?: (value: string) => string // 过滤器, 返回修改后的回答。优先级高于 `validte`
+  transformer?: (value: string) => string // 转换器, 返回转换后的值，只作为显示，不影响收集结果
   defaultValue?: any
   loop?: boolean
   pageSize?: number
+  name?: string
 }
 interface Options extends Params {
-  name?: string
   default?: any
 }
 
-function make({
+export function inquirerInput({
   choices,
   defaultValue,
   message = '请选择',
@@ -23,10 +25,11 @@ function make({
   mask = '*',
   validate,
   pageSize,
-  loop
+  loop,
+  name = 'name'
 }: Params) {
   const options: Options = {
-    name: 'name',
+    name,
     default: defaultValue,
     message,
     type,
@@ -41,20 +44,13 @@ function make({
   return inquirer.prompt(options).then((answer) => answer.name)
 }
 
-export function makeList(params: Params) {
-  return make({ ...params })
+interface SelectParams extends Params {
+  type: 'list' | 'checkbox'
+  choices: { name: string; value: string }[]
 }
 
-export function makeInput(params: Omit<Params, 'type'>) {
-  return make({
-    type: 'input',
-    ...params
-  })
-}
-
-export function makePassword(params: Omit<Params, 'type'>) {
-  return make({
-    type: 'password',
+export const inquirerSelect = (params: SelectParams) => {
+  return inquirerInput({
     ...params
   })
 }

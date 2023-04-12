@@ -209,7 +209,7 @@ importers:
 
   packages/cli/create:
     specifiers:
-      '@tingcli/cli-utils': ^0.0.2
+      '@tingcli/cli-utils': workspace:*
       chalk: ^5.2.0
       commander: ^10.0.0
       esno: ^0.16.3
@@ -219,7 +219,7 @@ importers:
       unbuild: ^1.2.0
       vitest: ^0.29.8
     dependencies:
-      '@tingcli/cli-utils': registry.npmjs.org/@tingcli/cli-utils/0.0.2
+      '@tingcli/cli-utils': link:../utils
       chalk: 5.2.0
       commander: 10.0.0
       semver: 7.3.8
