@@ -6,7 +6,7 @@ import fse from 'fs-extra'
 import { execa } from 'execa'
 // @ts-ignore
 import download from 'download-git-repo'
-import { printErrorLog } from './error'
+import * as console from 'console'
 
 const TEMP_HOME = '.tingcli'
 const TEMPLATE_CLI = '@tingcli/template'
@@ -20,17 +20,19 @@ function getCacheDir(targetPath: string) {
 }
 
 export const downloadTemplate = async (type: string, name: string) => {
-  const spinner = ora('正在下载模板...').start()
-  console.log('action', type, name)
-  if (type === 'cli') {
-    await downloadCliTemplate(type, name)
-  } else {
-    await downloadGitTemplate(type, name)
+  try {
+    if (type === 'cli') {
+      await downloadCliTemplate(type, name)
+    } else {
+      await downloadGitTemplate(type, name)
+    }
+  } catch (e) {
+    console.log('失败', '模板下载失败')
   }
-  spinner.stop()
 }
 
 export const downloadCliTemplate = async (type: string, name: string) => {
+  const spinner = ora('正在下载cli模板...').start()
   const targetPath = getTemplatePath()
   const cacheDir = getCacheDir(targetPath)
   if (!pathExistsSync(cacheDir)) {
@@ -47,15 +49,25 @@ export const downloadCliTemplate = async (type: string, name: string) => {
     fileList.map((file) => {
       fse.copySync(`${originFile}/${file}`, `${installDir}/${file}`)
     })
+    spinner.succeed('下载成功')
   } catch (e) {
-    printErrorLog(e as Error, 'error')
+    spinner.fail('下载失败')
   }
 }
 
 export const downloadGitTemplate = async (type: string, name: string) => {
-  try {
-    download('github:Ting-Code/Ting-Library-Monorepo', `${name}`, { clone: true }, () => {})
-  } catch (e) {
-    printErrorLog(e as Error, 'error')
-  }
+  const spinner = ora('正在下载模板...').start()
+  return await download(
+    'github:Ting-Code/Ting-Library-Monorepo',
+    `${name}`,
+    { clone: true },
+    (e: any) => {
+      if (e) {
+        console.log(e)
+        spinner.fail('下载失败')
+      } else {
+        spinner.succeed('下载成功')
+      }
+    }
+  )
 }

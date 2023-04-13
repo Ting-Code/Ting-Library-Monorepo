@@ -1,41 +1,44 @@
 {
-  "name": "@tingcli/create",
+  "name": "create-tingcli",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.8",
   "description": "",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "bin": {
-    "@tingcli/create": "bin/index.mjs"
+    "create-tingcli": "bin/index.mjs"
   },
   "files": [
-    "dist",
-    "bin"
+    "dist/*",
+    "bin/*"
   ],
   "scripts": {
     "dev": "esno ./src/cli.ts",
-    "start": "esno ./src/cli.ts",
+    "start": "node ./bin/index.mjs",
     "build": "unbuild",
     "test": "vitest"
   },
   "license": "ISC",
   "keywords": [],
-  "dependencies": {
-    "@tingcli/cli-utils": "workspace:*",
-    "chalk": "^5.2.0",
-    "commander": "^10.0.0",
-    "download-git-repo": "^3.0.2",
-    "fs-extra": "^11.1.1",
-    "path-exists": "^5.0.0",
-    "semver": "^7.3.8"
-  },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
     "esno": "^0.16.3",
-    "execa": "^7.1.1",
     "typescript": "^5.0.3",
     "unbuild": "^1.2.0",
     "vitest": "^0.29.8"
+  },
+  "dependencies": {
+    "commander": "^10.0.0",
+    "download-git-repo": "^3.0.2",
+    "execa": "^7.1.1",
+    "fs-extra": "^11.1.1",
+    "inquirer": "^9.1.5",
+    "ora": "^6.3.0",
+    "path-exists": "^5.0.0"
   }
 }

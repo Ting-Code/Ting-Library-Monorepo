@@ -1,6 +1,5 @@
 import * as process from 'process'
 import { init } from './init'
-import './error'
 import { getSelectType, getProjectName, TYPE } from './inquirer'
 import { downloadTemplate } from './downloadTemplate'
 
