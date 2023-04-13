@@ -4,6 +4,8 @@ import ora from 'ora'
 import { pathExistsSync } from 'path-exists'
 import fse from 'fs-extra'
 import { execa } from 'execa'
+// @ts-ignore
+import download from 'download-git-repo'
 import { printErrorLog } from './error'
 
 const TEMP_HOME = '.tingcli'
@@ -20,7 +22,11 @@ function getCacheDir(targetPath: string) {
 export const downloadTemplate = async (type: string, name: string) => {
   const spinner = ora('正在下载模板...').start()
   console.log('action', type, name)
-  // await downloadCliTemplate(type, name)
+  if (type === 'cli') {
+    await downloadCliTemplate(type, name)
+  } else {
+    await downloadGitTemplate(type, name)
+  }
   spinner.stop()
 }
 
@@ -41,6 +47,14 @@ export const downloadCliTemplate = async (type: string, name: string) => {
     fileList.map((file) => {
       fse.copySync(`${originFile}/${file}`, `${installDir}/${file}`)
     })
+  } catch (e) {
+    printErrorLog(e as Error, 'error')
+  }
+}
+
+export const downloadGitTemplate = async (type: string, name: string) => {
+  try {
+    download('github:Ting-Code/Ting-Library-Monorepo', `${name}`, { clone: true }, () => {})
   } catch (e) {
     printErrorLog(e as Error, 'error')
   }
