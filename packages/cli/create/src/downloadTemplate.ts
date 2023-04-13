@@ -4,9 +4,6 @@ import ora from 'ora'
 import { pathExistsSync } from 'path-exists'
 import fse from 'fs-extra'
 import { execa } from 'execa'
-// @ts-ignore
-import download from 'download-git-repo'
-import * as console from 'console'
 
 const TEMP_HOME = '.tingcli'
 const TEMPLATE_CLI = '@tingcli/template'
@@ -57,17 +54,21 @@ export const downloadCliTemplate = async (type: string, name: string) => {
 
 export const downloadGitTemplate = async (type: string, name: string) => {
   const spinner = ora('正在下载模板...').start()
-  return await download(
-    'github:Ting-Code/Ting-Library-Monorepo',
-    `${name}`,
-    { clone: true },
-    (e: any) => {
-      if (e) {
-        console.log(e)
-        spinner.fail('下载失败')
-      } else {
-        spinner.succeed('下载成功')
+  const rootDir = process.cwd()
+  const installDir = path.resolve(`${rootDir}/${name}`)
+  if (!pathExistsSync(installDir)) {
+    fse.mkdirpSync(installDir)
+  }
+  try {
+    await execa(
+      'git',
+      ['clone', '-b', 'master', 'https://github.com/Ting-Code/Ting-Library-Monorepo.git', '.'],
+      {
+        cwd: installDir
       }
-    }
-  )
+    )
+    spinner.succeed('下载成功')
+  } catch (e: any) {
+    spinner.fail(`下载失败： ${e.stderr}`)
+  }
 }
