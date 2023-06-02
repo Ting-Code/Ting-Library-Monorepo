@@ -1,4 +1,3 @@
-# 指定基础镜像，必须为第一个命令
 FROM nginx
 # 复制构建文件到容器中
 COPY ./packages/apps/element-admin/dist/ /usr/share/nginx/html/
