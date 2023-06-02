@@ -1,6 +1,6 @@
 name: Docker and Github action CI
 
-on: # 执行时机
+on:
   push:
     branches:
       - master
