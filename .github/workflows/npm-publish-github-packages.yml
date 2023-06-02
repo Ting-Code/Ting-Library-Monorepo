@@ -35,6 +35,6 @@ jobs:
       - name: Build and push the Docker image
         uses: docker/build-push-action@v2
         with:
-          context: ./Dockerfile
+          context: .
           push: true
-          tags: tingcode/web-admin:${{ github.sha }}
+          tags: tingcode/web-admin:latest
