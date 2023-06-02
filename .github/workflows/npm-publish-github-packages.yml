@@ -2,8 +2,8 @@ name: Docker and Github action CI
 
 on:
   push:
-    branches:
-      - master
+    branches: ['master']
+  workflow_dispatch:
 
 jobs:
   build:
@@ -19,9 +19,6 @@ jobs:
 
       - name: install pnpm
       - run: npm install -g pnpm
-
-      - name: install
-      - run: pnpm install
 
       - name: build project
       - run: pnpm --filter @apps/element-admin build
