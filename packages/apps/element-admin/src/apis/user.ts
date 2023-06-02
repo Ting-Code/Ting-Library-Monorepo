@@ -7,7 +7,7 @@ export interface BasicResponseModel<T = any> {
 }
 
 /**
- * @description: 获取用户信息 （前端权限）
+ * @description: 获取用户信息 （前端权限）啊
  */
 export function getUserInfo() {
   return request.request({
