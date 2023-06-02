@@ -6,7 +6,7 @@
       <el-main>
         <main> main </main>
       </el-main>
-      <el-footer> Footer2 </el-footer>
+      <el-footer> Footer3 </el-footer>
     </el-container>
   </el-container>
 </template>
