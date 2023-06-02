@@ -1,5 +1,3 @@
-name: Docker and Github action CI
-
 on:
   push:
     branches: ['master']
