@@ -30,6 +30,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./src/components/layouts/default/feature/setting/index.vue')['default']
+    SettingIcon: typeof import('./src/components/layouts/default/herder/setting-icon/index.vue')['default']
     SideTrigger: typeof import('./src/components/layouts/default/herder/trigger/SideTrigger.vue')['default']
     Theme: typeof import('./src/components/layouts/default/feature/setting/theme/index.vue')['default']
     Trigger: typeof import('./src/components/layouts/default/herder/trigger/index.vue')['default']

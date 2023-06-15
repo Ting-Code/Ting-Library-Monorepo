@@ -1,20 +1,24 @@
 <template>
-  <el-header :class="ns.b()">
+  <header :class="ns.b()">
     <!--  left  -->
-    <div>
+    <div :class="ns.e('left')">
       <!--   logo   -->
       <AppLogo />
       <!--   折叠按钮   -->
       <LayoutTrigger />
     </div>
-  </el-header>
+    <!--  action  -->
+    <div :class="ns.e('right')">
+      <SettingIcon />
+    </div>
+  </header>
 </template>
 
 <script setup lang="ts">
   import AppLogo from './app-logo/index.vue'
   import LayoutTrigger from './trigger/index.vue'
+  import SettingIcon from './setting-icon/index.vue'
   import { useNamespace } from '@/hooks/use-namespace'
-
   const ns = useNamespace('layout-herder')
 </script>
 
@@ -33,13 +37,22 @@
   );
 
   @include b(layout-herder) {
-    @include set-component-css-var('layout-herder', $layout-herder);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    @include e(kfc) {
-      background: getCssVar('layout-herder', 'border-color');
+    @include e(left) {
+      display: flex;
+      align-items: center;
+
       @include m(app) {
         background: red;
       }
+    }
+
+    @include e(right) {
+      display: flex;
+      align-items: center;
     }
   }
 </style>

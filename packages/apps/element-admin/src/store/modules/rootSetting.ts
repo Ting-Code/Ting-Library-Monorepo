@@ -1,30 +1,23 @@
 import { defineStore } from 'pinia'
 import { store } from '@/store'
 import { useDark } from '@vueuse/core'
-import { MenuSetting } from '@/setting/menu'
-import { projectSetting, ProjectSetting } from '@/setting/project'
-import { deepMerge } from '@common/utils'
 
 interface RootSettingState {
   rootTheme: string // 主题
-  projectConfig: ProjectSetting // 项目配置
+  isOpenSetting: boolean // 是否打开设置
+  isOpenSlider: boolean // 侧边栏
 }
 
 export const useRootSettingStore = defineStore({
   id: 'app-root-setting',
   state: (): RootSettingState => ({
     rootTheme: 'light',
-    projectConfig: projectSetting
+    isOpenSetting: false,
+    isOpenSlider: false
   }),
   getters: {
     getRootTheme(): string {
       return this.rootTheme
-    },
-    getProjectConfig(): ProjectSetting {
-      return this.projectConfig || ({} as ProjectSetting)
-    },
-    getMenuSetting(): MenuSetting {
-      return this.getProjectConfig.menuSetting
     }
   },
   actions: {
@@ -33,9 +26,6 @@ export const useRootSettingStore = defineStore({
       const isDark = useDark()
       isDark.value = value === 'dark'
       this.rootTheme = value
-    },
-    setProjectConfig(config: DeepPartial<ProjectSetting>): void {
-      this.projectConfig = deepMerge(this.projectConfig || {}, config)
     }
   }
 })

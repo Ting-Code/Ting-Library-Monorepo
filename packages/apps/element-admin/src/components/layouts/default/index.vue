@@ -1,7 +1,11 @@
 <template>
   <el-container :class="ns.b()">
     <LayoutFeature />
-    <LayoutHeader />
+
+    <el-header>
+      <LayoutHeader />
+    </el-header>
+
     <el-container>
       <el-main>
         <main> main </main>
@@ -17,3 +21,9 @@
 
   const ns = useNamespace('default-layout')
 </script>
+
+<style lang="scss">
+  @include b(default-layout) {
+    height: 100%;
+  }
+</style>

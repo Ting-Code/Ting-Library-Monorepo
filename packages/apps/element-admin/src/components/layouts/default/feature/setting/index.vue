@@ -1,5 +1,4 @@
 <template>
-  <Icon icon="common-setting" @click="handleClick" />
   <el-drawer v-model="isOpenSetting" size="300">
     <template #header>
       <h4> {{ t('layout.settings.title') }} </h4>
@@ -22,18 +21,12 @@
 </template>
 
 <script lang="ts" setup>
-  import { ref } from 'vue'
-  import { Icon } from '@common/components'
   import { useI18n } from '@/locale/use-i18n'
   import { useNamespace } from '@/hooks/use-namespace'
+  import { useRootSetting } from '@/hooks/use-setting/useRootSetting'
   const ns = useNamespace('setting-drawer')
-
   const { t } = useI18n()
-
-  const isOpenSetting = ref(false)
-  const handleClick = () => {
-    isOpenSetting.value = true
-  }
+  const { isOpenSetting } = useRootSetting()
 </script>
 
 <style lang="scss" scoped>

@@ -1,17 +1,27 @@
 import { useRootSettingStoreWithOut } from '@/store/modules/rootSetting'
-import { computed } from 'vue'
+import { storeToRefs } from 'pinia'
 
 export const useRootSetting = () => {
   const rootSettingStore = useRootSettingStoreWithOut()
 
-  const getRootTheme = computed(() => rootSettingStore.getRootTheme)
-
   const setRootTheme = (value: string) => {
     rootSettingStore.setRootTheme(value)
+  }
+  const { isOpenSetting, isOpenSlider, getRootTheme } = storeToRefs(rootSettingStore)
+  const toggleIsOpenSetting = () => {
+    console.log('22', isOpenSetting.value)
+    rootSettingStore.$patch({ isOpenSetting: !isOpenSetting.value })
+  }
+  const toggleIsOpenSlider = () => {
+    rootSettingStore.$patch({ isOpenSlider: !isOpenSlider.value })
   }
 
   return {
     getRootTheme,
-    setRootTheme
+    setRootTheme,
+    isOpenSetting,
+    toggleIsOpenSetting,
+    isOpenSlider,
+    toggleIsOpenSlider
   }
 }
