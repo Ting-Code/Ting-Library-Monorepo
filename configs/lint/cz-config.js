@@ -21,10 +21,10 @@ module.exports = {
   ],
   scopes: [
     { name: 'business' },
-    { name: 'packaging' },
-    { name: 'framework' },
-    { name: 'configuration' },
-    { name: 'document' }
+    { name: 'library' },
+    { name: 'config' },
+    { name: 'docs' },
+    { name: 'architecture' }
   ],
   //消息步骤
   messages: {
