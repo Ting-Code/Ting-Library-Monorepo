@@ -1,11 +1,7 @@
 <template>
   <el-container :class="ns.b()">
     <LayoutFeature />
-
-    <el-header>
-      <LayoutHeader />
-    </el-header>
-
+    <LayoutHeader fixed />
     <el-container>
       <el-main>
         <main> main </main>

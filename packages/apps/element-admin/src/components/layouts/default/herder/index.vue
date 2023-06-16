@@ -1,5 +1,5 @@
 <template>
-  <header :class="ns.b()">
+  <header :class="headerClass">
     <!--  left  -->
     <div :class="ns.e('left')">
       <!--   logo   -->
@@ -19,7 +19,17 @@
   import LayoutTrigger from './trigger/index.vue'
   import SettingIcon from './setting-icon/index.vue'
   import { useNamespace } from '@/hooks/use-namespace'
+  import { computed } from 'vue'
+
+  const props = defineProps<{ fixed: boolean }>()
   const ns = useNamespace('layout-herder')
+
+  const headerClass = computed(() => [
+    ns.b(),
+    {
+      [ns.e('fixed')]: props.fixed
+    }
+  ])
 </script>
 
 <style lang="scss" scoped>
@@ -40,14 +50,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid red;
+
+    @include e(fixed) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: getCssVar(top-z-index);
+      width: 100%;
+    }
 
     @include e(left) {
       display: flex;
       align-items: center;
-
-      @include m(app) {
-        background: red;
-      }
     }
 
     @include e(right) {

@@ -11,4 +11,9 @@
 
   @include set-css-var-value('font-weight-primary', 500);
   @include set-css-var-value('font-weight-bold', 700);
+
+  @include set-css-var-value('low-z-index', -1);
+  @include set-css-var-value('flat-z-index', 100);
+  @include set-css-var-value('high-z-index', 100);
+  @include set-css-var-value('top-z-index', 1000);
 }
