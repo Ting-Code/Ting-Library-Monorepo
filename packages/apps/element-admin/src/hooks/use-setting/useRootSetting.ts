@@ -7,21 +7,26 @@ export const useRootSetting = () => {
   const setRootTheme = (value: string) => {
     rootSettingStore.setRootTheme(value)
   }
-  const { isOpenSetting, isOpenSlider, getRootTheme } = storeToRefs(rootSettingStore)
+
+  const {
+    isOpenSetting: isOpenSettingRef,
+    isOpenSlider: isOpenSliderRef,
+    getRootTheme
+  } = storeToRefs(rootSettingStore)
   const toggleIsOpenSetting = () => {
-    console.log('22', isOpenSetting.value)
-    rootSettingStore.$patch({ isOpenSetting: !isOpenSetting.value })
+    rootSettingStore.$patch({ isOpenSetting: !isOpenSettingRef.value })
   }
+
   const toggleIsOpenSlider = () => {
-    rootSettingStore.$patch({ isOpenSlider: !isOpenSlider.value })
+    rootSettingStore.$patch({ isOpenSlider: !isOpenSliderRef.value })
   }
 
   return {
     getRootTheme,
     setRootTheme,
-    isOpenSetting,
+    isOpenSettingRef,
     toggleIsOpenSetting,
-    isOpenSlider,
+    isOpenSliderRef,
     toggleIsOpenSlider
   }
 }

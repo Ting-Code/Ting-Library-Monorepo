@@ -1,5 +1,5 @@
 <template>
-  <el-drawer v-model="isOpenSetting" size="300">
+  <el-drawer v-model="isOpenSettingRef" size="300">
     <template #header>
       <h4> {{ t('layout.settings.title') }} </h4>
     </template>
@@ -26,7 +26,7 @@
   import { useRootSetting } from '@/hooks/use-setting/useRootSetting'
   const ns = useNamespace('setting-drawer')
   const { t } = useI18n()
-  const { isOpenSetting } = useRootSetting()
+  const { isOpenSettingRef } = useRootSetting()
 </script>
 
 <style lang="scss" scoped>
