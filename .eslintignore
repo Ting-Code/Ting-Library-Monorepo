@@ -5,10 +5,11 @@ node_modules
 *.ttf
 .vscode
 .idea
+.husky
+.local
+
 dist
 public
 docs
-.husky
-.local
 bin
 Dockerfile
