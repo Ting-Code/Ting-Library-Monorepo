@@ -6,11 +6,7 @@ type WorkspacePackage = { name: string; version?: string; path: string }
 async function getPackages() {
   const { stdout } = await execa('pnpm', ['ls', '-r', '--depth', '-1', '--json'])
   return (JSON.parse(stdout) as WorkspacePackage[]).filter(
-    (p) =>
-      p.name !== 'ting-library-monorepo' &&
-      p.name !== 'scripts' &&
-      p.name.startsWith('@apps') &&
-      p.name !== '@apps/api-server'
+    (p) => p.name !== 'ting-library-monorepo' && p.name !== 'scripts' && p.name.startsWith('@apps')
   )
 }
 
