@@ -1,7 +1,5 @@
 import { useAppProviderContext } from '@/components/application/useAppContext'
 import { toRefs } from 'vue'
-export const defaultNamespace = 'ting'
-const statePrefix = 'is-'
 
 const _bem = (
   namespace: string,
@@ -44,7 +42,7 @@ export const useNamespace = (block: string) => {
     (name: string): string
   } = (name: string, ...args: [boolean | undefined] | []) => {
     const state = args.length >= 1 ? args[0]! : true
-    return name && state ? `${statePrefix}${name}` : ''
+    return name && state ? `is-${name}` : ''
   }
 
   // for css var

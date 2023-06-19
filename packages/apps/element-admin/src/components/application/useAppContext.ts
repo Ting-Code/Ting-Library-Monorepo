@@ -1,9 +1,13 @@
-import { InjectionKey, Ref } from 'vue'
-import { createContext, useContext } from '@/hooks/use-context'
+import { ComputedRef, InjectionKey, Ref } from 'vue'
+import { createContext, useContext } from '@/hooks/useContext'
+import { sizeEnum } from '@/components/application/useBreakpoint'
 
 export interface AppProviderContextProps {
   namespace: Ref<string>
-  isMobile: Ref<boolean>
+  screen: ComputedRef<sizeEnum | undefined>
+  width: ComputedRef<number>
+  realWidth: ComputedRef<number>
+  isMobile: ComputedRef<boolean>
 }
 
 const key: InjectionKey<AppProviderContextProps> = Symbol()

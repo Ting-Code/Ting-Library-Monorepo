@@ -18,7 +18,7 @@
   import AppLogo from './app-logo/index.vue'
   import LayoutTrigger from './trigger/index.vue'
   import SettingIcon from './setting-icon/index.vue'
-  import { useNamespace } from '@/hooks/use-namespace'
+  import { useNamespace } from '@/hooks/useNamespace'
   import { computed } from 'vue'
 
   const props = defineProps<{ fixed: boolean }>()

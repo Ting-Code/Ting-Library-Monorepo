@@ -7,6 +7,6 @@
 
 <script lang="ts" setup>
   import { Icon } from '@common/components'
-  import { useRootSetting } from '@/hooks/use-setting/useRootSetting'
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   const { isOpenSliderRef, toggleIsOpenSlider } = useRootSetting()
 </script>

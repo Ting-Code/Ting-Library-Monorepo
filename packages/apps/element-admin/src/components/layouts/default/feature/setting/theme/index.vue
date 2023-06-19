@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useRootSetting } from '@/hooks/use-setting/useRootSetting'
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
 
   const rootSetting = useRootSetting()
   const switchTheme = ref(rootSetting.getRootTheme.value === 'dark')

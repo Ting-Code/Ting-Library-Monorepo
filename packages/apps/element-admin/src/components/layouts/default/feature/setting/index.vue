@@ -22,8 +22,8 @@
 
 <script lang="ts" setup>
   import { useI18n } from '@/locale/use-i18n'
-  import { useNamespace } from '@/hooks/use-namespace'
-  import { useRootSetting } from '@/hooks/use-setting/useRootSetting'
+  import { useNamespace } from '@/hooks/useNamespace'
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   const ns = useNamespace('setting-drawer')
   const { t } = useI18n()
   const { isOpenSettingRef } = useRootSetting()

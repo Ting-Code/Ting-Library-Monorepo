@@ -33,7 +33,7 @@
 
   import { ElMessage } from 'element-plus'
   import { useRoute, useRouter } from 'vue-router'
-  import { useNamespace } from '@/hooks/use-namespace'
+  import { useNamespace } from '@/hooks/useNamespace'
   const LOGIN_NAME = PageEnum.BASE_LOGIN_NAME
   const userStore = useUserStore()
 

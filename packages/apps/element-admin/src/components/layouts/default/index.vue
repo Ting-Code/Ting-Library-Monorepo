@@ -6,16 +6,21 @@
       <el-main>
         <main> main </main>
       </el-main>
-      <el-footer> Footer3 </el-footer>
+      <el-footer> footer {{ width }} </el-footer>
     </el-container>
   </el-container>
 </template>
 <script setup lang="ts">
   import LayoutFeature from './feature/index.vue'
   import LayoutHeader from './herder/index.vue'
-  import { useNamespace } from '@/hooks/use-namespace'
+  import { useNamespace } from '@/hooks/useNamespace'
+  import { useAppProviderContext } from '@/components/application/useAppContext'
 
   const ns = useNamespace('default-layout')
+  const { width } = useAppProviderContext()
+  setTimeout(() => {
+    console.log(width)
+  }, 3000)
 </script>
 
 <style lang="scss">

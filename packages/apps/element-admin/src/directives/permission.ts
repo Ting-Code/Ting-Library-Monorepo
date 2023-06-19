@@ -1,5 +1,5 @@
 import { ObjectDirective, App } from 'vue'
-import { index } from '@/hooks/use-permission'
+import { index } from '@/hooks/usePermission'
 import { isArray, isObject, isString } from '@common/utils'
 
 const accessesVerified = (value) => {
