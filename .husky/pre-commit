@@ -4,7 +4,7 @@
 
 [ -n "$CI" ] && exit 0
 
-# Format and submit code according to lintstagedrc.js configuration
+# commit 触发 lint
 pnpm exec lint-staged
 pnpm exec pretty-quick --staged
 
