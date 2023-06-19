@@ -6,7 +6,7 @@ dist
 
 .turbo
 .local
-# local env files
+# local env  files
 .env.local
 .env.*.local
 .eslintcache
