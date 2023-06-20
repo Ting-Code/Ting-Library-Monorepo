@@ -8,13 +8,6 @@
         <!--    主题切换    -->
         <Theme />
         <!--    菜单模式    -->
-        <div>aaaaaa</div>
-        <!--    菜单模式    -->
-        <div>aaaaaa</div>
-        <!--    菜单模式    -->
-        <div>aaaaaa</div>
-        <!--    菜单模式    -->
-        <div>aaaaaa</div>
       </div>
     </template>
   </el-drawer>

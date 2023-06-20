@@ -12,6 +12,10 @@
   import { useNamespace } from '@/hooks/useNamespace/index.js'
   const ns = useNamespace('app-logo')
 
+  defineOptions({
+    name: 'HeaderLogo'
+  })
+
   const props = defineProps({
     showTitle: { type: Boolean, default: true }
   })

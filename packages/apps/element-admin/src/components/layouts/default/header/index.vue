@@ -1,27 +1,31 @@
 <template>
-  <header :class="headerClass">
+  <el-header :class="headerClass">
     <!--  left  -->
     <div :class="ns.e('left')">
       <!--   logo   -->
-      <AppLogo />
+      <HeaderLogo />
       <!--   折叠按钮   -->
-      <LayoutTrigger />
+      <HeaderTrigger />
     </div>
     <!--  action  -->
     <div :class="ns.e('right')">
-      <SettingIcon />
+      <HeaderSetting />
     </div>
-  </header>
+  </el-header>
 </template>
 
 <script setup lang="ts">
-  import AppLogo from './app-logo/index.vue'
-  import LayoutTrigger from './trigger/index.vue'
-  import SettingIcon from './setting-icon/index.vue'
+  import HeaderLogo from './logo/index.vue'
+  import HeaderTrigger from './trigger/index.vue'
+  import HeaderSetting from './setting/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { computed } from 'vue'
 
-  const props = defineProps<{ fixed: boolean }>()
+  defineOptions({
+    name: 'LayoutHeader'
+  })
+
+  const props = defineProps<{ fixed?: boolean }>()
   const ns = useNamespace('layout-herder')
 
   const headerClass = computed(() => [

@@ -1,13 +1,12 @@
 <template>
   <el-container :class="ns.b()">
-    <LayoutFeature />
-    <LayoutHeader fixed v-if="false" />
     <el-container>
       <el-drawer v-if="isMobile">
         <LayoutAside />
       </el-drawer>
-      <LayoutAside v-else />
+      <LayoutAside />
       <el-container>
+        <LayoutHeader v-if="1" />
         <el-main>
           <main> main </main>
         </el-main>
@@ -17,9 +16,8 @@
   </el-container>
 </template>
 <script setup lang="ts">
-  import LayoutFeature from './feature/index.vue'
-  import LayoutAside from '@/components/layouts/default/aside/index.vue'
-  import LayoutHeader from './herder/index.vue'
+  import LayoutAside from './aside/index.vue'
+  import LayoutHeader from './header/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useAppProviderContext } from '@/components/application/useAppContext'
   import { toRefs } from 'vue'
