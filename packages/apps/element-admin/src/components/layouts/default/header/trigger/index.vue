@@ -8,13 +8,12 @@
 </template>
 
 <script setup lang="ts">
+  import { Icon } from '@common/components'
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   import { useNamespace } from '@/hooks/useNamespace'
-
   defineOptions({
     name: 'HeaderTrigger'
   })
-  import { Icon } from '@common/components'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   const { toggleIsOpenSlider, isOpenSliderRef } = useRootSetting()
   const ns = useNamespace('header-trigger')
 </script>

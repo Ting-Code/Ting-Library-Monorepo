@@ -16,4 +16,5 @@
   @include set-css-var-value('flat-z-index', 100);
   @include set-css-var-value('high-z-index', 100);
   @include set-css-var-value('top-z-index', 1000);
+  color: getCssVar('text-color', 'primary');
 }
