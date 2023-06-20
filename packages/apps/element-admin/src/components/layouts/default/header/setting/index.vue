@@ -1,5 +1,5 @@
 <template>
-  <Icon icon="layout-setting" @click="toggleIsOpenSetting" />
+  <Icon icon="layout-setting" size="20" @click="toggleIsOpenSetting" />
 </template>
 
 <script setup lang="ts">

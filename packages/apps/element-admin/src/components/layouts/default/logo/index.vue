@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
   import { Icon } from '@common/components'
-  import { useNamespace } from '@/hooks/useNamespace/index.js'
+  import { useNamespace } from '@/hooks/useNamespace'
   const ns = useNamespace('app-logo')
 
   defineOptions({

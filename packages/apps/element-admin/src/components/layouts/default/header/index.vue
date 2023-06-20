@@ -2,8 +2,6 @@
   <el-header :class="headerClass">
     <!--  left  -->
     <div :class="ns.e('left')">
-      <!--   logo   -->
-      <HeaderLogo />
       <!--   折叠按钮   -->
       <HeaderTrigger />
     </div>
@@ -15,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-  import HeaderLogo from './logo/index.vue'
   import HeaderTrigger from './trigger/index.vue'
   import HeaderSetting from './setting/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'

@@ -5,7 +5,8 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@s/*": ["src/styles/*"]
     },
     "lib": ["dom", "esnext"],
     "types": ["vite/client"]

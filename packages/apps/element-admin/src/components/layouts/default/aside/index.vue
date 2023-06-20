@@ -1,6 +1,10 @@
 <template>
   <el-aside width="auto">
     <el-menu default-active="2" :collapse="isOpenSliderRef">
+      <el-menu-item index="0">
+        <Icon icon="common-ting" size="38" />
+        <template #title>ting</template>
+      </el-menu-item>
       <el-sub-menu index="1">
         <template #title>
           <el-icon><location /></el-icon>
@@ -27,15 +31,12 @@
         <el-icon><document /></el-icon>
         <template #title>Navigator Three</template>
       </el-menu-item>
-      <el-menu-item index="4">
-        <el-icon><setting /></el-icon>
-        <template #title>Navigator Four</template>
-      </el-menu-item>
     </el-menu>
   </el-aside>
 </template>
 
 <script setup lang="ts">
+  import { Icon } from '@common/components'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
 
   defineOptions({
