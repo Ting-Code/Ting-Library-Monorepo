@@ -1,12 +1,28 @@
 <template>
-  <Icon icon="layout-setting" @click="toggleIsOpenSlider" />
+  <Icon
+    :class="[ns.b(), { rotate: !isOpenSliderRef }]"
+    size="28"
+    icon="layout-slider"
+    @click="toggleIsOpenSlider"
+  />
 </template>
 
 <script setup lang="ts">
+  import { useNamespace } from '@/hooks/useNamespace'
+
   defineOptions({
     name: 'HeaderTrigger'
   })
   import { Icon } from '@common/components'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  const { toggleIsOpenSlider } = useRootSetting()
+  const { toggleIsOpenSlider, isOpenSliderRef } = useRootSetting()
+  const ns = useNamespace('header-trigger')
 </script>
+
+<style lang="scss">
+  @include b(header-trigger) {
+    &.rotate {
+      transform: rotate(180deg);
+    }
+  }
+</style>
