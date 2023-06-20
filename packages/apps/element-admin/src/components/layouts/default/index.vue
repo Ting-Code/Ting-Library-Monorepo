@@ -5,7 +5,7 @@
       <el-drawer v-if="isMobile">
         <LayoutAside />
       </el-drawer>
-      <LayoutAside />
+      <LayoutAside v-else />
       <el-container>
         <LayoutHeader />
         <el-main>
