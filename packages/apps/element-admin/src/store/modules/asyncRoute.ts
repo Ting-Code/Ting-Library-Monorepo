@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { RouteRecordRaw } from 'vue-router'
 import { store } from '@/store'
 import { asyncRoutes, constantRouter } from '@/router'
-import { generatorDynamicRouter } from '@/router/routerUtils.js'
+import { generateDynamicRoutes } from '@/router/routerUtils.js'
 
 interface TreeHelperConfig {
   id: string
@@ -104,7 +104,7 @@ export const useAsyncRouteStore = defineStore({
       if (permissionMode === 'BACK') {
         // 动态获取菜单
         try {
-          accessedRouters = await generatorDynamicRouter()
+          accessedRouters = await generateDynamicRoutes()
         } catch (error) {
           console.log(error)
         }

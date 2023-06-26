@@ -9,7 +9,6 @@ import { Layout } from '../routerBase'
  * @param meta.title 菜单名称
  * @param meta.icon 菜单图标
  * @param meta.keepAlive 缓存该路由
- * @param meta.sort 排序越小越排前
  *
  * */
 const routes: Array<RouteRecordRaw> = [
@@ -27,10 +26,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'home',
         name: 'system_home',
+        component: Layout,
         meta: {
           title: '菜单权限管理'
-        },
-        component: Layout
+        }
       }
     ]
   }
