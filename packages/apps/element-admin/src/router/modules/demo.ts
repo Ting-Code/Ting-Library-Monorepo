@@ -18,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Layout,
     meta: {
       title: '系统设置',
-      icon: 'ting',
+      icon: 'Setting',
       sort: 1
     },
     children: [

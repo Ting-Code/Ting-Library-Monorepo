@@ -5,7 +5,7 @@
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useRoute } from 'vue-router'
-
+  import * as EPIcon from '@element-plus/icons-vue'
   export default defineComponent({
     name: 'LayoutAside',
     setup() {
@@ -13,7 +13,10 @@
       const ns = useNamespace('layout-menu')
       const { isOpenSliderRef } = useRootSetting()
       const { getMenus } = useAsyncRouteStoreWidthOut()
-
+      const renderIcon = (icon) => {
+        const Icon = EPIcon[icon]
+        return Icon && <Icon />
+      }
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
           if (item?.children && item?.children?.length > 0) {
@@ -25,9 +28,7 @@
                 v-slots={{
                   title: () => (
                     <>
-                      <el-icon>
-                        <Icon icon={`menu-${item?.meta?.icon || 'default'}`} size="18" />
-                      </el-icon>
+                      {item?.meta?.icon && <el-icon>{renderIcon(item?.meta?.icon)}</el-icon>}
                       <span>{item?.meta?.title}</span>
                     </>
                   ),
@@ -44,7 +45,7 @@
                   title: () => <span>{item.meta?.title}</span>,
                   default: () => (
                     <el-icon>
-                      <Icon icon={`menu-${item?.meta?.icon || 'default'}`} size="18" />
+                      {item?.meta?.icon && <el-icon>{renderIcon(item?.meta?.icon)}</el-icon>}
                     </el-icon>
                   )
                 }}
