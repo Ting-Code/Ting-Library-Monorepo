@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import { Layout } from '../routerBase'
+
 /**
  * @param name 路由名称, 必须设置,且不能重名
  * @param meta 路由元信息（路由附带扩展信息）
@@ -12,9 +13,9 @@ import { Layout } from '../routerBase'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/demo',
-    name: 'Demo',
-    redirect: '/demo/home',
+    path: '/system',
+    name: 'System',
+    redirect: '/system/home',
     component: Layout,
     meta: {
       title: '系统设置',
@@ -24,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'home',
-        name: 'demo_home',
+        name: 'system_home',
         meta: {
           title: '菜单权限管理'
         },
@@ -32,7 +33,7 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'page',
-        name: 'demo_page',
+        name: 'system_page',
         meta: {
           title: '测试'
         },

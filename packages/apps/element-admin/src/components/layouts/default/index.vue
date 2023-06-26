@@ -9,7 +9,7 @@
       <el-container>
         <LayoutHeader />
         <el-main>
-          <main> main </main>
+          <router-view />
         </el-main>
         <el-footer> footer {{ width }} </el-footer>
       </el-container>
