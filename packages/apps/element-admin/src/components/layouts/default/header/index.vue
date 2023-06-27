@@ -4,6 +4,8 @@
     <div :class="ns.e('left')">
       <!--   折叠按钮   -->
       <HeaderTrigger />
+      <!--   面包屑   -->
+      <HeaderBreadcrumb />
     </div>
     <!--  action  -->
     <div :class="ns.e('right')">
@@ -14,6 +16,7 @@
 
 <script setup lang="ts">
   import HeaderTrigger from './trigger/index.vue'
+  import HeaderBreadcrumb from './breadcrumb/index.vue'
   import HeaderSetting from './setting/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { computed } from 'vue'

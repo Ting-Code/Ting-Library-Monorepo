@@ -1,5 +1,7 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '../routerBase'
+import { Layout, ParentLayout } from '../routerBase'
+const Login = () => import('@/views/common/login/index.vue')
+
 /**
  * @param name 路由名称, 必须设置,且不能重名
  * @param meta 路由元信息（路由附带扩展信息）
@@ -28,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '菜单权限管理'
         },
-        component: () => import('@/views/common/login/index.vue')
+        component: Login
       },
       {
         path: 'page',
@@ -36,7 +38,34 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '测试'
         },
-        component: () => import('@/views/common/login/index.vue')
+        component: Login
+      },
+      {
+        path: 'account',
+        name: 'AccountPage',
+        component: ParentLayout,
+        redirect: '/page-demo/account/setting',
+        meta: {
+          title: 'account'
+        },
+        children: [
+          {
+            path: 'center',
+            name: 'AccountCenterPage',
+            component: Login,
+            meta: {
+              title: 'center'
+            }
+          },
+          {
+            path: 'setting',
+            name: 'AccountSettingPage',
+            component: Login,
+            meta: {
+              title: 'setting'
+            }
+          }
+        ]
       }
     ]
   }

@@ -1,12 +1,12 @@
 <template>
   <el-container :class="ns.b()">
+    <!--  所以弹出层  -->
     <LayoutFeature />
     <el-container>
-      <el-drawer v-if="isMobile">
-        <LayoutAside />
-      </el-drawer>
-      <LayoutAside v-else />
+      <!--   侧边栏menu   -->
+      <LayoutAside v-if="!isMobile" />
       <el-container>
+        <!--   头部header   -->
         <LayoutHeader />
         <el-main>
           <router-view />

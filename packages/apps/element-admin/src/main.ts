@@ -6,7 +6,7 @@ import { setupRouter } from '@/router'
 import { setupGlobDirectives } from '@/directives'
 import 'virtual:svg-icons-register'
 import { setupI18n } from '@/locale/setup-i18n'
-
+import * as EPIcon from '@element-plus/icons-vue'
 async function bootstrap() {
   const app = createApp(App)
   setupStore(app)
@@ -17,3 +17,5 @@ async function bootstrap() {
 }
 
 bootstrap()
+
+export { EPIcon }

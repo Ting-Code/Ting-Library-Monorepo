@@ -5,7 +5,7 @@
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useRoute } from 'vue-router'
-  import * as EPIcon from '@element-plus/icons-vue'
+  import { EPIcon } from '@/main'
   export default defineComponent({
     name: 'LayoutAside',
     setup() {
@@ -20,10 +20,11 @@
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
           if (item?.children && item?.children?.length > 0) {
+            const path = `${parentPath ? parentPath + '/' : ''}${item.path}`
             return (
               <el-sub-menu
-                index={`${parentPath ? parentPath + '/' : ''}${item.path}`}
-                key={`${parentPath ? parentPath + '/' : ''}${item.path}`}
+                index={path}
+                key={path}
                 class={ns.e('sub-menu')}
                 v-slots={{
                   title: () => (
@@ -32,7 +33,7 @@
                       <span>{item?.meta?.title}</span>
                     </>
                   ),
-                  default: () => renderMenus(item.children, item.path)
+                  default: () => renderMenus(item.children, path)
                 }}
               />
             )
@@ -58,6 +59,7 @@
       return () => (
         <el-aside class={ns.b()} width="auto">
           <el-menu
+            unique-opened
             router
             default-active={route.path}
             class={ns.e('menu')}
