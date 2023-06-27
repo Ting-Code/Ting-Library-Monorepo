@@ -1,6 +1,6 @@
 <template>
   <el-breadcrumb :class="ns.b()" separator="/">
-    <el-breadcrumb-item v-for="matched of breadcrumb" :key="matched.path">
+    <el-breadcrumb-item v-for="(matched, index) of breadcrumb" :key="index">
       <el-dropdown>
         <span :class="ns.e('title')">
           {{ matched?.meta?.title }}
@@ -44,13 +44,14 @@
     () => {
       const matched = router.currentRoute.value.matched
       const menus = toRaw(getMenus)
-
-      breadcrumb.value = matched.map((item, index) => {
-        if (index > 0) {
-          return { ...item, menu: matched[index - 1]?.children }
-        }
-        return { ...item, menu: menus }
-      })
+      if (matched[0] && matched[0].path !== '/:path(.*)*') {
+        breadcrumb.value = matched.map((item, index) => {
+          if (index > 0) {
+            return { ...item, menu: matched[index - 1]?.children }
+          }
+          return { ...item, menu: menus }
+        })
+      }
     },
     { immediate: true }
   )

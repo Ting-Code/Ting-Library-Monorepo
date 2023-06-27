@@ -28,3 +28,13 @@ $border-color: map.merge(
   ),
   $border-color
 );
+
+// Background
+$bg-color: () !default;
+$bg-color: map.merge(
+  (
+    '': #141414,
+    'main': #444a54
+  ),
+  $bg-color
+);

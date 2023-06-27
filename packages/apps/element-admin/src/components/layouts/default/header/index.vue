@@ -1,5 +1,5 @@
 <template>
-  <el-header :class="headerClass">
+  <div :class="headerClass">
     <!--  left  -->
     <div :class="ns.e('left')">
       <!--   折叠按钮   -->
@@ -11,7 +11,7 @@
     <div :class="ns.e('right')">
       <HeaderSetting />
     </div>
-  </el-header>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -51,10 +51,11 @@
   );
 
   @include b(layout-herder) {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    vertical-align: middle;
 
     @include e(fixed) {
       position: fixed;

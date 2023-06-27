@@ -7,17 +7,18 @@
       <LayoutAside v-if="!isMobile" />
       <el-container>
         <!--   头部header   -->
-        <LayoutHeader />
-        <el-main>
-          <router-view />
-        </el-main>
-        <el-footer> footer {{ width }} </el-footer>
+        <el-header>
+          <LayoutHeader />
+        </el-header>
+        <!--   内容main   -->
+        <LayoutMain />
       </el-container>
     </el-container>
   </el-container>
 </template>
 <script setup lang="ts">
   import LayoutAside from './aside/index.vue'
+  import LayoutMain from './main/index.vue'
   import LayoutHeader from './header/index.vue'
   import LayoutFeature from './feature/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
@@ -28,7 +29,7 @@
     name: 'DefaultLayout'
   })
   const ns = useNamespace('default-layout')
-  const { width, isMobile } = toRefs(useAppProviderContext())
+  const { isMobile } = toRefs(useAppProviderContext())
 </script>
 
 <style lang="scss">

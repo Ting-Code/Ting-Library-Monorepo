@@ -9,8 +9,8 @@ import { setupI18n } from '@/locale/setup-i18n'
 import * as EPIcon from '@element-plus/icons-vue'
 async function bootstrap() {
   const app = createApp(App)
-  setupStore(app)
   setupRouter(app)
+  setupStore(app)
   setupGlobDirectives(app)
   setupI18n(app)
   app.mount('#app')

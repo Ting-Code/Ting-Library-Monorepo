@@ -5,7 +5,7 @@
       <p data-p="NOT FOUND">NOT FOUND</p>
     </div>
   </div>
-  <div id="particles-js"></div>
+  <!--  <div id="particles-js"></div>-->
 </template>
 
 <script setup lang="ts">
@@ -16,16 +16,13 @@
 </script>
 
 <style lang="sass" scoped>
-  html, body
-    height: 100%
-    overflow: hidden
 
   .error-page
     display: flex
     align-items: center
     justify-content: center
     text-align: center
-    height: 90vh
+    height: 90%
     font-family: Arial,"Helvetica Neue",Helvetica,sans-serif
 
     h1
