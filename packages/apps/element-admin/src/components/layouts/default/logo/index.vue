@@ -3,7 +3,9 @@
     <div :class="ns.e('left')">
       <Icon icon="common-ting" size="38" />
     </div>
-    <div :class="ns.e('right')" v-show="showTitle" v-if="props.showTitle"> Ting admin </div>
+    <div :class="ns.e('right')" v-show="showTitle" v-if="props.showTitle">
+      Ting Library Monorepo
+    </div>
   </div>
 </template>
 
@@ -54,6 +56,7 @@
     @include e(right) {
       color: getCssVar('app-logo', 'text-color');
       font-weight: getCssVar('font-weight-bold');
+      margin-left: 10px;
     }
   }
 </style>

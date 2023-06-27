@@ -17,9 +17,9 @@
 
 <script setup lang="ts">
   import HeaderNavIcon from '../navIcon/index.vue'
+  import HeaderSetting from './setting/index.vue'
   import HeaderTrigger from './trigger/index.vue'
   import HeaderBreadcrumb from './breadcrumb/index.vue'
-  import HeaderSetting from './setting/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { computed } from 'vue'
 
