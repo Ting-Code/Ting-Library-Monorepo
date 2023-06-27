@@ -66,7 +66,7 @@
             collapse={isOpenSliderRef.value}
           >
             <el-menu-item
-              index="ting"
+              index="/"
               v-slots={{
                 title: () => <span>Ting admin</span>,
                 default: () => (

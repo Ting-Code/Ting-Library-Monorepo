@@ -1,28 +1,26 @@
 <template>
-  <div>
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="matched of breadcrumb" :key="matched.path">
-        <el-dropdown>
-          <span>
-            {{ matched?.meta?.title }}
-            <el-icon><ArrowDown /></el-icon>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item
-                v-for="menu of matched?.menu"
-                :key="menu.path"
-                :icon="EPIcon[menu?.meta?.icon]"
-                @click="handleClickMenu(menu?.path)"
-              >
-                {{ menu?.meta?.title }}
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </el-breadcrumb-item>
-    </el-breadcrumb>
-  </div>
+  <el-breadcrumb :class="ns.b()" separator="/">
+    <el-breadcrumb-item v-for="matched of breadcrumb" :key="matched.path">
+      <el-dropdown>
+        <span :class="ns.e('title')">
+          {{ matched?.meta?.title }}
+          <el-icon style="margin-left: 3px"> <ArrowDown /></el-icon>
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item
+              v-for="menu of matched?.menu"
+              :key="menu.path"
+              :icon="EPIcon[menu?.meta?.icon]"
+              @click="handleClickMenu(menu?.path)"
+            >
+              {{ menu?.meta?.title }}
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </el-breadcrumb-item>
+  </el-breadcrumb>
 </template>
 
 <script lang="ts" setup>
@@ -31,11 +29,12 @@
   import { watch, toRaw, ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
+  import { useNamespace } from '@/hooks/useNamespace'
 
   defineOptions({
     name: 'HeaderBreadcrumb'
   })
-
+  const ns = useNamespace('header-breadcrumb')
   const { getMenus } = useAsyncRouteStoreWidthOut()
   const router = useRouter()
   const breadcrumb = ref<any>(null)
@@ -52,7 +51,6 @@
         }
         return { ...item, menu: menus }
       })
-      console.log(breadcrumb)
     },
     { immediate: true }
   )
@@ -61,3 +59,14 @@
     router.push(path)
   }
 </script>
+
+<style lang="scss">
+  @include b(header-breadcrumb) {
+    margin-left: 18px;
+
+    @include e(title) {
+      vertical-align: middle;
+      display: flex;
+    }
+  }
+</style>

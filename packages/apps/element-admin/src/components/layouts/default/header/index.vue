@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    vertical-align: middle;
 
     @include e(fixed) {
       position: fixed;

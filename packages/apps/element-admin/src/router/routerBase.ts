@@ -28,7 +28,7 @@ export const publicRoutes: AppRouteRecordRaw[] = [
 export const ErrorPageRoute: AppRouteRecordRaw = {
   path: '/:path(.*)*',
   name: 'ErrorPage',
-  component: ErrorPage,
+  component: Layout,
   meta: {
     title: 'ErrorPage',
     hideBreadcrumb: true
@@ -40,27 +40,6 @@ export const ErrorPageRoute: AppRouteRecordRaw = {
       component: ErrorPage,
       meta: {
         title: 'ErrorPage',
-        hideBreadcrumb: true
-      }
-    }
-  ]
-}
-
-export const RedirectRoute: AppRouteRecordRaw = {
-  path: '/redirect',
-  name: RedirectName,
-  component: Layout,
-  meta: {
-    title: RedirectName,
-    hideBreadcrumb: true
-  },
-  children: [
-    {
-      path: '/redirect/:path(.*)',
-      name: RedirectName,
-      component: () => Layout,
-      meta: {
-        title: RedirectName,
         hideBreadcrumb: true
       }
     }
