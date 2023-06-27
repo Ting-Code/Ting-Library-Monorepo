@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { createRouterGuards } from './routerGuards.js'
 import { App } from 'vue'
 import { publicRoutes } from '@/router/routerBase.js'
@@ -29,7 +29,7 @@ export const constantRouter: any[] = [...publicRoutes]
 // 创建路由
 const router = createRouter({
   // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
-  history: createWebHashHistory(''),
+  history: createWebHistory(''),
   routes: publicRoutes as unknown as RouteRecordRaw[],
   scrollBehavior() {
     return { left: 0, top: 0 }
