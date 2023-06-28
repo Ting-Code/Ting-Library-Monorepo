@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import { Icon } from '@common/components'
+  import Icon from '@/components/Icon/Icon.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   import { useNamespace } from '@/hooks/useNamespace'
   defineOptions({

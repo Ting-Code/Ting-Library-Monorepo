@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-  import { Icon } from '@common/components'
+  import Icon from '@/components/Icon/Icon.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   const ns = useNamespace('app-logo')
 
