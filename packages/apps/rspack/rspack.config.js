@@ -12,17 +12,19 @@ module.exports = function (env, argv) {
     entry: {
       main: './src/main.tsx'
     },
+    devtool: false, // 关闭sourceMap
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'main.js',
-      chunkFilename: 'js/[name]-[hash:6].js',
-      cssChunkFilename: 'css/[name]-[hash:6].css',
-      assetModuleFilename: '[ext]/[name][ext]'
+      filename: 'file/[name]-[hash:6][ext]',
+      chunkFilename: 'chunk/[name]-[hash:6][ext]',
+      cssChunkFilename: 'css/[name]-[hash:6][ext]',
+      assetModuleFilename: 'asset/[name]-[hash:6][ext]'
     },
     optimization: {
       splitChunks: {
         chunks: 'async', //all 所有 ； async  import('./xxx') 会被分包
-        minSize: 300 * 1024,
+        // minSize: 30 * 1024,
+        // maxSize: 500 * 1024,
         cacheGroups: {
           lodash: {
             name: 'lodash',
