@@ -1,8 +1,8 @@
 <template>
   <div :class="ns.b()">
     <!--  left  -->
-    <div>
-      <Logo />
+    <div :class="ns.e('left')">
+      <Logo @click="handleLogin" />
     </div>
     <!--  action  -->
     <div :class="ns.e('right')">
@@ -17,8 +17,10 @@
   import HeaderNavIcon from '@/components/layouts/default/navIcon/index.vue'
   import Logo from '@/components/layouts/default/logo/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
+  import { usePermission } from '@/hooks/usePermission'
 
   const ns = useNamespace('login-nav')
+  const { handleLogin } = usePermission()
 </script>
 
 <style lang="scss">
@@ -29,9 +31,20 @@
     justify-content: space-between;
     align-items: center;
 
-    @include e(right) {
+    @include e(left) {
+      left: 10px;
+      position: absolute;
       display: flex;
       align-items: center;
+      z-index: 1000;
+    }
+
+    @include e(right) {
+      right: 10px;
+      position: absolute;
+      display: flex;
+      align-items: center;
+      z-index: 1000;
     }
   }
 </style>
