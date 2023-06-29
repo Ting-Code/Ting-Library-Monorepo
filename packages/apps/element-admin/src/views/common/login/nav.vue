@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-  import HeaderTheme from '@/components/layouts/default/header/theme/index.vue'
+  import HeaderTheme from '@/components/layouts/default/theme/index.vue'
   import HeaderNavIcon from '@/components/layouts/default/navIcon/index.vue'
   import Logo from '@/components/layouts/default/logo/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'

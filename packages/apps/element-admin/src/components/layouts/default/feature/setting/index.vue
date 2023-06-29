@@ -5,8 +5,8 @@
     </template>
     <template #default>
       <div :class="ns.b()">
-        <!--    主题切换    -->
-        <Theme />
+        <el-divider>主题</el-divider>
+        <HeaderTheme />
         <!--    菜单模式    -->
       </div>
     </template>
@@ -14,6 +14,7 @@
 </template>
 
 <script lang="ts" setup>
+  import HeaderTheme from '../../theme/index.vue'
   import { useI18n } from '@/locale/use-i18n'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'

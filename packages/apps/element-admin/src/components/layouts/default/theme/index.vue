@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { Icon } from '@common/components'
+  import Icon from '@/components/Icon/Icon.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
 
   const rootSetting = useRootSetting()

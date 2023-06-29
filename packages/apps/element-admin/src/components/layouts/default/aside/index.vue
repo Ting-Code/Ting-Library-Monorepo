@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import { Icon } from '@common/components'
+  import Icon from '@/components/Icon/Icon.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   import { defineComponent, toRaw } from 'vue'
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
