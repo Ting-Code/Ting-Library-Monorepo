@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-  import LoginMain from './main.vue'
+  import LoginMain from './rotation/index.vue'
   import LoginNav from './nav.vue'
   import { useNamespace } from '@/hooks/useNamespace'
 

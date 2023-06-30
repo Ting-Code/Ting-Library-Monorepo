@@ -1,7 +1,7 @@
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('left')">
-      <Icon icon="common-ting" size="38" />
+      <Icon icon="logo-ting" size="38" />
     </div>
     <div :class="ns.e('right')" v-show="showTitle" v-if="props.showTitle">
       Ting Library Monorepo
