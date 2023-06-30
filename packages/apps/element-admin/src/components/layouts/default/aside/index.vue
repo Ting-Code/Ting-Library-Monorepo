@@ -19,8 +19,9 @@
       }
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
+          const path = `${parentPath ? parentPath + '/' : ''}${item.path}`
+
           if (item?.children && item?.children?.length > 0) {
-            const path = `${parentPath ? parentPath + '/' : ''}${item.path}`
             return (
               <el-sub-menu
                 index={path}
@@ -40,15 +41,12 @@
           } else {
             return (
               <el-menu-item
-                index={`${parentPath ? parentPath + '/' : ''}${item.path}`}
-                key={`${parentPath ? parentPath + '/' : ''}${item.path}`}
+                index={path}
+                key={path}
                 v-slots={{
                   title: () => <span>{item.meta?.title}</span>,
-                  default: () => (
-                    <el-icon>
-                      {item?.meta?.icon && <el-icon>{renderIcon(item?.meta?.icon)}</el-icon>}
-                    </el-icon>
-                  )
+                  default: () =>
+                    item?.meta?.icon && <el-icon>{renderIcon(item?.meta?.icon)}</el-icon>
                 }}
               />
             )
@@ -66,9 +64,9 @@
             collapse={isOpenSliderRef.value}
           >
             <el-menu-item
-              index="/"
+              index="/login"
               v-slots={{
-                title: () => <span>Ting admin</span>,
+                title: () => <span>Ting Library</span>,
                 default: () => (
                   <el-icon>
                     <Icon icon="common-ting" size="26" />

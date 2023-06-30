@@ -1,6 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import { Layout, ParentLayout } from '../routerBase'
-const Login = () => import('@/views/common/login/index.vue')
+const Login = () => import('@/views/common/error/404.vue')
 
 /**
  * @param name 路由名称, 必须设置,且不能重名

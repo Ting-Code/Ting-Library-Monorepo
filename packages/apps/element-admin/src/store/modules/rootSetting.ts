@@ -11,7 +11,7 @@ interface RootSettingState {
 export const useRootSettingStore = defineStore({
   id: 'app-root-setting',
   state: (): RootSettingState => ({
-    rootTheme: 'light',
+    rootTheme: 'dark',
     isOpenSetting: false,
     isOpenSlider: false
   }),

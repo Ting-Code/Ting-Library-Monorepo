@@ -10,7 +10,7 @@ export const publicRoutes: AppRouteRecordRaw[] = [
     name: 'Login',
     component: () => import('@/views/common/login/index.vue'),
     meta: {
-      title: '登录'
+      title: 'Ting Library Monorepo'
     }
   },
   {

@@ -11,7 +11,6 @@
   const rootSetting = useRootSetting()
   const switchTheme = ref(rootSetting.getRootTheme.value === 'dark')
   const handleChange = () => {
-    console.log(switchTheme.value, rootSetting.getRootTheme.value)
     rootSetting.setRootTheme(switchTheme.value ? 'light' : 'dark')
     switchTheme.value = rootSetting.getRootTheme.value === 'dark'
   }
