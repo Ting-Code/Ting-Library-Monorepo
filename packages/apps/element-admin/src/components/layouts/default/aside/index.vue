@@ -71,7 +71,7 @@
                 title: () => <span>Ting Library</span>,
                 default: () => (
                   <el-icon>
-                    <Icon icon="common-ting" size="26" />
+                    <Icon icon="logo-ting" size="26" />
                   </el-icon>
                 )
               }}
