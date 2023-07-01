@@ -17,11 +17,11 @@ function handleError(e: Error) {
  */
 export function useGo(_router?: Router) {
   const { push, replace } = _router || useRouter()
-  function go(opt: RouteLocationRawEx = PageEnum.BASE_HOME, isReplace = false) {
+  async function go(opt: RouteLocationRawEx = PageEnum.BASE_HOME, isReplace = false) {
     if (!opt) {
       return
     }
-    isReplace ? replace(opt).catch(handleError) : push(opt).catch(handleError)
+    isReplace ? await replace(opt).catch(handleError) : await push(opt).catch(handleError)
   }
   return go
 }

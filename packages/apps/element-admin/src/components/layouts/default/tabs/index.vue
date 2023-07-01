@@ -1,22 +1,20 @@
 <template>
   <div :class="ns.b()">
-    <el-tabs type="card" closable @tab-remove="removeTab">
-      <el-tab-pane label="label" name="name" />
+    <el-tabs type="card" closable @edit="handleTabsEdit" @tab-remove="removeTab">
       <el-tab-pane
         v-for="item in getTabsList()"
         :key="item.fullPath"
         :label="item?.meta?.title"
-        :name="item.name"
+        :name="item.fullPath"
       />
     </el-tabs>
     <p>icon</p>
   </div>
-  {{ getTabsList() }}
 </template>
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import { onUnmounted, watch } from 'vue'
+  import { watch } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
 
@@ -24,7 +22,8 @@
     name: 'LayoutTabs'
   })
 
-  const { initTabs, setStorageTabs, getRouteItem, addTabsList, getTabsList } = useTabs()
+  const { initTabs, setStorageTabs, getRouteItem, addTabsList, getTabsList, removeTabByName } =
+    useTabs()
 
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
@@ -41,8 +40,15 @@
   const removeTab = (e) => {
     console.log(e)
   }
+  const handleTabsEdit = (targetName, action) => {
+    console.log(targetName, action)
+    if (action === 'remove') {
+      removeTabByName(targetName)
+    }
+  }
 
-  onUnmounted(() => {
+  // 在页面关闭或刷新之前，保存数据
+  window.addEventListener('beforeunload', () => {
     setStorageTabs()
   })
 </script>

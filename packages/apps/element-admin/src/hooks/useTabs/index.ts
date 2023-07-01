@@ -18,7 +18,7 @@ export const useTabs = (_router?: Router) => {
   /**
    * @description 跳转路由到上一个页面（判断为空则跳转到首页）
    */
-  const goToPage = (_router?: Router) => {
+  const goToPage = async (_router?: Router) => {
     const router = _router || _router_
     const go = useGo(router)
     const len = tabsStore.getTabsList.length
@@ -33,7 +33,10 @@ export const useTabs = (_router?: Router) => {
         toPath = p
       }
     }
-    path !== toPath && go(toPath as PageEnum, true)
+    path !== toPath && (await go(toPath as PageEnum, true))
+    if (len <= 0) {
+      addTabsList(getRouteItem(_route_))
+    }
   }
 
   /**
@@ -80,8 +83,9 @@ export const useTabs = (_router?: Router) => {
    * @description 关闭全部
    */
   const closeAll = () => {
-    const tabsList = tabsStore.tabsList.filter((item) => item?.meta?.affix ?? false)
+    const tabsList = tabsStore.getTabsList.filter((item) => item?.meta?.affix ?? false)
     tabsStore.setTabsLiat(tabsList)
+    goToPage()
   }
 
   /**
@@ -95,12 +99,14 @@ export const useTabs = (_router?: Router) => {
 
     const close = (route: RouteItem) => {
       const { fullPath, meta: { affix } = {} } = route
+
       if (affix) {
         return
       }
-      const tabsList = tabsStore.tabsList
+      const tabsList = tabsStore.getTabsList
       const index = tabsList.findIndex((item) => item.fullPath === fullPath)
       index !== -1 && tabsList.splice(index, 1)
+      console.log('')
       tabsStore.setTabsLiat(tabsList)
     }
 
@@ -115,8 +121,15 @@ export const useTabs = (_router?: Router) => {
       return
     }
 
-    close(currentRoute.value as RouteItem)
+    close(tab)
     await goToPage()
+  }
+
+  const removeTabByName = async (name: string) => {
+    const tab = tabsStore.getTabsList.find((item) => item.name === name || item.fullPath === name)
+    if (tab) {
+      await removeTab(tab)
+    }
   }
 
   /**
@@ -170,6 +183,7 @@ export const useTabs = (_router?: Router) => {
     reloadPage,
     closeAll,
     removeTab,
+    removeTabByName,
     addTabsList,
     getRouteItem,
     setStorageTabs,
