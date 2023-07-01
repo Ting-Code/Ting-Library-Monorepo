@@ -16,7 +16,9 @@ const whitePathList = [LOGIN_PATH] // 一级白名单
 export function createRouterGuards(router: Router) {
   const userStore = useUserStoreWidthOut()
   const asyncRouteStore = useAsyncRouteStoreWidthOut()
-
+  /**
+   * @description 路由跳转前执行守卫
+   */
   router.beforeEach(async (to, from, next) => {
     NProgress.start()
     // 登录后如果重定向失败即重定向到首页
@@ -74,7 +76,9 @@ export function createRouterGuards(router: Router) {
     next(nextData)
     NProgress.done()
   })
-
+  /**
+   * @description 路由跳转后执行守卫
+   */
   router.afterEach((to, _, failure) => {
     document.title = (to?.meta?.title as string) || document.title
     if (isNavigationFailure(failure)) {
@@ -87,7 +91,7 @@ export function createRouterGuards(router: Router) {
     if (currentComName && !keepAliveComponents.includes(currentComName) && to.meta?.keepAlive) {
       // 需要缓存的组件
       keepAliveComponents.push(currentComName)
-    } else if (!to.meta?.keepAlive || to.name == 'Redirect') {
+    } else if (!to.meta?.keepAlive || to.name === 'Redirect') {
       // 不需要缓存的组件
       const index = asyncRouteStore.keepAliveComponents.findIndex((name) => name == currentComName)
       if (index != -1) {

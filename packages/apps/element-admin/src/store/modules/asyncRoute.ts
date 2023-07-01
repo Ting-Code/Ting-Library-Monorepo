@@ -1,6 +1,6 @@
 import { toRaw } from 'vue'
 import { defineStore } from 'pinia'
-import { RouteRecordRaw } from 'vue-router'
+import { RouteLocationNormalizedLoaded, RouteRecordRaw, useRoute } from 'vue-router'
 import { store } from '@/store'
 import { asyncRoutes, constantRouter } from '@/router'
 import { generateDynamicRoutes } from '@/router/routerUtils.js'
@@ -84,6 +84,11 @@ export const useAsyncRouteStore = defineStore({
     setKeepAliveComponents(compNames) {
       // 设置需要缓存的组件
       this.keepAliveComponents = compNames
+    },
+
+    delKeepAliveCompName(_route?: RouteLocationNormalizedLoaded | { name: string }) {
+      const route = _route || useRoute()
+      this.keepAliveComponents = this.keepAliveComponents.filter((item) => item !== route.name)
     },
 
     async generateRoutes(data) {

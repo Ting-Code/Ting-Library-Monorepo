@@ -1,17 +1,19 @@
 <script lang="tsx">
   import Icon from '@/components/Icon/Icon.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  import { defineComponent, toRaw } from 'vue'
+  import { defineComponent, toRaw, toRefs } from 'vue'
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useRoute } from 'vue-router'
   import { EPIcon } from '@/main'
+  import { useAppProviderContext } from '@/components/application/useAppContext'
   export default defineComponent({
     name: 'LayoutAside',
     setup() {
       const route = useRoute()
       const ns = useNamespace('layout-menu')
       const { isOpenSliderRef } = useRootSetting()
+      const { isMobile } = toRefs(useAppProviderContext())
       const { getMenus } = useAsyncRouteStoreWidthOut()
       const renderIcon = (icon) => {
         const Icon = EPIcon[icon]
@@ -61,7 +63,7 @@
             router
             default-active={route.path}
             class={ns.e('menu')}
-            collapse={isOpenSliderRef.value}
+            collapse={isOpenSliderRef.value && !isMobile.value}
           >
             <el-menu-item
               index="/login"
@@ -84,10 +86,11 @@
 
 <style lang="scss">
   @include b(layout-menu) {
+    min-height: 100%;
     @include e(menu) {
-      min-height: 100%;
       &:not(.#{$namespace + '-menu--collapse'}) {
-        width: 200px;
+        width: 260px;
+        min-height: 100vh;
       }
     }
 

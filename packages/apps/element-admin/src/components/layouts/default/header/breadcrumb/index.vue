@@ -63,7 +63,10 @@
 
 <style lang="scss">
   @include b(header-breadcrumb) {
+    display: flex;
     margin-left: 18px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
 
     @include e(title) {
       vertical-align: middle;

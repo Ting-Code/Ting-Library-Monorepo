@@ -44,3 +44,25 @@ export const ErrorPageRoute: AppRouteRecordRaw = {
     }
   ]
 }
+
+export const RedirectRouter: AppRouteRecordRaw = {
+  path: '/redirect',
+  component: Layout,
+  name: PageEnum.REDIRECT_NAME,
+  meta: {
+    title: PageEnum.REDIRECT_NAME,
+    hideBreadcrumb: true,
+    hideMenu: true
+  },
+  children: [
+    {
+      path: '/redirect/:path(.*)/:_redirect_type(.*)/:_origin_params(.*)',
+      name: PageEnum.REDIRECT_NAME,
+      component: () => import('@/views/common/redirect/index.vue'),
+      meta: {
+        title: PageEnum.REDIRECT_NAME,
+        hideBreadcrumb: true
+      }
+    }
+  ]
+}

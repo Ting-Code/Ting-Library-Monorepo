@@ -10,6 +10,7 @@
         <el-header>
           <LayoutHeader />
         </el-header>
+        <LayoutTabs />
         <!--   内容main   -->
         <LayoutMain />
       </el-container>
@@ -17,6 +18,7 @@
   </el-container>
 </template>
 <script setup lang="ts">
+  import LayoutTabs from './tabs/index.vue'
   import LayoutAside from './aside/index.vue'
   import LayoutMain from './main/index.vue'
   import LayoutHeader from './header/index.vue'

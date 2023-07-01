@@ -30,6 +30,8 @@ declare module '@vue/runtime-core' {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    ElTabPane: typeof import('element-plus/es')['ElTabPane']
+    ElTabs: typeof import('element-plus/es')['ElTabs']
     Feature: typeof import('./src/components/layouts/default/feature/index.vue')['default']
     Header: typeof import('./src/components/layouts/default/header/index.vue')['default']
     Icon: typeof import('./src/components/Icon/Icon.vue')['default']
@@ -41,6 +43,7 @@ declare module '@vue/runtime-core' {
     RouterView: typeof import('vue-router')['RouterView']
     Setting: typeof import('./src/components/layouts/default/feature/setting/index.vue')['default']
     SvgIcon: typeof import('./src/components/Icon/SvgIcon.vue')['default']
+    Tabs: typeof import('./src/components/layouts/default/tabs/index.vue')['default']
     Theme: typeof import('./src/components/layouts/default/theme/index.vue')['default']
     Trigger: typeof import('./src/components/layouts/default/header/trigger/index.vue')['default']
   }

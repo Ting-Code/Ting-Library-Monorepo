@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import { defineComponent, onBeforeMount } from 'vue'
+  import { defineComponent } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
 
   export default defineComponent({
@@ -7,14 +7,28 @@
     setup() {
       const route = useRoute()
       const router = useRouter()
-      onBeforeMount(() => {
-        const { params, query } = route
-        const { path } = params
+
+      const { params, query } = route
+      const { path, _redirect_type = 'path' } = params
+
+      Reflect.deleteProperty(params, '_redirect_type')
+      Reflect.deleteProperty(params, 'path')
+
+      const _path = Array.isArray(path) ? path.join('/') : path
+
+      if (_redirect_type === 'name') {
         router.replace({
-          path: '/' + (Array.isArray(path) ? path.join('/') : path),
+          name: _path,
+          query,
+          params: JSON.parse((params._origin_params as string) ?? '{}')
+        })
+      } else {
+        router.replace({
+          path: _path.startsWith('/') ? _path : '/' + _path,
           query
         })
-      })
+      }
+
       return () => <el-empty description="无内容" />
     }
   })
