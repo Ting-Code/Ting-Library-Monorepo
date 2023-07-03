@@ -1,6 +1,6 @@
 <template>
   <!-- 需要AppProvider包裹都放这里 减少app.vue代码 -->
-  <el-config-provider namespace="ting">
+  <el-config-provider :namespace="namespace">
     <slot></slot>
   </el-config-provider>
 </template>
@@ -9,7 +9,8 @@
   import { ref } from 'vue'
   import { createAppProviderContext } from './useAppContext'
   import { useBreakpointListen } from '@/components/application/useBreakpoint'
-  const namespace = ref('ting')
+  import { NAMESPACE } from '@/hooks/useNamespace'
+  const namespace = ref(NAMESPACE)
 
   // 监听视窗宽度
   const {

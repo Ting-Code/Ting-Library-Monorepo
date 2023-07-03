@@ -1,6 +1,6 @@
 import { useAppProviderContext } from '@/components/application/useAppContext'
 import { toRefs } from 'vue'
-
+export const NAMESPACE = 'ting'
 const _bem = (
   namespace: string,
   block: string,
