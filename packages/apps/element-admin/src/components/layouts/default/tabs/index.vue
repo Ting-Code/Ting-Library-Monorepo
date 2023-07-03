@@ -51,7 +51,6 @@
   } = useTabs()
   const targetTabRef = ref<string>(PageEnum.BASE_HOME)
   const tabs = ref<HTMLElement | null>(null)
-  // const tabsList = ref(getTabsList.value)
 
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
