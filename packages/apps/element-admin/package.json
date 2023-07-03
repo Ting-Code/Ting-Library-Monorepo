@@ -14,6 +14,7 @@
     "@common/utils": "workspace:*",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
+    "@vueuse/integrations": "^10.2.1",
     "dayjs": "^1.11.7",
     "element-plus": "^2.3.7",
     "lodash-es": "^4.17.21",
@@ -21,11 +22,13 @@
     "pinia": "^2.0.32",
     "qs": "^6.11.0",
     "sass": "^1.58.3",
+    "sortablejs": "^1.15.0",
     "vue": "^3.3.4",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@types/sortablejs": "^1.15.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "@vueuse/core": "^9.13.0",

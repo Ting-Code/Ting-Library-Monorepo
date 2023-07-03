@@ -6,9 +6,11 @@
         type="card"
         @tab-change="handleTabsChange"
         @edit="handleTabsEdit"
+        ref="tabs"
       >
         <el-tab-pane
-          v-for="item in getTabsList()"
+          class="sortable"
+          v-for="item in tabsList"
           :key="item.fullPath"
           :label="item?.meta?.title"
           :name="item.fullPath"
@@ -26,22 +28,30 @@
 <script lang="ts" setup>
   import SetIcon from './set/index.vue'
   import FullIcon from './full/index.vue'
+  // @ts-ignore
+  import { useSortable } from '@vueuse/integrations/useSortable'
   import { useNamespace } from '@/hooks/useNamespace'
-  import { watch, ref } from 'vue'
+  import { watch, ref, computed } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
   import { PageEnum } from '@/router/type'
   import { useGo } from '@/hooks/usePage'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-
   defineOptions({
     name: 'LayoutTabs'
   })
-
+  const {
+    initTabs,
+    setStorageTabs,
+    getRouteItem,
+    addTabsList,
+    getTabsList,
+    setTabsList,
+    removeTabByName
+  } = useTabs()
   const targetTabRef = ref<string>(PageEnum.BASE_HOME)
-
-  const { initTabs, setStorageTabs, getRouteItem, addTabsList, getTabsList, removeTabByName } =
-    useTabs()
+  const tabs = ref<HTMLElement | null>(null)
+  // const tabsList = ref(getTabsList.value)
 
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
@@ -58,6 +68,14 @@
     },
     { immediate: true }
   )
+  // 拖拽 相关逻辑
+  const tabsList = computed({
+    get: () => getTabsList.value,
+    set: (val) => {
+      setTabsList(val)
+    }
+  })
+  useSortable('.ting-tabs__nav', tabsList, { handle: '.ting-tabs__item' })
 
   const handleTabsChange = (fullPath) => {
     go(fullPath)

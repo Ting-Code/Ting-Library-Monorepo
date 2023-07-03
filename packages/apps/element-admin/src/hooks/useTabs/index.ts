@@ -1,7 +1,7 @@
 import { useRoute, useRouter, Router } from 'vue-router'
 import { RouteItem, TABS_ROUTES, useTabsStoreWidthOut } from '@/store/modules/tabs'
 import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
-import { unref } from 'vue'
+import { toRef, unref } from 'vue'
 import { PageEnum } from '@/router/type'
 import { createStorage } from '@common/utils'
 import { useGo, useRedo } from '@/hooks/usePage'
@@ -84,7 +84,7 @@ export const useTabs = (_router?: Router) => {
    */
   const closeAll = () => {
     const tabsList = tabsStore.getTabsList.filter((item) => item?.meta?.affix ?? false)
-    tabsStore.setTabsLiat(tabsList)
+    tabsStore.setTabsList(tabsList)
     goToPage()
   }
 
@@ -106,8 +106,7 @@ export const useTabs = (_router?: Router) => {
       const tabsList = tabsStore.getTabsList
       const index = tabsList.findIndex((item) => item.fullPath === fullPath)
       index !== -1 && tabsList.splice(index, 1)
-      console.log('')
-      tabsStore.setTabsLiat(tabsList)
+      tabsStore.setTabsList(tabsList)
     }
 
     const { currentRoute } = router
@@ -153,7 +152,7 @@ export const useTabs = (_router?: Router) => {
         cacheRoute.name = (route.name || cacheRoute.name) as string
       }
     })
-    tabsStore.setTabsLiat(cacheRoutes)
+    tabsStore.setTabsList(cacheRoutes)
   }
 
   const addTabsList = (route: RouteItem) => {
@@ -170,8 +169,10 @@ export const useTabs = (_router?: Router) => {
     Storage.set(TABS_ROUTES, JSON.stringify(toRaw(tabsStore.getTabsList)))
   }
 
-  const getTabsList = () => {
-    return tabsStore.getTabsList
+  const getTabsList = toRef(() => tabsStore.getTabsList)
+
+  const setTabsList = (tabsList: RouteItem[]) => {
+    tabsStore.setTabsList(tabsList)
   }
 
   return {
@@ -187,6 +188,7 @@ export const useTabs = (_router?: Router) => {
     getRouteItem,
     setStorageTabs,
     initTabs,
-    getTabsList
+    getTabsList,
+    setTabsList
   }
 }

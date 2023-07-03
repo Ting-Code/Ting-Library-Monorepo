@@ -36,7 +36,7 @@ export const useTabsStore = defineStore({
     }
   },
   actions: {
-    setTabsLiat(tabsList: RouteItem[]) {
+    setTabsList(tabsList: RouteItem[]) {
       this.tabsList = tabsList
     },
     addTab(route: RouteItem): boolean {
