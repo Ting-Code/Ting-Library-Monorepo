@@ -4,15 +4,16 @@
     <LayoutFeature />
     <el-container>
       <!--   侧边栏menu   -->
-      <LayoutAside v-if="!isMobile" />
+      <LayoutAside v-if="!isMobile && !isOpenFullRef" />
       <el-container>
         <!--   头部header   -->
-        <el-header>
+        <el-header v-if="!isOpenFullRef">
           <LayoutHeader />
         </el-header>
-        <LayoutTabs />
-        <!--   内容main   -->
-        <LayoutMain />
+        <el-container :class="ns.e('main')">
+          <LayoutTabs />
+          <LayoutMain />
+        </el-container>
       </el-container>
     </el-container>
   </el-container>
@@ -26,16 +27,22 @@
   import { useNamespace } from '@/hooks/useNamespace'
   import { useAppProviderContext } from '@/components/application/useAppContext'
   import { toRefs } from 'vue'
-
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   defineOptions({
     name: 'DefaultLayout'
   })
   const ns = useNamespace('default-layout')
   const { isMobile } = toRefs(useAppProviderContext())
+  const { isOpenFullRef } = useRootSetting()
 </script>
 
 <style lang="scss">
   @include b(default-layout) {
     min-height: 100%;
+
+    @include e(main) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 </style>

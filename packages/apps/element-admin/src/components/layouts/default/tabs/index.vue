@@ -1,5 +1,5 @@
 <template>
-  <div :class="ns.b()">
+  <div :class="ns.b()" :style="{ paddingTop: isOpenFullRef ? '6px' : '0' }">
     <div :class="ns.e('left')">
       <el-tabs
         v-model="targetTabRef"
@@ -32,6 +32,7 @@
   import { useRoute } from 'vue-router'
   import { PageEnum } from '@/router/type'
   import { useGo } from '@/hooks/usePage'
+  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
 
   defineOptions({
     name: 'LayoutTabs'
@@ -45,6 +46,8 @@
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
   const go = useGo()
+  const { isOpenFullRef } = useRootSetting()
+
   initTabs()
 
   watch(

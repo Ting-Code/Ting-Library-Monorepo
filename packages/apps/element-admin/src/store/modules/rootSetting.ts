@@ -6,6 +6,7 @@ interface RootSettingState {
   rootTheme: string // 主题
   isOpenSetting: boolean // 是否打开设置
   isOpenSlider: boolean // 侧边栏
+  isOpenFull: boolean // 全屏
 }
 
 export const useRootSettingStore = defineStore({
@@ -13,7 +14,8 @@ export const useRootSettingStore = defineStore({
   state: (): RootSettingState => ({
     rootTheme: 'dark',
     isOpenSetting: false,
-    isOpenSlider: false
+    isOpenSlider: false,
+    isOpenFull: false
   }),
   getters: {
     getRootTheme(): string {
