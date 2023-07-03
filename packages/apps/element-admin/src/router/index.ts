@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { createRouterGuards } from './routerGuards.js'
 import { App } from 'vue'
-import { publicRoutes } from '@/router/routerBase.js'
+import { publicRoutes, RedirectRouter } from '@/router/routerBase.js'
 
 const modules: any = import.meta.glob('./modules/**/*.ts', { eager: true })
 const routeModuleList: RouteRecordRaw[] = []
@@ -24,13 +24,13 @@ getRouteNames(publicRoutes)
 //需要验证权限
 export const asyncRoutes = [...routeModuleList]
 //普通路由 无需验证权限
-export const constantRouter: any[] = [...publicRoutes]
+export const constantRouter: any[] = [...publicRoutes, RedirectRouter]
 
 // 创建路由
 const router = createRouter({
   // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
   history: createWebHistory(''),
-  routes: publicRoutes as unknown as RouteRecordRaw[],
+  routes: constantRouter as unknown as RouteRecordRaw[],
   scrollBehavior() {
     return { left: 0, top: 0 }
   }

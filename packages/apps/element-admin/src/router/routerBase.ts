@@ -48,7 +48,7 @@ export const ErrorPageRoute: AppRouteRecordRaw = {
 export const RedirectRouter: AppRouteRecordRaw = {
   path: '/redirect',
   component: Layout,
-  name: PageEnum.REDIRECT_NAME,
+  name: 'redirect',
   meta: {
     title: PageEnum.REDIRECT_NAME,
     hideBreadcrumb: true,
