@@ -79,7 +79,6 @@ export const useTabsStore = defineStore({
         }
         this.tabsList.push(route)
       }
-      console.log(this.tabsList)
       return true
     }
   }

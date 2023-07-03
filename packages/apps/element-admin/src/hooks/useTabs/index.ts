@@ -120,7 +120,6 @@ export const useTabs = (_router?: Router) => {
       asyncRouteStore.delKeepAliveCompName(tab)
       return
     }
-
     close(tab)
     await goToPage()
   }

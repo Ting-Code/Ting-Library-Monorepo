@@ -1,49 +1,67 @@
 <template>
   <div :class="ns.b()">
-    <el-tabs type="card" closable @edit="handleTabsEdit" @tab-remove="removeTab">
-      <el-tab-pane
-        v-for="item in getTabsList()"
-        :key="item.fullPath"
-        :label="item?.meta?.title"
-        :name="item.fullPath"
-      />
-    </el-tabs>
-    <p>icon</p>
+    <div :class="ns.e('left')">
+      <el-tabs
+        v-model="targetTabRef"
+        type="card"
+        @tab-change="handleTabsChange"
+        @edit="handleTabsEdit"
+      >
+        <el-tab-pane
+          v-for="item in getTabsList()"
+          :key="item.fullPath"
+          :label="item?.meta?.title"
+          :name="item.fullPath"
+          :closable="true"
+        />
+      </el-tabs>
+    </div>
+    <div :class="ns.e('right')">
+      <SetIcon />
+      <FullIcon />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+  import SetIcon from './set/index.vue'
+  import FullIcon from './full/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
-  import { watch } from 'vue'
+  import { watch, ref } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
+  import { PageEnum } from '@/router/type'
+  import { useGo } from '@/hooks/usePage'
 
   defineOptions({
     name: 'LayoutTabs'
   })
+
+  const targetTabRef = ref<string>(PageEnum.BASE_HOME)
 
   const { initTabs, setStorageTabs, getRouteItem, addTabsList, getTabsList, removeTabByName } =
     useTabs()
 
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
+  const go = useGo()
   initTabs()
 
   watch(
     () => route.fullPath,
     () => {
+      targetTabRef.value = route.fullPath
       addTabsList(getRouteItem(route))
     },
     { immediate: true }
   )
 
-  const removeTab = (e) => {
-    console.log(e)
+  const handleTabsChange = (fullPath) => {
+    go(fullPath)
   }
-  const handleTabsEdit = (targetName, action) => {
-    console.log(targetName, action)
+  const handleTabsEdit = (fullPath, action) => {
     if (action === 'remove') {
-      removeTabByName(targetName)
+      removeTabByName(fullPath)
     }
   }
 
@@ -53,10 +71,37 @@
   })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @include b(layout-tabs) {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: getCssVar(bg-cokor);
+
+    @include e(left) {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    @include e(right) {
+      padding-left: 12px;
+      > svg {
+        margin: 0 12px 3px 12px;
+      }
+    }
+
+    :deep(.#{$namespace}-tabs__nav) {
+      border: none !important;
+    }
+    :deep(.#{$namespace}-tabs__header) {
+      border: none !important;
+      margin-bottom: 6px !important;
+    }
+
+    :deep(.#{$namespace}-tabs__item) {
+      border: 1px solid getCssVar(border-color) !important;
+      border-radius: 2px;
+      margin-left: 3px;
+    }
   }
 </style>
