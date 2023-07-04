@@ -122,6 +122,7 @@
       border: 1px solid getCssVar(border-color) !important;
       border-radius: 2px;
       margin-left: 6px;
+      background-color: getCssVar(bg-color);
     }
   }
 </style>

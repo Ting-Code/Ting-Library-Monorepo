@@ -22,9 +22,6 @@
   defineOptions({ name: 'LayoutMain' })
 
   const keepAliveComponents = computed(() => asyncRouteStore.keepAliveComponents)
-  setTimeout(() => {
-    console.log(asyncRouteStore, asyncRouteStore.keepAliveComponents, keepAliveComponents)
-  }, 5000)
 
   const ns = useNamespace('layout-main')
 </script>
