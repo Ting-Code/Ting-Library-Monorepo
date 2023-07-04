@@ -2,7 +2,7 @@
   <main :class="ns.b()">
     <router-view>
       <template #default="{ Component, route }">
-        <transition name="fade-slide" mode="out-in" appear>
+        <transition :name="isProdMode() && 'fade-slide'" :mode="isProdMode() && 'out-in'" appear>
           <keep-alive v-if="keepAliveComponents.length" :include="keepAliveComponents">
             <component :is="Component" :key="route.fullPath" />
           </keep-alive>
@@ -17,8 +17,8 @@
   import { useNamespace } from '@/hooks/useNamespace'
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
   import { computed } from 'vue'
+  import { isProdMode } from '@/utils/env'
   const asyncRouteStore = useAsyncRouteStoreWidthOut()
-
   defineOptions({ name: 'LayoutMain' })
 
   const keepAliveComponents = computed(() => asyncRouteStore.keepAliveComponents)
