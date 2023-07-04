@@ -121,7 +121,7 @@
     :deep(.#{$namespace}-tabs__item) {
       border: 1px solid getCssVar(border-color) !important;
       border-radius: 2px;
-      margin-left: 3px;
+      margin-left: 6px;
     }
   }
 </style>

@@ -1,5 +1,5 @@
 import { ElDialog, ElConfigProvider } from 'element-plus'
-import { Component, createApp, h, ref } from 'vue'
+import { App, Component, createApp, h, ref } from 'vue'
 import { NAMESPACE } from '@/hooks/useNamespace'
 
 export const useDialog = <T extends Partial<PropType<typeof ElDialog>>>(
@@ -9,32 +9,41 @@ export const useDialog = <T extends Partial<PropType<typeof ElDialog>>>(
   const Dialog = component || ElDialog
   const visible = ref<boolean>(false)
   const appDocument = document.querySelector('#app')!
-  const div = document.createElement('div')
-  appDocument.appendChild(div)
+  let div: HTMLDivElement
+  let app: App<Element>
+  const create = () => {
+    div = document.createElement('div')
+    appDocument.appendChild(div)
 
-  const app = createApp({
-    render() {
-      return h(ElConfigProvider, { namespace: NAMESPACE }, () =>
-        h(Dialog, {
-          modelValue: visible.value,
-          'onUpdate:modelValue': (newVisible) => {
-            visible.value = newVisible
-          },
-          ...options
-        })
-      )
-    }
-  })
-  app.mount(div)
-
+    app = createApp({
+      render() {
+        return h(ElConfigProvider, { namespace: NAMESPACE }, () =>
+          h(Dialog, {
+            modelValue: visible.value,
+            'onUpdate:modelValue': (newVisible) => {
+              visible.value = newVisible
+            },
+            ...options
+          })
+        )
+      }
+    })
+    app.mount(div)
+  }
   const close = () => {
+    app.unmount()
+    div.remove()
+  }
+  const hide = () => {
     visible.value = false
   }
   const show = () => {
     visible.value = true
   }
   return {
+    hide,
     show,
-    close
+    close,
+    create
   }
 }
