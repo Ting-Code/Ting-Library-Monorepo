@@ -2,7 +2,11 @@
   <main :class="ns.b()">
     <router-view>
       <template #default="{ Component, route }">
-        <transition :name="isProdMode() && 'fade-slide'" :mode="isProdMode() && 'out-in'" appear>
+        <transition
+          :name="isProdMode() ? 'fade-slide' : ''"
+          :mode="isProdMode() ? 'out-in' : 'default'"
+          appear
+        >
           <keep-alive v-if="keepAliveComponents.length" :include="keepAliveComponents">
             <component :is="Component" :key="route.fullPath" />
           </keep-alive>
