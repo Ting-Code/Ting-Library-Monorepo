@@ -3,9 +3,7 @@
     <div :class="ns.e('left')">
       <Icon icon="logo-ting" size="38" />
     </div>
-    <div :class="ns.e('right')" v-show="showTitle" v-if="props.showTitle">
-      Ting Library Monorepo
-    </div>
+    <div :class="ns.e('right')" v-show="showTitle" v-if="props.showTitle"> Ting Library </div>
   </div>
 </template>
 
