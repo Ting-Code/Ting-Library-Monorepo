@@ -32,7 +32,6 @@
       height: 100vh;
       left: 0;
       top: 0;
-      background: rgba(30, 28, 28, 0.2);
       backdrop-filter: blur(2px);
       z-index: 10;
       .title {
