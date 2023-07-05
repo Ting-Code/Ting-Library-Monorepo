@@ -1,6 +1,6 @@
 <template>
   <div :class="ns.e('text')">
-    <div class="title"> 文档既架构的知识库 </div>
+    <div class="title"> Ting Library 文档既架构的知识库 </div>
     <div class="button">
       <el-button type="info" @click="handleLogin">点击开始</el-button>
     </div>
