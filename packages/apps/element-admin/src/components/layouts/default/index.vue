@@ -5,16 +5,16 @@
     <el-container>
       <!--   侧边栏menu   -->
       <LayoutAside v-if="!isMobile && !isOpenFullRef" />
-      <el-container>
+      <div :class="ns.e('container')">
         <!--   头部header   -->
         <el-header v-if="!isOpenFullRef">
           <LayoutHeader />
         </el-header>
-        <el-container :class="ns.e('main')">
+        <div :class="ns.e('main')">
           <LayoutTabs />
           <LayoutMain />
-        </el-container>
-      </el-container>
+        </div>
+      </div>
     </el-container>
   </el-container>
 </template>
@@ -38,10 +38,19 @@
 
 <style lang="scss">
   @include b(default-layout) {
-    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    @include e(container) {
+      display: flex;
+      flex-direction: column;
+    }
 
     @include e(main) {
       display: flex;
+      flex: 1;
+      overflow: hidden;
       flex-direction: column;
     }
   }
