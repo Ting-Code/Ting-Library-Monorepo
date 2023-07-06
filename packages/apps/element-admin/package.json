@@ -28,6 +28,7 @@
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "vite-plugin-md-page": "workspace:*",
     "@types/sortablejs": "^1.15.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.0.1",

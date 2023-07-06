@@ -1,6 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
 import { Layout } from '../routerBase'
-const Login = () => import('@/views/common/error/404.vue')
 
 /**
  * @param name 路由名称, 必须设置,且不能重名
@@ -19,7 +18,7 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/system/home',
     component: Layout,
     meta: {
-      title: '系统设置',
+      title: '架构设计',
       icon: 'Setting',
       sort: 1
     },
@@ -28,17 +27,25 @@ const routes: Array<RouteRecordRaw> = [
         path: 'home',
         name: 'system_home',
         meta: {
-          title: '菜单权限管理'
+          title: '介绍'
         },
-        component: Login
+        component: () => import('@/views/pages/system/home/index.vue')
       },
       {
-        path: 'page',
-        name: 'system_page',
+        path: 'markdown',
+        name: 'system_markdown',
         meta: {
-          title: '测试'
+          title: '文档设计'
         },
-        component: Login
+        component: () => import('@/views/common/error/404.vue')
+      },
+      {
+        path: '404',
+        name: 'system_404',
+        meta: {
+          title: '404页面'
+        },
+        component: () => import('@/views/common/error/404.vue')
       }
     ]
   }

@@ -28,6 +28,7 @@
               <el-sub-menu
                 index={path}
                 key={path}
+                disabled={!!item.meta.disabled}
                 class={ns.e('sub-menu')}
                 v-slots={{
                   title: () => (
@@ -45,6 +46,7 @@
               <el-menu-item
                 index={path}
                 key={path}
+                disabled={!!item.meta.disabled}
                 v-slots={{
                   title: () => <span>{item.meta?.title}</span>,
                   default: () =>

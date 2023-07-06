@@ -42,6 +42,9 @@ function filter<T = any>(
         node[children] = node[children] && listFilter(node[children])
         return func(node) || (node[children] && node[children].length)
       })
+      .sort((routerA, routerB) => {
+        return routerA.meta.sort - routerB.meta.sort
+      })
   }
 
   return listFilter(tree)

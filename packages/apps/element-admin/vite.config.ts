@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 
+import VitePluginMdPage from 'vite-plugin-md-page'
+
 // 自动ESLint检测热更新
 import eslintPlugin from 'vite-plugin-eslint'
 // 按需引入 element-plus vue自动导入
@@ -61,7 +63,8 @@ export default defineConfig(({ command, mode }) => {
       }),
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
-      })
+      }),
+      VitePluginMdPage()
     ],
     css: {
       preprocessorOptions: {
