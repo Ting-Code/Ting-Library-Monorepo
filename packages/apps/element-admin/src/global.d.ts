@@ -111,3 +111,9 @@ declare module 'virtual:*' {
   const result: any
   export default result
 }
+
+declare module '*.md' {
+  import type { ComponentOptions } from 'vue'
+  const Component: ComponentOptions
+  export default Component
+}

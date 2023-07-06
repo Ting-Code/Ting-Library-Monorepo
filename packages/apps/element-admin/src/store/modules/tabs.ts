@@ -46,7 +46,7 @@ export const useTabsStore = defineStore({
       // 如果该选项卡已经存在，则执行更新操作
       const tabHasExits = this.tabsList.some((tab, index) => {
         updateIndex = index
-        return (tab.fullPath || tab.path) === (fullPath || path)
+        return tab.path === path
       })
 
       // 如果该选项卡已经存在，则执行更新操作

@@ -124,7 +124,7 @@ export const useTabs = (_router?: Router) => {
   }
 
   const removeTabByName = async (name: string) => {
-    const tab = tabsStore.getTabsList.find((item) => item.name === name || item.fullPath === name)
+    const tab = tabsStore.getTabsList.find((item) => item.name === name || item.path === name)
     if (tab) {
       await removeTab(tab)
     }

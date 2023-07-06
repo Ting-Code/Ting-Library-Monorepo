@@ -11,9 +11,9 @@
         <el-tab-pane
           class="sortable"
           v-for="item in tabsList"
-          :key="item.fullPath"
+          :key="item.path"
           :label="item?.meta?.title"
-          :name="item.fullPath"
+          :name="item.path"
           :closable="true"
         />
       </el-tabs>
@@ -49,7 +49,7 @@
     setTabsList,
     removeTabByName
   } = useTabs()
-  const targetTabRef = ref<string>(PageEnum.BASE_HOME)
+  const targetTabRef = ref<string | null | undefined>(PageEnum.BASE_HOME_NAME)
   const tabs = ref<HTMLElement | null>(null)
 
   const ns = useNamespace('layout-tabs')
@@ -60,9 +60,9 @@
   initTabs()
 
   watch(
-    () => route.fullPath,
+    () => route.path,
     () => {
-      targetTabRef.value = route.fullPath
+      targetTabRef.value = route.path
       addTabsList(getRouteItem(route))
     },
     { immediate: true }
@@ -76,12 +76,13 @@
   })
   useSortable('.ting-tabs__nav', tabsList, { handle: '.ting-tabs__item' })
 
-  const handleTabsChange = (fullPath) => {
-    go(fullPath)
+  const handleTabsChange = (path) => {
+    console.log(path)
+    go({ path })
   }
-  const handleTabsEdit = (fullPath, action) => {
+  const handleTabsEdit = (path, action) => {
     if (action === 'remove') {
-      removeTabByName(fullPath)
+      removeTabByName(path)
     }
   }
 

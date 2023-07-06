@@ -3,8 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 
-import VitePluginMdPage from 'vite-plugin-md-page'
-
 // 自动ESLint检测热更新
 import eslintPlugin from 'vite-plugin-eslint'
 // 按需引入 element-plus vue自动导入
@@ -19,7 +17,7 @@ import viteCompression from 'vite-plugin-compression'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // 导入图片路径
 import ViteImages from 'vite-plugin-vue-images'
-
+import Markdown from 'vite-plugin-md'
 // 配置绝对路径
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
@@ -32,7 +30,8 @@ export default defineConfig(({ command, mode }) => {
     base: './',
     plugins: [
       vue({
-        reactivityTransform: true // 开启ref转换
+        reactivityTransform: true, // 开启ref转换
+        include: [/\.vue$/, /\.md$/] // markdown 兼容
       }),
       vueJsx(),
       viteCompression(), //gzip压缩
@@ -64,7 +63,7 @@ export default defineConfig(({ command, mode }) => {
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
       }),
-      VitePluginMdPage()
+      Markdown()
     ],
     css: {
       preprocessorOptions: {

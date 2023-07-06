@@ -32,7 +32,8 @@
 
 <style lang="scss">
   @include b(layout-main) {
-    height: 100%;
+    flex: 1;
+    overflow: hidden;
     background-color: getCssVar('bg-color', 'main');
   }
 </style>
