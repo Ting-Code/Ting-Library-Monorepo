@@ -6,7 +6,6 @@ import VitePluginMdPage from '../dist/index.mjs'
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
-  console.log('222222222222')
   return {
     plugins: [vue(), VitePluginMdPage()],
     server: {
