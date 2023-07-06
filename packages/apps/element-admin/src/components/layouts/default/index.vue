@@ -5,7 +5,7 @@
     <el-container>
       <!--   侧边栏menu   -->
       <LayoutAside v-if="!isMobile && !isOpenFullRef" />
-      <div :class="ns.e('container')">
+      <el-container :class="ns.e('container')">
         <!--   头部header   -->
         <el-header v-if="!isOpenFullRef">
           <LayoutHeader />
@@ -14,7 +14,7 @@
           <LayoutTabs />
           <LayoutMain />
         </div>
-      </div>
+      </el-container>
     </el-container>
   </el-container>
 </template>

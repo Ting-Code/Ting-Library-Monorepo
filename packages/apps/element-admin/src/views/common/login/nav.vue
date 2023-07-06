@@ -32,7 +32,7 @@
     align-items: center;
 
     @include e(left) {
-      left: 30px;
+      left: calc(2vw);
       position: absolute;
       display: flex;
       align-items: center;
@@ -40,7 +40,7 @@
     }
 
     @include e(right) {
-      right: 30px;
+      right: calc(2vw);
       position: absolute;
       display: flex;
       align-items: center;

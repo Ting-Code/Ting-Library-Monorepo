@@ -35,7 +35,7 @@
       backdrop-filter: blur(2px);
       z-index: 10;
       .title {
-        font-size: 60px;
+        font-size: calc(2vw + 10px);
         font-weight: 700;
         position: absolute;
         left: 50%;
@@ -51,14 +51,13 @@
       }
       .text {
         width: 80%;
-        font-size: 18px;
-        max-width: 800px;
-        min-width: 500px;
+        font-size: calc(1vw);
+        max-width: 1000px;
         position: absolute;
         left: 50%;
         top: 50%;
         text-align: justify;
-        transform: translate(-50%, 300px);
+        transform: translate(-50%, 30vh);
       }
     }
   }
