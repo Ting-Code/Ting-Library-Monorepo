@@ -21,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vue/compiler-core": "^3.3.4",
     "vite": "4.3.9"
   },
   "devDependencies": {

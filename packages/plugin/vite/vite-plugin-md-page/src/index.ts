@@ -26,8 +26,11 @@ const VitePluginMdPage = (): PluginOption => {
     async transform(code, id) {
       if (!filter(id)) return
       console.log('--------------------- transform --------------------')
-      console.dir(code, id)
-      return
+      return `
+        export default function (Component) {
+          Component.__sourceCode = ${JSON.stringify(code)}
+        }
+      `.trim()
     },
     async handleHotUpdate(ctx) {
       console.log('--------------------- handleHotUpdate --------------------')

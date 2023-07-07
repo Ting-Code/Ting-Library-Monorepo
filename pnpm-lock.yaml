@@ -420,17 +420,7 @@ importers:
         specifier: ^3.2.45
         version: 3.2.47
 
-  packages/plugin/vite/vite-plugin-md-page:
-    dependencies:
-      vite:
-        specifier: 4.3.9
-        version: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
-    devDependencies:
-      unbuild:
-        specifier: ^1.2.0
-        version: 1.2.0
-
-  packages/plugin/vite/vite-plugin-md-page/example:
+  packages/plugin/vite/example:
     dependencies:
       vue:
         specifier: ^3.2.47
@@ -448,9 +438,25 @@ importers:
       vite-plugin-md:
         specifier: ^0.21.5
         version: 0.21.5(@vitejs/plugin-vue@4.2.3)(vite@4.3.9)
+      vite-plugin-md-page:
+        specifier: workspace:^
+        version: link:../vite-plugin-md-page
       vue-tsc:
         specifier: ^1.4.2
         version: 1.4.2(typescript@5.0.3)
+
+  packages/plugin/vite/vite-plugin-md-page:
+    dependencies:
+      '@vue/compiler-core':
+        specifier: ^3.3.4
+        version: 3.3.4
+      vite:
+        specifier: 4.3.9
+        version: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
+    devDependencies:
+      unbuild:
+        specifier: ^1.2.0
+        version: 1.2.0
 
   packages/request:
     dependencies:
@@ -660,7 +666,7 @@ packages:
       '@babel/core': 7.21.4
       '@babel/helper-validator-option': 7.21.0
       browserslist: 4.21.9
-      lru-cache: registry.npmjs.org/lru-cache@5.1.1
+      lru-cache: 5.1.1
       semver: 6.3.0
 
   /@babel/helper-create-class-features-plugin@7.21.0(@babel/core@7.21.0):
@@ -8777,7 +8783,7 @@ packages:
       }
     engines: { node: '>=10' }
     dependencies:
-      lru-cache: registry.npmjs.org/lru-cache@6.0.0
+      lru-cache: 6.0.0
     dev: false
 
   /hpack.js@2.1.6:
@@ -10333,7 +10339,6 @@ packages:
       }
     dependencies:
       yallist: 3.1.1
-    dev: true
 
   /lru-cache@6.0.0:
     resolution:
@@ -12929,7 +12934,7 @@ packages:
     engines: { node: '>=10' }
     hasBin: true
     dependencies:
-      lru-cache: registry.npmjs.org/lru-cache@6.0.0
+      lru-cache: 6.0.0
     dev: false
 
   /semver@7.3.8:
@@ -19610,18 +19615,6 @@ packages:
       chalk: 5.2.0
       is-unicode-supported: registry.npmjs.org/is-unicode-supported@1.3.0
     dev: false
-
-  registry.npmjs.org/lru-cache@5.1.1:
-    resolution:
-      {
-        integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==,
-        registry: https://registry.npmmirror.com/,
-        tarball: https://registry.npmjs.org/lru-cache/-/lru-cache-5.1.1.tgz
-      }
-    name: lru-cache
-    version: 5.1.1
-    dependencies:
-      yallist: 3.1.1
 
   registry.npmjs.org/lru-cache@6.0.0:
     resolution:
