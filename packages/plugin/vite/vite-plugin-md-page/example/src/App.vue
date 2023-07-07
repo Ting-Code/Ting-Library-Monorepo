@@ -4,7 +4,7 @@
 </template>
 
 <script setup lang="ts">
-  import Demo from './components/demo.page.vue'
+  import Demo from './demo.page.vue'
 </script>
 
 <style scoped>
