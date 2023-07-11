@@ -2,7 +2,7 @@ import type { PluginOption } from 'vite'
 import { createFilter } from './createFilter'
 import transform from './transform'
 
-const VitePluginMdPage = (): PluginOption => {
+const VitePluginVueCode = (): PluginOption => {
   /** filter out files which aren't  files */
   const filter = createFilter(/\.demo.vue$/)
 
@@ -35,5 +35,5 @@ const VitePluginMdPage = (): PluginOption => {
     }
   }
 }
-export default VitePluginMdPage
-export { VitePluginMdPage }
+export default VitePluginVueCode
+export { VitePluginVueCode }
