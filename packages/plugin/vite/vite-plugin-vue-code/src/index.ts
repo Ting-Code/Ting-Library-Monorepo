@@ -1,5 +1,6 @@
 import type { PluginOption } from 'vite'
 import { createFilter } from './createFilter'
+import transform from './transform'
 
 const VitePluginMdPage = (): PluginOption => {
   /** filter out files which aren't  files */
@@ -12,30 +13,25 @@ const VitePluginMdPage = (): PluginOption => {
     // Vite 读取并解析完用户自定义的配置文件（通常是 vite.config.js）后
     async configResolved() {
       // 传入参数并且
-      console.log('--------------------- configResolved --------------------')
     },
     // 服务相关配置
-    async configureServer() {
-      console.log('--------------------- configureServer --------------------')
-    },
+    async configureServer() {},
     // 在构建前执行一些自定义操作
-    async buildStart() {
-      console.log('--------------------- buildStart --------------------')
-    },
+    async buildStart() {},
     // 代码转译，这个函数的功能类似于 `webpack` 的 `loader`
     async transform(code, id) {
       if (!filter(id)) return
-      console.log('--------------------- transform --------------------')
-      return `
-        export default function (Component) {
-          Component.__sourceCode = ${JSON.stringify(code)}
-        }
-      `.trim()
+      return transform(code)
     },
+    // 热更新时触发
     async handleHotUpdate(ctx) {
-      console.log('--------------------- handleHotUpdate --------------------')
-      console.log(ctx)
-      return
+      if (!filter(ctx.file)) return
+      console.log('----------------------------------------------')
+      const defaultRead = ctx.read
+      ctx.read = async function () {
+        console.log(await defaultRead())
+        return await transform(await defaultRead())
+      }
     }
   }
 }
