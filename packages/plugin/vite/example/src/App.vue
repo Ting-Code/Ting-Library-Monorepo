@@ -1,15 +1,12 @@
 <template>
-  <text />
-  <page :is="Demo" />
-  <page :is="Demo">
-    <Demo />
-  </page>
+  <CodeBlock src="./main.ts" />
+  <CodeBlock :is="Demo" />
 </template>
 
 <script setup lang="ts">
   // @ts-ignore
   import Demo from './app.demo.vue'
-  import Page from './page.vue'
+  import CodeBlock from './CodeBlock.vue'
 
   console.log(Demo)
 </script>

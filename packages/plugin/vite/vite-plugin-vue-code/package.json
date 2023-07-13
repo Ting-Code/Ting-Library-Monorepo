@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-vue-code",
+  "name": "vite-plugin-code",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -23,6 +23,10 @@
   "dependencies": {
     "@vue/compiler-core": "^3.3.4",
     "@vue/compiler-dom": "^3.3.4",
+    "@vue/compiler-sfc": "^3.3.4",
+    "cheerio": "1.0.0-rc.12",
+    "node-html-parser": "^6.1.5",
+    "pug": "^3.0.2",
     "vite": "4.3.9"
   },
   "devDependencies": {

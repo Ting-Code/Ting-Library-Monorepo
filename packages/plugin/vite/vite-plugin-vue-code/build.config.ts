@@ -6,5 +6,6 @@ export default defineBuildConfig({
     inlineDependencies: true
   },
   clean: true,
-  declaration: true
+  declaration: true,
+  failOnWarn: false
 })

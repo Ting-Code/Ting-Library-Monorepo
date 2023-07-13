@@ -19,7 +19,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import ViteImages from 'vite-plugin-vue-images'
 import Markdown from 'vite-plugin-md'
 // @ts-ignore
-import VueCode from 'vite-plugin-vue-code'
+import VueCode from 'vite-plugin-code'
 // 配置绝对路径
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
