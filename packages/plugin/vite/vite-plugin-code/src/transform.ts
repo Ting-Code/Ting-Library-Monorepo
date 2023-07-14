@@ -92,7 +92,7 @@ const transformFile = (code, id, md) => {
           const outerHTML = preElement.innerHTML
           if (outerHTML) {
             const mdElementString = `<${mdElement.tagName}>${md.render(
-              outerHTML.toString().trim()
+              outerHTML?.toString()?.trim()
             )}</${mdElement.tagName}>`
             // 获取修改后的HTML字符串
             newCode = newCode.replace(node.loc.source, mdElementString)

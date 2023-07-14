@@ -19,7 +19,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import ViteImages from 'vite-plugin-vue-images'
 import Markdown from 'vite-plugin-md'
 // @ts-ignore
-import VueCode from 'vite-plugin-code'
+import ViteCode from 'vite-plugin-code'
 // 配置绝对路径
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
@@ -65,7 +65,7 @@ export default defineConfig(({ command, mode }) => {
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
       }),
-      VueCode(),
+      ViteCode(),
       Markdown()
     ],
     css: {
