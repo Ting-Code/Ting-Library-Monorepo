@@ -1,7 +1,7 @@
 import { compileTemplate } from '@vue/compiler-sfc'
 import { transform } from '@vue/compiler-core'
 import { parse } from 'node-html-parser'
-import { resolve, basename, normalize } from 'path'
+import { resolve, basename } from 'path'
 import * as fs from 'fs'
 const ROOTNAME = 'ting-library-monorepo'
 const transformDemo = (code, id) => {
@@ -61,7 +61,6 @@ const transformFile = (code, id, md) => {
                   let fileDir: string
                   if (src.includes('@root')) {
                     const rootDir = id.split(ROOTNAME)[0]
-                    console.log('rootDir:', rootDir, id.replace(basename(id), ''))
                     fileDir = resolve(rootDir, ROOTNAME, src.replace('@root/', ''))
                   } else {
                     fileDir = resolve(id.replace(basename(id), ''), src)
@@ -72,12 +71,14 @@ const transformFile = (code, id, md) => {
                   } catch (error) {
                     console.error('CodeBlock src 路径错误', error)
                   }
-                  codeBlockElement.setAttribute('src', normalize(fileDir.split(ROOTNAME)[1]))
+                  codeBlockElement.setAttribute(
+                    'src',
+                    fileDir.split(ROOTNAME)[1].replace(/\\/g, '/')
+                  )
                   // 获取修改后的HTML字符串
                   const CodeBlockElementString = root.toString()
                   newCode = newCode.replace(node.loc.source, CodeBlockElementString)
                 }
-                console.log(111111111, newCode, 11111111111)
               }
             })
           }

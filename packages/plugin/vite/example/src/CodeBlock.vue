@@ -34,7 +34,6 @@
       props.src || soundPath.value || '.'
     }`
   })
-  console.log(src)
   const code = computed(() => {
     return decodeURIComponent(props.code || soundCode.value || '')
   })
