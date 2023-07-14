@@ -1,13 +1,13 @@
 <template>
   <div>Code Block</div>
-  <div>{{ src }}</div>
-  <div>{{ code }}</div>
+  <a :href="src">{{ src }}</a>
+  <pre>{{ code }}</pre>
   <component :is="props.is" ref="demo" />
 </template>
 
 <script setup lang="ts">
   // @ts-ignore
-  import { nextTick, ref, defineProps, computed } from 'vue'
+  import { ref, defineProps, computed, nextTick } from 'vue'
   // @ts-ignore
   import type { Component } from 'vue'
 
@@ -17,16 +17,25 @@
     is?: Component
   }>()
   const demo = ref()
-  const code = ref('')
-
-  const src = computed(() => {
-    return props.src
-  })
+  const soundPath = ref()
+  const soundCode = ref()
 
   nextTick(() => {
-    code.value = decodeURIComponent(demo?.value?.__getSoundCode() || '')
-    setInterval(() => {
-      console.log(decodeURIComponent(demo?.value?.__getSoundCode()) || '')
-    }, 1000)
+    if (demo?.value?.__getSoundPath) {
+      soundPath.value = demo?.value?.__getSoundPath()
+    }
+    if (demo?.value?.__getSoundCode) {
+      soundCode.value = demo?.value?.__getSoundCode()
+    }
+  })
+
+  const src = computed(() => {
+    return `https://github.com/Ting-Code/Ting-Library-Monorepo/blob/master${
+      props.src || soundPath.value || '.'
+    }`
+  })
+  console.log(src)
+  const code = computed(() => {
+    return decodeURIComponent(props.code || soundCode.value || '')
   })
 </script>

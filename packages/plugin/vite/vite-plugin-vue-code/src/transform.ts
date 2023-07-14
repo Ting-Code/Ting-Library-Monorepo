@@ -1,33 +1,43 @@
 import { compileTemplate } from '@vue/compiler-sfc'
 import { transform } from '@vue/compiler-core'
 import { parse } from 'node-html-parser'
-const transformDemo = (code) => {
-  let tranCode
+import { resolve, basename, normalize } from 'path'
+import * as fs from 'fs'
+const ROOTNAME = 'ting-library-monorepo'
+const transformDemo = (code, id) => {
+  let newCode
+  const newId = id.split(ROOTNAME)[1]
   if (code && code.includes('defineExpose')) {
-    tranCode = code
+    newCode = code
       .replace(
         `defineExpose({`,
         `
           const __getSoundCode = () => {
-          const code = \`${encodeURIComponent(code)}\`
-             return code
+             return ${encodeURIComponent(code)}
           }
-          defineExpose({__getSoundCode,`
+          const __getSoundPath = () => {
+             return ${newId}
+          }
+          defineExpose({__getSoundPath, __getSoundCode,`
       )
       .trim()
   } else if (code) {
-    tranCode = code
+    newCode = code
       .replace(
         `</script>`,
         `const __getSoundCode = () => {
              return \`${encodeURIComponent(code)}\`
-          };
-         defineExpose({ __getSoundCode})
+          }
+          const __getSoundPath = () => {
+             return \`${newId}\`
+          }
+          
+         defineExpose({ __getSoundCode, __getSoundPath })
          </script>`
       )
       .trim()
   }
-  return tranCode
+  return newCode
 }
 
 const transformFile = (code, id, md) => {
@@ -48,11 +58,26 @@ const transformFile = (code, id, md) => {
                 const codeBlockElement = root.firstChild as unknown as HTMLElement
                 const src = codeBlockElement.getAttribute('src')
                 if (src) {
-                  codeBlockElement.setAttribute('src', "'asasdadasdasdsdaasd'")
+                  let fileDir: string
+                  if (src.includes('@root')) {
+                    const rootDir = id.split(ROOTNAME)[0]
+                    console.log('rootDir:', rootDir, id.replace(basename(id), ''))
+                    fileDir = resolve(rootDir, ROOTNAME, src.replace('@root/', ''))
+                  } else {
+                    fileDir = resolve(id.replace(basename(id), ''), src)
+                  }
+                  try {
+                    const file = fs.readFileSync(fileDir, 'utf8')
+                    codeBlockElement.setAttribute('code', encodeURIComponent(file))
+                  } catch (error) {
+                    console.error('CodeBlock src 路径错误', error)
+                  }
+                  codeBlockElement.setAttribute('src', normalize(fileDir.split(ROOTNAME)[1]))
                   // 获取修改后的HTML字符串
                   const CodeBlockElementString = root.toString()
                   newCode = newCode.replace(node.loc.source, CodeBlockElementString)
                 }
+                console.log(111111111, newCode, 11111111111)
               }
             })
           }
@@ -75,7 +100,6 @@ const transformFile = (code, id, md) => {
       }
     ]
   })
-  console.log(111111111, newCode, 11111111111)
   return newCode
 }
 

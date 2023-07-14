@@ -23,24 +23,28 @@ const VitePluginVueCode = (): PluginOption => {
     // 代码转译，这个函数的功能类似于 `webpack` 的 `loader`
     async transform(code, id) {
       if (filterDemo(id)) {
-        return transformDemo(code)
+        return transformDemo(code, id)
       }
 
       if (filterVue(id)) {
         return transformFile(code, id, md)
       }
-
       return
     },
     // 热更新时触发
     async handleHotUpdate(ctx) {
+      const defaultRead = ctx.read
       if (filterDemo(ctx.file)) {
-        const defaultRead = ctx.read
         ctx.read = async function () {
-          return await transformDemo(await defaultRead())
+          return transformDemo(await defaultRead(), ctx.file)
         }
       }
 
+      if (filterVue(ctx.file)) {
+        ctx.read = async function () {
+          return transformFile(await defaultRead(), ctx.file, md)
+        }
+      }
       return
     }
   }

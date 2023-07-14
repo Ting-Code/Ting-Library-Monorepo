@@ -19,8 +19,6 @@ qwee
   import Demo from './app.demo.vue'
   import CodeBlock from './CodeBlock.vue'
   import Markdown from './markdown.vue'
-
-  console.log(Demo)
 </script>
 
 <style>
