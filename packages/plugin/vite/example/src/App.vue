@@ -2,9 +2,16 @@
   <CodeBlock src="./main.ts" />
   <CodeBlock :is="Demo" />
   <markdown>
-    # 66666 # asasdasdasdasdasdasdasdasdasdasdda asdasdasdasd asdasdasdasdasd asdasdasdasdasdads ```
-    title ```
-    <!--    <a id="aaa">sdadsasdsdasdasd</a>-->
+    <!-- prettier-ignore -->
+    <pre>
+2123
+qwee
+# 66666
+# asasdasd
+``` title ```
+<a id="aaa">sdadsasdsdasdasd</a>
+# asd
+</pre>
   </markdown>
 </template>
 
