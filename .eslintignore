@@ -7,7 +7,7 @@ node_modules
 .idea
 .husky
 .local
-
+*.page.vue
 dist
 public
 docs

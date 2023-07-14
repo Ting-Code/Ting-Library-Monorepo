@@ -1,4 +1,5 @@
 import type { PluginOption } from 'vite'
+import MD from 'markdown-it'
 import { createFilter } from './createFilter'
 import { transformDemo, transformFile } from './transform'
 
@@ -6,6 +7,7 @@ const VitePluginVueCode = (): PluginOption => {
   /** filter out files which aren't  files */
   const filterDemo = createFilter(/\.demo.vue$/)
   const filterVue = createFilter(/\.vue$/)
+  const md = new MD({ html: true, linkify: true, typographer: true })
   return {
     name: 'vite-plugin-code',
     // 该插件在 plugin-vue 插件之前执行，这样就可以直接解析到原模板文件
@@ -25,7 +27,7 @@ const VitePluginVueCode = (): PluginOption => {
       }
 
       if (filterVue(id)) {
-        return transformFile(code, id)
+        return transformFile(code, id, md)
       }
 
       return

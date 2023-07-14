@@ -25,6 +25,7 @@
     "@vue/compiler-dom": "^3.3.4",
     "@vue/compiler-sfc": "^3.3.4",
     "cheerio": "1.0.0-rc.12",
+    "markdown-it": "^13.0.1",
     "node-html-parser": "^6.1.5",
     "pug": "^3.0.2",
     "vite": "4.3.9"
