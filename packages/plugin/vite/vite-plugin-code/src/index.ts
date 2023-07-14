@@ -6,7 +6,7 @@ import { transformDemo, transformFile } from './transform'
 const VitePluginVueCode = (): PluginOption => {
   /** filter out files which aren't  files */
   const filterDemo = createFilter(/\.demo.vue$/)
-  const filterVue = createFilter(/\.vue$/)
+  const filterVue = createFilter(/\.page.vue$/)
   const md = new MD({ html: true, linkify: true, typographer: true })
   return {
     name: 'vite-plugin-code',

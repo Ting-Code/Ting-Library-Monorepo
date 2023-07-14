@@ -23,6 +23,9 @@ jobs:
       - name: pnpm install
         run: pnpm install
 
+      - name: build vite plugin
+        run: pnpm --filter vite-plugin-code build
+
       - name: build project
         run: pnpm --filter @apps/element-admin build
 
