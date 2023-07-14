@@ -60,10 +60,10 @@ const transformFile = (code, id, md) => {
         // 转化 md
         // @ts-ignore
         if (['md', 'markdown', 'MD', 'Markdown'].includes(node!.tag)) {
-          const root = parse(node.loc.source)
+          const root = parse(node.loc.source, { lowerCaseTagName: true })
           const mdElement = root.firstChild as unknown as HTMLElement
-          const outerHTML = mdElement.innerHTML
-          console.log(outerHTML)
+          const preElement = root.querySelector('pre') as unknown as HTMLElement
+          const outerHTML = preElement.innerHTML
           if (outerHTML) {
             const mdElementString = `<${mdElement.tagName}>${md.render(
               outerHTML.toString().trim()

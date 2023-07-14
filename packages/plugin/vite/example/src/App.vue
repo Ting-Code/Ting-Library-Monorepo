@@ -1,8 +1,7 @@
 <template>
   <CodeBlock src="./main.ts" />
   <CodeBlock :is="Demo" />
-  <markdown>
-    <!-- prettier-ignore -->
+  <Markdown>
     <pre>
 2123
 qwee
@@ -12,18 +11,19 @@ qwee
 <a id="aaa">sdadsasdsdasdasd</a>
 # asd
 </pre>
-  </markdown>
+  </Markdown>
 </template>
 
 <script setup lang="ts">
   // @ts-ignore
   import Demo from './app.demo.vue'
   import CodeBlock from './CodeBlock.vue'
+  import Markdown from './markdown.vue'
 
   console.log(Demo)
 </script>
 
-<style scoped>
+<style>
   .logo {
     height: 6em;
     padding: 1.5em;
