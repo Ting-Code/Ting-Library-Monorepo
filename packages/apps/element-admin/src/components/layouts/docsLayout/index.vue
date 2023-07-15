@@ -1,6 +1,8 @@
 <template>
   <div :class="ns.b()">
-    <slot></slot>
+    <div :class="ns.e('docs')">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -18,7 +20,7 @@
 <style lang="scss">
   @include b(docs-layout) {
     height: 100%;
-    padding: 100px;
+    padding: 30px calc(3%) 80px;
     overflow: auto;
   }
 </style>

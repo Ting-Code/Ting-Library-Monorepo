@@ -37,7 +37,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '文档设计'
         },
-        component: () => import('@/views/common/error/404.vue')
+        component: () => import('@/views/pages/system/docs/index.docs.vue')
       },
       {
         path: '404',
