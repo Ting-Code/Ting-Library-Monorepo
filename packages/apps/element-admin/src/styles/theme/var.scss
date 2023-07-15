@@ -3,9 +3,10 @@
 // CSS3 var
 @use '../mixin/mixins' as *;
 @use 'default/var' as *;
-
+@use 'default/github-markdown' as *;
 // common
 :root {
+  @include github-markdown();
   @include set-component-css-var('text-color', $text-color);
   @include set-component-css-var('border-color', $border-color);
   @include set-component-css-var('bg-color', $bg-color);

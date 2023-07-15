@@ -29,6 +29,75 @@ pnpm --filter @apps/element-admin dev
 
 ## 目录结构
 
+```angular2html
+Ting-Library-Monorepo
+├─.changeset
+├─.github  # github action
+|    ├─workflows
+|    |     ├─docker-deploy.yml # github action 自动化脚本
+|    |     ├─dockerBootstrap.sh # 服务端脚本
+|    |     ├─Dockerfile # 通过Dockerfile构建image
+|    |     └nginx.conf # nginx配置
+├─.husky # git钩子 主要是commit lint
+├─scripts
+|    ├─build.ts
+|    ├─dev.ts
+|    ├─helper.ts
+|    └package.json
+├─packages
+|    ├─apps
+|    |  ├─rspack # Rspack 搭建React子应用
+|    |  ├─element-admin # Vite搭建vue3主应用
+|    |  |       ├─mock # mock请求
+|    |  |       ├─src
+|    |  |       |  ├─apis
+|    |  |       |  ├─assets
+|    |  |       |  ├─components # 自定义组件
+|    |  |       |  |     ├─layouts # 布局相关组件
+|    |  |       |  |     ├─Icon
+|    |  |       |  |     ├─application # 相关全局组件配置
+|    |  |       |  ├─styles
+|    |  |       |  |   ├─theme # 主题相关
+|    |  |       |  |   ├─mixin # scss工具
+|    |  |       |  |   ├─base  # 初始化样式
+|    |  |       |  ├─store
+|    |  |       |  ├─router
+|    |  |       |  ├─locale  # i18n国际化
+|    |  |       |  ├─hooks
+|    |  |       |  ├─directives # 自定义指令
+|    ├─utils
+|    ├─types
+|    ├─request # 请求相关封装
+|    |    ├─src
+|    |    |  ├─axios # axios 二次封装
+|    ├─plugin # 相关自定义插件
+|    |   ├─vite
+|    |   |  ├─vite-plugin-code
+|    |   |  ├─example # 测试示例
+|    ├─cli # 自定义脚手架cli
+|    |  ├─utils
+|    |  ├─template # cli模板
+|    |  ├─create # 创建模板cli
+├─configs
+|    ├─tsconfig
+|    ├─lint # 各种lint相关配置
+├─.commitlintrc.js
+├─.eslintignore
+├─.eslintrc.js
+├─.gitignore
+├─.lintstagedrc.js
+├─.npmrc
+├─.prettierignore
+├─.prettierrc.js
+├─.stylelintignore
+├─.stylelintrc.js
+├─package.json
+├─pnpm-lock.yaml
+├─pnpm-workspace.yaml
+├─README.md
+├─turbo.json
+```
+
 ## 版本进度
 
 | 类型 | 内容                         | 完成情况 | 版本实现 |
