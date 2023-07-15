@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: '介绍'
         },
-        component: () => import('@/views/pages/system/home/index.vue')
+        component: () => import('@/views/pages/system/home/index.docs.vue')
       },
       {
         path: 'markdown',

@@ -93,15 +93,12 @@ declare global {
       [elem: string]: any
     }
   }
-  declare module 'vue' {
-    export type JSXComponent<Props = any> =
-      | { new (): ComponentPublicInstance<Props> }
-      | FunctionalComponent<Props>
-  }
-
   declare module '*.vue' {
     import { DefineComponent } from 'vue'
-    const Component: DefineComponent<{}, {}, any>
+    type JSXComponent<Props = any> =
+      | { new (): ComponentPublicInstance<Props> }
+      | FunctionalComponent<Props>
+    const Component: DefineComponent<{}, {}, any> | JSXComponent
     export default Component
   }
 

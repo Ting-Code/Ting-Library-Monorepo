@@ -3,10 +3,11 @@ import { transform } from '@vue/compiler-core'
 import { parse } from 'node-html-parser'
 import { resolve, basename } from 'path'
 import * as fs from 'fs'
-const ROOTNAME = 'ting-library-monorepo'
+const ROOTNAME = 'Ting-Library-Monorepo'
 const transformDemo = (code, id) => {
   let newCode
   const newId = id.split(ROOTNAME)[1]
+  console.log('=====================================================', newId)
   if (code && code.includes('defineExpose')) {
     newCode = code
       .replace(
