@@ -7,7 +7,7 @@
       <LayoutAside v-if="!isMobile && !isOpenFullRef" />
       <el-container :class="ns.e('container')">
         <!--   头部header   -->
-        <el-header v-if="!isOpenFullRef">
+        <el-header :class="ns.e('header')" v-if="!isOpenFullRef">
           <LayoutHeader />
         </el-header>
         <div :class="ns.e('main')">
@@ -45,6 +45,11 @@
     @include e(container) {
       display: flex;
       flex-direction: column;
+    }
+
+    @include e(header) {
+      padding-left: calc(2vw);
+      padding-right: calc(2vw);
     }
 
     @include e(main) {

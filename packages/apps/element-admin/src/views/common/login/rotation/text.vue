@@ -51,7 +51,7 @@
       }
       .text {
         width: 80%;
-        font-size: calc(1vw);
+        font-size: calc(2vw);
         max-width: 1000px;
         position: absolute;
         left: 50%;
