@@ -3,21 +3,20 @@ import { transform } from '@vue/compiler-core'
 import { parse } from 'node-html-parser'
 import { resolve, basename } from 'path'
 import * as fs from 'fs'
-const ROOTNAME = 'Ting-Library-Monorepo'
+const ROOTNAME = resolve(process.cwd(), '../../../')
 const transformDemo = (code, id) => {
   let newCode
-  const newId = id.split(ROOTNAME)[1]
-  console.log('=====================================================', newId)
+  const newId = resolve(id).replace(ROOTNAME, '').replace(/\\/g, '/')
   if (code && code.includes('defineExpose')) {
     newCode = code
       .replace(
         `defineExpose({`,
         `
           const __getSoundCode = () => {
-             return ${encodeURIComponent(code)}
+             return \`${encodeURIComponent(code)}\`
           }
           const __getSoundPath = () => {
-             return ${newId}
+             return \`${newId}\`
           }
           defineExpose({__getSoundPath, __getSoundCode,`
       )
@@ -61,8 +60,7 @@ const transformFile = (code, id, md) => {
                 if (src) {
                   let fileDir: string
                   if (src.includes('@root')) {
-                    const rootDir = id.split(ROOTNAME)[0]
-                    fileDir = resolve(rootDir, ROOTNAME, src.replace('@root/', ''))
+                    fileDir = resolve(ROOTNAME, src.replace('@root/', ''))
                   } else {
                     fileDir = resolve(id.replace(basename(id), ''), src)
                   }
@@ -74,7 +72,7 @@ const transformFile = (code, id, md) => {
                   }
                   codeBlockElement.setAttribute(
                     'src',
-                    fileDir.split(ROOTNAME)[1].replace(/\\/g, '/')
+                    fileDir.replace(ROOTNAME, '').replace(/\\/g, '/')
                   )
                   // 获取修改后的HTML字符串
                   const CodeBlockElementString = root.toString()
