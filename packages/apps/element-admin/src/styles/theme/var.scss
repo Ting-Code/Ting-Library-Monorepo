@@ -4,9 +4,11 @@
 @use '../mixin/mixins' as *;
 @use 'default/var' as *;
 @use 'default/github-markdown' as *;
+@use 'default/prism' as *;
 // common
 :root {
   @include github-markdown();
+  @include prism();
   @include set-component-css-var('text-color', $text-color);
   @include set-component-css-var('border-color', $border-color);
   @include set-component-css-var('bg-color', $bg-color);

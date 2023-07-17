@@ -32,7 +32,7 @@
 
 <style lang="scss">
   @include b(code-block-path) {
-    padding: 8px;
+    padding: 12px 6px;
     > a {
       display: flex;
       align-items: center;

@@ -61,13 +61,14 @@
 
 <style lang="scss">
   @include b(code-block) {
+    padding: 8px 0 28px;
     @include e(code-box) {
+      background-color: getCssVar(bg-color);
       border-radius: 8px;
-      border: 1px solid red;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       @include m(render) {
-        background-color: #0d1117;
-        border-bottom: 1px solid red;
+        border-bottom: 1px solid getCssVar(border-color);
         padding: 20px calc(2vw);
       }
     }

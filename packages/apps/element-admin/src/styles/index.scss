@@ -3,7 +3,6 @@
 @use './base/index' as *;
 @use 'theme/var' as *;
 @use 'theme/dark' as *;
-@use 'highlight.js/styles/monokai-sublime.css';
 // 导入dark变量
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss';
 // 按需引入弹出框样式

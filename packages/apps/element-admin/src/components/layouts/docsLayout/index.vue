@@ -20,7 +20,7 @@
 <style lang="scss">
   @include b(docs-layout) {
     height: 100%;
-    padding: 30px calc(3%) 80px;
+    padding: 30px calc(8% - 18px) 80px;
     overflow: auto;
   }
 </style>

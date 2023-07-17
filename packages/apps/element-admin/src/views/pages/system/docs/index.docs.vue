@@ -3,7 +3,7 @@
     <code-block :is="button" />
     <div><Index /> </div>
     <CodeBlock src="@root/packages/apps/element-admin/index.html" />
-    <Markdown>
+    <MD>
       <pre>
 # Markdown
 
@@ -12,7 +12,7 @@
 tiele
 ```
       </pre>
-    </Markdown>
+    </MD>
     <CodeBlock src="../../../../App.vue" />
   </DocsLayout>
 </template>
@@ -21,6 +21,6 @@ tiele
   import DocsLayout from '@/components/layouts/docsLayout/index.vue'
   import button from './demo/button.demo.vue'
   import Index from './index.md'
-  import Markdown from '@/components/layouts/docsLayout/markdown.vue'
+  import MD from '@/components/layouts/docsLayout/markdown.vue'
   import CodeBlock from '@/components/layouts/docsLayout/codeBlock/index.vue'
 </script>

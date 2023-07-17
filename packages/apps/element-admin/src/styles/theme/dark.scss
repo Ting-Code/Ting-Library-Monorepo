@@ -4,6 +4,7 @@
 @use '../mixin/mixins' as *;
 @use 'dark/var' as *;
 @use 'dark/github-markdown-dark' as *;
+@use 'dark/prism-dark' as *;
 
 // common
 html.dark {
@@ -12,4 +13,5 @@ html.dark {
   @include set-component-css-var('bg-color', $bg-color);
 
   @include github-markdown-dark();
+  @include prism-dark();
 }
