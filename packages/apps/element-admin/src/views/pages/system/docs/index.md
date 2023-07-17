@@ -10,8 +10,6 @@
 - 点击直达源码
 - 侧边导航直接跳转
 
-接下来分别实现
-
 ### <a id="Markdown导入Vue">Markdown 导入 Vue</a>
 
 我调研一番后这个功能比较好实现，因为有现成的 vite 创建。我发现这个插件是 antfu 写的就放心的直接用了: [vite-plugin-md](https://github.com/antfu/vite-plugin-md)。具体可看文档，这里就不再赘述。
@@ -22,13 +20,14 @@
 
 思路也非常简单：识别 markdown 标签，将其中的 md 内容转为 html 再注入到 markdown 标签。
 
-```vue
+```html
 <Markdown>
-      <pre>
+  <pre>
 # Markdown
 我把几个功能集成到一个Vite插件中了，所以下面结合源码一起讲实现。
-      </pre>
-    </Markdown>
+      </pre
+  >
+</Markdown>
 ```
 
 ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会格式化，加个 pre 主要会避免编辑器的格式化。
@@ -42,7 +41,7 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
 
 需要 render 的时候我们就需要拿到 vue 的同时，需要注入源码。用`*.demo.vue`来标志需要注入的组件，将组件的源码注入到属性中去。
 
-```vue
+```html
 <CodeBlock :is="test.demo.vue" />
 
 // test.demo.vue ...
@@ -55,7 +54,7 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
 
 只显示源码，就直接找到文件，直接注入到`CodeBlock`的属性中去。
 
-```vue
+```html
 <CodeBlock src="../App.vue" />
 
 // 注入后
@@ -69,5 +68,3 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
 ### <a id="侧边导航直接跳转">侧边导航直接跳转</a>
 
 这个功能就不需要 viet 插件了，直接遍历 Dom，获取标签中的`a标签中的id` 生成侧边导航。
-
-## <a id="Vite插件实现">Vite 插件实现</a>

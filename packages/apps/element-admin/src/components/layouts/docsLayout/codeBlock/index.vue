@@ -6,7 +6,7 @@
         <component :is="props?.is" ref="demo" />
       </div>
       <div :class="ns.em('code-box', 'code')" v-if="props?.showCode">
-        <SoundCode :code="code" />
+        <SoundCode :code="code" :defaultShowCode="props?.defaultShowCode" :type="props.type" />
       </div>
     </div>
   </div>
@@ -32,6 +32,8 @@
       showCode?: boolean
       showRender?: boolean
       showPath?: boolean
+      defaultShowCode?: boolean
+      type?: 'html' | 'css' | 'javascript' | 'typescript' | 'ts' | 'js' | 'scss'
     }>(),
     {
       showPath: true,

@@ -271,6 +271,7 @@
     margin-bottom: 16px;
     font-weight: 600;
     line-height: 1.25;
+    color: #f8f8f8;
   }
 
   .markdown-body h2 {
@@ -374,14 +375,6 @@
     display: table;
     clear: both;
     content: '';
-  }
-
-  .markdown-body > *:first-child {
-    margin-top: 0 !important;
-  }
-
-  .markdown-body > *:last-child {
-    margin-bottom: 0 !important;
   }
 
   .markdown-body a:not([href]) {

@@ -1,20 +1,25 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('docs')">
+    <div :class="ns.e('docs')" ref="codeDomRef">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { defineOptions } from 'vue'
+  import { highlightAllUnder } from 'prismjs'
+  import { defineOptions, nextTick, ref } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
 
   defineOptions({
     name: 'DocsLayout'
   })
-
   const ns = useNamespace('docs-layout')
+  const codeDomRef = ref<HTMLDivElement>()
+
+  nextTick(() => {
+    highlightAllUnder(codeDomRef.value as any)
+  })
 </script>
 
 <style lang="scss">

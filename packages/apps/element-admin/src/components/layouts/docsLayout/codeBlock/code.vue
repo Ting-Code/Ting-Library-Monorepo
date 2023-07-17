@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { EPIcon } from '@/main'
-  import Prism from 'prismjs'
+  import { languages, highlight } from 'prismjs'
   import { computed, defineOptions, nextTick, ref, watch } from 'vue'
   import { defineProps } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
@@ -23,30 +23,38 @@
     name: 'CodeBlockCode'
   })
 
-  const props = defineProps<{
-    code?: string
-  }>()
+  const props = withDefaults(
+    defineProps<{
+      code?: string
+      type?: 'html' | 'css' | 'javascript' | 'typescript' | 'ts' | 'js' | 'scss'
+      defaultShowCode?: boolean
+    }>(),
+    {
+      type: 'typescript',
+      defaultShowCode: true
+    }
+  )
   const codeDom = ref<HTMLDivElement>()
   const height = ref(0)
-  const isShowCode = ref(true)
+  const isShowCode = ref(props.defaultShowCode)
   const ns = useNamespace('code-block-code')
 
   const toggleIsShowCode = () => {
     isShowCode.value = !isShowCode.value
   }
 
-  const code = computed(() => Prism.highlight(props?.code || '', Prism.languages.html, 'html'))
+  const code = computed(() => highlight(props?.code || '', languages[props.type], props.type))
 
   watch(code, () => {
     nextTick(() => {
       if (codeDom?.value?.getBoundingClientRect()?.height) {
-        height.value = codeDom?.value?.getBoundingClientRect()?.height + 32
+        height.value = codeDom?.value?.getBoundingClientRect()?.height + 36
       }
     })
   })
   nextTick(() => {
     if (codeDom?.value?.getBoundingClientRect()?.height) {
-      height.value = codeDom?.value?.getBoundingClientRect()?.height + 32
+      height.value = codeDom?.value?.getBoundingClientRect()?.height + 36
     }
   })
 </script>
@@ -55,6 +63,7 @@
   @include b(code-block-code) {
     @include e(code) {
       overflow-x: auto;
+      overflow-y: hidden;
       transition: height 0.25s;
 
       > pre {
