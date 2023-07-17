@@ -13,10 +13,9 @@
 </template>
 
 <script setup lang="ts">
-  import { defineOptions, onMounted } from 'vue'
+  import { defineOptions, onMounted, computed, ref, defineProps, nextTick } from 'vue'
   import SoundPath from './path.vue'
   import SoundCode from './code.vue'
-  import { ref, defineProps, computed, nextTick } from 'vue'
   import type { Component } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
 

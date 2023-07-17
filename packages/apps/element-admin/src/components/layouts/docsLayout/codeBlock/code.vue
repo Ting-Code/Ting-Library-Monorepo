@@ -43,7 +43,12 @@
     isShowCode.value = !isShowCode.value
   }
 
-  const code = computed(() => highlight(props?.code || '', languages[props.type], props.type))
+  const code = computed(() => {
+    if (props?.code) {
+      return highlight(props?.code || '', languages?.[props?.type], props?.type)
+    }
+    return ''
+  })
 
   watch(code, () => {
     nextTick(() => {

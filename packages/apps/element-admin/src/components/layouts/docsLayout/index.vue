@@ -18,7 +18,9 @@
   const codeDomRef = ref<HTMLDivElement>()
 
   nextTick(() => {
-    highlightAllUnder(codeDomRef.value as any)
+    if (codeDomRef.value) {
+      highlightAllUnder(codeDomRef.value as any)
+    }
   })
 </script>
 
