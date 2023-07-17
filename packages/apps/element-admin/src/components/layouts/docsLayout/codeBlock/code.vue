@@ -6,7 +6,8 @@
     </div>
     <div :class="ns.e('button')" @click="toggleIsShowCode">
       <el-icon>
-        <component :is="EPIcon[`${isShowCode ? 'ArrowUpBold' : 'ArrowDownBold'}`]" />
+        <ArrowUpBold v-if="isShowCode" />
+        <ArrowDownBold v-else />
       </el-icon>
       <span>{{ isShowCode ? '隐藏代码' : '显示代码' }}</span>
     </div>
@@ -14,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-  import { EPIcon } from '@/main'
+  import { ArrowUpBold, ArrowDownBold } from '@element-plus/icons-vue'
   import { languages, highlight } from 'prismjs'
   import { computed, defineOptions, nextTick, ref, watch } from 'vue'
   import { defineProps } from 'vue'
