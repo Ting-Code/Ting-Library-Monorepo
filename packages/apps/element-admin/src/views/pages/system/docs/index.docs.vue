@@ -1,6 +1,6 @@
 <template>
   <DocsLayout>
-    <code-block :is="button" />
+    <CodeBlock :is="button" />
     <div><Index /> </div>
     <CodeBlock src="@root/packages/apps/element-admin/index.html" />
     <MD>

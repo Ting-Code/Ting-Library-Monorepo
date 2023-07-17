@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-  import { defineOptions } from 'vue'
+  import { defineOptions, onMounted } from 'vue'
   import SoundPath from './path.vue'
   import SoundCode from './code.vue'
   import { ref, defineProps, computed, nextTick } from 'vue'
@@ -45,13 +45,15 @@
 
   const ns = useNamespace('code-block')
 
-  nextTick(() => {
-    if (demo?.value?.__getSoundPath) {
-      soundPath.value = demo?.value?.__getSoundPath()
-    }
-    if (demo?.value?.__getSoundCode) {
-      soundCode.value = demo?.value?.__getSoundCode()
-    }
+  onMounted(() => {
+    nextTick(() => {
+      if (demo?.value?.__getSoundPath) {
+        soundPath.value = demo?.value?.__getSoundPath()
+      }
+      if (demo?.value?.__getSoundCode) {
+        soundCode.value = demo?.value?.__getSoundCode()
+      }
+    })
   })
 
   const code = computed(() => {

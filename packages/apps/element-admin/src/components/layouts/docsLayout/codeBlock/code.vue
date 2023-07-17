@@ -1,8 +1,7 @@
 <template>
   <div :class="ns.b()">
     <!--  eslint-disable vue/no-v-html  -->
-    <div :class="ns.e('code')">
-      {{ height }}
+    <div :class="ns.e('code')" :style="{ height: `${isShowCode ? height : 0}px` }">
       <pre v-html="code" ref="codeDom"></pre>
     </div>
     <div :class="ns.e('button')" @click="toggleIsShowCode">
@@ -17,7 +16,7 @@
 <script setup lang="ts">
   import { EPIcon } from '@/main'
   import Prism from 'prismjs'
-  import { computed, defineOptions, nextTick, onMounted, ref } from 'vue'
+  import { computed, defineOptions, nextTick, ref, watch } from 'vue'
   import { defineProps } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
   defineOptions({
@@ -38,12 +37,17 @@
 
   const code = computed(() => Prism.highlight(props?.code || '', Prism.languages.html, 'html'))
 
-  onMounted(() => {
+  watch(code, () => {
     nextTick(() => {
-      const { height: codeHeight } = codeDom?.value?.getBoundingClientRect() as any
-      height.value = codeHeight
-      console.log(height.value, '22222222222222222', codeHeight)
+      if (codeDom?.value?.getBoundingClientRect()?.height) {
+        height.value = codeDom?.value?.getBoundingClientRect()?.height + 32
+      }
     })
+  })
+  nextTick(() => {
+    if (codeDom?.value?.getBoundingClientRect()?.height) {
+      height.value = codeDom?.value?.getBoundingClientRect()?.height + 32
+    }
   })
 </script>
 
@@ -54,7 +58,7 @@
       transition: height 0.25s;
 
       > pre {
-        padding: 8px calc(2vw);
+        padding: 0 calc(2vw);
       }
       &.isUnShowCode {
         height: 0;
