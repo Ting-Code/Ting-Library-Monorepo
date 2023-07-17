@@ -531,6 +531,12 @@
     margin-bottom: 0;
   }
 
+  .markdown-body li,
+  .markdown-body ul,
+  .markdown-body ol {
+    list-style: auto;
+  }
+
   .markdown-body li > p {
     margin-top: 16px;
   }

@@ -35,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'markdown',
         name: 'system_markdown',
         meta: {
-          title: '文档设计'
+          title: '🔥文档设计'
         },
         component: () => import('@/views/pages/system/docs/index.docs.vue')
       },

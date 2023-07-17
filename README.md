@@ -8,21 +8,34 @@
 <p align="center">
 <img src="https://img.shields.io/badge/Rspack-0.2+-red.svg" alt="pnpm" />
 <img src="https://img.shields.io/badge/React-18+-midnightblue.svg" alt="React"  /> 
-<img src="https://img.shields.io/badge/MicroApp-13+-cyan.svg" alt="MicroApp" />
+<img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" />
 <img src="https://img.shields.io/badge/Nextjs-13+-black.svg" alt="Nextjs" />
 </p>
 
-Ting Library：文档既架构的知识库。由于博客的文字单薄性，所以打造了一款源码与文档结合的知识库。既能看文档梳理的思路，又能直达源码深入探究。
+Ting Library：文档既架构的知识库。由于博客的文字单薄性，加上语雀开始收费（收费是理解的，但是不靠增值服务收费，而是限制文章开源有点迷，也就是不开会员别人看不到我的文章）。所以打造了一款源码与文档结合的知识库。既能看文档梳理的思路，又能直达源码深入探究。
 
 Ting Library 是基于 pnpm 搭建的 monorepo 架构文档既架构的知识库。 主要用于归纳前端生态的解决方案与最佳实践。 基于 Vue3 为主应用，结合 MicroApp 微前端。后期添加 React、Nextjs 等子应用。 希望各位小伙伴一起讨论总结，一起进步。
 
 ## 快速开始
 
 ```
-git clone https://github.com/Ting-Code/Ting-Library-Monorepo.git
+# 执行tingcli （必须是pnpm）
+pnpm create tingcli
+
+# 选择monorepo
+  cli
+❯ monorepo
+
+# 输入项目名
+? 项目类型 monorepo
+? 项目名称 project-name
+
+# 初始化项目 （必须是pnpm）
 pnpm install
+
 # 启动选择项目
 pnpm dev
+
 # 或者直接启动admin项目
 pnpm --filter @apps/element-admin dev
 ```

@@ -72,7 +72,6 @@
     font-weight: 600;
     padding-bottom: 0.3em;
     font-size: 2em;
-    border-bottom: 1px solid #21262d;
   }
 
   .markdown-body mark {
@@ -278,7 +277,6 @@
     font-weight: 600;
     padding-bottom: 0.3em;
     font-size: 1.5em;
-    border-bottom: 1px solid #21262d;
   }
 
   .markdown-body h3 {
@@ -530,6 +528,12 @@
   .markdown-body ol ul {
     margin-top: 0;
     margin-bottom: 0;
+  }
+
+  .markdown-body li,
+  .markdown-body ul,
+  .markdown-body ol {
+    list-style: auto;
   }
 
   .markdown-body li > p {
