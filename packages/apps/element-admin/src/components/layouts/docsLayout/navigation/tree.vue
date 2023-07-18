@@ -18,11 +18,20 @@
       const { isMobile } = toRefs(useAppProviderContext())
       console.log(isOpenSliderRef, isMobile)
 
+      const scrollToSection = () => {
+        console.log(22222)
+      }
+
       return () => (
         <div class={ns.b()}>
           {[...props.tree].map((item) => {
             return (
-              <a class={`${item.tag.toLowerCase()}`} key={item.id} href={`#${item.id}`}>
+              <a
+                class={`${item.tag.toLowerCase()}`}
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={scrollToSection}
+              >
                 <Icon icon={`layout-${item.tag.toLowerCase()}`} />
                 <span>{item.text}</span>
               </a>

@@ -35,14 +35,8 @@
     const tree: ITitleTree = []
     // 添加<a> 标签和id
     function transformTitle(child: Element): string {
-      const id = child?.textContent || ''
-      const aList = child.querySelectorAll('a')
-      if (aList.length > 0) return id
-      let a = document.createElement('a')
-      a.textContent = child?.textContent
-      child.textContent = ''
-      a.setAttribute('id', id)
-      child.appendChild(a)
+      const id = child?.textContent?.replace(/\s+/g, '-') || ''
+      child.setAttribute('id', id)
       return id
     }
     // 遍历dom

@@ -43,7 +43,8 @@ const routes: Array<RouteRecordRaw> = [
         path: '404',
         name: 'system_404',
         meta: {
-          title: '404页面'
+          title: '404页面',
+          transition: true
         },
         component: () => import('@/views/common/error/404.vue')
       }
