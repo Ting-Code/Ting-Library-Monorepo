@@ -2,7 +2,7 @@
   <div :class="ns.b()">
     <div :class="ns.e('substitute')" :style="{ width: `${treeDomWidth}px` }">
       <div ref="treeDomRef" :class="ns.em('substitute', 'absolute-tree')">
-        <DocsTree :tree="props.tree" />
+        <DocsTree :tree="props.tree || []" />
       </div>
     </div>
   </div>
@@ -17,12 +17,9 @@
     name: 'DocsNavigation'
   })
 
-  const props = withDefaults(
-    defineProps<{
-      tree?: { tag: string; text: string; id: string }[]
-    }>(),
-    {}
-  )
+  const props = defineProps<{
+    tree?: { tag: string; text: string; id: string }[] | undefined
+  }>()
 
   const ns = useNamespace('docs-navigation')
 
