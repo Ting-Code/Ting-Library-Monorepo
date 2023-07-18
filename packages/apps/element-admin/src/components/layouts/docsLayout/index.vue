@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
   import { highlightAllUnder } from 'prismjs'
-  import { defineOptions, nextTick, ref } from 'vue'
+  import { defineOptions, nextTick, onMounted, ref } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
 
   defineOptions({
@@ -17,10 +17,12 @@
   const ns = useNamespace('docs-layout')
   const codeDomRef = ref<HTMLDivElement>()
 
-  nextTick(() => {
-    if (codeDomRef.value) {
-      highlightAllUnder(codeDomRef.value as any)
-    }
+  onMounted(() => {
+    nextTick(() => {
+      if (codeDomRef.value) {
+        highlightAllUnder(codeDomRef.value as any)
+      }
+    })
   })
 </script>
 
