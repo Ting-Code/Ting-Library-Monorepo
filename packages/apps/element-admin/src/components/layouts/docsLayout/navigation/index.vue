@@ -12,7 +12,7 @@
     </div>
   </div>
 
-  <el-drawer v-model="drawerTree" :with-header="false">
+  <el-drawer v-model="drawerTree" :with-header="false" size="260">
     <div style="padding-top: 50px">
       <DocsTree :tree="props.tree || []" />
     </div>
