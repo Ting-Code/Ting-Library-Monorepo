@@ -64,7 +64,8 @@ module.exports = defineConfig({
             math: 'always'
           }
         ],
-        'vue/multi-word-component-names': 'off'
+        'vue/multi-word-component-names': 'off',
+        'react/no-unknown-property': 'off'
       }
     },
     {
@@ -77,7 +78,6 @@ module.exports = defineConfig({
     'no-use-before-define': 'off',
     'space-before-function-paren': 'off',
     'react/react-in-jsx-scope': 'off', // 'React' must be in scope when using JSX
-
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',

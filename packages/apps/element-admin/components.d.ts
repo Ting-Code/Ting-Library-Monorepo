@@ -44,6 +44,7 @@ declare module '@vue/runtime-core' {
     Main: typeof import('./src/components/layouts/default/main/index.vue')['default']
     Markdown: typeof import('./src/components/layouts/docsLayout/markdown.vue')['default']
     NavIcon: typeof import('./src/components/layouts/default/navIcon/index.vue')['default']
+    Navigation: typeof import('./src/components/layouts/docsLayout/navigation/index.vue')['default']
     ParentLayout: typeof import('./src/components/layouts/parentLayout/index.vue')['default']
     Path: typeof import('./src/components/layouts/docsLayout/codeBlock/path.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
@@ -53,6 +54,7 @@ declare module '@vue/runtime-core' {
     SvgIcon: typeof import('./src/components/Icon/SvgIcon.vue')['default']
     Tabs: typeof import('./src/components/layouts/default/tabs/index.vue')['default']
     Theme: typeof import('./src/components/layouts/default/theme/index.vue')['default']
+    Tree: typeof import('./src/components/layouts/docsLayout/navigation/tree.vue')['default']
     Trigger: typeof import('./src/components/layouts/default/header/trigger/index.vue')['default']
   }
 }
