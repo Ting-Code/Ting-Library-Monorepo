@@ -65,11 +65,11 @@
     display: flex;
     flex-direction: row;
     height: 100%;
-    padding: 30px calc(8% - 18px) 80px;
     overflow-x: hidden;
     overflow-y: auto;
 
     @include e(docs) {
+      padding: 30px calc(8% - 18px) 80px;
       flex: 1;
       width: 0;
     }

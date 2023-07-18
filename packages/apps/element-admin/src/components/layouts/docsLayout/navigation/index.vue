@@ -1,6 +1,6 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('substitute')" :style="{ width: `${treeDomWidth}px` }">
+    <div :class="ns.e('substitute')">
       <div ref="treeDomRef" :class="ns.em('substitute', 'absolute-tree')">
         <DocsTree :tree="props.tree || []" />
       </div>
@@ -29,7 +29,7 @@
   watch(props, () => {
     nextTick(() => {
       if (treeDomRef?.value?.getBoundingClientRect()?.width) {
-        treeDomWidth.value = treeDomRef?.value?.getBoundingClientRect()?.width
+        treeDomWidth.value = treeDomRef?.value?.getBoundingClientRect()?.width + 60
         console.log(treeDomWidth.value)
       }
     })
@@ -39,12 +39,18 @@
 <style lang="scss">
   @include b(docs-navigation) {
     position: relative;
+    height: 100%;
+    padding-top: 50px;
 
     @include e(substitute) {
       position: relative;
+      width: calc(230px + 6vw);
+      height: 100%;
 
       @include m(absolute-tree) {
-        position: absolute;
+        position: fixed;
+        padding: 6px 0 8px 18px;
+        border-left: 1px solid getCssVar('text-color', 'primary');
       }
     }
   }

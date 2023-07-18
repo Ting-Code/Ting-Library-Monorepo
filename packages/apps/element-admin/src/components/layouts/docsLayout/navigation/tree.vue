@@ -18,21 +18,12 @@
       const { isMobile } = toRefs(useAppProviderContext())
       console.log(isOpenSliderRef, isMobile)
 
-      const scrollToSection = () => {
-        console.log(22222)
-      }
-
       return () => (
         <div class={ns.b()}>
           {[...props.tree].map((item) => {
             return (
-              <a
-                class={`${item.tag.toLowerCase()}`}
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={scrollToSection}
-              >
-                <Icon icon={`layout-${item.tag.toLowerCase()}`} />
+              <a class={`${item.tag.toLowerCase()}`} key={item.id} href={`#${item.id}`}>
+                <Icon icon={`layout-${item.tag.toLowerCase()}`} size="20" />
                 <span>{item.text}</span>
               </a>
             )
@@ -45,7 +36,7 @@
 
 <style lang="scss">
   @include b(docs-tree) {
-    max-width: 230px;
+    max-width: 260px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -58,6 +49,36 @@
       text-overflow: ellipsis;
       flex-wrap: nowrap;
       white-space: nowrap;
+      padding-bottom: 6px;
+      > span {
+        padding-left: 5px;
+      }
+    }
+    .h1 {
+      color: getCssVar(text-color, primary);
+      font-size: 20px;
+      font-weight: getCssVar(font-weight-bold);
+    }
+    .h2 {
+      color: getCssVar(text-color, primary);
+      font-size: 18px;
+      font-weight: getCssVar(font-weight-bold);
+      padding-left: 8px;
+    }
+    .h3 {
+      color: getCssVar(text-color, regular);
+      font-size: 16px;
+      padding-left: 16px;
+    }
+    .h4 {
+      color: getCssVar(text-color, regular);
+      font-size: 15px;
+      padding-left: 26px;
+    }
+    .h5 {
+      color: getCssVar(text-color, regular);
+      font-size: 15px;
+      padding-left: 32px;
     }
   }
 </style>
