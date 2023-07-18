@@ -52,12 +52,11 @@
       .text {
         width: 80%;
         font-size: calc(2vw);
-        max-width: 1000px;
         position: absolute;
         left: 50%;
         top: 50%;
         text-align: justify;
-        transform: translate(-50%, 30vh);
+        transform: translate(-50%, 20vh);
       }
     }
   }

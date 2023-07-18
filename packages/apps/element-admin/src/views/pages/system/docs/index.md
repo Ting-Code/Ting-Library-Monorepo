@@ -12,7 +12,7 @@
 
 ### <a id="Markdown导入Vue">Markdown 导入 Vue</a>
 
-我调研一番后这个功能比较好实现，因为有现成的 vite 创建。我发现这个插件是 antfu 写的就放心的直接用了: [vite-plugin-md](https://github.com/antfu/vite-plugin-md)。具体可看文档，这里就不再赘述。
+我调研一番后这个功能比较好实现，因为有现成的 vite 创建。我发现这个插件是 **`antfu`** 写的就放心的直接用了: [vite-plugin-md](https://github.com/antfu/vite-plugin-md)。具体可看文档，这里就不再赘述。
 
 ### <a id="Vue中写Markdown">Vue 中写 Markdown</a>
 
