@@ -2,6 +2,7 @@
   <div :class="ns.b()">
     <div :class="ns.e('docs')" ref="codeDomRef">
       <slot></slot>
+      <div :class="ns.e('bottom')"> </div>
     </div>
     <DocsNavigation :tree="titleTree" />
   </div>
@@ -69,9 +70,13 @@
     overflow-y: auto;
 
     @include e(docs) {
-      padding: 30px calc(8% - 18px) 80px;
+      padding: 30px calc(8% - 18px);
       flex: 1;
       width: 0;
+    }
+
+    @include e(bottom) {
+      height: 100px;
     }
   }
 </style>
