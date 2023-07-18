@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { ArrowUpBold, ArrowDownBold } from '@element-plus/icons-vue'
   import { languages, highlight } from 'prismjs'
-  import { computed, defineOptions, nextTick, ref, watch } from 'vue'
+  import { computed, defineOptions, nextTick, onMounted, ref, watch } from 'vue'
   import { defineProps } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
   defineOptions({
@@ -58,10 +58,12 @@
       }
     })
   })
-  nextTick(() => {
-    if (codeDom?.value?.getBoundingClientRect()?.height) {
-      height.value = codeDom?.value?.getBoundingClientRect()?.height + 36
-    }
+  onMounted(() => {
+    nextTick(() => {
+      if (codeDom?.value?.getBoundingClientRect()?.height) {
+        height.value = codeDom?.value?.getBoundingClientRect()?.height + 36
+      }
+    })
   })
 </script>
 
