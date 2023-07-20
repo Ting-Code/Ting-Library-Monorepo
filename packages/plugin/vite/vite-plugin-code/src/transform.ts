@@ -3,9 +3,10 @@ import { transform } from '@vue/compiler-core'
 import { parse } from 'node-html-parser'
 import { resolve, basename } from 'path'
 import * as fs from 'fs'
+import type MD from 'markdown-it'
 const ROOTNAME = resolve(process.cwd(), '../../../')
-const transformDemo = (code, id) => {
-  let newCode
+const transformDemo = (code: string, id: string): string => {
+  let newCode = ''
   const newId = resolve(id).replace(ROOTNAME, '').replace(/\\/g, '/')
   if (code && code.includes('defineExpose')) {
     newCode = code
@@ -40,8 +41,8 @@ const transformDemo = (code, id) => {
   return newCode
 }
 
-const transformFile = (code, id, md) => {
-  let newCode = code
+const transformFile = (code: string, id: string, md: MD): string => {
+  let newCode: string = code
   const ast = compileTemplate({ source: code, id: id, filename: id }).ast as any
 
   transform(ast, {

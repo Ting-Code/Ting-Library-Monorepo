@@ -1,4 +1,4 @@
-import type { PluginOption } from 'vite'
+import type { HmrContext, PluginOption } from 'vite'
 import MD from 'markdown-it'
 import { createFilter } from './createFilter'
 import { transformDemo, transformFile } from './transform'
@@ -21,7 +21,7 @@ const VitePluginVueCode = (): PluginOption => {
     // 在构建前执行一些自定义操作
     async buildStart() {},
     // 代码转译，这个函数的功能类似于 `webpack` 的 `loader`
-    async transform(code, id) {
+    async transform(code: string, id: string) {
       if (filterDemo(id)) {
         return transformDemo(code, id)
       }
@@ -32,7 +32,7 @@ const VitePluginVueCode = (): PluginOption => {
       return
     },
     // 热更新时触发
-    async handleHotUpdate(ctx) {
+    async handleHotUpdate(ctx: HmrContext) {
       const defaultRead = ctx.read
       if (filterDemo(ctx.file)) {
         ctx.read = async function () {
