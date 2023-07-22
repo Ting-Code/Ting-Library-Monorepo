@@ -51,18 +51,26 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
     <CodeBlock
       src="@root/packages/apps/element-admin/src/components/layouts/docsLayout/index.vue"
       :defaultShowCode="false"
+      type="html"
     />
     <MD>
       <pre>
 ## 最终效果
+显示源码同时渲染效果
+      </pre>
+    </MD>
+    <CodeBlock :is="ButtonDemo" type="html" />
+    <MD>
+      <pre>
 最终效果可看项目中各个页面的文件，比如当前文档的源码如下：
       </pre>
     </MD>
-    <CodeBlock src="./index.docs.vue" :defaultShowCode="false" />
+    <CodeBlock src="./index.docs.vue" :defaultShowCode="false" type="html" />
   </DocsLayout>
 </template>
 
 <script setup lang="ts">
+  import ButtonDemo from './demo/button.demo.vue'
   import DocsLayout from '@/components/layouts/docsLayout/index.vue'
   import Index from './index.md'
   import MD from '@/components/layouts/docsLayout/markdown.vue'

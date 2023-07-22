@@ -40,6 +40,14 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/pages/system/docs/index.docs.vue')
       },
       {
+        path: 'micro',
+        name: 'system_micro',
+        meta: {
+          title: '微前端'
+        },
+        component: () => import('@/views/pages/system/micro/index.docs.vue')
+      },
+      {
         path: '404',
         name: 'system_404',
         meta: {
