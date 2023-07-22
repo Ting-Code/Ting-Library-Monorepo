@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -166,6 +166,9 @@ importers:
       '@config/tsconfig':
         specifier: workspace:*
         version: link:../../../configs/tsconfig
+      '@micro-zoe/micro-app':
+        specifier: 1.0.0-beta.5
+        version: 1.0.0-beta.5
       '@vueuse/integrations':
         specifier: ^10.2.1
         version: 10.2.1(nprogress@0.2.0)(sortablejs@1.15.0)(vue@3.3.4)
@@ -2186,6 +2189,13 @@ packages:
       read-yaml-file: 1.1.0
     dev: true
 
+  /@micro-zoe/micro-app@1.0.0-beta.5:
+    resolution:
+      {
+        integrity: sha512-7d1NGl+gBZB6A0AYU3fzN0MCzKi/MJu6zFr8HCA9lJA/rsfYX8NkjTh0f6rm0wkvoLrBcrICxzNcbqfEMYVPFA==
+      }
+    dev: false
+
   /@nodelib/fs.scandir@2.1.5:
     resolution:
       {
@@ -2269,6 +2279,48 @@ packages:
       source-map: 0.7.4
       webpack: 5.76.0
       webpack-dev-server: 4.13.1(webpack@5.76.0)
+    dev: true
+
+  /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.0)(webpack@5.88.1):
+    resolution:
+      {
+        integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==
+      }
+    engines: { node: '>= 10.13' }
+    peerDependencies:
+      '@types/webpack': 4.x || 5.x
+      react-refresh: '>=0.10.0 <1.0.0'
+      sockjs-client: ^1.4.0
+      type-fest: '>=0.17.0 <4.0.0'
+      webpack: '>=4.43.0 <6.0.0'
+      webpack-dev-server: 3.x || 4.x
+      webpack-hot-middleware: 2.x
+      webpack-plugin-serve: 0.x || 1.x
+    peerDependenciesMeta:
+      '@types/webpack':
+        optional: true
+      sockjs-client:
+        optional: true
+      type-fest:
+        optional: true
+      webpack-dev-server:
+        optional: true
+      webpack-hot-middleware:
+        optional: true
+      webpack-plugin-serve:
+        optional: true
+    dependencies:
+      ansi-html-community: 0.0.8
+      common-path-prefix: 3.0.0
+      core-js-pure: 3.31.0
+      error-stack-parser: 2.1.4
+      find-up: 5.0.0
+      html-entities: 2.3.3
+      loader-utils: 2.0.4
+      react-refresh: 0.14.0
+      schema-utils: 3.3.0
+      source-map: 0.7.4
+      webpack: 5.88.1
     dev: true
 
   /@polka/url@1.0.0-next.21:
@@ -2692,7 +2744,7 @@ packages:
       }
     dependencies:
       '@rspack/binding': 0.2.4
-      '@rspack/dev-client': 0.2.4(react-refresh@0.14.0)(webpack-dev-server@4.13.1)(webpack@5.76.0)
+      '@rspack/dev-client': 0.2.4(react-refresh@0.14.0)(webpack@5.88.1)
       '@swc/helpers': 0.5.1
       browserslist: 4.21.9
       compare-versions: 6.0.0-rc.1
@@ -2729,6 +2781,29 @@ packages:
         optional: true
     dependencies:
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.0)(webpack-dev-server@4.13.1)(webpack@5.76.0)
+      react-refresh: 0.14.0
+    transitivePeerDependencies:
+      - '@types/webpack'
+      - sockjs-client
+      - type-fest
+      - webpack
+      - webpack-dev-server
+      - webpack-hot-middleware
+      - webpack-plugin-serve
+    dev: true
+
+  /@rspack/dev-client@0.2.4(react-refresh@0.14.0)(webpack@5.88.1):
+    resolution:
+      {
+        integrity: sha512-yIfEYRHlw46bNCRJKGyHZVDYXJbjx4S0cYTazCqcSEms73Aq3Uf875m/+VNH0ptpoNsgEVareU+ZJ+yQfBRhow==
+      }
+    peerDependencies:
+      react-refresh: '>=0.10.0 <1.0.0'
+    peerDependenciesMeta:
+      react-refresh:
+        optional: true
+    dependencies:
+      '@pmmmwh/react-refresh-webpack-plugin': 0.5.10(react-refresh@0.14.0)(webpack@5.88.1)
       react-refresh: 0.14.0
     transitivePeerDependencies:
       - '@types/webpack'
@@ -4249,7 +4324,7 @@ packages:
       '@types/markdown-it': 12.2.3
       '@yankeeinlondon/happy-wrapper': 2.10.1(sass@1.58.3)
       fp-ts: 2.16.0
-      inferred-types: 0.37.6(happy-dom@8.9.0)(sass@1.58.3)
+      inferred-types: 0.37.6(sass@1.58.3)
       markdown-it: registry.npmjs.org/markdown-it@13.0.1
       vite-plugin-md: 0.22.5(@vitejs/plugin-vue@4.2.3)(sass@1.58.3)(vite@4.3.9)
     transitivePeerDependencies:
@@ -4269,6 +4344,62 @@ packages:
       - vite
     dev: true
 
+  /@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.2.3)(vite@4.3.9):
+    resolution:
+      {
+        integrity: sha512-qc6HyfqtuS06FvA5rK0L62Nmc1LnarVOt8/V/mTX2DBZlpTfIDpudpbE/7/kxjme9pP4PFMCk7cPSrprLEorjw==
+      }
+    dependencies:
+      '@types/markdown-it': 12.2.3
+      '@yankeeinlondon/happy-wrapper': 2.10.1
+      fp-ts: 2.16.0
+      inferred-types: 0.37.6
+      markdown-it: registry.npmjs.org/markdown-it@13.0.1
+      vite-plugin-md: 0.22.5(@vitejs/plugin-vue@4.2.3)(vite@4.3.9)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitejs/plugin-vue'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - encoding
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+      - vite
+    dev: true
+
+  /@yankeeinlondon/gray-matter@6.1.1:
+    resolution:
+      {
+        integrity: sha512-TLtRc/mxI74ahP3s+fJpIi+lBFAhuJuVjiQhmyi/xEwJ2pDepuWMRXT6UfJOA1cGkZ5/XGa9NFw/SQR6M5jfoQ==
+      }
+    engines: { node: '>=14.0' }
+    dependencies:
+      inferred-types: 0.37.6
+      js-yaml: 4.1.0
+      kind-of: 6.0.3
+      section-matter: 1.0.0
+      strip-bom-string: 1.0.0
+      vitest: 0.25.8(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /@yankeeinlondon/gray-matter@6.1.1(sass@1.58.3):
     resolution:
       {
@@ -4276,7 +4407,7 @@ packages:
       }
     engines: { node: '>=14.0' }
     dependencies:
-      inferred-types: 0.37.6(happy-dom@8.9.0)(sass@1.58.3)
+      inferred-types: 0.37.6(sass@1.58.3)
       js-yaml: 4.1.0
       kind-of: 6.0.3
       section-matter: 1.0.0
@@ -4287,6 +4418,29 @@ packages:
       - '@vitest/browser'
       - '@vitest/ui'
       - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /@yankeeinlondon/happy-wrapper@2.10.1:
+    resolution:
+      {
+        integrity: sha512-kS3HT26QSQqcZa8Me2yrb6oc/j0BTmTRR76ITRGcYlO8G1snz9wii1eCrBTx+gAo58P+e3UkxB8PTVrmjTowVA==
+      }
+    dependencies:
+      fp-ts: 2.16.0
+      happy-dom: 8.9.0
+      native-dash: 1.25.0(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - encoding
       - jsdom
       - less
       - sass
@@ -5088,6 +5242,56 @@ packages:
       wcwidth: 1.0.1
     dev: true
 
+  /brilliant-errors@0.7.3:
+    resolution:
+      {
+        integrity: sha512-WT9BkAze4SUOJfr7LUwJWNDAvynEAvUMvMPuFKu8QQKnRq+WMx3DAtHfOBJjHmHRxf748JY3CNVytSk6HH2yGg==
+      }
+    engines: { node: '>=14.0.0' }
+    dependencies:
+      bumpp: 8.2.1
+      callsites: 4.0.0
+      inferred-types: 0.37.6
+      vitest: 0.25.8(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /brilliant-errors@0.7.3(happy-dom@8.9.0):
+    resolution:
+      {
+        integrity: sha512-WT9BkAze4SUOJfr7LUwJWNDAvynEAvUMvMPuFKu8QQKnRq+WMx3DAtHfOBJjHmHRxf748JY3CNVytSk6HH2yGg==
+      }
+    engines: { node: '>=14.0.0' }
+    dependencies:
+      bumpp: 8.2.1
+      callsites: 4.0.0
+      inferred-types: 0.37.6(happy-dom@8.9.0)
+      vitest: 0.25.8(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /brilliant-errors@0.7.3(happy-dom@8.9.0)(sass@1.58.3):
     resolution:
       {
@@ -5098,6 +5302,31 @@ packages:
       bumpp: 8.2.1
       callsites: 4.0.0
       inferred-types: 0.37.6(happy-dom@8.9.0)(sass@1.58.3)
+      vitest: 0.25.8(happy-dom@8.9.0)(sass@1.58.3)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /brilliant-errors@0.7.3(sass@1.58.3):
+    resolution:
+      {
+        integrity: sha512-WT9BkAze4SUOJfr7LUwJWNDAvynEAvUMvMPuFKu8QQKnRq+WMx3DAtHfOBJjHmHRxf748JY3CNVytSk6HH2yGg==
+      }
+    engines: { node: '>=14.0.0' }
+    dependencies:
+      bumpp: 8.2.1
+      callsites: 4.0.0
+      inferred-types: 0.37.6(sass@1.58.3)
       vitest: 0.25.8(happy-dom@8.9.0)(sass@1.58.3)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
@@ -8951,6 +9180,48 @@ packages:
       }
     engines: { node: '>=8' }
 
+  /inferred-types@0.37.6:
+    resolution:
+      {
+        integrity: sha512-CfL5g1wR5rVwX2K5S6wSL+h9eODScum/LBwlhGRrcBIvfYppvUQM0aeRJ1BZS+QE38kGzd3v+U526+nQR7ZUkg==
+      }
+    dependencies:
+      brilliant-errors: 0.7.3
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /inferred-types@0.37.6(happy-dom@8.9.0):
+    resolution:
+      {
+        integrity: sha512-CfL5g1wR5rVwX2K5S6wSL+h9eODScum/LBwlhGRrcBIvfYppvUQM0aeRJ1BZS+QE38kGzd3v+U526+nQR7ZUkg==
+      }
+    dependencies:
+      brilliant-errors: 0.7.3(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
   /inferred-types@0.37.6(happy-dom@8.9.0)(sass@1.58.3):
     resolution:
       {
@@ -8958,6 +9229,27 @@ packages:
       }
     dependencies:
       brilliant-errors: 0.7.3(happy-dom@8.9.0)(sass@1.58.3)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /inferred-types@0.37.6(sass@1.58.3):
+    resolution:
+      {
+        integrity: sha512-CfL5g1wR5rVwX2K5S6wSL+h9eODScum/LBwlhGRrcBIvfYppvUQM0aeRJ1BZS+QE38kGzd3v+U526+nQR7ZUkg==
+      }
+    dependencies:
+      brilliant-errors: 0.7.3(sass@1.58.3)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -10883,6 +11175,28 @@ packages:
       to-regex: 3.0.2
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /native-dash@1.25.0(happy-dom@8.9.0):
+    resolution:
+      {
+        integrity: sha512-vJy1ZEfR/9jpAtuvsbPE/PuaeaJLIS+p7tl/bKEMHutRzMHnmgLv1fSmbyVvL04s2qzg0rCKZX5yfX74uiPLyA==
+      }
+    dependencies:
+      brilliant-errors: 0.7.3(happy-dom@8.9.0)
+      inferred-types: 0.37.6(happy-dom@8.9.0)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
     dev: true
 
   /native-dash@1.25.0(happy-dom@8.9.0)(sass@1.58.3):
@@ -14944,9 +15258,9 @@ packages:
     peerDependencies:
       vite: ^4.0.0
     dependencies:
-      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3)(sass@1.58.3)(vite@4.3.9)
-      '@yankeeinlondon/gray-matter': 6.1.1(sass@1.58.3)
-      '@yankeeinlondon/happy-wrapper': 2.10.1(sass@1.58.3)
+      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3)(vite@4.3.9)
+      '@yankeeinlondon/gray-matter': 6.1.1
+      '@yankeeinlondon/happy-wrapper': 2.10.1
       markdown-it: 13.0.1
       source-map-js: 1.0.2
       vite: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
@@ -14979,6 +15293,37 @@ packages:
       '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3)(sass@1.58.3)(vite@4.3.9)
       '@yankeeinlondon/gray-matter': 6.1.1(sass@1.58.3)
       '@yankeeinlondon/happy-wrapper': 2.10.1(sass@1.58.3)
+      markdown-it: registry.npmjs.org/markdown-it@13.0.1
+      source-map-js: registry.npmjs.org/source-map-js@1.0.2
+      vite: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
+    transitivePeerDependencies:
+      - '@edge-runtime/vm'
+      - '@vitest/browser'
+      - '@vitest/ui'
+      - encoding
+      - happy-dom
+      - jsdom
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+    dev: true
+
+  /vite-plugin-md@0.22.5(@vitejs/plugin-vue@4.2.3)(vite@4.3.9):
+    resolution:
+      {
+        integrity: sha512-ex6yQfan2teBT2uMzoIlDHRhKTOsNiyvblA9eLU/+uygpg4KikJPFeyBX300LqQ3pZ9qGHz35qoGJ0oLw47eZg==
+      }
+    peerDependencies:
+      '@vitejs/plugin-vue': '>=2.3.4'
+      vite: ^4.0.0 || ^3.0.0
+    dependencies:
+      '@vitejs/plugin-vue': 4.2.3(vite@4.3.9)(vue@3.3.4)
+      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3)(vite@4.3.9)
+      '@yankeeinlondon/gray-matter': 6.1.1
+      '@yankeeinlondon/happy-wrapper': 2.10.1
       markdown-it: registry.npmjs.org/markdown-it@13.0.1
       source-map-js: registry.npmjs.org/source-map-js@1.0.2
       vite: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
@@ -15056,6 +15401,42 @@ packages:
       - supports-color
     dev: true
 
+  /vite@4.3.9(@types/node@18.15.11):
+    resolution:
+      {
+        integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==
+      }
+    engines: { node: ^14.18.0 || >=16.0.0 }
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': registry.npmjs.org/@types/node@18.15.11
+      esbuild: 0.17.15
+      postcss: 8.4.24
+      rollup: 3.23.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
   /vite@4.3.9(@types/node@20.3.3)(sass@1.58.3):
     resolution:
       {
@@ -15091,6 +15472,55 @@ packages:
       sass: 1.58.3
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vitest@0.25.8(happy-dom@8.9.0):
+    resolution:
+      {
+        integrity: sha512-X75TApG2wZTJn299E/TIYevr4E9/nBo1sUtZzn0Ci5oK8qnpZAZyhwg0qCeMSakGIWtc6oRwcQFyFfW14aOFWg==
+      }
+    engines: { node: '>=v14.16.0' }
+    hasBin: true
+    peerDependencies:
+      '@edge-runtime/vm': '*'
+      '@vitest/browser': '*'
+      '@vitest/ui': '*'
+      happy-dom: '*'
+      jsdom: '*'
+    peerDependenciesMeta:
+      '@edge-runtime/vm':
+        optional: true
+      '@vitest/browser':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
+        optional: true
+    dependencies:
+      '@types/chai': 4.3.4
+      '@types/chai-subset': 1.3.3
+      '@types/node': 20.3.3
+      acorn: 8.9.0
+      acorn-walk: 8.2.0
+      chai: 4.3.7
+      debug: 4.3.4(supports-color@9.3.1)
+      happy-dom: 8.9.0
+      local-pkg: 0.4.3
+      source-map: 0.6.1
+      strip-literal: 1.0.1
+      tinybench: 2.4.0
+      tinypool: 0.3.1
+      tinyspy: 1.1.1
+      vite: registry.npmjs.org/vite@4.3.9(@types/node@20.3.3)(sass@1.58.3)
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
     dev: true
 
   /vitest@0.25.8(happy-dom@8.9.0)(sass@1.58.3):
@@ -17519,7 +17949,7 @@ packages:
       '@types/markdown-it': 12.2.3
       '@yankeeinlondon/happy-wrapper': 2.10.1(sass@1.58.3)
       fp-ts: 2.16.0
-      inferred-types: 0.37.6(happy-dom@8.9.0)(sass@1.58.3)
+      inferred-types: 0.37.6(sass@1.58.3)
       markdown-it: registry.npmjs.org/markdown-it@13.0.1
       vite-plugin-md: 0.22.5(@vitejs/plugin-vue@4.2.3)(sass@1.58.3)(vite@4.3.9)
     transitivePeerDependencies:
@@ -17551,7 +17981,7 @@ packages:
     version: 6.1.1
     engines: { node: '>=14.0' }
     dependencies:
-      inferred-types: 0.37.6(happy-dom@8.9.0)(sass@1.58.3)
+      inferred-types: 0.37.6(sass@1.58.3)
       js-yaml: 4.1.0
       kind-of: 6.0.3
       section-matter: 1.0.0
@@ -23271,7 +23701,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: registry.npmjs.org/vite@4.3.9(@types/node@20.3.3)(sass@1.58.3)
+      vite: registry.npmjs.org/vite@4.3.9(@types/node@18.15.11)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -23315,6 +23745,47 @@ packages:
       - sugarss
       - supports-color
       - terser
+    dev: true
+
+  registry.npmjs.org/vite@4.3.9(@types/node@18.15.11):
+    resolution:
+      {
+        integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==,
+        registry: https://registry.npmmirror.com/,
+        tarball: https://registry.npmjs.org/vite/-/vite-4.3.9.tgz
+      }
+    id: registry.npmjs.org/vite/4.3.9
+    name: vite
+    version: 4.3.9
+    engines: { node: ^14.18.0 || >=16.0.0 }
+    hasBin: true
+    peerDependencies:
+      '@types/node': '>= 14'
+      less: '*'
+      sass: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+    dependencies:
+      '@types/node': registry.npmjs.org/@types/node@18.15.11
+      esbuild: registry.npmjs.org/esbuild@0.17.15
+      postcss: registry.npmjs.org/postcss@8.4.24
+      rollup: registry.npmjs.org/rollup@3.23.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   registry.npmjs.org/vite@4.3.9(@types/node@20.3.3)(sass@1.58.3):
@@ -23417,7 +23888,7 @@ packages:
       tinybench: registry.npmjs.org/tinybench@2.4.0
       tinypool: registry.npmjs.org/tinypool@0.4.0
       tinyspy: registry.npmjs.org/tinyspy@1.1.1
-      vite: 4.3.9(@types/node@20.3.3)(sass@1.58.3)
+      vite: 4.3.9(@types/node@18.15.11)
       vite-node: registry.npmjs.org/vite-node@0.29.8(@types/node@18.15.11)
       why-is-node-running: registry.npmjs.org/why-is-node-running@2.2.2
     transitivePeerDependencies:

@@ -7,13 +7,17 @@ module.exports = function (env, argv) {
   return {
     context: __dirname,
     devServer: {
-      historyApiFallback: true
+      historyApiFallback: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
     },
     entry: {
       main: './src/main.tsx'
     },
     devtool: false, // 关闭sourceMap
     output: {
+      publicPath: '/', // history路由
       path: path.resolve(__dirname, 'dist'),
       filename: 'file/[name]-[hash:6][ext]',
       chunkFilename: 'chunk/[name]-[hash:6][ext]',

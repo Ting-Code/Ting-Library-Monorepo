@@ -10,7 +10,8 @@ import * as EPIcon from '@element-plus/icons-vue'
 import 'prismjs'
 import 'prismjs/components/prism-typescript'
 import 'prismjs/components/prism-scss'
-
+import microApp from '@micro-zoe/micro-app'
+microApp.start()
 async function bootstrap() {
   const app = createApp(App)
   setupRouter(app)
