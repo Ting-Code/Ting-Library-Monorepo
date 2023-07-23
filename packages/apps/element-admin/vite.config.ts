@@ -29,7 +29,7 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd())
   console.log(env, command)
   return {
-    base: './',
+    base: '/',
     plugins: [
       vue({
         reactivityTransform: true, // 开启ref转换
