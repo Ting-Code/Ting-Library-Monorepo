@@ -8,33 +8,39 @@ const ROOTNAME = resolve(process.cwd(), '../../../')
 const transformDemo = (code: string, id: string): string => {
   let newCode = ''
   const newId = resolve(id).replace(ROOTNAME, '').replace(/\\/g, '/')
-  if (code && code.includes('defineExpose')) {
-    newCode = code
-      .replace(
-        `defineExpose({`,
-        `
-          const __getSoundCode = () => {
+
+  const core = `const __getSoundCode = () => {
              return \`${encodeURIComponent(code)}\`
           }
           const __getSoundPath = () => {
              return \`${newId}\`
-          }
-          defineExpose({__getSoundPath, __getSoundCode,`
+          }`
+
+  if (code && !code.includes('</script>')) {
+    newCode = code
+      .replace(
+        '</template>',
+        `</template>
+        <script setup lang="ts">
+          ${core}
+          defineExpose({ __getSoundCode, __getSoundPath })
+        </script>`
+      )
+      .trim()
+  } else if (code && code.includes('defineExpose')) {
+    newCode = code
+      .replace(
+        `defineExpose({`,
+        `${core}
+      defineExpose({__getSoundPath, __getSoundCode,`
       )
       .trim()
   } else if (code) {
     newCode = code
       .replace(
         `</script>`,
-        `const __getSoundCode = () => {
-             return \`${encodeURIComponent(code)}\`
-          }
-          const __getSoundPath = () => {
-             return \`${newId}\`
-          }
-          
-         defineExpose({ __getSoundCode, __getSoundPath })
-         </script>`
+        `${core}  
+        defineExpose({ __getSoundCode, __getSoundPath })</script>`
       )
       .trim()
   }
