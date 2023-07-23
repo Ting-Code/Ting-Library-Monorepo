@@ -1,5 +1,5 @@
 <template>
-  <div>1版本</div>
+  <div>2版本</div>
   <micro-app :name="microName" :url="microUrl" />
 </template>
 

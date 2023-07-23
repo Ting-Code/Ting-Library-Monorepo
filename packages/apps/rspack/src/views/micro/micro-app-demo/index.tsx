@@ -13,7 +13,7 @@ const MicroAppDemo = () => {
           alignItems: 'center'
         }}
       >
-        <p>这里是Rspack搭建的React子项目1</p>
+        <p>这里是Rspack搭建的React子项目2</p>
       </div>
     </>
   )
