@@ -1,6 +1,7 @@
 /** @type {import('@rspack/cli').Configuration} */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const path = require('path')
+const isProdMode = process.env.NODE_ENV === 'production'
 
 module.exports = function (env, argv) {
   console.log('env配置项', env, argv)
@@ -17,7 +18,7 @@ module.exports = function (env, argv) {
     },
     devtool: false, // 关闭sourceMap
     output: {
-      publicPath: '/rspack/', // history路由
+      publicPath: isProdMode ? '/rspack/' : '/', // history路由
       path: path.resolve(__dirname, 'dist'),
       filename: 'file/[name]-[hash:6][ext]',
       chunkFilename: 'chunk/[name]-[hash:6][ext]',

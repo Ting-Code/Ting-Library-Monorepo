@@ -1,7 +1,20 @@
 const MicroAppDemo = () => {
   return (
     <>
-      <div>22222222</div>
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          minWidth: '300px',
+          minHeight: '300px',
+          fontSize: '28px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        <p>这里是Rspack搭建的React子项目1</p>
+      </div>
     </>
   )
 }
