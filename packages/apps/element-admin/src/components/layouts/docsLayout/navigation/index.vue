@@ -45,7 +45,6 @@
     nextTick(() => {
       if (treeDomRef?.value?.getBoundingClientRect()?.width) {
         treeDomWidth.value = treeDomRef?.value?.getBoundingClientRect()?.width + 60
-        console.log(treeDomWidth.value)
       }
     })
   })

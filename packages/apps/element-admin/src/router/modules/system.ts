@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'home',
         name: 'system_home',
         meta: {
-          title: '介绍5'
+          title: '介绍'
         },
         component: () => import('@/views/pages/system/home/index.docs.vue')
       },

@@ -1,9 +1,7 @@
 <script lang="tsx">
   import Icon from '@/components/Icon/Icon.vue'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  import { defineComponent, toRefs } from 'vue'
+  import { defineComponent } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
-  import { useAppProviderContext } from '@/components/application/useAppContext'
   export default defineComponent({
     name: 'DocsTree',
     props: {
@@ -14,9 +12,6 @@
     },
     setup(props) {
       const ns = useNamespace('docs-tree')
-      const { isOpenSliderRef } = useRootSetting()
-      const { isMobile } = toRefs(useAppProviderContext())
-      console.log(isOpenSliderRef, isMobile)
 
       return () => (
         <div class={ns.b()}>

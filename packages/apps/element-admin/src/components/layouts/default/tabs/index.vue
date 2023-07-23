@@ -77,7 +77,6 @@
   useSortable('.ting-tabs__nav', tabsList, { handle: '.ting-tabs__item' })
 
   const handleTabsChange = (path) => {
-    console.log(path)
     go({ path })
   }
   const handleTabsEdit = (path, action) => {
