@@ -12,8 +12,7 @@ export const prodMode = 'production'
  * @description: Get environment variables
  */
 
-export function getEnv(): string {
-  // @ts-ignore
+export function getEnv(): string | undefined {
   return process.env.NODE_ENV
 }
 
@@ -23,7 +22,6 @@ export function getEnv(): string {
  * @example:
  */
 export function isDevMode(): boolean {
-  // @ts-ignore
   return process.env.NODE_ENV === devMode
 }
 
@@ -33,6 +31,5 @@ export function isDevMode(): boolean {
  * @example:
  */
 export function isProdMode(): boolean {
-  // @ts-ignore
   return process.env.NODE_ENV === prodMode
 }

@@ -6,3 +6,13 @@ declare global {
     }
   }
 }
+
+interface Window {
+  unmount: () => void
+  mount: () => void
+}
+
+interface Process {
+  NODE_ENV: 'development' | 'production'
+  [key: string]: string | undefined
+}

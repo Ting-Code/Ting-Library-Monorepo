@@ -11,3 +11,8 @@ declare module '*.css' {
   const classes: { [key: string]: string }
   export default classes
 }
+
+declare interface ProcessEnv {
+  NODE_ENV: 'development' | 'production'
+  [key: string]: string | undefined
+}

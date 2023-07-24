@@ -13,3 +13,7 @@ root.render(
     <RouterProvider router={router} />
   </Application>
 )
+
+window.unmount = () => {
+  root.unmount()
+}

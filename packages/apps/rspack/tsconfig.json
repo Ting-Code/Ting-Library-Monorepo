@@ -8,9 +8,10 @@
       "@/*": ["src/*"]
     },
     "lib": ["dom", "esnext"],
-    "types": ["@common/types"],
+    "types": ["@common/types", "node", "./node_modules/@types"],
     "isolatedModules": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"]
   },
 
   "include": ["src", "mock", "@/types/module.d.ts"]
