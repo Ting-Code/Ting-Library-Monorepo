@@ -6,11 +6,12 @@ import('@/style/test.less')
 import { RouterProvider } from 'react-router-dom'
 import { router } from '@/router'
 
-const rootElement = document.getElementById('root') as HTMLElement
-const root = ReactDOM.createRoot(rootElement)
+const rootElement = document.getElementById('rspack') as HTMLElement
+let rspack: ReactDOM.Root
 
 window.mount = () => {
-  root.render(
+  rspack = ReactDOM.createRoot(rootElement)
+  rspack.render(
     <Application>
       <RouterProvider router={router} />
     </Application>
@@ -18,7 +19,7 @@ window.mount = () => {
 }
 
 window.unmount = () => {
-  root.unmount()
+  rspack.unmount()
 }
 
 // 如果不在微前端环境，则直接执行mount渲染

@@ -76,6 +76,8 @@
 
       > pre {
         padding: 0 calc(2vw);
+        font-size: 13px;
+        font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
       }
       &.isUnShowCode {
         height: 0;

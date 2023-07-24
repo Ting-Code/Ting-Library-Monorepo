@@ -64,7 +64,7 @@
 
 <style lang="scss">
   @include b(code-block) {
-    padding: 8px 0 28px;
+    padding: 0 0 28px;
     @include e(code-box) {
       background-color: getCssVar(bg-color);
       border-radius: 8px;
