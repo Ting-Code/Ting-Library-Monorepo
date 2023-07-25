@@ -6,9 +6,7 @@ import * as fs from 'fs'
 import type MD from 'markdown-it'
 const ROOTNAME = resolve(process.cwd(), '../../../')
 const transformDemo = (code: string, id: string): string => {
-  let newCode = ''
   const newId = resolve(id).replace(ROOTNAME, '').replace(/\\/g, '/')
-
   const core = `const __getSoundCode = () => {
              return \`${encodeURIComponent(code)}\`
           }
@@ -17,7 +15,7 @@ const transformDemo = (code: string, id: string): string => {
           }`
 
   if (code && !code.includes('</script>')) {
-    newCode = code
+    return code
       .replace(
         '</template>',
         `</template>
@@ -27,86 +25,80 @@ const transformDemo = (code: string, id: string): string => {
         </script>`
       )
       .trim()
-  } else if (code && code.includes('defineExpose')) {
-    newCode = code
+  }
+  if (code && code.includes('defineExpose')) {
+    return code
       .replace(
         `defineExpose({`,
         `${core}
       defineExpose({__getSoundPath, __getSoundCode,`
       )
       .trim()
-  } else if (code) {
-    newCode = code
-      .replace(
-        `</script>`,
-        `${core}  
-        defineExpose({ __getSoundCode, __getSoundPath })</script>`
-      )
-      .trim()
   }
-  return newCode
+  return code
+    .replace(
+      `</script>`,
+      `${core}  
+        defineExpose({ __getSoundCode, __getSoundPath })</script>`
+    )
+    .trim()
 }
 
 const transformFile = (code: string, id: string, md: MD): string => {
   let newCode: string = code
-  const ast = compileTemplate({ source: code, id: id, filename: id }).ast as any
+  const ast = compileTemplate({ source: code, id: id, filename: id }).ast
+
+  if (!ast) return newCode
 
   transform(ast, {
     prefixIdentifiers: true,
     nodeTransforms: [
       (node) => {
-        // 注入code 和src
-        // @ts-ignore
-        if (['CodeBlock', 'code-block'].includes(node!.tag)) {
-          if ('props' in node) {
-            node?.props?.forEach((prop) => {
-              if (prop.name === 'src') {
-                const root = parse(node.loc.source)
-                const codeBlockElement = root.firstChild as unknown as HTMLElement
-                const src = codeBlockElement.getAttribute('src')
-                if (src) {
-                  let fileDir: string
-                  if (src.includes('@root')) {
-                    fileDir = resolve(ROOTNAME, src.replace('@root/', ''))
-                  } else {
-                    fileDir = resolve(id.replace(basename(id), ''), src)
-                  }
-                  try {
-                    const file = fs.readFileSync(fileDir, 'utf8')
-                    codeBlockElement.setAttribute('code', encodeURIComponent(file))
-                  } catch (error) {
-                    console.error('CodeBlock src 路径错误', error)
-                  }
-                  codeBlockElement.setAttribute(
-                    'src',
-                    fileDir.replace(ROOTNAME, '').replace(/\\/g, '/')
-                  )
-                  // 获取修改后的HTML字符串
-                  const CodeBlockElementString = root.toString()
-                  newCode = newCode.replace(node.loc.source, CodeBlockElementString)
-                }
-              }
-            })
-          }
+        if (!('tag' in node && node.tag)) return
+        // CodeBlock 注入code 和src
+        if (['CodeBlock', 'code-block'].includes(node.tag)) {
+          if (!('props' in node)) return
+          node?.props?.forEach((prop) => {
+            if (!(prop.name === 'src')) return
+            const root = parse(node.loc.source)
+            const codeBlockElement = root.firstChild as unknown as HTMLElement
+            const src = codeBlockElement.getAttribute('src')
+            if (!src) return
+            let fileDir: string
+            if (src.includes('@root')) {
+              fileDir = resolve(ROOTNAME, src.replace('@root/', ''))
+            } else {
+              fileDir = resolve(id.replace(basename(id), ''), src)
+            }
+            try {
+              const file = fs.readFileSync(fileDir, 'utf8')
+              codeBlockElement.setAttribute('code', encodeURIComponent(file))
+            } catch (error) {
+              console.error('CodeBlock src 路径错误', error)
+            }
+            codeBlockElement.setAttribute('src', fileDir.replace(ROOTNAME, '').replace(/\\/g, '/'))
+            // 获取修改后的HTML字符串
+            const CodeBlockElementString = root.toString()
+            newCode = newCode.replace(node.loc.source, CodeBlockElementString)
+          })
         }
         // 转化 md
-        // @ts-ignore
-        if (['md', 'markdown', 'MD', 'Markdown'].includes(node!.tag)) {
+        if (['md', 'markdown', 'MD', 'Markdown'].includes(node.tag)) {
           const root = parse(node.loc.source, { lowerCaseTagName: true })
           const mdElement = root.firstChild as unknown as HTMLElement
           const preElement = root.querySelector('pre') as unknown as HTMLElement
           const outerHTML = preElement.innerHTML
-          if (outerHTML) {
-            const mdElementString = `<${mdElement.tagName}>${md.render(
-              outerHTML?.toString()?.trim()
-            )}</${mdElement.tagName}>`
-            // 获取修改后的HTML字符串
-            newCode = newCode.replace(node.loc.source, mdElementString)
-          }
+          if (!outerHTML) return
+          const mdElementString = `<${mdElement.tagName}>${md.render(
+            outerHTML?.toString()?.trim()
+          )}</${mdElement.tagName}>`
+          // 获取修改后的HTML字符串
+          newCode = newCode.replace(node.loc.source, mdElementString)
         }
       }
     ]
   })
+
   return newCode
 }
 
