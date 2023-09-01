@@ -20,8 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/lodash-es": "^4.17.6",
-    "dayjs": "^1.11.7",
+    "@types/lodash-es": "^4.17.9",
+    "dayjs": "^1.11.9",
     "lodash-es": "^4.17.21"
   }
 }

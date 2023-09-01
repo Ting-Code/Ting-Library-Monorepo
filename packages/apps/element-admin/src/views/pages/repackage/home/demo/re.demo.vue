@@ -6,7 +6,7 @@
   </Demo>
 </template>
 <script setup lang="ts">
-  import { Demo } from '@tingcli/element-plus'
+  import { Demo } from '@tingcli/lib-vue'
   type IChildInstance = InstanceType<typeof Demo>['$props']
   const props = defineProps<IChildInstance>()
   defineOptions({

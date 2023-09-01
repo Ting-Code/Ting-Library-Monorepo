@@ -1,6 +1,6 @@
 {
-  "name": "@tingcli/element-plus",
-  "version": "1.0.0",
+  "name": "@tingcli/lib-vue",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "type": "module",

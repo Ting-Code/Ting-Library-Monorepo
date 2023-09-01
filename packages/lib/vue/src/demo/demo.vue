@@ -9,13 +9,12 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
   import { IDemoProps } from './index'
 
   defineOptions({
     name: 'TDemo'
   })
-
   const props = defineProps<IDemoProps>()
 
   defineSlots<{

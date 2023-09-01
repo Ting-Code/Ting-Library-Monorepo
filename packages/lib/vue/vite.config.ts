@@ -9,6 +9,10 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { resolve } from 'path'
 
+function pathResolve(dir: string) {
+  return resolve(process.cwd(), '.', dir)
+}
+
 export default defineConfig({
   build: {
     //打包文件目录
@@ -50,6 +54,15 @@ export default defineConfig({
       entry: './src/index.ts',
       formats: ['es', 'cjs']
     }
+  },
+  resolve: {
+    // 配置路径别名
+    alias: [
+      {
+        find: '@',
+        replacement: pathResolve('src') + '/'
+      }
+    ]
   },
   plugins: [
     vue(),
