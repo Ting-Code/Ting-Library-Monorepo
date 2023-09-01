@@ -9,6 +9,9 @@
 </template>
 
 <script setup lang="ts">
+  import 'prismjs'
+  import 'prismjs/components/prism-typescript'
+  import 'prismjs/components/prism-scss'
   import DocsNavigation from './navigation/index.vue'
   import { highlightAllUnder } from 'prismjs'
   import { defineOptions, nextTick, onMounted, ref } from 'vue'

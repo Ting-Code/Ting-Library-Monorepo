@@ -26,3 +26,7 @@ export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
   }
   return src
 }
+
+export * from './is'
+export * from './log'
+export * from './storage'

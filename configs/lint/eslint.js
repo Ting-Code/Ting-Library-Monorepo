@@ -4,7 +4,8 @@ module.exports = defineConfig({
   env: {
     browser: true,
     node: true,
-    es6: true
+    es6: true,
+    'vue/setup-compiler-macros': true
   },
   parser: '@typescript-eslint/parser',
   plugins: ['vue', 'react', 'react-hooks', 'unicorn', 'markdown'],

@@ -1,4 +1,4 @@
-import { warn } from '@common/utils'
+import { warn } from '@tingcli/utils'
 import pkg from '../../package.json'
 
 export interface GlobEnvConfig {

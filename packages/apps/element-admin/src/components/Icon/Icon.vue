@@ -11,7 +11,7 @@
   import type { PropType } from 'vue'
   import { CSSProperties, computed } from 'vue'
   import SvgIcon from './SvgIcon.vue'
-  import { isExternal as exrernal } from '@common/utils'
+  import { isExternal as exrernal } from '@tingcli/utils'
 
   const props = defineProps({
     icon: {

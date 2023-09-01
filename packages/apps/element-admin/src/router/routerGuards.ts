@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { isNavigationFailure, Router } from 'vue-router'
 import { useUserStoreWidthOut, ACCESS_TOKEN } from '@/store/modules/user'
 import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
-import { storage } from '@common/utils'
+import { storage } from '@tingcli/utils'
 import { PageEnum } from './type'
 import { ErrorPageRoute } from '@/router/routerBase.js'
 import NProgress from 'nprogress' // progress bar

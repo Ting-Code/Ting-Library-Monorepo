@@ -1,6 +1,6 @@
 import { ObjectDirective, App } from 'vue'
 import { usePermission } from '@/hooks/usePermission'
-import { isArray, isObject, isString } from '@common/utils'
+import { isArray, isObject, isString } from '@tingcli/utils'
 
 const accessesVerified = (value) => {
   if (isString(value)) {

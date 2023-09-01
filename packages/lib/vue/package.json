@@ -1,0 +1,32 @@
+{
+  "name": "@tingcli/element-plus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "vite build"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.3.3",
+    "sass": "^1.58.3",
+    "typescript": "^5.1.6",
+    "unbuild": "^1.2.0",
+    "unplugin-auto-import": "^0.15.3",
+    "unplugin-vue-components": "^0.24.1",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.2",
+    "vite-plugin-svg-icons": "^2.0.1"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.7",
+    "vue": "^3.3.4"
+  }
+}

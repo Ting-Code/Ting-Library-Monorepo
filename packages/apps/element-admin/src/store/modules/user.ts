@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { createStorage } from '@common/utils'
+import { createStorage } from '@tingcli/utils'
 import { store } from '@/store'
 import { ResultEnum } from '@common/request'
 import { getUserInfo, login } from '@/apis/user'
@@ -8,7 +8,7 @@ export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
 export const IS_LOCKSCREEN = 'IS-LOCKSCREEN' // 是否锁屏
 const Storage = createStorage({ storage: localStorage })
-import { storage } from '@common/utils'
+import { storage } from '@tingcli/utils'
 export interface IUserState {
   token: string
 }

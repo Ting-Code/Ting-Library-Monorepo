@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@common/components": "workspace:*",
     "@common/request": "workspace:*",
-    "@common/utils": "workspace:*",
+    "@tingcli/utils": "workspace:*",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
+    "@tingcli/element-plus": "workspace:*",
     "@micro-zoe/micro-app": "1.0.0-beta.5",
     "@vueuse/integrations": "^10.2.1",
     "dayjs": "^1.11.7",

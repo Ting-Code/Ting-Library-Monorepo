@@ -1,4 +1,4 @@
-import { warn } from '@common/utils'
+import { warn } from '@tingcli/utils'
 import { getAppEnvConfig } from '@/utils/env'
 
 export interface EnvConfig {

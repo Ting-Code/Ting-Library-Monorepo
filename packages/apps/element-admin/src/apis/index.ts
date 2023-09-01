@@ -1,4 +1,4 @@
-import { isExternal, isString } from '@common/utils'
+import { isExternal, isString } from '@tingcli/utils'
 import {
   RequestEnum,
   ResultEnum,
@@ -16,7 +16,7 @@ import {
   axios
 } from '@common/request'
 import { useEnvSetting } from '@/hooks/useSetting'
-import { deepMerge, setObjToUrlParams, storage } from '@common/utils'
+import { deepMerge, setObjToUrlParams, storage } from '@tingcli/utils'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStoreWidthOut } from '@/store/modules/user.js'
 import router from '@/router'

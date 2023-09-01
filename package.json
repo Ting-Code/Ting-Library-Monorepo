@@ -10,7 +10,7 @@
     "bootstrap": "pnpm install",
     "dev": "pnpm --filter scripts dev",
     "build": "pnpm --filter scripts build",
-    "commit": "git add . && git cz && git push origin && git push origin2",
+    "commit": "git add . && git cz",
     "clean": "turbo run clean & rimraf node_modules",
     "changeset": "changeset",
     "version-packages": "changeset version",

@@ -7,9 +7,6 @@ import { setupGlobDirectives } from '@/directives'
 import 'virtual:svg-icons-register'
 import { setupI18n } from '@/locale/setup-i18n'
 import * as EPIcon from '@element-plus/icons-vue'
-import 'prismjs'
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-scss'
 import microApp from '@micro-zoe/micro-app'
 microApp.start()
 async function bootstrap() {

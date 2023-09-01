@@ -18,7 +18,11 @@ const DEFAULT_CONFIG: TreeHelperConfig = {
 // 获取配置。  Object.assign 从一个或多个源对象复制到目标对象
 const getConfig = (config: Partial<TreeHelperConfig>) => Object.assign({}, DEFAULT_CONFIG, config)
 
-// tree from list
+/**
+ * @description List转化为Tree
+ * @param list
+ * @param config
+ */
 export function listToTree<T = any>(list: any[], config: Partial<TreeHelperConfig> = {}): T[] {
   const conf = getConfig(config) as TreeHelperConfig
   const nodeMap = new Map()
@@ -36,6 +40,11 @@ export function listToTree<T = any>(list: any[], config: Partial<TreeHelperConfi
   return result
 }
 
+/**
+ * @description Tree转化为List
+ * @param tree
+ * @param config
+ */
 export function treeToList<T = any>(tree: any, config: Partial<TreeHelperConfig> = {}): T {
   config = getConfig(config)
   const { children } = config
@@ -47,6 +56,12 @@ export function treeToList<T = any>(tree: any, config: Partial<TreeHelperConfig>
   return result
 }
 
+/**
+ * @description 遍历树传递给func输出返回true的Node
+ * @param tree
+ * @param func
+ * @param config
+ */
 export function findNode<T = any>(
   tree: any,
   func: Fn,
@@ -62,6 +77,12 @@ export function findNode<T = any>(
   return null
 }
 
+/**
+ * @description 遍历树传递给func输出返回true的Node[]
+ * @param tree
+ * @param func
+ * @param config
+ */
 export function findNodeAll<T = any>(
   tree: any,
   func: Fn,
@@ -78,6 +99,12 @@ export function findNodeAll<T = any>(
   return result
 }
 
+/**
+ * @description 遍历树传递给func输出符合的子Node并与父亲与祖先所有Node
+ * @param tree
+ * @param func
+ * @param config
+ */
 export function findPath<T = any>(
   tree: any,
   func: Fn,
@@ -105,6 +132,12 @@ export function findPath<T = any>(
   return null
 }
 
+/**
+ * @description 遍历树传递给func输出符合的子Node并与父亲与祖先所有Node[]
+ * @param tree
+ * @param func
+ * @param config
+ */
 export function findPathAll(tree: any, func: Fn, config: Partial<TreeHelperConfig> = {}) {
   config = getConfig(config)
   const path: any[] = []
@@ -127,10 +160,9 @@ export function findPathAll(tree: any, func: Fn, config: Partial<TreeHelperConfi
   return result
 }
 
-export function filter<T = any>(
+export function filterTree<T = any>(
   tree: T[],
   func: (n: T) => boolean,
-  // Partial 将 T 中的所有属性设为可选
   config: Partial<TreeHelperConfig> = {}
 ): T[] {
   // 获取配置
@@ -151,7 +183,13 @@ export function filter<T = any>(
   return listFilter(tree)
 }
 
-export function forEach<T = any>(
+/**
+ * @description 遍历Tree每一个Node经过func，func返回true就终止遍历
+ * @param tree
+ * @param func
+ * @param config
+ */
+export function forEachTree<T = any>(
   tree: T[],
   func: (n: T) => any,
   config: Partial<TreeHelperConfig> = {}
