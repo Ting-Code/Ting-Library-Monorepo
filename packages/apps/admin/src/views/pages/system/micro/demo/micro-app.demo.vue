@@ -6,6 +6,6 @@
   import { useMicro } from '@/hooks/useMicro'
 
   const { microUrl, microName } = useMicro({
-    name: 'rspack'
+    name: 'micro'
   })
 </script>

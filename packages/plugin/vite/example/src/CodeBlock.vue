@@ -6,9 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  // @ts-ignore
-  import { ref, defineProps, computed, nextTick } from 'vue'
-  // @ts-ignore
+  import { ref, computed, nextTick } from 'vue'
   import type { Component } from 'vue'
 
   const props = defineProps<{

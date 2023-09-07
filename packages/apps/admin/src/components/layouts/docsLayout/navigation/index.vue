@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import DocsTree from './tree.vue'
-  import { defineOptions, defineProps, nextTick, ref, toRefs, watch } from 'vue'
+  import { nextTick, ref, toRefs, watch } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useAppProviderContext } from '@/components/application/useAppContext'
   import Icon from '@/components/Icon/Icon.vue'

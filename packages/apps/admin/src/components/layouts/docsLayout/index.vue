@@ -14,7 +14,7 @@
   import 'prismjs/components/prism-scss'
   import DocsNavigation from './navigation/index.vue'
   import { highlightAllUnder } from 'prismjs'
-  import { defineOptions, nextTick, onMounted, ref } from 'vue'
+  import { nextTick, onMounted, ref } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
 
   defineOptions({

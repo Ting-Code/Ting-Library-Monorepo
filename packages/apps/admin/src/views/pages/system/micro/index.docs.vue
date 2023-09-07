@@ -27,10 +27,10 @@
 
       </pre>
     </MD>
-    <CodeBlock src="@root/packages/apps/rspack/src/main.tsx" :default-show-code="true" />
+    <CodeBlock src="@root/packages/apps/micro/src/main.tsx" :default-show-code="true" />
     <MD>
       <pre>
-高于部署，我选择部署同域名下的子路由/rspack/中，需要配置以下。
+高于部署，我选择部署同域名下的子路由/micro/中，需要配置以下。
 ```typescript
    devServer: {
       headers: {
@@ -38,26 +38,26 @@
       }
    },
    output: {
-      publicPath: isProdMode ? '/rspack/' : '/', // 资源放入rspack子目录中
+      publicPath: isProdMode ? '/micro/' : '/', // 资源放入micro子目录中
    }
 ```
       </pre>
     </MD>
-    <CodeBlock src="@root/packages/apps/rspack/rspack.config.js" :default-show-code="false" />
+    <CodeBlock src="@root/packages/apps/micro/rspack.config.js" :default-show-code="false" />
     <MD>
       <pre>
-`Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/rspack`下：
+`Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/micro`下：
 ```
-        location /rspack {
+        location /micro {
             if ($request_filename ~* .*\.(?:htm|html)$)  ## 配置页面不缓存html和htm结尾的文件
             {
                add_header Cache-Control "private, no-store, no-cache, must-revalidate, proxy-revalidate";
             }
             # 把匹配到的路径重写, 注意要以/结尾
-            alias /usr/share/nginx/html/rspack;
+            alias /usr/share/nginx/html/micro;
             # 默认首页
             index  index.html;
-            try_files $uri $uri/ /rspack/index.html;
+            try_files $uri $uri/ /micro/index.html;
         }
 ```
       </pre>

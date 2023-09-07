@@ -17,8 +17,7 @@
 <script setup lang="ts">
   import { ArrowUpBold, ArrowDownBold } from '@element-plus/icons-vue'
   import { languages, highlight } from 'prismjs'
-  import { computed, defineOptions, nextTick, onMounted, ref, watch } from 'vue'
-  import { defineProps } from 'vue'
+  import { computed, nextTick, onMounted, ref, watch } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
   defineOptions({
     name: 'CodeBlockCode'

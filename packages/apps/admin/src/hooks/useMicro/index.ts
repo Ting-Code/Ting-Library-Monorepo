@@ -5,7 +5,7 @@ export interface IUseMicroConfig {
 }
 
 export const useMicro = (config: IUseMicroConfig) => {
-  const { name = 'rspack' } = config
+  const { name = 'micro' } = config
 
   const microUrl = isProdMode() ? `http://139.199.173.241/${name}/` : 'http://localhost:8080/'
 

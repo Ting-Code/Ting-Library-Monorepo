@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-  import { defineOptions, onMounted, computed, ref, defineProps, nextTick } from 'vue'
+  import { onMounted, computed, ref, nextTick } from 'vue'
   import SoundPath from './path.vue'
   import SoundCode from './code.vue'
   import type { Component } from 'vue'
