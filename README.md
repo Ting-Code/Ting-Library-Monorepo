@@ -37,7 +37,7 @@ pnpm install
 pnpm dev
 
 # 或者直接启动admin项目
-pnpm --filter @apps/element-admin dev
+pnpm --filter @apps/admin dev
 ```
 
 ## 目录结构
@@ -60,7 +60,7 @@ Ting-Library-Monorepo
 ├─packages
 |    ├─apps
 |    |  ├─rspack # Rspack 搭建React子应用
-|    |  ├─element-admin # Vite搭建vue3主应用
+|    |  ├─admin # Vite搭建vue3主应用
 |    |  |       ├─mock # mock请求
 |    |  |       ├─src
 |    |  |       |  ├─apis

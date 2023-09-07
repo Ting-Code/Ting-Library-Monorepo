@@ -49,7 +49,7 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
       </pre>
     </MD>
     <CodeBlock
-      src="@root/packages/apps/element-admin/src/components/layouts/docsLayout/index.vue"
+      src="@root/packages/apps/admin/src/components/layouts/docsLayout/index.vue"
       :defaultShowCode="false"
       type="html"
     />
