@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@common/request": "workspace:*",
-    "@tingcli/utils": "workspace:*",
+    "@tingcli/utils": "^0.0.1",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "@tingcli/lib-vue": "workspace:*",

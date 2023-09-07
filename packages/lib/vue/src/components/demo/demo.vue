@@ -1,10 +1,10 @@
 <template>
   <div>
     <div>{{ props }}</div>
-    <slot name="ting" ting="ting作用域插槽"></slot>
+    <slot name="ting" :ting="'ting作用域插槽'"></slot>
     <slot name="king" msg="king作用域插槽"></slot>
-    <slot name="default" default="king作用域插槽"></slot>
-    <el-button @click="() => handleChange"> 按钮change </el-button>
+    <slot name="default" :msg="`king作用域插槽`"></slot>
+    <el-button loading="loading" @click="() => handleChange"> 按钮change </el-button>
     <el-button @click="() => handleUpdate"> 按钮update </el-button>
   </div>
 </template>
@@ -17,11 +17,14 @@
   })
   const props = defineProps<IDemoProps>()
 
-  defineSlots<{
+  type ISlots = {
     default(props: { msg: string }): any
     ting(props: { ting: string }): any
     king(props: { msg: string }): any
-  }>()
+  }
+
+  const slots = defineSlots<ISlots>()
+  console.log('slots Demo', slots)
 
   const emit = defineEmits<{
     change: [id: number]
