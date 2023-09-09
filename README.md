@@ -18,8 +18,8 @@ Ting Library 是基于 pnpm 搭建的 monorepo 架构文档既架构的知识库
 
 ## 快速开始
 
-```
-# 执行tingcli （必须是pnpm）
+```bash
+# 执行tingcli （必须是最新版pnpm）
 pnpm create tingcli
 
 # 选择monorepo
@@ -30,14 +30,37 @@ pnpm create tingcli
 ? 项目类型 monorepo
 ? 项目名称 project-name
 
-# 初始化项目 （必须是pnpm）
+# 初始化项目 （必须是最新版pnpm）
 pnpm install
+```
 
-# 启动选择项目
+### 启动项目
+
+```bash
+# 启动项目 (单选)
 pnpm dev
 
-# 或者直接启动admin项目
-pnpm --filter @apps/admin dev
+? 请选择需要执行的项目 » - 上下选择，空格切换，回车确定
+>   @apps/admin
+    @apps/micro
+    ...
+
+# 构建 （多选）
+pnpm build
+
+? 请选择需要执行的项目 » - 上下选择，空格切换，回车确定
+Instructions:
+    ↑/↓: Highlight option
+    ←/→/[space]: Toggle selection
+    a: Toggle all
+    enter/return: Complete answer
+( )   @apps/admin
+( )   @apps/micro
+( )   @tingcli/create
+( )   @tingcli/cli-utils
+( )   @tingcli/lib-vue
+( )   vite-plugin-code
+      ...
 ```
 
 ## 目录结构

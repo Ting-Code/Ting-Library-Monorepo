@@ -15,7 +15,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "dev": "unbuild"
   },
   "keywords": [],
   "author": "",

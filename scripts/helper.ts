@@ -3,61 +3,66 @@ import prompts = require('prompts')
 
 type WorkspacePackage = { name: string; version?: string; path: string }
 // 获取所有子项目的信息 as WorkspacePackage （筛选需要打包的子项目）
-async function getPackages() {
+export async function getPackages(filter: (p?: WorkspacePackage) => Boolean = () => true) {
   const { stdout } = await execa('pnpm', ['ls', '-r', '--depth', '-1', '--json'])
-  return (JSON.parse(stdout) as WorkspacePackage[]).filter(
-    (p) => p.name !== 'ting-library-monorepo' && p.name !== 'scripts' && p.name.startsWith('@apps')
-  )
+  return (JSON.parse(stdout) as WorkspacePackage[]).filter(filter)
 }
 
-async function runScript(pkg: WorkspacePackage, script: string) {
-  execa('pnpm', ['--filter', `${pkg.name}...`, '--parallel', script], {
+/**
+ * @description 执行多个命令
+ * @param pkgArr
+ * @param script
+ */
+export async function runScript(pkgArr: WorkspacePackage[], script: string) {
+  pkgArr.forEach((pkg) => {
+    execa('pnpm', ['--filter', `${pkg.name}...`, script], {
+      stdio: 'inherit',
+      preferLocal: true
+    })
+  })
+}
+
+/**
+ * @description 运行单个项目
+ * @param pkg
+ * @param script
+ */
+export async function runSingleScript(pkg: WorkspacePackage, script: string) {
+  execa('pnpm', ['--filter', `${pkg.name}...`, script], {
     stdio: 'inherit',
     preferLocal: true
   })
 }
 
-async function runSingleScript(pkg: WorkspacePackage, script: string) {
-  execa('pnpm', ['--filter', `${pkg.name}`, script], {
-    stdio: 'inherit',
-    preferLocal: true
-  })
+interface PromptsSelectConfig {
+  type?: 'select' | 'multiselect'
+  message?: string
+  hint?: string
 }
 
-export async function run(command: string) {
-  const main = async () => {
-    const packages = await getPackages()
-    if (!packages.length) {
-      return
+/**
+ * @description 命令行执行选择交互 （单选|多选）
+ * @param packages
+ * @param config
+ */
+export function runPromptsSelect(packages: WorkspacePackage[], config: PromptsSelectConfig = {}) {
+  const {
+    type = 'select',
+    message = '请选择需要执行的项目',
+    hint = '- 上下选择，空格切换，回车确定'
+  } = config
+  return prompts([
+    {
+      name: 'value',
+      message: message,
+      type: type,
+      choices: packages.map((p) => {
+        return {
+          title: p.name,
+          value: p.name
+        }
+      }),
+      hint: hint
     }
-
-    if (packages.length === 1) {
-      runSingleScript(packages[0], command)
-      return
-    }
-
-    const { name } = await prompts([
-      {
-        name: 'name',
-        message: `Choose the package to run ${command} script`,
-        type: 'select',
-        choices: packages.map((p) => {
-          return {
-            title: p.name,
-            value: p.name
-          }
-        })
-      }
-    ])
-
-    runScript(
-      packages.find((p) => p.name === name),
-      command
-    )
-  }
-
-  main().catch((error) => {
-    console.error(error)
-    process.exit(1)
-  })
+  ])
 }

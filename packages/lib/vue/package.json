@@ -6,7 +6,8 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite build"
   },
   "files": [
     "dist"
