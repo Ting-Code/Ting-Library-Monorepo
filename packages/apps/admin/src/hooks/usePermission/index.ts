@@ -57,7 +57,7 @@ export function usePermission() {
   const handleLogin = async () => {
     await userStore.login()
     const toPath = decodeURIComponent((route.query?.redirect as string) || '/')
-    ElMessage.success('登录成功，即将进入系统')
+    ElMessage.success('欢迎来到Ting Library知识库！')
     if (route.name === LOGIN_NAME) {
       await router.replace('/')
     } else await router.replace(toPath)
