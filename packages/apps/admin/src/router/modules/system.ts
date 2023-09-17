@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Layout,
     meta: {
       title: '架构设计',
-      icon: 'Setting',
+      icon: 'Box',
       sort: 1
     },
     children: [
@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'home',
         name: 'system_home',
         meta: {
-          title: '介绍'
+          title: 'Ting Library 介绍'
         },
         component: () => import('@/views/pages/system/home/index.docs.vue')
       },
@@ -35,7 +35,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'markdown',
         name: 'system_markdown',
         meta: {
-          title: '🔥文档设计'
+          title: '🔥文档的设计'
         },
         component: () => import('@/views/pages/system/docs/index.docs.vue')
       },
@@ -43,7 +43,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'micro',
         name: 'system_micro',
         meta: {
-          title: '微前端'
+          title: '浅尝微前端'
         },
         component: () => import('@/views/pages/system/micro/index.docs.vue')
       },

@@ -32,7 +32,6 @@ export default defineConfig(({ command, mode }) => {
     base: '/',
     plugins: [
       vue({
-        reactivityTransform: true, // 开启ref转换
         include: [/\.vue$/, /\.md$/] // markdown 兼容
       }),
       vueJsx(),

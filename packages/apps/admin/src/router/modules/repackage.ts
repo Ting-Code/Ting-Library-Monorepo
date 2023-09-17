@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
     component: Layout,
     meta: {
       title: '二次封装',
-      icon: 'Setting',
+      icon: 'Brush',
       sort: 2
     },
     children: [
@@ -27,7 +27,7 @@ const routes: Array<RouteRecordRaw> = [
         path: 'home',
         name: 'repackage_home',
         meta: {
-          title: '介绍'
+          title: '🔥Vue二次封装思考'
         },
         component: () => import('@/views/pages/repackage/home/index.docs.vue')
       }
