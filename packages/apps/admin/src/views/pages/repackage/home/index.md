@@ -56,6 +56,8 @@ const props = defineProps<IProps>()
 
 需要这样写类型继承，`/** @vue-ignore */`这样可以通过宏编译。
 
+PS: 这种方式是需要经过通过宏编译的，也就是需要`build`独立打包组件库才能被消费者识别类型，不是静态的 TS 类型。
+
 ```typescript
 type IElButton = InstanceType<typeof ElButton>
 export type IElButtonAttrs = IElButton['$props']
