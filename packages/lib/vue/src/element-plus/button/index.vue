@@ -20,12 +20,12 @@
   } from './index'
 
   defineOptions({
-    name: 'TButton',
+    name: 'REButton',
     inheritAttrs: false
   })
 
   // 继承子组件props类型
-  const props = defineProps<ITButtonProps>()
+  const props = withDefaults(defineProps<ITButtonProps>(), {})
 
   const slots = defineSlots<ITButtonSlots>()
 

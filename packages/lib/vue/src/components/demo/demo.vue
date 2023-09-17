@@ -13,7 +13,7 @@
   import { IDemoProps } from './index'
 
   defineOptions({
-    name: 'TDemo'
+    name: 'Demo'
   })
   const props = defineProps<IDemoProps>()
 

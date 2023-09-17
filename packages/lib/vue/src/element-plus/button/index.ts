@@ -1,4 +1,4 @@
-import TButton from './index.vue'
+import REButton from './index.vue'
 import { ElButton } from 'element-plus'
 
 export type IButtonMapType = 'confirm' | 'cancel' | 'search'
@@ -11,7 +11,7 @@ export type IElButtonSlots = IElButton['$slots']
 export type IElButtonEmits = IElButton['$emit']
 
 export interface ITButtonProps extends /** @vue-ignore */ Omit<IElButtonAttrs, 'type'> {
-  type: ITButtonType | IElButtonAttrs['type']
+  type?: ITButtonType | IElButtonAttrs['type']
 }
 
 export interface ITButtonEmits extends /** @vue-ignore */ IElButtonEmits {}
@@ -22,4 +22,4 @@ export interface ITButtonSlots extends /** @vue-ignore */ IElButtonSlots {
   icon(): any
 }
 
-export { TButton }
+export { REButton }
