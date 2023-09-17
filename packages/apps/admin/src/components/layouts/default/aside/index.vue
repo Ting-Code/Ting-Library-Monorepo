@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import SvgIcon from '@/components/Icon/Icon.vue'
+  import Icon from '@/components/Icon/Icon.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   import { defineComponent, toRaw, toRefs } from 'vue'
   import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
@@ -16,8 +16,8 @@
       const { isMobile } = toRefs(useAppProviderContext())
       const { getMenus } = useAsyncRouteStoreWidthOut()
       const renderIcon = (icon) => {
-        const Icon = EPIcon?.[icon]
-        return Icon ? <Icon /> : <SvgIcon icon={icon} />
+        const ELIcon = EPIcon?.[icon]
+        return ELIcon ? <ELIcon /> : <Icon icon={icon} />
       }
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
