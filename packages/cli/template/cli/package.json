@@ -22,7 +22,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@tingcli/cli-utils": "^0.0.2",
+    "@tingcli/cli-utils": "^0.0.5",
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
     "semver": "^7.3.8"

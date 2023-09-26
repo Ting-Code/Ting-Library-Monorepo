@@ -9,8 +9,6 @@ export async function runDev() {
       return
     }
 
-    console.log('222222222222', packages)
-
     if (packages.length === 1) {
       runSingleScript(packages[0], command)
       return

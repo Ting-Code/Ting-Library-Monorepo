@@ -34,14 +34,14 @@
     }
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.0",
+    "@changesets/cli": "^2.26.2",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "esno": "^0.16.3",
     "execa": "^6.1.0",
     "rimraf": "^4.1.2",
     "ts-node": "^10.9.1",
-    "turbo": "^1.8.2",
+    "turbo": "^1.10.14",
     "typescript": "^5.2.2"
   },
   "engines": {

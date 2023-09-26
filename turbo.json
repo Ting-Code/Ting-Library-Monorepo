@@ -9,6 +9,7 @@
       "outputs": [],
       "dependsOn": ["^clean"]
     },
+    "stub": {},
     "test": {
       "dependsOn": ["^test"],
       "outputs": []
