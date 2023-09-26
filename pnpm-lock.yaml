@@ -167,8 +167,8 @@ importers:
         specifier: workspace:*
         version: link:../../lib/vue
       '@tingcli/utils':
-        specifier: workspace:*
-        version: link:../../utils
+        specifier: ^0.0.2
+        version: link:../../lib/utils
       '@vueuse/integrations':
         specifier: ^10.2.1
         version: registry.npmjs.org/@vueuse/integrations@10.2.1(nprogress@0.2.0)(sortablejs@1.15.0)(vue@3.3.4)
@@ -426,6 +426,18 @@ importers:
         specifier: ^4.1.4
         version: registry.npmjs.org/@types/npmlog@4.1.4
 
+  packages/lib/utils:
+    dependencies:
+      '@types/lodash-es':
+        specifier: ^4.17.9
+        version: registry.npmjs.org/@types/lodash-es@4.17.9
+      dayjs:
+        specifier: ^1.11.9
+        version: registry.npmjs.org/dayjs@1.11.9
+      lodash-es:
+        specifier: ^4.17.21
+        version: registry.npmjs.org/lodash-es@4.17.21
+
   packages/lib/vue:
     dependencies:
       element-plus:
@@ -517,7 +529,7 @@ importers:
     dependencies:
       '@tingcli/utils':
         specifier: workspace:*
-        version: link:../utils
+        version: link:../lib/utils
       axios:
         specifier: ^1.3.4
         version: 1.3.4
@@ -527,18 +539,6 @@ importers:
       '@config/tsconfig':
         specifier: workspace:*
         version: link:../../configs/tsconfig
-
-  packages/utils:
-    dependencies:
-      '@types/lodash-es':
-        specifier: ^4.17.9
-        version: registry.npmjs.org/@types/lodash-es@4.17.9
-      dayjs:
-        specifier: ^1.11.9
-        version: registry.npmjs.org/dayjs@1.11.9
-      lodash-es:
-        specifier: ^4.17.21
-        version: registry.npmjs.org/lodash-es@4.17.21
 
   scripts:
     devDependencies:

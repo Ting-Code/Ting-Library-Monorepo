@@ -17,7 +17,7 @@
         <div class={ns.b()}>
           {[...props.tree].map((item) => {
             return (
-              <a class={`${item.tag.toLowerCase()}`} key={item.id} href={`#${item.id}`}>
+              <a class={`title-${item.tag.toLowerCase()}`} key={item.id} href={`#${item.id}`}>
                 <Icon icon={`layout-${item.tag.toLowerCase()}`} size="20" />
                 <span>{item.text}</span>
               </a>
@@ -35,11 +35,11 @@
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    .h1,
-    .h2,
-    .h3,
-    .h4,
-    .h5 {
+    .title-h1,
+    .title-h2,
+    .title-h3,
+    .title-h4,
+    .title-h5 {
       overflow: hidden;
       text-overflow: ellipsis;
       flex-wrap: nowrap;
@@ -49,28 +49,29 @@
         padding-left: 5px;
       }
     }
-    .h1 {
+    .title-h1 {
+      padding: 8px;
       color: getCssVar(text-color, primary);
       font-size: 20px;
       font-weight: getCssVar(font-weight-bold);
     }
-    .h2 {
+    .title-h2 {
       color: getCssVar(text-color, primary);
       font-size: 18px;
       font-weight: getCssVar(font-weight-bold);
       padding-left: 8px;
     }
-    .h3 {
+    .title-h3 {
       color: getCssVar(text-color, regular);
       font-size: 16px;
       padding-left: 16px;
     }
-    .h4 {
+    .title-h4 {
       color: getCssVar(text-color, regular);
       font-size: 15px;
       padding-left: 26px;
     }
-    .h5 {
+    .title-h5 {
       color: getCssVar(text-color, regular);
       font-size: 15px;
       padding-left: 32px;

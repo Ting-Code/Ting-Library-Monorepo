@@ -15,8 +15,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 import viteCompression from 'vite-plugin-compression'
 // svg 加载
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-// 导入图片路径
-import ViteImages from 'vite-plugin-vue-images'
 import Markdown from 'vite-plugin-md'
 // @ts-ignore
 import ViteCode from 'vite-plugin-code'
@@ -48,10 +46,6 @@ export default defineConfig(({ command, mode }) => {
       createSvgIconsPlugin({
         iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
         symbolId: 'icon-[dir]-[name]'
-      }),
-      ViteImages({
-        dirs: ['src/assets/img'], // 指明图片存放目录（默认该路径）
-        extensions: ['jpg', 'jpeg', 'png', 'svg', 'webp']
       }),
       viteMockServe({
         mockPath: 'mock',
