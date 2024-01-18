@@ -1,5 +1,6 @@
 import { expect, test, describe } from 'vitest'
 import {
+  compared,
   computational,
   div,
   fixed,
@@ -7,6 +8,10 @@ import {
   fixedDown,
   fixedDown2D,
   minus,
+  numberToMoney,
+  numberToSimplified,
+  numberToTraditional,
+  numberToUnit,
   plus,
   round,
   round2D,
@@ -132,9 +137,45 @@ describe('测试 computational 加减乘除 相关函数', async () => {
         error: () => 'error'
       })
     ).toBe('error')
+    expect(plus([1, 2, '3', undefined])).toBe(6)
+    expect(minus(['10', '2', '3', undefined])).toBe(5)
+    expect(times(['2', '2', '2', undefined])).toBe(8)
+    expect(div(['36', '2', '3', undefined])).toBe(6)
   })
-  expect(plus([1, 2, '3', undefined])).toBe(6)
-  expect(minus(['10', '2', '3', undefined])).toBe(5)
-  expect(times(['2', '2', '2', undefined])).toBe(8)
-  expect(div(['36', '2', '3', undefined])).toBe(6)
+})
+
+describe('测试 computational 比较大小 相关函数', async () => {
+  test('测试 computational 比较大小', () => {
+    expect(compared(1.11, '1.110')).toBe(0)
+    expect(compared(2, 1)).toBe(1)
+    expect(compared(1, 1.01)).toBe(-1)
+    expect(compared(undefined as any, null as any)).toBe(null)
+  })
+})
+
+describe('测试 数字转为中文文字 相关函数', async () => {
+  test('测试 numberToSimplified 数字转简体中文', () => {
+    expect(numberToSimplified(undefined)).toBe('')
+    expect(numberToSimplified('12312.122')).toBe('一万二千三百一十二点一二二')
+    expect(numberToSimplified(12345678)).toBe('一千二百三十四万五千六百七十八')
+    expect(numberToSimplified('0')).toBe('零')
+  })
+  test('测试 numberToTraditional 数字转繁体中文', () => {
+    expect(numberToTraditional(undefined)).toBe('')
+    expect(numberToTraditional('12312.122')).toBe('壹万贰仟叁佰壹拾贰点壹贰贰')
+    expect(numberToTraditional(12345678)).toBe('壹仟贰佰叁拾肆万伍仟陆佰柒拾捌')
+    expect(numberToTraditional(0)).toBe('零')
+  })
+  test('测试 numberToMoney 数字转银行金额', () => {
+    expect(numberToMoney(undefined)).toBe('')
+    expect(numberToMoney('12312.122')).toBe('壹万贰仟叁佰壹拾贰元壹角贰分')
+    expect(numberToMoney(12345678)).toBe('壹仟贰佰叁拾肆万伍仟陆佰柒拾捌元整')
+    expect(numberToMoney(0)).toBe('零元整')
+  })
+
+  test('测试 numberToUnit 数字单位', () => {
+    expect(numberToUnit(undefined)).toBe('')
+    expect(numberToUnit(12345678)).toBe('千万')
+    expect(numberToUnit('12345678')).toBe('千万')
+  })
 })

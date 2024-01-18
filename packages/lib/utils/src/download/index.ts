@@ -1,4 +1,4 @@
-import { openWindow } from './util'
+import { openWindow } from '../browser'
 
 /**
  * @description: base64 to blob

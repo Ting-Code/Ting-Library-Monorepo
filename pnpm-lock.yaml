@@ -424,6 +424,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: registry.npmjs.org/lodash-es@4.17.21
+      nzh:
+        specifier: ^1.0.12
+        version: 1.0.12
 
   packages/lib/vue:
     dependencies:
@@ -9676,6 +9679,13 @@ packages:
       }
     dependencies:
       boolbase: 1.0.0
+    dev: false
+
+  /nzh@1.0.12:
+    resolution:
+      {
+        integrity: sha512-6nOlvAv9qFg0itfqNDJoOUHsItO/bTTGyHUi7DsgX10KG8iY6u8xz3oI7jfu+/v5xcVXIQIucuaoiQ7LI2RRIA==
+      }
     dev: false
 
   /object-assign@4.1.1:

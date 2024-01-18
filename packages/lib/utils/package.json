@@ -24,6 +24,7 @@
     "@types/lodash-es": "^4.17.9",
     "bignumber.js": "^9.1.2",
     "dayjs": "^1.11.9",
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.17.21",
+    "nzh": "^1.0.12"
   }
 }

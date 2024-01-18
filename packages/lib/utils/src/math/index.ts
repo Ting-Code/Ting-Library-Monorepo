@@ -1,12 +1,11 @@
 import BigNumber from 'bignumber.js'
 import { isNumberString } from '../is'
-
+import Nzh from 'nzh'
 interface Config {
   repair?: unknown
   error?: Function
   roundingMode?: BigNumber.RoundingMode
 }
-
 /**
  * @description  省略数字（默认四舍五入取整） 支持 number | string
  * @param val
@@ -149,13 +148,13 @@ type ComputationalMethod = 'plus' | 'minus' | 'times' | 'div'
  */
 export const computational = (arr: unknown[], method: ComputationalMethod, config: Config = {}) => {
   const { repair = 0, error } = config
-  const computeArr = []
+  const computeArr: BigNumber.Value[] = []
   // check 非数数据
   let hasErrorNum = false
   arr.forEach((num) => {
     const isNumberStringNum = isNumberString(num)
     !isNumberStringNum && (hasErrorNum = true)
-    computeArr.push(isNumberStringNum ? num : repair)
+    computeArr.push((isNumberStringNum ? num : repair) as BigNumber.Value)
   })
   if (hasErrorNum && error) return error(computeArr)
   const math = new BigNumber(computeArr[0])
@@ -195,4 +194,100 @@ export const div = (arr: unknown[]) => {
 export const compared = (val1: BigNumber.Value, val2: BigNumber.Value) => {
   const meth = new BigNumber(val1)
   return meth.comparedTo(val2)
+}
+
+export interface ToCnConfig {
+  ch: string
+  ch_u: string
+  ch_f: string
+  ch_d: string
+  m_t: string
+  m_z: string
+  m_u: string
+}
+
+/**
+ * 创建自定义数字转文字函数
+ * @param toCnConfig
+ */
+export const createNzh = (toCnConfig: Partial<ToCnConfig> = {}) => {
+  const {
+    ch = '〇壹贰叁肆伍陆柒捌玖',
+    ch_u = '个十百千万亿兆京',
+    ch_f = '负',
+    ch_d = '点',
+    m_t = '元角分厘',
+    m_z = '￥',
+    m_u = '正'
+  } = toCnConfig
+  return new Nzh({ ch, ch_u, ch_f, ch_d, m_t, m_z, m_u })
+}
+
+interface NumberToConfig {
+  /*
+   *  十的口语化开关, 默认值为 false
+   *  注: Nzh.cn和Nzh.hk中的encodeS方法默认 true
+   * */
+  tenMin?: boolean
+  /**
+   * "万万"化开关, 默认值为 true
+   * */
+  ww?: boolean
+  repair?: unknown
+  error?: Function
+}
+
+/**
+ * @description 数字转简体中文
+ * @param val
+ * @param config
+ */
+export const numberToSimplified = (val: unknown, config: NumberToConfig = {}) => {
+  const { repair = '', error, ...option } = config
+  if (!isNumberString(val)) return error ? error() : repair
+  return Nzh.cn.encodeS(val as string | number, option)
+}
+/**
+ * @description 数字转繁体中文
+ * @param val
+ * @param config
+ */
+export const numberToTraditional = (val: unknown, config: NumberToConfig = {}) => {
+  const { repair = '', error, ...option } = config
+  if (!isNumberString(val)) return error ? error() : repair
+  return Nzh.cn.encodeB(val as string | number, option)
+}
+
+interface ToMoneyConfig extends NumberToConfig {
+  // 输出完整金额开关, toMoney 函数专用配置, 默认 false
+  complete?: boolean
+  // 输出金额前缀字符, toMoney 函数专用配置, 默认 true
+  outSymbol?: boolean
+  // 个位为0时不省略元，toMoney 函数专用配置, 默认 false
+  unOmitYuan?: boolean
+  // 不以源数据加整，以输出结果加“整”（只要输出的结果没有到分位就加“整”）
+  forceZheng?: boolean
+}
+
+/**
+ * @description 数字转银行书写金额
+ * @param val
+ * @param config
+ */
+export const numberToMoney = (val: unknown, config: ToMoneyConfig = {}) => {
+  const { repair = '', error, outSymbol = false, ...option } = config
+  if (!isNumberString(val)) return error ? error() : repair
+  return Nzh.cn.toMoney(val as string | number, { outSymbol, ...option })
+}
+/**
+ * @description 获取数字单位
+ * @param val
+ * @param config
+ */
+export const numberToUnit = (val: unknown, config: Config = {}) => {
+  const { repair = '', error } = config
+  if (!isNumberString(val)) return error ? error() : repair
+  const unitArr = ['', '十', '百', '千', '万', '十万', '百万', '千万', '亿']
+  const unitArr2 = ['十亿', '百亿', '千亿', '万亿', '十万亿', '百万亿', '千万亿', '兆']
+  return [...unitArr, ...unitArr2][Number(val).toFixed(0).length - 1]
 }
