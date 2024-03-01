@@ -430,6 +430,12 @@ importers:
 
   packages/lib/vue:
     dependencies:
+      '@tingcli/utils':
+        specifier: workspace:0.0.2
+        version: link:../utils
+      '@vueuse/core':
+        specifier: ^10.9.0
+        version: 10.9.0(vue@3.3.4)
       element-plus:
         specifier: ^2.3.7
         version: registry.npmjs.org/element-plus@2.3.7(vue@3.3.4)
@@ -3041,6 +3047,20 @@ packages:
       }
     dev: false
 
+  /@types/web-bluetooth@0.0.17:
+    resolution:
+      {
+        integrity: sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==
+      }
+    dev: false
+
+  /@types/web-bluetooth@0.0.20:
+    resolution:
+      {
+        integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==
+      }
+    dev: false
+
   /@types/ws@8.5.4:
     resolution:
       {
@@ -3593,6 +3613,59 @@ packages:
       {
         integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==
       }
+
+  /@vueuse/core@10.9.0(vue@3.3.4):
+    resolution:
+      {
+        integrity: sha512-/1vjTol8SXnx6xewDEKfS0Ra//ncg4Hb0DaZiwKf7drgfMsKFExQ+FnnENcN6efPen+1kIzhLQoGSy0eDUVOMg==
+      }
+    dependencies:
+      '@types/web-bluetooth': 0.0.20
+      '@vueuse/metadata': 10.9.0
+      '@vueuse/shared': 10.9.0(vue@3.3.4)
+      vue-demi: 0.14.7(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/metadata@10.2.1:
+    resolution:
+      {
+        integrity: sha512-3Gt68mY/i6bQvFqx7cuGBzrCCQu17OBaGWS5JdwISpMsHnMKKjC2FeB5OAfMcCQ0oINfADP3i9A4PPRo0peHdQ==
+      }
+    dev: false
+
+  /@vueuse/metadata@10.9.0:
+    resolution:
+      {
+        integrity: sha512-iddNbg3yZM0X7qFY2sAotomgdHK7YJ6sKUvQqbvwnf7TmaVPxS4EJydcNsVejNdS8iWCtDk+fYXr7E32nyTnGA==
+      }
+    dev: false
+
+  /@vueuse/shared@10.2.1(vue@3.3.4):
+    resolution:
+      {
+        integrity: sha512-QWHq2bSuGptkcxx4f4M/fBYC3Y8d3M2UYyLsyzoPgEoVzJURQ0oJeWXu79OiLlBb8gTKkqe4mO85T/sf39mmiw==
+      }
+    dependencies:
+      vue-demi: 0.14.5(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
+  /@vueuse/shared@10.9.0(vue@3.3.4):
+    resolution:
+      {
+        integrity: sha512-Uud2IWncmAfJvRaFYzv5OHDli+FbOzxiVEQdLCKQKLyhz94PIyFC3CHcH7EDMwIn8NPtD06+PNbC/PiO0LGLtw==
+      }
+    dependencies:
+      vue-demi: 0.14.7(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@webassemblyjs/ast@1.11.1:
     resolution:
@@ -12977,6 +13050,42 @@ packages:
       - terser
     dev: true
 
+  /vue-demi@0.14.5(vue@3.3.4):
+    resolution:
+      {
+        integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
+      }
+    engines: { node: '>=12' }
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: registry.npmjs.org/vue@3.3.4
+    dev: false
+
+  /vue-demi@0.14.7(vue@3.3.4):
+    resolution:
+      {
+        integrity: sha512-EOG8KXDQNwkJILkx/gPcoL/7vH+hORoBaKgGe+6W7VFMvCYJfmF2dGbvgDroVnI8LU7/kTu8mbjRZGBU1z9NTA==
+      }
+    engines: { node: '>=12' }
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: registry.npmjs.org/vue@3.3.4
+    dev: false
+
   /vue-eslint-parser@8.3.0(eslint@8.34.0):
     resolution:
       {
@@ -16006,17 +16115,6 @@ packages:
     name: '@types/web-bluetooth'
     version: 0.0.16
 
-  registry.npmjs.org/@types/web-bluetooth@0.0.17:
-    resolution:
-      {
-        integrity: sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==,
-        registry: https://registry.npmmirror.com/,
-        tarball: https://registry.npmjs.org/@types/web-bluetooth/-/web-bluetooth-0.0.17.tgz
-      }
-    name: '@types/web-bluetooth'
-    version: 0.0.17
-    dev: false
-
   registry.npmjs.org/@types/ws@8.5.4:
     resolution:
       {
@@ -16710,10 +16808,10 @@ packages:
     name: '@vueuse/core'
     version: 10.2.1
     dependencies:
-      '@types/web-bluetooth': registry.npmjs.org/@types/web-bluetooth@0.0.17
-      '@vueuse/metadata': registry.npmjs.org/@vueuse/metadata@10.2.1
-      '@vueuse/shared': registry.npmjs.org/@vueuse/shared@10.2.1(vue@3.3.4)
-      vue-demi: registry.npmjs.org/vue-demi@0.14.5(vue@3.3.4)
+      '@types/web-bluetooth': 0.0.17
+      '@vueuse/metadata': 10.2.1
+      '@vueuse/shared': 10.2.1(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -16797,17 +16895,6 @@ packages:
       - vue
     dev: false
 
-  registry.npmjs.org/@vueuse/metadata@10.2.1:
-    resolution:
-      {
-        integrity: sha512-3Gt68mY/i6bQvFqx7cuGBzrCCQu17OBaGWS5JdwISpMsHnMKKjC2FeB5OAfMcCQ0oINfADP3i9A4PPRo0peHdQ==,
-        registry: https://registry.npmmirror.com/,
-        tarball: https://registry.npmjs.org/@vueuse/metadata/-/metadata-10.2.1.tgz
-      }
-    name: '@vueuse/metadata'
-    version: 10.2.1
-    dev: false
-
   registry.npmjs.org/@vueuse/metadata@9.13.0:
     resolution:
       {
@@ -16829,7 +16916,7 @@ packages:
     name: '@vueuse/shared'
     version: 10.2.1
     dependencies:
-      vue-demi: registry.npmjs.org/vue-demi@0.14.5(vue@3.3.4)
+      vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue

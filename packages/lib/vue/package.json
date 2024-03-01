@@ -17,14 +17,16 @@
   "license": "ISC",
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.3.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.1",
     "sass": "^1.58.3",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.2",
-    "vite-plugin-svg-icons": "^2.0.1",
-    "@vitejs/plugin-vue-jsx": "^3.0.1"
+    "vite-plugin-svg-icons": "^2.0.1"
   },
   "dependencies": {
+    "@tingcli/utils": "workspace:0.0.2",
+    "@vueuse/core": "^10.9.0",
     "element-plus": "^2.3.7",
     "vue": "^3.3.4"
   }

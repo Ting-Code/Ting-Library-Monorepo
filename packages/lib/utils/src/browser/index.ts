@@ -1,3 +1,6 @@
+import { upperFirst } from 'lodash-es'
+import { isClient } from '../is'
+
 export function openWindow(
   url: string,
   opt?: {
@@ -28,18 +31,6 @@ export function setCssVar(prop: string, val: any, dom = document.documentElement
 
 export function getCssVar(prop: string, dom: HTMLElement = document.documentElement) {
   return dom.style.getPropertyValue(prop)
-}
-
-import type { FunctionArgs } from '@vueuse/core'
-import { upperFirst } from 'lodash-es'
-
-export interface ViewportOffsetResult {
-  left: number
-  top: number
-  right: number
-  bottom: number
-  rightIncludeBody: number
-  bottomIncludeBody: number
 }
 
 export function getBoundingClientRect(element: Element): DOMRect | number {
@@ -104,6 +95,15 @@ export function removeClass(el: Element, cls: string) {
   if (!el.classList) {
     el.className = trim(curClass)
   }
+}
+
+export interface ViewportOffsetResult {
+  left: number
+  top: number
+  right: number
+  bottom: number
+  rightIncludeBody: number
+  bottomIncludeBody: number
 }
 /**
  * Get the left and top offset of the current element
@@ -179,9 +179,46 @@ export function on(
 export function off(
   element: Element | HTMLElement | Document | Window,
   event: string,
-  handler: FunctionArgs
+  handler: EventListenerOrEventListenerObject
 ): void {
   if (element && event && handler) {
     element.removeEventListener(event, handler, false)
   }
+}
+
+const resizeHandler = (entries: ResizeObserverEntry[]) => {
+  for (const entry of entries) {
+    // @ts-ignore
+    const listeners = entry.target.__resizeListeners__ || []
+    if (listeners.length) {
+      listeners.forEach((fn) => {
+        fn()
+      })
+    }
+  }
+}
+
+export const addResizeListener = (element, fn: (...args: unknown[]) => unknown) => {
+  if (!isClient || !element) return
+  if (!element.__resizeListeners__) {
+    element.__resizeListeners__ = []
+    element.__ro__ = new ResizeObserver(resizeHandler)
+    element.__ro__.observe(element)
+  }
+  element.__resizeListeners__.push(fn)
+}
+
+export const removeResizeListener = (element, fn: (...args: unknown[]) => unknown) => {
+  if (!element || !element.__resizeListeners__) return
+  element.__resizeListeners__.splice(element.__resizeListeners__.indexOf(fn), 1)
+  if (!element.__resizeListeners__.length) {
+    element.__ro__?.disconnect()
+  }
+}
+
+export function triggerWindowResize() {
+  const event = document.createEvent('HTMLEvents')
+  event.initEvent('resize', true, true)
+  ;(event as any).eventType = 'message'
+  window.dispatchEvent(event)
 }
