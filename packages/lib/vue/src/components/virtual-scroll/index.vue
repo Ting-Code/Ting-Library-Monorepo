@@ -163,7 +163,7 @@
     }
   })
 </script>
-<style scoped lang="less">
+<style lang="scss">
   .virtual-scroll {
     display: block;
     position: relative;

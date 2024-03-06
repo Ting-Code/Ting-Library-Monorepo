@@ -16,7 +16,7 @@ export default defineConfig({
     //压缩
     // minify: false,
     //css分离
-    //cssCodeSplit: true,
+    cssCodeSplit: true,
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
       external: ['vue', 'element-plus', '@element-plus/icons-vue', 'dayjs'],
@@ -26,7 +26,9 @@ export default defineConfig({
           //打包格式
           format: 'es',
           //打包后文件名
+          chunkFileNames: '[name].js',
           entryFileNames: '[name].js',
+          assetFileNames: '[ext]/[name].[ext]',
           //让打包目录和我们目录对应
           // preserveModules: true,
           // exports: 'named',
@@ -37,13 +39,36 @@ export default defineConfig({
             vue: 'Vue',
             dayjs: 'dayjs',
             'element-plus': 'ElementPlus'
+          },
+          manualChunks: (id) => {
+            // if (id.includes('node_modules')) {
+            //   return 'vendor'
+            // }
+            if (id.includes('src/components')) {
+              return 'components/index'
+            }
+            if (id.includes('src/element-plus')) {
+              return 'element-plus/index'
+            }
+            if (id.includes('src/hooks')) {
+              return 'hooks/index'
+            }
           }
         }
       ]
     },
     lib: {
-      entry: './src/index.ts',
-      formats: ['es', 'umd']
+      entry: resolve(__dirname, 'src/index.js'),
+      formats: ['es', 'umd'],
+      name: '@tingcli/lib-vue',
+      fileName: (format) => `${format}.js`
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "./src/index.scss";`
+      }
     }
   },
   resolve: {

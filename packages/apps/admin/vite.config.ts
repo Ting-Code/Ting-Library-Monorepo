@@ -18,7 +18,6 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Markdown from 'vite-plugin-md'
 // @ts-ignore
 import ViteCode from 'vite-plugin-code'
-import UnoCSS from 'unocss/vite'
 // 配置绝对路径
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
@@ -37,11 +36,12 @@ export default defineConfig(({ command, mode }) => {
       viteCompression(), //gzip压缩
       AutoImport({
         resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
-        imports: ['vue', 'vue-router', 'pinia'] // 自动导入vue和vue-router相关函数
-        // dts: 'types/auto-import.d.ts' // 生成 `auto-import.d.ts` 全局声明
+        imports: ['vue', 'vue-router', 'pinia'], // 自动导入vue和vue-router相关函数
+        dts: 'src/auto-imports.d.ts' // 生成 `auto-imports.d.ts` 全局声明
       }),
       Components({
-        resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
+        resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+        dts: 'src/components.d.ts'
       }),
       createSvgIconsPlugin({
         iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
@@ -60,8 +60,7 @@ export default defineConfig(({ command, mode }) => {
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
       }),
       ViteCode(),
-      Markdown(),
-      UnoCSS()
+      Markdown()
     ],
     css: {
       preprocessorOptions: {
