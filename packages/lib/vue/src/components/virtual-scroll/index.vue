@@ -33,6 +33,14 @@
     items: {
       type: Array,
       default: () => []
+    },
+    /**
+     * 开启动态高度
+     * 开启动态高度，支持item高估不固定情况启用开启后滚动性能会下降
+     */
+    estimated: {
+      type: Boolean,
+      default: () => false
     }
   }
 

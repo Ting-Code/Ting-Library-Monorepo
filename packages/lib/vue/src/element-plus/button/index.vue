@@ -12,11 +12,11 @@
   import ButtonMap from './button-map/index.vue'
   import { computed } from 'vue'
   import {
-    ITButtonProps,
-    ITButtonEmits,
-    ITButtonSlots,
+    ReButtonProps,
+    ReButtonSlots,
     IButtonMapType,
-    IElButtonAttrs
+    IElButtonAttrs,
+    ReButtonEmits
   } from './index'
 
   defineOptions({
@@ -25,11 +25,11 @@
   })
 
   // 继承子组件props类型
-  const props = withDefaults(defineProps<ITButtonProps>(), {})
+  const props = withDefaults(defineProps<ReButtonProps>(), {})
 
-  const slots = defineSlots<ITButtonSlots>()
+  const slots = defineSlots<ReButtonSlots>()
 
   const isUnNative = computed(() => ['confirm', 'cancel', 'search'].includes(props?.type || ''))
 
-  defineEmits<ITButtonEmits>()
+  defineEmits<ReButtonEmits>()
 </script>
