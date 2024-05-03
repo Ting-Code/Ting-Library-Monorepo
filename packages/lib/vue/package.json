@@ -28,7 +28,7 @@
   "dependencies": {
     "@tingcli/utils": "workspace:0.0.2",
     "@vueuse/core": "^10.9.0",
-    "element-plus": "^2.6.0",
+    "element-plus": "^2.7.2",
     "vue": "^3.4.21"
   }
 }

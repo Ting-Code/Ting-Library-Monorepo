@@ -2,14 +2,12 @@
   <DocsLayout>
     <IndexMd />
     <CodeBlock :is="FixationHeight" type="html" />
-    <CodeBlock :is="DynamicHeight" type="html" />
-    <CodeBlock src="@root/packages/lib/vue/vite.config.ts" />
     <MD>
       <pre>
-## Button二次封装案例
-利用```宏编译+TS```继承和增强类型提示。
+## 动态高度列表（待更新）
       </pre>
     </MD>
+    <CodeBlock :is="DynamicHeight" type="html" />
   </DocsLayout>
 </template>
 

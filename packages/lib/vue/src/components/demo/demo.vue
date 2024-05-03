@@ -1,5 +1,5 @@
 <template>
-  <ElButton type="primary"> 按钮change测试 </ElButton>
+  <ElButton type="primary"> {{ props.title + props.name || '' }}</ElButton>
 </template>
 
 <script setup lang="ts">
@@ -7,4 +7,8 @@
   defineOptions({
     name: 'Demo'
   })
+  const props = defineProps<{
+    title: string
+    name?: string
+  }>()
 </script>

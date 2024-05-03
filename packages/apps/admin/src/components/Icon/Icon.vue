@@ -8,25 +8,21 @@
   <SvgIcon v-else :size="size" :name="icon" :class="[$attrs.class]" :spin="spin" />
 </template>
 <script lang="ts" setup>
-  import type { PropType } from 'vue'
   import { CSSProperties, computed } from 'vue'
   import SvgIcon from './SvgIcon.vue'
   import { isExternal as exrernal } from '@tingcli/utils'
 
-  const props = defineProps({
-    icon: {
-      type: String as PropType<string>,
-      required: true
-    },
-    size: {
-      type: [String, Number] as PropType<string | number>,
-      default: 16
-    },
-    spin: {
-      type: Boolean as PropType<boolean>,
-      default: false
+  const props = withDefaults(
+    defineProps<{
+      icon: string
+      size?: string | number
+      spin?: boolean
+    }>(),
+    {
+      size: 16,
+      spin: false
     }
-  })
+  )
 
   // 判断是否为外部url图标
   const isExternal = computed(() => exrernal(props.icon))

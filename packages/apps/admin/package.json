@@ -16,7 +16,7 @@
     "@tingcli/lib-vue": "workspace:*",
     "@tingcli/utils": "^0.0.2",
     "dayjs": "^1.11.10",
-    "element-plus": "^2.6.0",
+    "element-plus": "^2.7.2",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
@@ -46,6 +46,6 @@
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-mock": "^2.9.6",
     "vite-plugin-svg-icons": "^2.0.1",
-    "vue-tsc": "^2.0.5"
+    "vue-tsc": "^2.0.16"
   }
 }

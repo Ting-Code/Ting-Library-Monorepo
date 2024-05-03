@@ -1,5 +1,8 @@
 <template>
   <SettingDrawer />
+  <!-- @vue-ignore -->
+  <Demo title="221" />
+  <el-button>asdasd</el-button>
   <el-drawer
     :modelValue="!isOpenSliderRef"
     @update:modelValue="toggleIsOpenSlider"
@@ -20,7 +23,7 @@
   import LayoutAside from '@/components/layouts/default/aside/index.vue'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   import { useNamespace } from '@/hooks/useNamespace'
-
+  import { Demo } from '@tingcli/lib-vue'
   defineOptions({
     name: 'LayoutFeature'
   })
