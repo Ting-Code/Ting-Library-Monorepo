@@ -156,3 +156,9 @@ Ting-Library-Monorepo
   - 页面 - 404 页面 v0.1.0 ✅
 - 导航 二次封装 v0.2.0 ✅
   - 二次封装技巧 v0.2.0 ✅
+
+## 游客打卡点
+
+<a href="https://ting-code.github.io/tag/index.html">
+  <img src="https://contrib.rocks/image?repo=Ting-Code/tag" />
+</a>
