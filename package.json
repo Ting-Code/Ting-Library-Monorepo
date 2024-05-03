@@ -11,6 +11,8 @@
     "bootstrap": "pnpm install",
     "dev": "pnpm --filter scripts dev",
     "build": "pnpm --filter scripts build",
+    "admin:dev": "pnpm --filter @apps/admin... dev",
+    "admin:build": "pnpm --filter @apps/admin... build",
     "commit": "git add . && git cz",
     "clean": "turbo run clean & rimraf node_modules",
     "changeset": "changeset",

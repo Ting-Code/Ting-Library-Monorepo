@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/performance',
     name: 'performance',
-    redirect: '/performance/index',
+    redirect: '/performance/virtual-scroll',
     component: Layout,
     meta: {
       title: '性能优化',
@@ -23,14 +23,6 @@ const routes: Array<RouteRecordRaw> = [
       sort: 2
     },
     children: [
-      {
-        path: 'home',
-        name: 'performance_home',
-        meta: {
-          title: '虚拟列表'
-        },
-        component: () => import('@/views/pages/performance/virtual-scroll/index.docs.vue')
-      },
       {
         path: 'virtual-scroll',
         name: 'performance_virtual_scroll',
