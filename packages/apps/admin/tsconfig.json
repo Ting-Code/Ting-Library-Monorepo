@@ -12,5 +12,13 @@
     "lib": ["dom", "esnext"],
     "types": ["vite/client"]
   },
-  "include": ["src", "mock", "vite.config.ts"]
+  "include": [
+    "src",
+    "mock",
+    "vite.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ]
 }
