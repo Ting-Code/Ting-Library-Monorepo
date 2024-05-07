@@ -4,17 +4,16 @@
       <Icon icon="logo-react" size="68" />
     </div>
     <div class="next">
-      <icon icon="logo-nextjs" size="38" />
+      <Icon icon="logo-nextjs" size="38" />
     </div>
     <div class="rspack">
-      <icon class="rspack-icon" icon="logo-rspack" size="38" />
+      <Icon class="rspack-icon" icon="logo-rspack" size="38" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import Icon from '@/components/Icon/Icon.vue'
 
   defineOptions({
     name: 'RotationReact'

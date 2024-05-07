@@ -4,14 +4,13 @@
       <Icon icon="logo-vite" size="60" />
     </div>
     <div class="unocss">
-      <icon class="unocss-icon" icon="logo-unocss" size="38" />
+      <Icon class="unocss-icon" icon="logo-unocss" size="38" />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import Icon from '@/components/Icon/Icon.vue'
 
   defineOptions({
     name: 'RotationVite'

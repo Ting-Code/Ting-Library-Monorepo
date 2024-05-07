@@ -13,9 +13,9 @@
 </template>
 
 <script lang="ts" setup>
-  import HeaderTheme from '@/components/layouts/default/theme/index.vue'
-  import HeaderNavIcon from '@/components/layouts/default/navIcon/index.vue'
-  import Logo from '@/components/layouts/default/logo/index.vue'
+  import HeaderTheme from '@/views/layouts/default/theme/index.vue'
+  import HeaderNavIcon from '@/views/layouts/default/navIcon/index.vue'
+  import Logo from '@/views/layouts/default/logo/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { usePermission } from '@/hooks/usePermission'
 

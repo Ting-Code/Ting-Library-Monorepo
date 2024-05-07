@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-  import { AppProvider } from '@/components/application'
+  import { AppProvider } from '@/views/application'
 </script>

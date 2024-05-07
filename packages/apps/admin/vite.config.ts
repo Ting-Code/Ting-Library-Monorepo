@@ -41,6 +41,7 @@ export default defineConfig(({ command, mode }) => {
       }),
       Components({
         resolvers: [ElementPlusResolver({ importStyle: 'sass' })],
+        // exclude: [/once\.vue$/, /once\.vue\?vue/],
         dts: 'src/components.d.ts'
       }),
       createSvgIconsPlugin({

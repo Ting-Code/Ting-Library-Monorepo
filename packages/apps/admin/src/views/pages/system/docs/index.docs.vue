@@ -1,7 +1,7 @@
 <template>
   <DocsLayout>
     <Index />
-    <MD>
+    <Markdown>
       <pre>
 ## Vite 插件实现
 Vite插件中有许多的钩子，主要常用的钩子有
@@ -9,12 +9,12 @@ Vite插件中有许多的钩子，主要常用的钩子有
 * `handleHotUpdate` 用于热更新
 `createFilter`用于筛选出目标文件，也有利于性能。`.demo.vue`和`.docs.vue` 才做处理
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock
       src="@root/packages/plugin/vite/vite-plugin-code/src/index.ts"
       :defaultShowCode="false"
     />
-    <MD>
+    <Markdown>
       <pre>
 ### 解析Vue代码
 `transform` 中可以获取到`code(源码)`和`id(路径)`都是字符串类型。
@@ -26,12 +26,12 @@ Vite插件中有许多的钩子，主要常用的钩子有
 ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会格式化，加个 pre 主要会避免编辑器的格式化。
 
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock
       src="@root/packages/plugin/vite/vite-plugin-code/src/transform.ts"
       :defaultShowCode="false"
     />
-    <MD>
+    <Markdown>
       <pre>
 ## 运行时转换
 编译时`transform` 中可以获取到`code(源码)`都是转化前的代码，生成目录和美化代码块都需要获取转换后`DOM`。
@@ -47,32 +47,29 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
 
 源码在如下`docsLayout`组件。
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock
-      src="@root/packages/apps/admin/src/components/layouts/docsLayout/index.vue"
+      src="@root/packages/apps/admin/src/components/docs-layout/index.vue"
       :defaultShowCode="false"
       type="html"
     />
-    <MD>
+    <Markdown>
       <pre>
 ## 最终效果
 显示源码同时渲染效果
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock :is="ButtonDemo" type="html" />
-    <MD>
+    <Markdown>
       <pre>
 最终效果可看项目中各个页面的文件，比如当前文档的源码如下：
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock src="./index.docs.vue" :defaultShowCode="false" type="html" />
   </DocsLayout>
 </template>
 
 <script setup lang="ts">
   import ButtonDemo from './demo/button.demo.vue'
-  import DocsLayout from '@/components/layouts/docsLayout/index.vue'
   import Index from './index.md'
-  import MD from '@/components/layouts/docsLayout/markdown.vue'
-  import CodeBlock from '@/components/layouts/docsLayout/codeBlock/index.vue'
 </script>

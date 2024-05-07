@@ -1,6 +1,6 @@
 <template>
   <DocsLayout>
-    <MD>
+    <Markdown>
       <pre>
 # 微前端
 微前端这个饼画了好久，一直没时间推进。回到主题，微前端技术选型博客有很多，如: [2023微前端技术方案选型](https://juejin.cn/post/7236021829000691771)。
@@ -15,9 +15,9 @@
 ## Micro-App 1.X
 最终我选择`Micro-App 1.X`是因为接入简单，最重要的一点是支持`Vite`。注意`Micro-App 0.X`支持`Vite`比较鸡肋，不如`无界`。
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock :is="MicroAppDemo" type="html" />
-    <MD>
+    <Markdown>
       <pre>
 ### 快速接入
 [`Micro-App 1.X`](https://micro-zoe.com/docs/1.x/#/zh-cn/start)
@@ -26,9 +26,9 @@
 子应用需要加入如下代码来判断是否需要渲染，如果不加的话会出现渲染多次或者不渲染的情况。
 
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock src="@root/packages/apps/micro/src/main.tsx" :default-show-code="true" />
-    <MD>
+    <Markdown>
       <pre>
 高于部署，我选择部署同域名下的子路由/micro/中，需要配置以下。
 ```typescript
@@ -42,9 +42,9 @@
    }
 ```
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock src="@root/packages/apps/micro/rspack.config.js" :default-show-code="false" />
-    <MD>
+    <Markdown>
       <pre>
 `Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/micro`下：
 ```
@@ -61,19 +61,16 @@
         }
 ```
       </pre>
-    </MD>
+    </Markdown>
     <CodeBlock src="@root/.github/workflows/nginx.conf" :default-show-code="false" />
-    <MD>
+    <Markdown>
       <pre>
     实现了Github Action配合Dockerfile实现了自动化部署具体可看`/.github/workflows/`
       </pre>
-    </MD>
+    </Markdown>
   </DocsLayout>
 </template>
 
 <script setup lang="ts">
   import MicroAppDemo from './demo/micro-app.demo.vue'
-  import DocsLayout from '@/components/layouts/docsLayout/index.vue'
-  import MD from '@/components/layouts/docsLayout/markdown.vue'
-  import CodeBlock from '@/components/layouts/docsLayout/codeBlock/index.vue'
 </script>

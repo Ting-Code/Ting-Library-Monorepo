@@ -42,10 +42,10 @@ importers:
         version: 16.2.4
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.1.1
-        version: 7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.5)
+        version: 7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@4.9.5)
       '@typescript-eslint/parser':
         specifier: ^7.1.1
-        version: 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+        version: 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       commitizen:
         specifier: ^4.2.4
         version: 4.3.0
@@ -114,7 +114,7 @@ importers:
         version: 4.0.0(prettier@3.2.5)
       stylelint:
         specifier: ^16.2.1
-        version: 16.2.1(typescript@5.4.5)
+        version: 16.2.1(typescript@4.9.5)
       stylelint-config-prettier:
         specifier: ^9.0.3
         version: 9.0.5(stylelint@16.2.1)
@@ -306,8 +306,8 @@ importers:
         specifier: ^3.2.7
         version: registry.npmjs.org/tailwindcss@3.2.7(postcss@8.4.21)(ts-node@10.9.2)
       typescript:
-        specifier: ^5.0.2
-        version: registry.npmjs.org/typescript@5.2.2
+        specifier: ^4.9.5
+        version: registry.npmjs.org/typescript@4.9.5
 
   packages/cli/create:
     dependencies:
@@ -337,8 +337,8 @@ importers:
         specifier: ^0.16.3
         version: registry.npmjs.org/esno@0.16.3
       typescript:
-        specifier: ^5.1.6
-        version: registry.npmjs.org/typescript@5.2.2
+        specifier: ^4.9.5
+        version: registry.npmjs.org/typescript@4.9.5
       unbuild:
         specifier: ^1.2.0
         version: registry.npmjs.org/unbuild@1.2.0
@@ -370,8 +370,8 @@ importers:
         specifier: ^7.1.1
         version: registry.npmjs.org/execa@7.1.1
       typescript:
-        specifier: ^5.1.6
-        version: registry.npmjs.org/typescript@5.2.2
+        specifier: ^4.9.5
+        version: registry.npmjs.org/typescript@4.9.5
       unbuild:
         specifier: ^1.2.0
         version: registry.npmjs.org/unbuild@1.2.0
@@ -435,7 +435,7 @@ importers:
         version: 2.7.2(vue@3.4.21)
       vue:
         specifier: ^3.4.21
-        version: 3.4.21(typescript@5.3.3)
+        version: 3.4.21(typescript@4.9.5)
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.0.4
@@ -450,14 +450,14 @@ importers:
         specifier: ^1.76.0
         version: registry.npmjs.org/sass@1.76.0
       typescript:
-        specifier: ^5.3.3
-        version: 5.3.3
+        specifier: ^4.9.5
+        version: registry.npmjs.org/typescript@4.9.5
       vite:
         specifier: ^5.2.11
         version: registry.npmjs.org/vite@5.2.11(@types/node@20.7.0)(sass@1.76.0)
       vite-plugin-dts:
         specifier: ^3.9.1
-        version: registry.npmjs.org/vite-plugin-dts@3.9.1(@types/node@20.7.0)(typescript@5.3.3)(vite@5.2.11)
+        version: registry.npmjs.org/vite-plugin-dts@3.9.1(@types/node@20.7.0)(typescript@4.9.5)(vite@5.2.11)
       vite-plugin-svg-icons:
         specifier: ^2.0.1
         version: registry.npmjs.org/vite-plugin-svg-icons@2.0.1(vite@5.2.11)
@@ -472,8 +472,8 @@ importers:
         specifier: ^4.1.0
         version: 4.2.3(vite@4.3.9)(vue@3.3.4)
       typescript:
-        specifier: ^5.1.6
-        version: registry.npmjs.org/typescript@5.2.2
+        specifier: ^4.9.5
+        version: registry.npmjs.org/typescript@4.9.5
       vite:
         specifier: ^4.3.9
         version: 4.3.9(@types/node@20.7.0)
@@ -485,7 +485,7 @@ importers:
         version: 0.21.5(@vitejs/plugin-vue@4.2.3)(vite@4.3.9)
       vue-tsc:
         specifier: ^1.4.2
-        version: 1.4.2(typescript@5.2.2)
+        version: 1.4.2(typescript@4.9.5)
 
   packages/plugin/vite/vite-plugin-code:
     dependencies:
@@ -2347,7 +2347,7 @@ packages:
       '@types/node': 20.7.0
     dev: true
 
-  /@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@5.4.5):
+  /@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-zioDz623d0RHNhvx0eesUmGfIjzrk18nSBC8xewepKXbBvN/7c1qImV7Hg8TI1URTxKax7/zxfxj3Uph8Chcuw==
@@ -2362,10 +2362,10 @@ packages:
         optional: true
     dependencies:
       '@eslint-community/regexpp': 4.8.2
-      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       '@typescript-eslint/scope-manager': 7.1.1
-      '@typescript-eslint/type-utils': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/type-utils': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
+      '@typescript-eslint/utils': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       '@typescript-eslint/visitor-keys': 7.1.1
       debug: 4.3.4
       eslint: 8.57.0
@@ -2373,13 +2373,13 @@ packages:
       ignore: 5.2.4
       natural-compare: 1.4.0
       semver: 7.5.4
-      ts-api-utils: 1.0.2(typescript@5.4.5)
-      typescript: registry.npmjs.org/typescript@5.4.5
+      ts-api-utils: 1.0.2(typescript@4.9.5)
+      typescript: registry.npmjs.org/typescript@4.9.5
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.5):
+  /@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-ZWUFyL0z04R1nAEgr9e79YtV5LbafdOtN7yapNbn1ansMyaegl2D4bL7vHoJ4HPSc4CaLwuCVas8CVuneKzplQ==
@@ -2394,11 +2394,11 @@ packages:
     dependencies:
       '@typescript-eslint/scope-manager': 7.1.1
       '@typescript-eslint/types': 7.1.1
-      '@typescript-eslint/typescript-estree': 7.1.1(typescript@5.4.5)
+      '@typescript-eslint/typescript-estree': 7.1.1(typescript@4.9.5)
       '@typescript-eslint/visitor-keys': 7.1.1
       debug: 4.3.4
       eslint: 8.57.0
-      typescript: registry.npmjs.org/typescript@5.4.5
+      typescript: registry.npmjs.org/typescript@4.9.5
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2414,7 +2414,7 @@ packages:
       '@typescript-eslint/visitor-keys': 7.1.1
     dev: false
 
-  /@typescript-eslint/type-utils@7.1.1(eslint@8.57.0)(typescript@5.4.5):
+  /@typescript-eslint/type-utils@7.1.1(eslint@8.57.0)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-5r4RKze6XHEEhlZnJtR3GYeCh1IueUHdbrukV2KSlLXaTjuSfeVF8mZUVPLovidCuZfbVjfhi4c0DNSa/Rdg5g==
@@ -2427,12 +2427,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/typescript-estree': 7.1.1(typescript@5.4.5)
-      '@typescript-eslint/utils': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/typescript-estree': 7.1.1(typescript@4.9.5)
+      '@typescript-eslint/utils': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       debug: 4.3.4
       eslint: 8.57.0
-      ts-api-utils: 1.0.2(typescript@5.4.5)
-      typescript: registry.npmjs.org/typescript@5.4.5
+      ts-api-utils: 1.0.2(typescript@4.9.5)
+      typescript: registry.npmjs.org/typescript@4.9.5
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -2445,7 +2445,7 @@ packages:
     engines: { node: ^16.0.0 || >=18.0.0 }
     dev: false
 
-  /@typescript-eslint/typescript-estree@7.1.1(typescript@5.4.5):
+  /@typescript-eslint/typescript-estree@7.1.1(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-9ZOncVSfr+sMXVxxca2OJOPagRwT0u/UHikM2Rd6L/aB+kL/QAuTnsv6MeXtjzCJYb8PzrXarypSGIPx3Jemxw==
@@ -2464,13 +2464,13 @@ packages:
       is-glob: 4.0.3
       minimatch: 9.0.3
       semver: 7.6.0
-      ts-api-utils: 1.0.2(typescript@5.4.5)
-      typescript: registry.npmjs.org/typescript@5.4.5
+      ts-api-utils: 1.0.2(typescript@4.9.5)
+      typescript: registry.npmjs.org/typescript@4.9.5
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@typescript-eslint/utils@7.1.1(eslint@8.57.0)(typescript@5.4.5):
+  /@typescript-eslint/utils@7.1.1(eslint@8.57.0)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-thOXM89xA03xAE0lW7alstvnyoBUbBX38YtY+zAUcpRPcq9EIhXPuJ0YTv948MbzmKh6e1AUszn5cBFK49Umqg==
@@ -2484,7 +2484,7 @@ packages:
       '@types/semver': 7.5.3
       '@typescript-eslint/scope-manager': 7.1.1
       '@typescript-eslint/types': 7.1.1
-      '@typescript-eslint/typescript-estree': 7.1.1(typescript@5.4.5)
+      '@typescript-eslint/typescript-estree': 7.1.1(typescript@4.9.5)
       eslint: 8.57.0
       semver: 7.6.0
     transitivePeerDependencies:
@@ -2627,13 +2627,13 @@ packages:
       vue-template-compiler: registry.npmjs.org/vue-template-compiler@2.7.14
     dev: true
 
-  /@volar/vue-typescript@1.4.2(typescript@5.2.2):
+  /@volar/vue-typescript@1.4.2(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-A1m1cSvS0Pf7Sm9q0S/1riV4RQQeH2h5gGo0vR9fGK2SrAStvh4HuuxPOX4N9uMDbRsNMhC0ILXwtlvjQ/IXJA==
       }
     dependencies:
-      '@volar/typescript': registry.npmjs.org/@volar/typescript@1.4.0(typescript@5.2.2)
+      '@volar/typescript': registry.npmjs.org/@volar/typescript@1.4.0(typescript@4.9.5)
       '@volar/vue-language-core': 1.4.2
     transitivePeerDependencies:
       - typescript
@@ -4668,7 +4668,7 @@ packages:
       - '@swc/wasm'
     dev: false
 
-  /cosmiconfig-typescript-loader@4.3.0(@types/node@20.4.7)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@5.4.5):
+  /cosmiconfig-typescript-loader@4.3.0(@types/node@20.4.7)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==
@@ -4683,8 +4683,8 @@ packages:
     dependencies:
       '@types/node': registry.npmjs.org/@types/node@20.4.7
       cosmiconfig: 8.0.0
-      ts-node: 10.9.2(@types/node@20.4.7)(typescript@5.4.5)
-      typescript: registry.npmjs.org/typescript@5.4.5
+      ts-node: 10.9.2(@types/node@20.4.7)(typescript@4.9.5)
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: false
     optional: true
 
@@ -4717,7 +4717,7 @@ packages:
     dev: false
     optional: true
 
-  /cosmiconfig@9.0.0(typescript@5.4.5):
+  /cosmiconfig@9.0.0(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==
@@ -4733,7 +4733,7 @@ packages:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
-      typescript: registry.npmjs.org/typescript@5.4.5
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: false
 
   /create-require@1.1.1:
@@ -5690,7 +5690,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       debug: 3.2.7
       eslint: 8.57.0
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@7.1.1)(eslint-plugin-import@2.29.1)(eslint@8.57.0)
@@ -5722,7 +5722,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       debug: 3.2.7
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
@@ -5744,7 +5744,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@5.4.5)
+      '@typescript-eslint/parser': 7.1.1(eslint@8.57.0)(typescript@4.9.5)
       array-includes: 3.1.7
       array.prototype.findlastindex: 1.2.4
       array.prototype.flat: 1.3.2
@@ -10708,7 +10708,7 @@ packages:
       stylelint: '>=14.0.0'
     dependencies:
       postcss-html: 1.6.0
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
     dev: false
 
   /stylelint-config-prettier@9.0.5(stylelint@16.2.1):
@@ -10721,7 +10721,7 @@ packages:
     peerDependencies:
       stylelint: '>= 11.x < 15'
     dependencies:
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
     dev: false
 
   /stylelint-config-recommended-vue@1.5.0(postcss-html@1.6.0)(stylelint@16.2.1):
@@ -10736,7 +10736,7 @@ packages:
     dependencies:
       postcss-html: 1.6.0
       semver: 7.5.4
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
       stylelint-config-html: 1.1.0(postcss-html@1.6.0)(stylelint@16.2.1)
       stylelint-config-recommended: 14.0.0(stylelint@16.2.1)
     dev: false
@@ -10750,7 +10750,7 @@ packages:
     peerDependencies:
       stylelint: ^16.0.0
     dependencies:
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
     dev: false
 
   /stylelint-config-standard@36.0.0(stylelint@16.2.1):
@@ -10762,7 +10762,7 @@ packages:
     peerDependencies:
       stylelint: ^16.1.0
     dependencies:
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
       stylelint-config-recommended: 14.0.0(stylelint@16.2.1)
     dev: false
 
@@ -10776,10 +10776,10 @@ packages:
     dependencies:
       postcss: 8.4.35
       postcss-sorting: 8.0.2(postcss@8.4.35)
-      stylelint: 16.2.1(typescript@5.4.5)
+      stylelint: 16.2.1(typescript@4.9.5)
     dev: false
 
-  /stylelint@16.2.1(typescript@5.4.5):
+  /stylelint@16.2.1(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-SfIMGFK+4n7XVAyv50CpVfcGYWG4v41y6xG7PqOgQSY8M/PgdK0SQbjWFblxjJZlN9jNq879mB4BCZHJRIJ1hA==
@@ -10793,7 +10793,7 @@ packages:
       '@csstools/selector-specificity': 3.0.2(postcss-selector-parser@6.0.15)
       balanced-match: 2.0.0
       colord: 2.9.3
-      cosmiconfig: 9.0.0(typescript@5.4.5)
+      cosmiconfig: 9.0.0(typescript@4.9.5)
       css-functions-list: 3.2.1
       css-tree: 2.3.1
       debug: 4.3.4
@@ -11108,7 +11108,7 @@ packages:
       }
     engines: { node: '>=8' }
 
-  /ts-api-utils@1.0.2(typescript@5.4.5):
+  /ts-api-utils@1.0.2(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-Cbu4nIqnEdd+THNEsBdkolnOXhg0I8XteoHaEKgvsxpsbWda4IsUut2c187HxywQCvveojow0Dgw/amxtSKVkQ==
@@ -11117,10 +11117,10 @@ packages:
     peerDependencies:
       typescript: '>=4.2.0'
     dependencies:
-      typescript: registry.npmjs.org/typescript@5.4.5
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: false
 
-  /ts-node@10.9.2(@types/node@20.4.7)(typescript@5.4.5):
+  /ts-node@10.9.2(@types/node@20.4.7)(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==
@@ -11149,7 +11149,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: registry.npmjs.org/typescript@5.4.5
+      typescript: registry.npmjs.org/typescript@4.9.5
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: false
@@ -11385,14 +11385,6 @@ packages:
       is-typed-array: registry.npmjs.org/is-typed-array@1.1.13
       possible-typed-array-names: registry.npmjs.org/possible-typed-array-names@1.0.0
     dev: false
-
-  /typescript@5.3.3:
-    resolution:
-      {
-        integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
-      }
-    engines: { node: '>=14.17' }
-    hasBin: true
 
   /uc.micro@1.0.6:
     resolution:
@@ -12000,7 +11992,7 @@ packages:
       vue: 3.4.21(typescript@4.9.5)
     dev: false
 
-  /vue-tsc@1.4.2(typescript@5.2.2):
+  /vue-tsc@1.4.2(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-8VFjVekJuFtFG+N4rEimoR0OvNubhoTIMl2dlvbpyAD40LVPR1PN2SUc2qZPnWGGRsXZAVmFgiBHX0RB20HGyA==
@@ -12010,9 +12002,9 @@ packages:
       typescript: '*'
     dependencies:
       '@volar/vue-language-core': 1.4.2
-      '@volar/vue-typescript': 1.4.2(typescript@5.2.2)
+      '@volar/vue-typescript': 1.4.2(typescript@4.9.5)
       semver: 7.3.8
-      typescript: registry.npmjs.org/typescript@5.2.2
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: true
 
   /vue@3.3.4:
@@ -12044,25 +12036,6 @@ packages:
       '@vue/server-renderer': 3.4.21(vue@3.4.21)
       '@vue/shared': 3.4.21
       typescript: registry.npmjs.org/typescript@4.9.5
-
-  /vue@3.4.21(typescript@5.3.3):
-    resolution:
-      {
-        integrity: sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==
-      }
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@vue/compiler-dom': 3.4.21
-      '@vue/compiler-sfc': 3.4.21
-      '@vue/runtime-dom': 3.4.21
-      '@vue/server-renderer': 3.4.21(vue@3.4.21)
-      '@vue/shared': 3.4.21
-      typescript: 5.3.3
-    dev: false
 
   /watchpack@2.4.0:
     resolution:
@@ -12745,13 +12718,13 @@ packages:
       '@types/node': registry.npmjs.org/@types/node@20.4.7
       chalk: 4.1.2
       cosmiconfig: 8.0.0
-      cosmiconfig-typescript-loader: 4.3.0(@types/node@20.4.7)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@5.4.5)
+      cosmiconfig-typescript-loader: 4.3.0(@types/node@20.4.7)(cosmiconfig@8.0.0)(ts-node@10.9.2)(typescript@4.9.5)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
       resolve-from: 5.0.0
-      ts-node: 10.9.2(@types/node@20.4.7)(typescript@5.4.5)
-      typescript: registry.npmjs.org/typescript@5.4.5
+      ts-node: 10.9.2(@types/node@20.4.7)(typescript@4.9.5)
+      typescript: registry.npmjs.org/typescript@4.9.5
     transitivePeerDependencies:
       - '@swc/core'
       - '@swc/wasm'
@@ -15779,7 +15752,7 @@ packages:
       path-browserify: registry.npmjs.org/path-browserify@1.0.1
     dev: true
 
-  registry.npmjs.org/@volar/typescript@1.4.0(typescript@5.2.2):
+  registry.npmjs.org/@volar/typescript@1.4.0(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-r6OMHj/LeS86iQy3LEjjS+qpmHr9I7BiH8gAwp9WEJP76FHlMPi/EPDQxhf3VcMQ/w6Pi5aBczqI+I3akr9t4g==,
@@ -15793,7 +15766,7 @@ packages:
       typescript: '*'
     dependencies:
       '@volar/language-core': registry.npmjs.org/@volar/language-core@1.4.0
-      typescript: registry.npmjs.org/typescript@5.2.2
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: true
 
   registry.npmjs.org/@volar/typescript@2.2.1:
@@ -15903,7 +15876,7 @@ packages:
       '@vue/shared': registry.npmjs.org/@vue/shared@3.3.4
     dev: false
 
-  registry.npmjs.org/@vue/language-core@1.8.27(typescript@5.3.3):
+  registry.npmjs.org/@vue/language-core@1.8.27(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==,
@@ -15927,7 +15900,7 @@ packages:
       minimatch: registry.npmjs.org/minimatch@9.0.3
       muggle-string: registry.npmjs.org/muggle-string@0.3.1
       path-browserify: registry.npmjs.org/path-browserify@1.0.1
-      typescript: 5.3.3
+      typescript: registry.npmjs.org/typescript@4.9.5
       vue-template-compiler: registry.npmjs.org/vue-template-compiler@2.7.14
     dev: true
 
@@ -28391,19 +28364,6 @@ packages:
     engines: { node: '>=4.2.0' }
     hasBin: true
 
-  registry.npmjs.org/typescript@5.2.2:
-    resolution:
-      {
-        integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==,
-        registry: https://registry.npmjs.com/,
-        tarball: https://registry.npmjs.org/typescript/-/typescript-5.2.2.tgz
-      }
-    name: typescript
-    version: 5.2.2
-    engines: { node: '>=14.17' }
-    hasBin: true
-    dev: true
-
   registry.npmjs.org/typescript@5.4.2:
     resolution:
       {
@@ -28806,7 +28766,7 @@ packages:
       - supports-color
     dev: true
 
-  registry.npmjs.org/vite-plugin-dts@3.9.1(@types/node@20.7.0)(typescript@5.3.3)(vite@5.2.11):
+  registry.npmjs.org/vite-plugin-dts@3.9.1(@types/node@20.7.0)(typescript@4.9.5)(vite@5.2.11):
     resolution:
       {
         integrity: sha512-rVp2KM9Ue22NGWB8dNtWEr+KekN3rIgz1tWD050QnRGlriUCmaDwa7qA5zDEjbXg5lAXhYMSBJtx3q3hQIJZSg==,
@@ -28826,13 +28786,13 @@ packages:
     dependencies:
       '@microsoft/api-extractor': registry.npmjs.org/@microsoft/api-extractor@7.43.0(@types/node@20.7.0)
       '@rollup/pluginutils': registry.npmjs.org/@rollup/pluginutils@5.1.0(rollup@3.23.0)
-      '@vue/language-core': registry.npmjs.org/@vue/language-core@1.8.27(typescript@5.3.3)
+      '@vue/language-core': registry.npmjs.org/@vue/language-core@1.8.27(typescript@4.9.5)
       debug: registry.npmjs.org/debug@4.3.4
       kolorist: registry.npmjs.org/kolorist@1.8.0
       magic-string: registry.npmjs.org/magic-string@0.30.8
-      typescript: 5.3.3
+      typescript: registry.npmjs.org/typescript@4.9.5
       vite: registry.npmjs.org/vite@5.2.11(@types/node@20.7.0)(sass@1.76.0)
-      vue-tsc: registry.npmjs.org/vue-tsc@1.8.27(typescript@5.3.3)
+      vue-tsc: registry.npmjs.org/vue-tsc@1.8.27(typescript@4.9.5)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -29289,7 +29249,7 @@ packages:
       he: registry.npmjs.org/he@1.2.0
     dev: true
 
-  registry.npmjs.org/vue-tsc@1.8.27(typescript@5.3.3):
+  registry.npmjs.org/vue-tsc@1.8.27(typescript@4.9.5):
     resolution:
       {
         integrity: sha512-WesKCAZCRAbmmhuGl3+VrdWItEvfoFIPXOvUJkjULi+x+6G/Dy69yO3TBRJDr9eUlmsNAwVmxsNZxvHKzbkKdg==,
@@ -29304,9 +29264,9 @@ packages:
       typescript: '*'
     dependencies:
       '@volar/typescript': registry.npmjs.org/@volar/typescript@1.11.1
-      '@vue/language-core': registry.npmjs.org/@vue/language-core@1.8.27(typescript@5.3.3)
+      '@vue/language-core': registry.npmjs.org/@vue/language-core@1.8.27(typescript@4.9.5)
       semver: registry.npmjs.org/semver@7.6.0
-      typescript: 5.3.3
+      typescript: registry.npmjs.org/typescript@4.9.5
     dev: true
 
   registry.npmjs.org/vue-tsc@2.0.16(typescript@4.9.5):

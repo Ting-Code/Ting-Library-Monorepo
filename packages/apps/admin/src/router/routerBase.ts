@@ -1,8 +1,8 @@
 import type { AppRouteRecordRaw } from '@/router/type'
 import { PageEnum } from '@/router/type'
 export const ErrorPage = () => import('@/views/common/error/404.vue')
-export const Layout = () => import('@/components/layouts/default/index.vue')
-export const ParentLayout = () => import('@/components/layouts/parentLayout/index.vue')
+export const Layout = () => import('@/views/layouts/default/index.vue')
+export const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
 
 export const publicRoutes: AppRouteRecordRaw[] = [
   {

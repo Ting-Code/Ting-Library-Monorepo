@@ -1,4 +1,4 @@
-import { useAppProviderContext } from '@/components/application/useAppContext'
+import { useAppProviderContext } from '@/views/application/useAppContext'
 import { toRefs } from 'vue'
 export const NAMESPACE = 'ting'
 const _bem = (

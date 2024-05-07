@@ -20,12 +20,3 @@ qwee
   import CodeBlock from './CodeBlock.vue'
   import Markdown from './markdown.vue'
 </script>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-</style>

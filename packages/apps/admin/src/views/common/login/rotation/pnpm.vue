@@ -8,7 +8,6 @@
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import Icon from '@/components/Icon/Icon.vue'
 
   defineOptions({
     name: 'RotationPnpm'

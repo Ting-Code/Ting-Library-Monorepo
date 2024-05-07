@@ -22,7 +22,6 @@
   import RotationPnpm from './pnpm.vue'
   import RotationMicroapp from './microapp.vue'
   import RotationTypescript from './ts.vue'
-  import Icon from '@/components/Icon/Icon.vue'
   import { usePermission } from '@/hooks/usePermission'
 
   defineOptions({
