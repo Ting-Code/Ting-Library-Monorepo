@@ -24,7 +24,6 @@
   import { nextTick, ref, toRefs, watch } from 'vue'
   import { useNamespace } from '@/hooks/useNamespace'
   import { useAppProviderContext } from '@/views/application/useAppContext'
-  import Icon from '@/components/icon/icon.vue'
 
   defineOptions({
     name: 'DocsNavigation'

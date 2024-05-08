@@ -26,14 +26,14 @@ declare module 'vue' {
     ElSubMenu: (typeof import('element-plus/es'))['ElSubMenu']
     ElTabPane: (typeof import('element-plus/es'))['ElTabPane']
     ElTabs: (typeof import('element-plus/es'))['ElTabs']
-    Icon: (typeof import('./components/Icon/icon.vue'))['default']
+    Icon: (typeof import('./components/icon/icon.vue'))['default']
     IndexOnce: (typeof import('./components/docs-layout/navigation/index-once.vue'))['default']
     Markdown: (typeof import('./components/markdown/index.vue'))['default']
     RouterLink: (typeof import('vue-router'))['RouterLink']
     RouterView: (typeof import('vue-router'))['RouterView']
     SoundCodeOnce: (typeof import('./components/code-block/sound-code-once.vue'))['default']
     SoundPathOnce: (typeof import('./components/code-block/sound-path-once.vue'))['default']
-    SvgIcon: (typeof import('./components/Icon/svg-icon.vue'))['default']
+    SvgIcon: (typeof import('./components/icon/svg-icon.vue'))['default']
     TreeOnce: (typeof import('./components/docs-layout/navigation/tree-once.vue'))['default']
   }
 }
