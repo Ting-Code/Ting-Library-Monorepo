@@ -84,14 +84,14 @@ const transformFile = (code: string, id: string, md: MD): string => {
         }
         // 转化 md
         if (['md', 'markdown', 'MD', 'Markdown'].includes(node.tag)) {
+          console.log()
           const root = parse(node.loc.source, { lowerCaseTagName: true })
-          const mdElement = root.firstChild as unknown as HTMLElement
           const preElement = root.querySelector('pre') as unknown as HTMLElement
           const outerHTML = preElement.innerHTML
           if (!outerHTML) return
-          const mdElementString = `<${mdElement.tagName}>${md.render(
+          const mdElementString = `<${node.tag}>${md.render(
             outerHTML?.toString()?.trim()
-          )}</${mdElement.tagName}>`
+          )}</${node.tag}>`
           // 获取修改后的HTML字符串
           newCode = newCode.replace(node.loc.source, mdElementString)
         }
