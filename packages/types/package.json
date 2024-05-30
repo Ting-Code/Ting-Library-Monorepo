@@ -5,7 +5,9 @@
   "module": "index.ts",
   "license": "MIT",
   "scripts": {
-    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo"
+    "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../.prettierignore ."
   },
   "dependencies": {
     "@config/tsconfig": "workspace:*"

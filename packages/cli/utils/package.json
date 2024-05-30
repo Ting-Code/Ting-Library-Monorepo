@@ -14,7 +14,9 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "up": "npm publish"
+    "up": "npm publish",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "keywords": [],
   "author": "",

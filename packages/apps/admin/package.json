@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "dependencies": {
     "@common/request": "workspace:*",

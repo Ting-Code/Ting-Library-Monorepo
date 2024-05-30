@@ -16,7 +16,8 @@
     "dev": "esno ./src/cli.ts",
     "start": "esno ./src/cli.ts",
     "build": "unbuild",
-    "test": "vitest"
+    "test": "vitest",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix"
   },
   "keywords": [],
   "author": "",

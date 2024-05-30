@@ -1,6 +1,10 @@
 {
   "name": "@tingcli/template",
   "version": "0.0.2",
+  "scripts": {
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
