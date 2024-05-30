@@ -5,7 +5,9 @@
   "scripts": {
     "clean": "pnpm rimraf node_modules && pnpm rimraf dist && pnpm rimraf .turbo",
     "dev": "pnpm esno ./dev.ts",
-    "build": "pnpm esno ./build.ts"
+    "build": "pnpm esno ./build.ts",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../.prettierignore ."
   },
   "devDependencies": {
     "@types/prompts": "^2.4.0",

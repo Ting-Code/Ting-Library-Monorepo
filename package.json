@@ -19,10 +19,10 @@
     "version-packages": "changeset version",
     "release": "pnpm build && pnpm release:only",
     "preinstall": "npx only-allow pnpm",
-    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
-    "lint:prettier": "prettier --write  \"{packages,apps,configs}/**/*.{js,json,ts,tsx,css,less,scss,vue,html,md}\"",
+    "lint:eslint": "turbo lint:eslint",
+    "lint:prettier": "turbo lint:prettier",
     "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\"",
-    "lint:lint-staged": "pnpm run lint:eslint & pnpm run lint:stylelint & pnpm run lint:prettier",
+    "lint:lint-staged": "turbo lint:eslint lint:prettier & pnpm run lint:prettier",
     "prepare": "husky install"
   },
   "keywords": [],

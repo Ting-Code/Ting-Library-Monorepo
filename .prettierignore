@@ -2,3 +2,5 @@
 dist
 node_modules
 public
+packages/apps/admin/src/auto-imports.d.ts
+packages/apps/admin/src/components.d.ts

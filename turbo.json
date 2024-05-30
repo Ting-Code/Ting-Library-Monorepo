@@ -16,6 +16,9 @@
     },
     "dev": {
       "cache": false
-    }
+    },
+    "lint:eslint": {},
+    "lint:prettier": {},
+    "lint:stylelint": {}
   }
 }

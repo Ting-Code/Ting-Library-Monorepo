@@ -21,7 +21,9 @@
     "dev": "esno ./src/cli.ts",
     "start": "node ./bin/index.mjs",
     "build": "unbuild",
-    "test": "vitest"
+    "test": "vitest",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "license": "ISC",
   "keywords": [],
