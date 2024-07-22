@@ -8,7 +8,7 @@
       "@/*": ["src/*"]
     },
     "lib": ["dom", "esnext"],
-    "types": ["@common/types", "node", "./node_modules/@types"],
+    "types": ["node", "./node_modules/@types"],
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "./src/types"]

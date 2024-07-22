@@ -14,7 +14,6 @@
     "react-router-dom": "^6.9.0"
   },
   "devDependencies": {
-    "@common/types": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "@react-spring/web": "^9.7.1",
     "@rspack/cli": "0.2.4",
