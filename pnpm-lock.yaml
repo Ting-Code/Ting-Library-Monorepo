@@ -237,7 +237,7 @@ importers:
         version: https://registry.npmjs.org/vite-plugin-eslint/-/vite-plugin-eslint-1.8.1.tgz(eslint@8.57.0)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
       vite-plugin-md:
         specifier: ^0.21.5
-        version: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.21.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
+        version: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.21.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
       vite-plugin-mock:
         specifier: ^2.9.6
         version: 2.9.8(mockjs@https://registry.npmjs.org/mockjs/-/mockjs-1.1.0.tgz)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
@@ -260,9 +260,6 @@ importers:
         specifier: ^6.9.0
         version: https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.9.0.tgz(react-dom@https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz(react@https://registry.npmjs.org/react/-/react-18.2.0.tgz))(react@https://registry.npmjs.org/react/-/react-18.2.0.tgz)
     devDependencies:
-      '@common/types':
-        specifier: workspace:*
-        version: link:../../types
       '@config/tsconfig':
         specifier: workspace:*
         version: link:../../../configs/tsconfig
@@ -271,7 +268,7 @@ importers:
         version: https://registry.npmjs.org/@react-spring/web/-/web-9.7.1.tgz(react-dom@https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz(react@https://registry.npmjs.org/react/-/react-18.2.0.tgz))(react@https://registry.npmjs.org/react/-/react-18.2.0.tgz)
       '@rspack/cli':
         specifier: 0.2.4
-        version: https://registry.npmjs.org/@rspack/cli/-/cli-0.2.4.tgz(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+        version: https://registry.npmjs.org/@rspack/cli/-/cli-0.2.4.tgz(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
       '@types/node':
         specifier: ^20.4.4
         version: https://registry.npmjs.org/@types/node/-/node-20.4.4.tgz
@@ -413,6 +410,8 @@ importers:
         specifier: ^1.3.4
         version: 1.3.4
 
+  packages/lib/system: {}
+
   packages/lib/utils:
     dependencies:
       '@types/lodash-es':
@@ -479,19 +478,19 @@ importers:
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^4.1.0
-        version: 4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)
+        version: 4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)
       typescript:
         specifier: ^4.9.5
         version: https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz
       vite:
         specifier: ^4.3.9
-        version: 4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+        version: 4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       vite-plugin-code:
         specifier: workspace:^
         version: link:../vite-plugin-code
       vite-plugin-md:
         specifier: ^0.21.5
-        version: 0.21.5(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
+        version: 0.21.5(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
       vue-tsc:
         specifier: ^1.4.2
         version: 1.4.2(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)
@@ -526,12 +525,6 @@ importers:
       unbuild:
         specifier: ^1.2.0
         version: https://registry.npmjs.org/unbuild/-/unbuild-1.2.0.tgz(sass@1.76.0)
-
-  packages/types:
-    dependencies:
-      '@config/tsconfig':
-        specifier: workspace:*
-        version: link:../../configs/tsconfig
 
   scripts:
     devDependencies:
@@ -3423,7 +3416,6 @@ packages:
       {
         integrity: sha512-R6JDUfiZbJA9cMiguQ7jxALsgiprjBeHL5ikpXfJCH62pPHtI+JdJ5xWj6Ev73yXSlYl86+blXn1kZHQ7uElxw==
       }
-    version: 4.2.3
     engines: { node: ^14.18.0 || >=16.0.0 }
     peerDependencies:
       vite: ^4.0.0
@@ -4165,7 +4157,6 @@ packages:
       {
         integrity: sha512-qc6HyfqtuS06FvA5rK0L62Nmc1LnarVOt8/V/mTX2DBZlpTfIDpudpbE/7/kxjme9pP4PFMCk7cPSrprLEorjw==
       }
-    version: 1.4.1
 
   '@yankeeinlondon/builder-api@https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz':
     resolution:
@@ -4180,7 +4171,6 @@ packages:
       {
         integrity: sha512-TLtRc/mxI74ahP3s+fJpIi+lBFAhuJuVjiQhmyi/xEwJ2pDepuWMRXT6UfJOA1cGkZ5/XGa9NFw/SQR6M5jfoQ==
       }
-    version: 6.1.1
     engines: { node: '>=14.0' }
 
   '@yankeeinlondon/gray-matter@https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz':
@@ -9694,6 +9684,7 @@ packages:
       {
         integrity: sha512-ya/UeJ6HVBYxrgYotAZo1KvPWlgB48kUJLDePFeneHsVujFaW5WNj2NgWCAE//B1Dl02BIfYlpNgBy8Kf8Rjmw==
       }
+    version: 2.0.6
     engines: { node: '>=12.0.0' }
     peerDependencies:
       '@types/express': ^4.17.13
@@ -17274,7 +17265,6 @@ packages:
       {
         integrity: sha512-gxiiSq2PmU2zUY5ZAFLEGmDFRV6J6gF85ns3hcvtgERibNST4gWxRSabqSZbGbHp3LEBwwK7C1CRLsl46yEiWg==
       }
-    version: 0.21.5
     peerDependencies:
       vite: ^4.0.0
 
@@ -17325,7 +17315,6 @@ packages:
       {
         integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==
       }
-    version: 4.3.9
     engines: { node: ^14.18.0 || >=16.0.0 }
     hasBin: true
     peerDependencies:
@@ -17712,7 +17701,6 @@ packages:
       {
         integrity: sha512-hj5CYrY0bZLB+eTO+x/j67Pkrquiy7kWepMHmUMoPsmcUaeEnQJqFzHJOyxgWlq746/wUuA64p9ta34Kyb01pA==
       }
-    version: 5.3.3
     engines: { node: '>= 12.13.0' }
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
@@ -17759,7 +17747,6 @@ packages:
       {
         integrity: sha512-5tWg00bnWbYgkN+pd5yISQKDejRBYGEw15RaEEslH+zdbNDxxaZvEAO2WulaSaFKb5n3YG8JXsGaDsut1D0xdA==
       }
-    version: 4.13.1
     engines: { node: '>= 12.13.0' }
     hasBin: true
     peerDependencies:
@@ -19326,9 +19313,9 @@ snapshots:
       webpack: 5.76.0
     optionalDependencies:
       type-fest: 3.8.0
-      webpack-dev-server: 4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      webpack-dev-server: 4.13.1(webpack@5.76.0)
 
-  '@pmmmwh/react-refresh-webpack-plugin@https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.10.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
+  '@pmmmwh/react-refresh-webpack-plugin@https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.10.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
     dependencies:
       ansi-html-community: https://registry.npmjs.org/ansi-html-community/-/ansi-html-community-0.0.8.tgz
       common-path-prefix: https://registry.npmjs.org/common-path-prefix/-/common-path-prefix-3.0.0.tgz
@@ -19343,7 +19330,7 @@ snapshots:
       webpack: https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz
     optionalDependencies:
       type-fest: 3.8.0
-      webpack-dev-server: 4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      webpack-dev-server: 4.13.1(webpack@5.76.0)
 
   '@pmmmwh/react-refresh-webpack-plugin@https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.10.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-4.13.1.tgz(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
     dependencies:
@@ -19621,11 +19608,11 @@ snapshots:
       '@rspack/binding-win32-ia32-msvc': 0.2.4
       '@rspack/binding-win32-x64-msvc': 0.2.4
 
-  '@rspack/cli@https://registry.npmjs.org/@rspack/cli/-/cli-0.2.4.tgz(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
+  '@rspack/cli@https://registry.npmjs.org/@rspack/cli/-/cli-0.2.4.tgz(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
     dependencies:
       '@discoveryjs/json-ext': https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz
-      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
-      '@rspack/dev-server': https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
+      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      '@rspack/dev-server': https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
       colorette: https://registry.npmjs.org/colorette/-/colorette-2.0.19.tgz
       interpret: https://registry.npmjs.org/interpret/-/interpret-3.1.1.tgz
       rechoir: https://registry.npmjs.org/rechoir/-/rechoir-0.8.0.tgz
@@ -19651,10 +19638,10 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
+  '@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
     dependencies:
       '@rspack/binding': https://registry.npmjs.org/@rspack/binding/-/binding-0.2.4.tgz
-      '@rspack/dev-client': https://registry.npmjs.org/@rspack/dev-client/-/dev-client-0.2.4.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      '@rspack/dev-client': https://registry.npmjs.org/@rspack/dev-client/-/dev-client-0.2.4.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
       '@swc/helpers': https://registry.npmjs.org/@swc/helpers/-/helpers-0.5.1.tgz
       browserslist: https://registry.npmjs.org/browserslist/-/browserslist-4.21.10.tgz
       compare-versions: https://registry.npmjs.org/compare-versions/-/compare-versions-6.0.0-rc.1.tgz
@@ -19692,9 +19679,9 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@rspack/dev-client@https://registry.npmjs.org/@rspack/dev-client/-/dev-client-0.2.4.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
+  '@rspack/dev-client@https://registry.npmjs.org/@rspack/dev-client/-/dev-client-0.2.4.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)':
     dependencies:
-      '@pmmmwh/react-refresh-webpack-plugin': https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.10.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      '@pmmmwh/react-refresh-webpack-plugin': https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.10.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
     optionalDependencies:
       react-refresh: https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz
     transitivePeerDependencies:
@@ -19720,19 +19707,19 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@rspack/dev-server@0.2.4(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)':
+  '@rspack/dev-server@0.2.4(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)':
     dependencies:
-      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
       '@rspack/dev-client': 0.2.4(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@5.76.0)
-      '@rspack/dev-server': https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
+      '@rspack/dev-server': https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
       chokidar: https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz
       connect-history-api-fallback: 2.0.0
       express: 4.18.1
-      http-proxy-middleware: 2.0.6(@types/express@4.17.17)
+      http-proxy-middleware: 2.0.6(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)
       mime-types: 2.1.35
       webpack: 5.76.0
       webpack-dev-middleware: 6.0.2(webpack@5.76.0)
-      webpack-dev-server: 4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      webpack-dev-server: 4.13.1(webpack@5.76.0)
       ws: 8.8.1
     transitivePeerDependencies:
       - '@swc/core'
@@ -19751,15 +19738,15 @@ snapshots:
       - webpack-hot-middleware
       - webpack-plugin-serve
 
-  '@rspack/dev-server@https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)':
+  '@rspack/dev-server@https://registry.npmjs.org/@rspack/dev-server/-/dev-server-0.2.4.tgz(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)':
     dependencies:
-      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      '@rspack/core': https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
       '@rspack/dev-client': https://registry.npmjs.org/@rspack/dev-client/-/dev-client-0.2.4.tgz(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)(webpack-dev-server@https://registry.npmjs.org/webpack-dev-server/-/webpack-dev-server-4.13.1.tgz(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
-      '@rspack/dev-server': 0.2.4(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@4.17.17)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
+      '@rspack/dev-server': 0.2.4(@rspack/core@https://registry.npmjs.org/@rspack/core/-/core-0.2.4.tgz(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz))(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)(react-refresh@https://registry.npmjs.org/react-refresh/-/react-refresh-0.14.0.tgz)(type-fest@3.8.0)
       chokidar: https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz
       connect-history-api-fallback: https://registry.npmjs.org/connect-history-api-fallback/-/connect-history-api-fallback-2.0.0.tgz
       express: https://registry.npmjs.org/express/-/express-4.18.1.tgz
-      http-proxy-middleware: https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.6.tgz(@types/express@4.17.17)
+      http-proxy-middleware: https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.6.tgz(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz)
       mime-types: 2.1.35
       webpack: https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz
       webpack-dev-middleware: https://registry.npmjs.org/webpack-dev-middleware/-/webpack-dev-middleware-6.0.2.tgz(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
@@ -20242,9 +20229,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)':
+  '@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)':
     dependencies:
-      vite: 4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vite: 4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       vue: 3.3.4
 
   '@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@20.7.0)(less@4.1.3)(sass@https://registry.npmjs.org/sass/-/sass-1.76.0.tgz)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz))':
@@ -20804,14 +20791,14 @@ snapshots:
 
   '@xtuc/long@https://registry.npmjs.org/@xtuc/long/-/long-4.2.2.tgz': {}
 
-  '@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))':
+  '@yankeeinlondon/builder-api@1.4.1(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))':
     dependencies:
       '@types/markdown-it': 12.2.3
       '@yankeeinlondon/happy-wrapper': 2.10.1(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       fp-ts: 2.16.0
-      inferred-types: 0.37.6(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      inferred-types: 0.37.6(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
-      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
+      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -20828,14 +20815,14 @@ snapshots:
       - terser
       - vite
 
-  '@yankeeinlondon/builder-api@https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))':
+  '@yankeeinlondon/builder-api@https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))':
     dependencies:
       '@types/markdown-it': https://registry.npmjs.org/@types/markdown-it/-/markdown-it-12.2.3.tgz
       '@yankeeinlondon/happy-wrapper': https://registry.npmjs.org/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.10.1.tgz(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       fp-ts: https://registry.npmjs.org/fp-ts/-/fp-ts-2.16.0.tgz
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
-      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
+      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -20852,14 +20839,14 @@ snapshots:
       - terser
       - vite
 
-  '@yankeeinlondon/builder-api@https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))':
+  '@yankeeinlondon/builder-api@https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))':
     dependencies:
       '@types/markdown-it': https://registry.npmjs.org/@types/markdown-it/-/markdown-it-12.2.3.tgz
       '@yankeeinlondon/happy-wrapper': https://registry.npmjs.org/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.10.1.tgz(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       fp-ts: https://registry.npmjs.org/fp-ts/-/fp-ts-2.16.0.tgz
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
-      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
+      vite-plugin-md: https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -20876,14 +20863,14 @@ snapshots:
       - terser
       - vite
 
-  '@yankeeinlondon/gray-matter@6.1.1(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)':
+  '@yankeeinlondon/gray-matter@6.1.1(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)':
     dependencies:
-      inferred-types: 0.37.6(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      inferred-types: 0.37.6(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       js-yaml: 4.1.0
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
-      vitest: 0.25.8(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vitest: 0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -20897,14 +20884,14 @@ snapshots:
       - supports-color
       - terser
 
-  '@yankeeinlondon/gray-matter@https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)':
+  '@yankeeinlondon/gray-matter@https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)':
     dependencies:
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       js-yaml: https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz
       kind-of: https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz
       section-matter: https://registry.npmjs.org/section-matter/-/section-matter-1.0.0.tgz
       strip-bom-string: https://registry.npmjs.org/strip-bom-string/-/strip-bom-string-1.0.0.tgz
-      vitest: 0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      vitest: 0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -20918,14 +20905,14 @@ snapshots:
       - supports-color
       - terser
 
-  '@yankeeinlondon/gray-matter@https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)':
+  '@yankeeinlondon/gray-matter@https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)':
     dependencies:
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       js-yaml: https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz
       kind-of: https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz
       section-matter: https://registry.npmjs.org/section-matter/-/section-matter-1.0.0.tgz
       strip-bom-string: https://registry.npmjs.org/strip-bom-string/-/strip-bom-string-1.0.0.tgz
-      vitest: 0.25.8(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vitest: 0.25.8(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -21559,31 +21546,12 @@ snapshots:
       - supports-color
       - terser
 
-  brilliant-errors@0.7.3(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
-    dependencies:
-      bumpp: 8.2.1
-      callsites: https://registry.npmjs.org/callsites/-/callsites-4.0.0.tgz
-      inferred-types: 0.37.6(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
-      vitest: 0.25.8(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
-    transitivePeerDependencies:
-      - '@edge-runtime/vm'
-      - '@vitest/browser'
-      - '@vitest/ui'
-      - happy-dom
-      - jsdom
-      - less
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-
-  brilliant-errors@https://registry.npmjs.org/brilliant-errors/-/brilliant-errors-0.7.3.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2):
+  brilliant-errors@https://registry.npmjs.org/brilliant-errors/-/brilliant-errors-0.7.3.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
     dependencies:
       bumpp: https://registry.npmjs.org/bumpp/-/bumpp-8.2.1.tgz
       callsites: https://registry.npmjs.org/callsites/-/callsites-4.0.0.tgz
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
-      vitest: 0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vitest: 0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -21620,7 +21588,7 @@ snapshots:
     dependencies:
       bumpp: https://registry.npmjs.org/bumpp/-/bumpp-8.2.1.tgz
       callsites: https://registry.npmjs.org/callsites/-/callsites-4.0.0.tgz
-      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      inferred-types: https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       vitest: 0.25.8(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
@@ -24323,15 +24291,15 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  http-proxy-middleware@https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.6.tgz(@types/express@4.17.17):
+  http-proxy-middleware@2.0.6(@types/express@https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz):
     dependencies:
-      '@types/http-proxy': https://registry.npmjs.org/@types/http-proxy/-/http-proxy-1.17.10.tgz
-      http-proxy: https://registry.npmjs.org/http-proxy/-/http-proxy-1.18.1.tgz
+      '@types/http-proxy': 1.17.10
+      http-proxy: 1.18.1
       is-glob: https://registry.npmjs.org/is-glob/-/is-glob-4.0.3.tgz
-      is-plain-obj: https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-3.0.0.tgz
+      is-plain-obj: 3.0.0
       micromatch: 4.0.5
     optionalDependencies:
-      '@types/express': 4.17.17
+      '@types/express': https://registry.npmjs.org/@types/express/-/express-4.17.17.tgz
     transitivePeerDependencies:
       - debug
 
@@ -24442,29 +24410,9 @@ snapshots:
       - supports-color
       - terser
 
-  inferred-types@0.37.6(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
+  inferred-types@https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
     dependencies:
-      brilliant-errors: 0.7.3(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
-    transitivePeerDependencies:
-      - '@edge-runtime/vm'
-      - '@vitest/browser'
-      - '@vitest/ui'
-      - happy-dom
-      - jsdom
-      - less
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
-
-  inferred-types@https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz:
-    dependencies:
-      brilliant-errors: https://registry.npmjs.org/brilliant-errors/-/brilliant-errors-0.7.3.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
-
-  inferred-types@https://registry.npmjs.org/inferred-types/-/inferred-types-0.37.6.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2):
-    dependencies:
-      brilliant-errors: https://registry.npmjs.org/brilliant-errors/-/brilliant-errors-0.7.3.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      brilliant-errors: https://registry.npmjs.org/brilliant-errors/-/brilliant-errors-0.7.3.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -28544,14 +28492,14 @@ snapshots:
       rollup: https://registry.npmjs.org/rollup/-/rollup-2.79.1.tgz
       vite: https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
 
-  vite-plugin-md@0.21.5(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)):
+  vite-plugin-md@0.21.5(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)):
     dependencies:
-      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
-      '@yankeeinlondon/gray-matter': 6.1.1(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      '@yankeeinlondon/builder-api': 1.4.1(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
+      '@yankeeinlondon/gray-matter': 6.1.1(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       '@yankeeinlondon/happy-wrapper': 2.10.1(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       markdown-it: 13.0.1
       source-map-js: 1.0.2
-      vite: 4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vite: 4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitejs/plugin-vue'
@@ -28567,10 +28515,10 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.21.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)):
+  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.21.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)):
     dependencies:
-      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
-      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
+      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       '@yankeeinlondon/happy-wrapper': https://registry.npmjs.org/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.10.1.tgz(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
       source-map-js: https://registry.npmjs.org/source-map-js/-/source-map-js-1.0.2.tgz
@@ -28590,15 +28538,15 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)):
+  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)):
     dependencies:
-      '@vitejs/plugin-vue': 4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)
-      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
-      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      '@vitejs/plugin-vue': 4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4)
+      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@4.2.3(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))(vue@3.3.4))(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)(vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2))
+      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       '@yankeeinlondon/happy-wrapper': https://registry.npmjs.org/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.10.1.tgz(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
       source-map-js: https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.0.tgz
-      vite: 4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
+      vite: 4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@vitest/browser'
@@ -28613,11 +28561,11 @@ snapshots:
       - supports-color
       - terser
 
-  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)):
+  vite-plugin-md@https://registry.npmjs.org/vite-plugin-md/-/vite-plugin-md-0.22.5.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)):
     dependencies:
       '@vitejs/plugin-vue': 5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz))
-      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
-      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
+      '@yankeeinlondon/builder-api': https://registry.npmjs.org/@yankeeinlondon/builder-api/-/builder-api-1.4.1.tgz(@vitejs/plugin-vue@5.0.4(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))(vue@3.4.21(typescript@https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz)))(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)(vite@https://registry.npmjs.org/vite/-/vite-5.2.11.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2))
+      '@yankeeinlondon/gray-matter': https://registry.npmjs.org/@yankeeinlondon/gray-matter/-/gray-matter-6.1.1.tgz(happy-dom@https://registry.npmjs.org/happy-dom/-/happy-dom-8.9.0.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       '@yankeeinlondon/happy-wrapper': https://registry.npmjs.org/@yankeeinlondon/happy-wrapper/-/happy-wrapper-2.10.1.tgz(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
       markdown-it: https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz
       source-map-js: https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.0.tgz
@@ -28679,13 +28627,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite@4.3.9(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
+  vite@4.3.9(@types/node@20.7.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
     dependencies:
       esbuild: 0.17.15
       postcss: https://registry.npmjs.org/postcss/-/postcss-8.4.38.tgz
       rollup: 3.23.0
     optionalDependencies:
-      '@types/node': https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz
+      '@types/node': 20.7.0
       fsevents: 2.3.3
       less: 4.1.3
       sass: 1.76.0
@@ -28762,32 +28710,6 @@ snapshots:
       less: 4.1.3
       sass: 1.71.1
       terser: 5.18.2
-
-  vitest@0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.71.1)(terser@5.18.2):
-    dependencies:
-      '@types/chai': https://registry.npmjs.org/@types/chai/-/chai-4.3.4.tgz
-      '@types/chai-subset': https://registry.npmjs.org/@types/chai-subset/-/chai-subset-1.3.3.tgz
-      '@types/node': https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz
-      acorn: 8.11.3
-      acorn-walk: 8.2.0
-      chai: https://registry.npmjs.org/chai/-/chai-4.3.7.tgz
-      debug: https://registry.npmjs.org/debug/-/debug-4.3.4.tgz
-      local-pkg: 0.4.3
-      source-map: 0.6.1
-      strip-literal: https://registry.npmjs.org/strip-literal/-/strip-literal-1.0.1.tgz
-      tinybench: https://registry.npmjs.org/tinybench/-/tinybench-2.4.0.tgz
-      tinypool: https://registry.npmjs.org/tinypool/-/tinypool-0.3.1.tgz
-      tinyspy: https://registry.npmjs.org/tinyspy/-/tinyspy-1.1.1.tgz
-      vite: https://registry.npmjs.org/vite/-/vite-4.3.9.tgz(@types/node@https://registry.npmjs.org/@types/node/-/node-20.5.7.tgz)(less@4.1.3)(sass@1.71.1)(terser@5.18.2)
-    optionalDependencies:
-      happy-dom: 8.9.0
-    transitivePeerDependencies:
-      - less
-      - sass
-      - stylus
-      - sugarss
-      - supports-color
-      - terser
 
   vitest@0.25.8(happy-dom@8.9.0)(less@4.1.3)(sass@1.76.0)(terser@5.18.2):
     dependencies:
@@ -29076,14 +28998,14 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  webpack-dev-middleware@5.3.3(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz):
+  webpack-dev-middleware@5.3.3(webpack@5.76.0):
     dependencies:
       colorette: 2.0.19
       memfs: 3.4.13
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.0.0
-      webpack: https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz
+      webpack: 5.76.0
 
   webpack-dev-middleware@6.0.2(webpack@5.76.0):
     dependencies:
@@ -29114,7 +29036,7 @@ snapshots:
     optionalDependencies:
       webpack: https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz
 
-  webpack-dev-server@4.13.1(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz):
+  webpack-dev-server@4.13.1(webpack@5.76.0):
     dependencies:
       '@types/bonjour': 3.5.10
       '@types/connect-history-api-fallback': 1.3.5
@@ -29144,10 +29066,10 @@ snapshots:
       serve-index: 1.9.1
       sockjs: 0.3.24
       spdy: 4.0.2
-      webpack-dev-middleware: 5.3.3(webpack@https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz)
+      webpack-dev-middleware: 5.3.3(webpack@5.76.0)
       ws: 8.13.0
     optionalDependencies:
-      webpack: https://registry.npmjs.org/webpack/-/webpack-5.76.0.tgz
+      webpack: 5.76.0
     transitivePeerDependencies:
       - bufferutil
       - debug
