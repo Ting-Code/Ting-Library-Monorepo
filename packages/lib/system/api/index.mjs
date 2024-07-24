@@ -3,30 +3,21 @@ import {
   RequestEnum,
   ResultEnum,
   ContentTypeEnum,
-  AxiosTransform,
-  AxiosResponse,
-  RequestOptions,
-  Result,
-  CreateAxiosOptions,
   VAxios,
   checkStatus,
-  Recordable,
   formatRequestDate,
   joinTimestamp,
   axios
 } from '@tingcode/request'
 import { deepMerge, setObjToUrlParams } from '@tingcode/utils'
-import { getGlobalData, getGlobalDataEnv, getGlobalStorageToken } from '../index'
-import { PageEnum } from '../index'
-
-/**
- * @description: 数据处理，方便区分多种处理方式
- */
-const transform: AxiosTransform = {
+import { getGlobalData, getGlobalDataEnv } from '../global-data'
+import { getGlobalStorageToken } from '../global-data'
+import { PageEnum } from '../router'
+const transform = {
   /**
    * @description: 处理请求数据
    */
-  transformRequestData: (res: AxiosResponse<Result>, options: RequestOptions) => {
+  transformRequestData: (res, options) => {
     const {
       isShowMessage = true,
       isShowErrorMessage,
@@ -36,83 +27,45 @@ const transform: AxiosTransform = {
       isTransformResponse,
       isReturnNativeResponse
     } = options
-
-    // 是否返回原生响应头 比如：需要获取响应头时使用该属性
     if (isReturnNativeResponse) {
       return res
     }
-    // 不进行任何处理，直接返回
-    // 用于页面代码可能需要直接获取code，data，message这些信息时开启
     if (!isTransformResponse) {
       return res.data
     }
     const { data } = res
-
     if (!data) {
-      // return '[HTTP] Request has no return value';
-      throw new Error('请求出错，请稍候重试')
+      throw new Error('\u8BF7\u6C42\u51FA\u9519\uFF0C\u8BF7\u7A0D\u5019\u91CD\u8BD5')
     }
-    //  这里 code，result，message为 后台统一的字段，需要在 types.ts内修改为项目自己的接口返回格式
     const { code, result, message } = data
-    // 请求成功
-    const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS // 200
-    // 是否显示提示信息
+    const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS
     if (isShowMessage) {
       if (hasSuccess && (successMessageText || isShowSuccessMessage)) {
-        // 是否显示自定义信息提示
-        // ElMessage.success(successMessageText || message || '操作成功！')
       } else if (!hasSuccess && (errorMessageText || isShowErrorMessage)) {
-        // 是否显示自定义信息提示
-        // ElMessage.error(message || errorMessageText || '操作失败！')
       } else if (!hasSuccess && options.errorMessageMode === 'modal') {
-        // errorMessageMode=‘custom-modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-        // ElMessageBox({
-        //   title: '提示',
-        //   message: message
-        // })
       }
     }
-
-    // 接口请求成功，直接返回结果
     if (code === ResultEnum.SUCCESS) {
       return result
     }
-    // 接口请求错误，统一提示错误信息 这里逻辑可以根据项目进行修改
     let errorMsg = message
     switch (code) {
-      // 请求失败
       case ResultEnum.ERROR:
-        // ElMessage.error(errorMsg)
         break
-      // 登录超时
       case ResultEnum.TIMEOUT:
         if (window.location.pathname === PageEnum.BASE_LOGIN) return
-        // 到登录页
-        errorMsg = '登录超时，请重新登录!'
-        // ElMessageBox.confirm('登录身份已失效，请重新登录!', '提示', {
-        //   confirmButtonText: '确定',
-        //   type: 'warning'
-        // }).then(() => {
-        //   storage.clear()
-        //   window.location.href = PageEnum.BASE_LOGIN
-        // })
+        errorMsg = '\u767B\u5F55\u8D85\u65F6\uFF0C\u8BF7\u91CD\u65B0\u767B\u5F55!'
         break
     }
     throw new Error(errorMsg)
   },
-
   // 请求之前处理config
   beforeRequestHook: (config, options) => {
     const { apiUrl, joinPrefix, joinParamsToUrl, formatDate, joinTime = true, urlPrefix } = options
-
-    const isUrlStr = isExternal(config.url as string)
-
-    // 拼接URL前缀
+    const isUrlStr = isExternal(config.url)
     if (!isUrlStr && joinPrefix) {
       config.url = `${urlPrefix}${config.url}`
     }
-
-    // 拼接请求域名端口
     if (!isUrlStr && apiUrl && isString(apiUrl)) {
       config.url = `${apiUrl}${config.url}`
     }
@@ -120,12 +73,10 @@ const transform: AxiosTransform = {
     const data = config.data || false
     if (config.method?.toUpperCase() === RequestEnum.GET) {
       if (!isString(params)) {
-        // 给 get 请求加上时间戳参数，避免从缓存中拿数据。
         config.params = Object.assign(params || {}, joinTimestamp(joinTime, false))
       } else {
-        // 兼容restful风格
         config.url = config.url + params + `${joinTimestamp(joinTime, true)}`
-        config.params = undefined
+        config.params = void 0
       }
     } else {
       if (!isString(params)) {
@@ -135,76 +86,60 @@ const transform: AxiosTransform = {
           config.params = params
         } else {
           config.data = params
-          config.params = undefined
+          config.params = void 0
         }
         if (joinParamsToUrl) {
-          config.url = setObjToUrlParams(
-            config.url as string,
-            Object.assign({}, config.params, config.data)
-          )
+          config.url = setObjToUrlParams(config.url, Object.assign({}, config.params, config.data))
         }
       } else {
-        // 兼容restful风格
         config.url = config.url + params
-        config.params = undefined
+        config.params = void 0
       }
     }
     return config
   },
-
   /**
    * @description: 请求拦截器处理
    */
   requestInterceptors: (config, options) => {
-    // 请求之前处理config
     const token = getGlobalStorageToken()
-    if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
-      // jwt token
-      ;(config as Recordable).headers.Authorization = options.authenticationScheme
+    if (token && config?.requestOptions?.withToken !== false) {
+      config.headers.Authorization = options.authenticationScheme
         ? `${options.authenticationScheme} ${token}`
         : token
     }
     return config
   },
-
   /**
    * @description: 响应错误处理
    */
-  responseInterceptorsCatch: (error: any) => {
-    // @ts-ignore
+  responseInterceptorsCatch: (error) => {
     const { response, code, message } = error || {}
-    // TODO 此处要根据后端接口返回格式修改
-    const msg: string =
-      response && response.data && response.data.message ? response.data.message : ''
-    const err: string = error.toString()
+    const msg = response && response.data && response.data.message ? response.data.message : ''
+    const err = error.toString()
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
-        // ElMessage.error('接口请求超时,请刷新页面重试!')
         return Promise.reject(error)
       }
       if (err && err.includes('Network Error')) {
-        // ElMessage.error('请检查您的网络连接是否正常!')
         return Promise.reject(error)
       }
-    } catch (error) {
-      throw new Error(error as string | undefined)
+    } catch (error2) {
+      throw new Error(error2)
     }
-    // 请求是否被取消
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
-      // TODO ElMessage
       checkStatus(error.response && error.response.status, msg, console)
     } else {
-      console.warn(error, '请求被取消！')
+      console.warn(error, '\u8BF7\u6C42\u88AB\u53D6\u6D88\uFF01')
     }
     return Promise.reject(response?.data)
   }
 }
-
-function createAxios(opt?: Partial<CreateAxiosOptions>) {
+function createAxios(opt) {
   const globEnv = getGlobalDataEnv()
-  const urlPrefix: string = globEnv?.urlPrefix || ''
-  const apiUrl: string = globEnv?.apiUrl || ''
+  const urlPrefix = globEnv?.urlPrefix || ''
+  const apiUrl = globEnv?.apiUrl || ''
   console.log(
     '======================================',
     globEnv,
@@ -216,7 +151,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
   return new VAxios(
     deepMerge(
       {
-        timeout: 10 * 1000,
+        timeout: 10 * 1e3,
         authenticationScheme: '',
         headers: { 'Content-Type': ContentTypeEnum.JSON },
         // 数据处理方式
@@ -236,9 +171,9 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           // 消息提示类型
           errorMessageMode: 'none',
           // 接口地址
-          apiUrl: apiUrl,
+          apiUrl,
           // 接口拼接地址
-          urlPrefix: urlPrefix,
+          urlPrefix,
           //  是否加入时间戳
           joinTime: true,
           // 忽略重复请求
@@ -252,6 +187,5 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
     )
   )
 }
-
 export const request = createAxios()
-export * from './user'
+export * from './user.mjs'

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { createStorage } from '@tingcode/utils'
 import { store } from '@/store'
 import { ResultEnum } from '@tingcode/request'
-import { apiGetUserInfo, apiLogin } from '@tingcode/system'
+import { apiGetUserInfo, apiLogin } from '@tingcode/system/api'
 
 export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息

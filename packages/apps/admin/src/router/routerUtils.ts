@@ -1,4 +1,4 @@
-import { apiAdminMenus } from '@tingcode/system'
+import { apiAdminMenus } from '@tingcode/system/api'
 import { RouteRecordRaw } from 'vue-router'
 import { Layout, ParentLayout } from '@/router/routerBase.js'
 import type { AppRouteRecordRaw } from '@/router/type'

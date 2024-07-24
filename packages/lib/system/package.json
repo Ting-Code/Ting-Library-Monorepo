@@ -6,12 +6,20 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "main": "dist/index.mjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "api"
   ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./api": {
+      "import": "./dist/api/index.mjs",
+      "types": "./dist/api/index.d.ts"
+    }
+  },
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild",
