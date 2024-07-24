@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-  import { VirtualScroll } from '@tingcli/lib-vue'
+  import { VirtualScroll } from '@tingcode/lib-vue'
   defineOptions({
     name: 'FixationHeight',
     inheritAttrs: false

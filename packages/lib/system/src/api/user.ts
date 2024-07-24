@@ -9,7 +9,7 @@ export interface BasicResponseModel<T = any> {
 /**
  * @description: 获取用户信息 （前端权限）啊
  */
-export function getUserInfo() {
+export function apiGetUserInfo() {
   return request.request({
     url: '/admin_info',
     method: 'get'
@@ -19,7 +19,7 @@ export function getUserInfo() {
 /**
  * @description: 用户登录
  */
-export function login(params: any) {
+export function apiLogin(params: any) {
   return request.request<BasicResponseModel>(
     {
       url: '/login',
@@ -35,7 +35,7 @@ export function login(params: any) {
 /**
  * @description: 根据用户id获取用户菜单 （后端权限）
  */
-export function adminMenus() {
+export function apiAdminMenus() {
   return request.request({
     url: '/menus',
     method: 'GET'

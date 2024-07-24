@@ -101,7 +101,7 @@ export default defineConfig(({ command, mode }) => {
       //     drop_debugger: true,
       //   },
       // },
-      // 配置输出文件夹（默认dist） env.VITE_BUILD_PATH
+      // 配置输出文件夹（默认dist）
       outDir: pathResolve('dist'),
       rollupOptions: {
         output: {

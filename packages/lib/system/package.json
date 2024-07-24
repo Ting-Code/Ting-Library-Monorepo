@@ -22,5 +22,10 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "@micro-zoe/micro-app": "1.0.0-rc.5",
+    "@tingcode/utils": "workspace:*",
+    "@tingcode/request": "workspace:*",
+    "typescript": "^4.9.5"
+  }
 }

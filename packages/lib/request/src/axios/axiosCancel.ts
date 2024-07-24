@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig, Canceler } from 'axios'
 import qs from 'qs'
 
-import { isFunction } from '@tingcli/utils'
+import { isFunction } from '@tingcode/utils'
 
 // 声明一个 Map 用于存储每个请求的标识 和 取消函数
 let pendingMap = new Map<string, Canceler>()

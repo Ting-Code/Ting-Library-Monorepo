@@ -1,4 +1,4 @@
-import { isExternal, isString } from '@tingcli/utils'
+import { isExternal, isString } from '@tingcode/utils'
 import {
   RequestEnum,
   ResultEnum,
@@ -14,15 +14,11 @@ import {
   formatRequestDate,
   joinTimestamp,
   axios
-} from '@common/request'
-import { useEnvSetting } from '@/hooks/useSetting'
-import { deepMerge, setObjToUrlParams, storage } from '@tingcli/utils'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import { useUserStoreWidthOut } from '@/store/modules/user.js'
-import router from '@/router'
-import { PageEnum } from '@/router/type'
-const globSetting = useEnvSetting()
-const urlPrefix: string = globSetting.urlPrefix || ''
+} from '@tingcode/request'
+import { deepMerge, setObjToUrlParams } from '@tingcode/utils'
+import { getGlobalData, getGlobalDataEnv } from '../global-data'
+import { getGlobalStorageToken } from '../global-data'
+import { PageEnum } from '../router'
 
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -65,16 +61,16 @@ const transform: AxiosTransform = {
     if (isShowMessage) {
       if (hasSuccess && (successMessageText || isShowSuccessMessage)) {
         // 是否显示自定义信息提示
-        ElMessage.success(successMessageText || message || '操作成功！')
+        // ElMessage.success(successMessageText || message || '操作成功！')
       } else if (!hasSuccess && (errorMessageText || isShowErrorMessage)) {
         // 是否显示自定义信息提示
-        ElMessage.error(message || errorMessageText || '操作失败！')
+        // ElMessage.error(message || errorMessageText || '操作失败！')
       } else if (!hasSuccess && options.errorMessageMode === 'modal') {
         // errorMessageMode=‘custom-modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-        ElMessageBox({
-          title: '提示',
-          message: message
-        })
+        // ElMessageBox({
+        //   title: '提示',
+        //   message: message
+        // })
       }
     }
 
@@ -87,20 +83,20 @@ const transform: AxiosTransform = {
     switch (code) {
       // 请求失败
       case ResultEnum.ERROR:
-        ElMessage.error(errorMsg)
+        // ElMessage.error(errorMsg)
         break
       // 登录超时
       case ResultEnum.TIMEOUT:
-        if (router.currentRoute.value?.name === PageEnum.BASE_LOGIN_NAME) return
+        if (window.location.pathname === PageEnum.BASE_LOGIN) return
         // 到登录页
         errorMsg = '登录超时，请重新登录!'
-        ElMessageBox.confirm('登录身份已失效，请重新登录!', '提示', {
-          confirmButtonText: '确定',
-          type: 'warning'
-        }).then(() => {
-          storage.clear()
-          window.location.href = PageEnum.BASE_LOGIN
-        })
+        // ElMessageBox.confirm('登录身份已失效，请重新登录!', '提示', {
+        //   confirmButtonText: '确定',
+        //   type: 'warning'
+        // }).then(() => {
+        //   storage.clear()
+        //   window.location.href = PageEnum.BASE_LOGIN
+        // })
         break
     }
     throw new Error(errorMsg)
@@ -162,8 +158,7 @@ const transform: AxiosTransform = {
    */
   requestInterceptors: (config, options) => {
     // 请求之前处理config
-    const userStore = useUserStoreWidthOut()
-    const token = userStore.getToken
+    const token = getGlobalStorageToken()
     if (token && (config as Recordable)?.requestOptions?.withToken !== false) {
       // jwt token
       ;(config as Recordable).headers.Authorization = options.authenticationScheme
@@ -185,11 +180,11 @@ const transform: AxiosTransform = {
     const err: string = error.toString()
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
-        ElMessage.error('接口请求超时,请刷新页面重试!')
+        // ElMessage.error('接口请求超时,请刷新页面重试!')
         return Promise.reject(error)
       }
       if (err && err.includes('Network Error')) {
-        ElMessage.error('请检查您的网络连接是否正常!')
+        // ElMessage.error('请检查您的网络连接是否正常!')
         return Promise.reject(error)
       }
     } catch (error) {
@@ -198,7 +193,8 @@ const transform: AxiosTransform = {
     // 请求是否被取消
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
-      checkStatus(error.response && error.response.status, msg, ElMessage)
+      // TODO ElMessage
+      checkStatus(error.response && error.response.status, msg, console)
     } else {
       console.warn(error, '请求被取消！')
     }
@@ -207,6 +203,17 @@ const transform: AxiosTransform = {
 }
 
 function createAxios(opt?: Partial<CreateAxiosOptions>) {
+  const globEnv = getGlobalDataEnv()
+  const urlPrefix: string = globEnv?.urlPrefix || ''
+  const apiUrl: string = globEnv?.apiUrl || ''
+  console.log(
+    '======================================',
+    globEnv,
+    urlPrefix,
+    apiUrl,
+    getGlobalData(),
+    window?.namespace
+  )
   return new VAxios(
     deepMerge(
       {
@@ -230,7 +237,7 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
           // 消息提示类型
           errorMessageMode: 'none',
           // 接口地址
-          apiUrl: globSetting.apiUrl,
+          apiUrl: apiUrl,
           // 接口拼接地址
           urlPrefix: urlPrefix,
           //  是否加入时间戳
@@ -248,3 +255,4 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
 }
 
 export const request = createAxios()
+export * from './user'

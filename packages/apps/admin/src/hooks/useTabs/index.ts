@@ -3,7 +3,7 @@ import { RouteItem, TABS_ROUTES, useTabsStoreWidthOut } from '@/store/modules/ta
 import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
 import { toRef, unref } from 'vue'
 import { PageEnum } from '@/router/type'
-import { createStorage } from '@tingcli/utils'
+import { createStorage } from '@tingcode/utils'
 import { useGo, useRedo } from '@/hooks/usePage'
 import { toRaw } from 'vue'
 export const useTabs = (_router?: Router) => {

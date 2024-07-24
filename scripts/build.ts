@@ -8,7 +8,7 @@ export async function runBuild() {
         '@apps/admin',
         '@apps/micro',
         '@tingcli/create',
-        '@tingcli/lib-vue',
+        '@tingcode/lib-vue',
         '@tingcli/cli-utils',
         'vite-plugin-code'
       ].includes(pkg.name)

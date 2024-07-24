@@ -1,4 +1,4 @@
-import { isObject, isString } from '@tingcli/utils'
+import { isObject, isString } from '@tingcode/utils'
 import { Recordable } from './types'
 
 const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm'

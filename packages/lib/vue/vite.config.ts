@@ -60,7 +60,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       formats: ['es', 'umd'],
-      name: '@tingcli/lib-vue',
+      name: '@tingcode/lib-vue',
       fileName: (format) => `${format}.js`
     }
   },

@@ -110,7 +110,7 @@ export interface ViewportOffsetResult {
  * left: the distance between the leftmost element and the left side of the document
  * top: the distance from the top of the element to the top of the document
  * right: the distance from the far right of the element to the right of the document
- * bottom: the distance from the bottom of the element to the bottom of the document
+ * bottom: the distance from the bottom of the element to the bottom of the documentF
  * rightIncludeBody: the distance between the leftmost element and the right side of the document
  * bottomIncludeBody: the distance from the bottom of the element to the bottom of the document
  *

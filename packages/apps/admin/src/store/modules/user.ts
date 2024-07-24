@@ -1,14 +1,14 @@
 import { defineStore } from 'pinia'
-import { createStorage } from '@tingcli/utils'
+import { createStorage } from '@tingcode/utils'
 import { store } from '@/store'
-import { ResultEnum } from '@common/request'
-import { getUserInfo, login } from '@/apis/user'
+import { ResultEnum } from '@tingcode/request'
+import { apiGetUserInfo, apiLogin } from '@tingcode/system'
 
 export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
 export const IS_LOCKSCREEN = 'IS-LOCKSCREEN' // 是否锁屏
 const Storage = createStorage({ storage: localStorage })
-import { storage } from '@tingcli/utils'
+import { storage } from '@tingcode/utils'
 export interface IUserState {
   token: string
 }
@@ -65,7 +65,7 @@ export const useUserStore = defineStore({
     // 登录
     async login(userInfo?: any) {
       try {
-        const response = await login(userInfo)
+        const response = await apiLogin(userInfo)
         const { result, code } = response
         if (code === ResultEnum.SUCCESS) {
           const ex = 7 * 24 * 60 * 60 * 1000
@@ -86,7 +86,7 @@ export const useUserStore = defineStore({
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       const that = this
       return new Promise((resolve, reject) => {
-        getUserInfo()
+        apiGetUserInfo()
           .then((res) => {
             const result = res
             if (result.permissions && result.permissions.length) {

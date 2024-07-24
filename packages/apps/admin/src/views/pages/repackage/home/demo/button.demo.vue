@@ -5,5 +5,5 @@
   <ReButton type="search" @click="(e) => console.log('搜索', e)" />
 </template>
 <script setup lang="ts">
-  import { ReButton } from '@tingcli/lib-vue'
+  import { ReButton } from '@tingcode/lib-vue'
 </script>

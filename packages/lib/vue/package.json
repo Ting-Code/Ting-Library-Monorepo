@@ -1,5 +1,5 @@
 {
-  "name": "@tingcli/lib-vue",
+  "name": "@tingcode/lib-vue",
   "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
@@ -28,7 +28,7 @@
     "vite-plugin-svg-icons": "^2.0.1"
   },
   "dependencies": {
-    "@tingcli/utils": "workspace:0.0.2",
+    "@tingcode/utils": "workspace:*",
     "@vueuse/core": "^10.9.0",
     "element-plus": "^2.7.2",
     "vue": "^3.4.21"

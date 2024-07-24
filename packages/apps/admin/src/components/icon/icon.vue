@@ -10,7 +10,7 @@
 <script lang="ts" setup>
   import { CSSProperties, computed } from 'vue'
   import SvgIcon from './svg-icon.vue'
-  import { isExternal as exrernal } from '@tingcli/utils'
+  import { isExternal as exrernal } from '@tingcode/utils'
 
   const props = withDefaults(
     defineProps<{

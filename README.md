@@ -58,7 +58,7 @@ Instructions:
 ( )   @apps/micro
 ( )   @tingcli/create
 ( )   @tingcli/cli-utils
-( )   @tingcli/lib-vue
+( )   @tingcode/lib-vue
 ( )   vite-plugin-code
       ...
 ```

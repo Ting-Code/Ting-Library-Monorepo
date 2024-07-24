@@ -1,5 +1,5 @@
 import { Slots } from 'vue'
-import { isFunction } from '@tingcli/utils'
+import { isFunction } from '@tingcode/utils'
 
 /**
  * @description:  获取插槽内容

@@ -2,7 +2,7 @@ import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios'
 
 import axios from 'axios'
 import { AxiosCanceler } from './axiosCancel'
-import { isFunction } from '@tingcli/utils'
+import { isFunction } from '@tingcode/utils'
 import { cloneDeep } from 'lodash-es'
 
 import type { RequestOptions, CreateAxiosOptions, Result, UploadFileParams } from './types'

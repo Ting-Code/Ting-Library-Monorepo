@@ -1,4 +1,4 @@
-import { adminMenus } from '@/apis/user'
+import { apiAdminMenus } from '@tingcode/system'
 import { RouteRecordRaw } from 'vue-router'
 import { Layout, ParentLayout } from '@/router/routerBase.js'
 import type { AppRouteRecordRaw } from '@/router/type'
@@ -52,7 +52,7 @@ export const generateRoutes = (routerMap, parent?): any[] => {
  * @returns {Promise<Router>}
  */
 export const generateDynamicRoutes = async (): Promise<RouteRecordRaw[]> => {
-  const result = await adminMenus()
+  const result = await apiAdminMenus()
   const router = generateRoutes(result)
   asyncImportRoute(router)
   return router
