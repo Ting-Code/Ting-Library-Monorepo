@@ -15,7 +15,8 @@ export function setGlobalStorage(key: GlobalStorageKeyEnum, value: unknown) {
 }
 
 export enum GlobalDataKeyEnum {
-  ENV = 'ENV'
+  ENV = 'ENV',
+  EL = 'EL'
 }
 
 export function getMicroAppFn() {
@@ -40,3 +41,4 @@ export function addGlobalDataListener(fn: () => any) {
 
 export * from './env'
 export * from './token'
+export * from './element'

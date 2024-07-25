@@ -16,8 +16,9 @@ import {
   axios
 } from '@tingcode/request'
 import { deepMerge, setObjToUrlParams } from '@tingcode/utils'
-import { getGlobalData, getGlobalDataEnv, getGlobalStorageToken } from '../index'
+import { getGlobalDataEnv, getGlobalStorageToken } from '../index'
 import { PageEnum } from '../index'
+import { getGlobalDataElement } from '../index'
 
 /**
  * @description: 数据处理，方便区分多种处理方式
@@ -56,20 +57,21 @@ const transform: AxiosTransform = {
     const { code, result, message } = data
     // 请求成功
     const hasSuccess = data && Reflect.has(data, 'code') && code === ResultEnum.SUCCESS // 200
+    const { ElMessage, ElMessageBox } = getGlobalDataElement()
     // 是否显示提示信息
     if (isShowMessage) {
       if (hasSuccess && (successMessageText || isShowSuccessMessage)) {
         // 是否显示自定义信息提示
-        // ElMessage.success(successMessageText || message || '操作成功！')
+        ElMessage.success(successMessageText || message || '操作成功！')
       } else if (!hasSuccess && (errorMessageText || isShowErrorMessage)) {
         // 是否显示自定义信息提示
-        // ElMessage.error(message || errorMessageText || '操作失败！')
+        ElMessage.error(message || errorMessageText || '操作失败！')
       } else if (!hasSuccess && options.errorMessageMode === 'modal') {
         // errorMessageMode=‘custom-modal’的时候会显示modal错误弹窗，而不是消息提示，用于一些比较重要的错误
-        // ElMessageBox({
-        //   title: '提示',
-        //   message: message
-        // })
+        ElMessageBox({
+          title: '提示',
+          message: message
+        })
       }
     }
 
@@ -82,20 +84,20 @@ const transform: AxiosTransform = {
     switch (code) {
       // 请求失败
       case ResultEnum.ERROR:
-        // ElMessage.error(errorMsg)
+        ElMessage.error(errorMsg)
         break
       // 登录超时
       case ResultEnum.TIMEOUT:
         if (window.location.pathname === PageEnum.BASE_LOGIN) return
         // 到登录页
         errorMsg = '登录超时，请重新登录!'
-        // ElMessageBox.confirm('登录身份已失效，请重新登录!', '提示', {
-        //   confirmButtonText: '确定',
-        //   type: 'warning'
-        // }).then(() => {
-        //   storage.clear()
-        //   window.location.href = PageEnum.BASE_LOGIN
-        // })
+        ElMessageBox.confirm('登录身份已失效，请重新登录!', '提示', {
+          confirmButtonText: '确定',
+          type: 'warning'
+        }).then(() => {
+          sessionStorage.clear()
+          window.location.href = PageEnum.BASE_LOGIN
+        })
         break
     }
     throw new Error(errorMsg)
@@ -173,17 +175,18 @@ const transform: AxiosTransform = {
   responseInterceptorsCatch: (error: any) => {
     // @ts-ignore
     const { response, code, message } = error || {}
+    const { ElMessage } = getGlobalDataElement()
     // TODO 此处要根据后端接口返回格式修改
     const msg: string =
       response && response.data && response.data.message ? response.data.message : ''
     const err: string = error.toString()
     try {
       if (code === 'ECONNABORTED' && message.indexOf('timeout') !== -1) {
-        // ElMessage.error('接口请求超时,请刷新页面重试!')
+        ElMessage.error('接口请求超时,请刷新页面重试!')
         return Promise.reject(error)
       }
       if (err && err.includes('Network Error')) {
-        // ElMessage.error('请检查您的网络连接是否正常!')
+        ElMessage.error('请检查您的网络连接是否正常!')
         return Promise.reject(error)
       }
     } catch (error) {
@@ -192,8 +195,7 @@ const transform: AxiosTransform = {
     // 请求是否被取消
     const isCancel = axios.isCancel(error)
     if (!isCancel) {
-      // TODO ElMessage
-      checkStatus(error.response && error.response.status, msg, console)
+      checkStatus(error.response && error.response.status, msg, ElMessage)
     } else {
       console.warn(error, '请求被取消！')
     }
@@ -205,14 +207,6 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
   const globEnv = getGlobalDataEnv()
   const urlPrefix: string = globEnv?.urlPrefix || ''
   const apiUrl: string = globEnv?.apiUrl || ''
-  console.log(
-    '======================================',
-    globEnv,
-    urlPrefix,
-    apiUrl,
-    getGlobalData(),
-    window?.namespace
-  )
   return new VAxios(
     deepMerge(
       {
@@ -253,5 +247,10 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
   )
 }
 
-export const request = createAxios()
+let request = createAxios()
+
+export function initRequest() {
+  return (request = createAxios())
+}
+export { request }
 export * from './user'

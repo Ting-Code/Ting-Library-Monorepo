@@ -1,4 +1,4 @@
-import { isProdMode } from '@/utils/env'
+import { isProdMode } from '@/hooks/useEnv'
 
 export interface IUseMicroConfig {
   name?: string
