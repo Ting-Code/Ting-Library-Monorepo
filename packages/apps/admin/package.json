@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --mode production",
+    "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
@@ -16,7 +16,6 @@
     "@config/tsconfig": "workspace:*",
     "@tingcode/lib-vue": "workspace:*",
     "@tingcode/utils": "workspace:*",
-    "@micro-zoe/micro-app": "1.0.0-rc.4",
     "dayjs": "^1.11.10",
     "element-plus": "^2.7.2",
     "lodash-es": "^4.17.21",

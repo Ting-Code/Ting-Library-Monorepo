@@ -1,13 +1,7 @@
 import { useUserStore } from '@/store/modules/user'
-import { useRoute, useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { PageEnum } from '@/router/type'
 
 export function usePermission() {
   const userStore = useUserStore()
-  const router = useRouter()
-  const route = useRoute()
-  const LOGIN_NAME = PageEnum.BASE_LOGIN_NAME
 
   /**
    * 检查权限
@@ -54,14 +48,5 @@ export function usePermission() {
     throw new Error(`[hasSomePermission]: ${accesses} should be a array !`)
   }
 
-  const handleLogin = async () => {
-    await userStore.login()
-    const toPath = decodeURIComponent((route.query?.redirect as string) || '/')
-    ElMessage.success('欢迎来到Ting Library知识库！')
-    if (route.name === LOGIN_NAME) {
-      await router.replace('/')
-    } else await router.replace(toPath)
-  }
-
-  return { hasPermission, hasEveryPermission, hasSomePermission, handleLogin }
+  return { hasPermission, hasEveryPermission, hasSomePermission }
 }

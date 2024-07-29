@@ -46,6 +46,10 @@ export function resetRouter() {
   })
 }
 
+/**
+ * @description 初始化router
+ * @param app
+ */
 export function setupRouter(app: App<Element>) {
   app.use(router)
   // 创建路由守卫

@@ -203,7 +203,7 @@ const transform: AxiosTransform = {
   }
 }
 
-function createAxios(opt?: Partial<CreateAxiosOptions>) {
+export function createAxios(opt?: Partial<CreateAxiosOptions>) {
   const globEnv = getGlobalDataEnv()
   const urlPrefix: string = globEnv?.urlPrefix || ''
   const apiUrl: string = globEnv?.apiUrl || ''
@@ -246,11 +246,3 @@ function createAxios(opt?: Partial<CreateAxiosOptions>) {
     )
   )
 }
-
-let request = createAxios()
-
-export function initRequest() {
-  return (request = createAxios())
-}
-export { request }
-export * from './user'

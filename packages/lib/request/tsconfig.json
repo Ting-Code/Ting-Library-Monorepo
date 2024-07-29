@@ -7,8 +7,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["dom", "esnext"],
-    "types": ["vite/client"]
+    "lib": ["dom", "esnext"]
   },
   "include": ["src"]
 }

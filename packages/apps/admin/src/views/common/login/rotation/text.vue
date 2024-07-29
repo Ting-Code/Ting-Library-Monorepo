@@ -2,7 +2,7 @@
   <div :class="ns.e('text')">
     <div class="title"> Ting Library 文档既架构的知识库 </div>
     <div class="button">
-      <el-button type="info" @click="handleLogin">点击开始</el-button>
+      <el-button type="info" @click="loginSystem">点击开始</el-button>
     </div>
     <div class="text">
       Ting Library 是基于pnpm搭建的monorepo架构文档既架构的知识库。
@@ -15,13 +15,12 @@
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import { usePermission } from '@/hooks/usePermission'
+  import { loginSystem } from '@tingcode/system'
 
   defineOptions({
     name: 'RotationText'
   })
   const ns = useNamespace('login-main')
-  const { handleLogin } = usePermission()
 </script>
 
 <style lang="scss" scoped>

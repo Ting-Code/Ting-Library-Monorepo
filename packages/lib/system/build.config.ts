@@ -5,8 +5,9 @@ export default defineBuildConfig({
   entries: [
     './src/index',
     {
-      input: './src/api/',
-      outDir: './dist/api'
+      builder: 'rollup',
+      input: './src/api/apiSystem',
+      outDir: './dist'
     }
   ],
   clean: true,

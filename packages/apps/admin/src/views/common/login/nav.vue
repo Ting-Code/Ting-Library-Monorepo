@@ -2,7 +2,7 @@
   <div :class="ns.b()">
     <!--  left  -->
     <div :class="ns.e('left')">
-      <Logo @click="handleLogin" />
+      <Logo @click="loginSystem" />
     </div>
     <!--  action  -->
     <div :class="ns.e('right')">
@@ -17,10 +17,9 @@
   import HeaderNavIcon from '@/views/layouts/default/navIcon/index.vue'
   import Logo from '@/views/layouts/default/logo/index.vue'
   import { useNamespace } from '@/hooks/useNamespace'
-  import { usePermission } from '@/hooks/usePermission'
+  import { loginSystem } from '@tingcode/system'
 
   const ns = useNamespace('login-nav')
-  const { handleLogin } = usePermission()
 </script>
 
 <style lang="scss">

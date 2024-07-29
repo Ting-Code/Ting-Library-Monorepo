@@ -6,21 +6,37 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.mjs"
+      }
     },
-    "./api": {
-      "import": "./dist/api/index.mjs",
-      "types": "./dist/api/index.d.ts"
+    "./apiSystem": {
+      "import": "./dist/apiSystem.mjs",
+      "types": "./dist/apiSystem.d.ts"
     }
   },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./*"
+      ]
+    }
+  },
+  "files": [
+    "*.d.ts",
+    "dist"
+  ],
   "scripts": {
     "build": "unbuild",
     "dev": "unbuild",

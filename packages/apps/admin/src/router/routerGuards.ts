@@ -1,9 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { isNavigationFailure, Router } from 'vue-router'
-import { useUserStoreWidthOut, ACCESS_TOKEN } from '@/store/modules/user'
+import { useUserStoreWidthOut } from '@/store/modules/user'
 import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
-import { storage } from '@tingcode/utils'
-import { PageEnum } from './type'
+import { PageEnum, getGlobalStorageToken } from '@tingcode/system'
 import { ErrorPageRoute } from '@/router/routerBase.js'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'
@@ -31,7 +30,8 @@ export function createRouterGuards(router: Router) {
       next()
       return
     }
-    const token = storage.get(ACCESS_TOKEN)
+    const token = getGlobalStorageToken()
+    console.log('===================== getToken ===================', token)
     if (!token) {
       // 无token情况下可配置ignoreAuth跳过路由鉴权
       if (to.meta.ignoreAuth) {
@@ -103,6 +103,6 @@ export function createRouterGuards(router: Router) {
   })
 
   router.onError((error) => {
-    console.log(error, '路由错误')
+    console.error(error, '路由错误')
   })
 }

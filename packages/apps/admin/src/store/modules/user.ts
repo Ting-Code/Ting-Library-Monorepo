@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 import { createStorage } from '@tingcode/utils'
 import { store } from '@/store'
-import { ResultEnum } from '@tingcode/request'
-import { apiGetUserInfo, apiLogin } from '@tingcode/system/api'
+import { apiGetUserInfo } from '@tingcode/system/apiSystem'
 
 export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
@@ -61,24 +60,6 @@ export const useUserStore = defineStore({
     },
     setUserInfo(info: any) {
       this.info = info
-    },
-    // 登录
-    async login(userInfo?: any) {
-      try {
-        const response = await apiLogin(userInfo)
-        const { result, code } = response
-        if (code === ResultEnum.SUCCESS) {
-          const ex = 7 * 24 * 60 * 60 * 1000
-          storage.set(ACCESS_TOKEN, result.token, ex)
-          storage.set(CURRENT_USER, result, ex)
-          storage.set(IS_LOCKSCREEN, false)
-          this.setToken(result.token)
-          this.setUserInfo(result)
-        }
-        return Promise.resolve(response)
-      } catch (e) {
-        return Promise.reject(e)
-      }
     },
 
     // 获取用户信息

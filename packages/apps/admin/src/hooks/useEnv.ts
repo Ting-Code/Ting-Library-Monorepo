@@ -1,4 +1,4 @@
-import { IENV } from '@tingcode/system/src'
+import { IENV } from '@tingcode/system'
 
 export const useEnv = (): Readonly<IENV> => {
   const { VITE_GLOB_API_URL, VITE_GLOB_API_URL_PREFIX } = getAppEnvConfig()

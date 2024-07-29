@@ -16,7 +16,6 @@ import viteCompression from 'vite-plugin-compression'
 // svg 加载
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Markdown from 'vite-plugin-md'
-// @ts-ignore
 import ViteCode from 'vite-plugin-code'
 // 配置绝对路径
 function pathResolve(dir: string) {

@@ -13,10 +13,10 @@ import {
   initMicroApp,
   initNamespace,
   setGlobalDataEnv,
-  setGlobalDataElement
+  setGlobalDataElement,
+  initRequest
 } from '@tingcode/system'
 import { useEnv } from '@/hooks/useEnv'
-import { initRequest } from '@tingcode/system/api'
 async function bootstrap() {
   initMicroApp()
   initNamespace('admin')

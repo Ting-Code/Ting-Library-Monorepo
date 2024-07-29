@@ -1,6 +1,6 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('ting')" @click="handleLogin">
+    <div :class="ns.e('ting')" @click="loginSystem">
       <Icon class="ting-icon" icon="logo-ting" size="160" />
     </div>
     <RotationVue />
@@ -22,13 +22,12 @@
   import RotationPnpm from './pnpm.vue'
   import RotationMicroapp from './microapp.vue'
   import RotationTypescript from './ts.vue'
-  import { usePermission } from '@/hooks/usePermission'
+  import { loginSystem } from '@tingcode/system'
 
   defineOptions({
     name: 'LoginMain'
   })
   const ns = useNamespace('login-main')
-  const { handleLogin } = usePermission()
 </script>
 
 <style lang="scss">

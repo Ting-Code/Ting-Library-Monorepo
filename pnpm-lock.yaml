@@ -144,9 +144,6 @@ importers:
       '@config/tsconfig':
         specifier: workspace:*
         version: link:../../../configs/tsconfig
-      '@micro-zoe/micro-app':
-        specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4
       '@tingcode/lib-vue':
         specifier: workspace:*
         version: link:../../lib/vue
@@ -1747,12 +1744,6 @@ packages:
     resolution:
       {
         integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==
-      }
-
-  '@micro-zoe/micro-app@1.0.0-rc.4':
-    resolution:
-      {
-        integrity: sha512-8ZDCwV0w3m11xlECFCA9VJYInNIPqt6kfiH1+/ODoupPSSrKNPzUnmhqYRAKZQP1MrXa0w9O60DT2/mPFctwdw==
       }
 
   '@micro-zoe/micro-app@1.0.0-rc.5':
@@ -13041,8 +13032,6 @@ snapshots:
       fs-extra: 8.1.0
       globby: 11.1.0
       read-yaml-file: 1.1.0
-
-  '@micro-zoe/micro-app@1.0.0-rc.4': {}
 
   '@micro-zoe/micro-app@1.0.0-rc.5': {}
 

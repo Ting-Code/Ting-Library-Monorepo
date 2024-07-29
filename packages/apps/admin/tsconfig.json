@@ -6,8 +6,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@s/*": ["src/styles/*"],
-      "@tingcode/system/api": ["@tingcode/system/dist/api"]
+      "@s/*": ["src/styles/*"]
     },
     "lib": ["dom", "esnext"],
     "types": ["vite/client"]
