@@ -5,11 +5,11 @@ export interface IEL {
   ElMessageBox: any
 }
 
-export function setGlobalDataElement(El: IEL) {
+export function setGlobalDataElement<T = IEL>(El: T) {
   setGlobalData(GlobalDataKeyEnum.EL, El)
 }
 
-export function getGlobalDataElement(): IEL {
+export function getGlobalDataElement<T = IEL>(): T {
   const globalData = getGlobalData()
   return globalData?.[GlobalDataKeyEnum.EL]
 }

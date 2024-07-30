@@ -1,8 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { isNavigationFailure, Router } from 'vue-router'
-import { useUserStoreWidthOut } from '@/store/modules/user'
 import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
-import { PageEnum, getGlobalStorageToken } from '@tingcode/system'
+import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
 import { ErrorPageRoute } from '@/router/routerBase.js'
 import NProgress from 'nprogress' // progress bar
 import 'nprogress/nprogress.css'
@@ -13,7 +12,6 @@ const ERROR_PAGE_NAME = PageEnum.ERROR_PAGE_NAME
 const whitePathList = [LOGIN_PATH] // 一级白名单
 
 export function createRouterGuards(router: Router) {
-  const userStore = useUserStoreWidthOut()
   const asyncRouteStore = useAsyncRouteStoreWidthOut()
   /**
    * @description 路由跳转前执行守卫
@@ -57,8 +55,8 @@ export function createRouterGuards(router: Router) {
       next()
       return
     }
-    const userInfo = await userStore.GetInfo()
-    const routes = await asyncRouteStore.generateRoutes(userInfo)
+    const { menu } = await getUserInfo()
+    const routes = await asyncRouteStore.generateRoutes(menu)
     // 动态添加可访问路由表
     routes.forEach((item) => {
       router.addRoute(item as unknown as RouteRecordRaw)

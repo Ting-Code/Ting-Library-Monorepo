@@ -1,12 +1,12 @@
 import { apiLogin } from '../api/apiSystem'
 import { ResultEnum } from '@tingcode/request'
-import { getURL, PageEnum, setUrl } from './useURL'
+import { getURL, PageEnum, setUrl } from './url'
 import {
   getGlobalDataElement,
   removeGlobalStorageToken,
   setGlobalStorageToken,
-  setGlobalUserAuth,
-  setGlobalUserInfo
+  setGlobalDataAuth,
+  setGlobalDataUserInfo
 } from '../global-data'
 
 /**
@@ -19,7 +19,7 @@ export async function loginSystem(userInfo?: any) {
     const { result, code } = response
     if (code === ResultEnum.SUCCESS) {
       setGlobalStorageToken(result.token)
-      setGlobalUserInfo(result.userInfo)
+      setGlobalDataUserInfo(result.userInfo)
       if (getURL()?.query?.redirect) {
         const { redirect, ...query } = getURL()?.query as any
         const toPath = decodeURIComponent((redirect as string) || '/')
@@ -40,8 +40,8 @@ export async function loginSystem(userInfo?: any) {
 // 登出
 export function logoutSystem() {
   removeGlobalStorageToken()
-  setGlobalUserAuth([])
-  setGlobalUserInfo({})
+  setGlobalDataAuth([])
+  setGlobalDataUserInfo({})
   const { pathname, query } = getURL()
   setUrl({ path: PageEnum.BASE_LOGIN, query: { redirect: pathname, ...query } })
 }

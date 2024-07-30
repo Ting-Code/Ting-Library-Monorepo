@@ -12,7 +12,7 @@ export interface BasicResponseModel<T = any> {
 export function apiGetUserInfo() {
   return request.request({
     url: '/admin_info',
-    method: 'get'
+    method: 'GET'
   })
 }
 

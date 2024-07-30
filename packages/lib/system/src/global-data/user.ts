@@ -24,7 +24,7 @@ export function removeGlobalStorageToken() {
   removeGlobalStorage(GlobalStorageKeyEnum.TOKEN)
 }
 
-export function setGlobalUserInfo(info: IUserInfo) {
+export function setGlobalDataUserInfo(info: IUserInfo) {
   setGlobalData(GlobalDataKeyEnum.USER_INFO, info)
 }
 
@@ -33,11 +33,20 @@ export function getGlobalDataUserInfo(): IUserInfo | undefined {
   return globalData?.[GlobalDataKeyEnum.USER_INFO]
 }
 
-export function setGlobalUserAuth(auth: any[]) {
+export function setGlobalDataAuth(auth: any[]) {
   setGlobalData(GlobalDataKeyEnum.AUTH, auth)
 }
 
 export function getGlobalDataAuth(): any[] | undefined {
   const globalData = getGlobalData()
   return globalData?.[GlobalDataKeyEnum.AUTH]
+}
+
+export function setGlobalDataMenu(menu: any[]) {
+  setGlobalData(GlobalDataKeyEnum.MENU, menu)
+}
+
+export function getGlobalDataMenu(): any[] | undefined {
+  const globalData = getGlobalData()
+  return globalData?.[GlobalDataKeyEnum.MENU]
 }

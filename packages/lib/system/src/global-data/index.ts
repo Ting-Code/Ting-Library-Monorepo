@@ -22,7 +22,8 @@ export enum GlobalDataKeyEnum {
   ENV = 'ENV',
   EL = 'EL',
   USER_INFO = 'USER_INFO',
-  AUTH = 'AUTH'
+  AUTH = 'AUTH',
+  MENU = 'MENU'
 }
 
 export function getMicroAppFn() {

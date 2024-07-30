@@ -1,13 +1,11 @@
 import { defineStore } from 'pinia'
 import { createStorage } from '@tingcode/utils'
 import { store } from '@/store'
-import { apiGetUserInfo } from '@tingcode/system/apiSystem'
 
 export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
 export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
 export const IS_LOCKSCREEN = 'IS-LOCKSCREEN' // 是否锁屏
 const Storage = createStorage({ storage: localStorage })
-import { storage } from '@tingcode/utils'
 export interface IUserState {
   token: string
 }
@@ -60,39 +58,6 @@ export const useUserStore = defineStore({
     },
     setUserInfo(info: any) {
       this.info = info
-    },
-
-    // 获取用户信息
-    GetInfo() {
-      // eslint-disable-next-line @typescript-eslint/no-this-alias
-      const that = this
-      return new Promise((resolve, reject) => {
-        apiGetUserInfo()
-          .then((res) => {
-            const result = res
-            if (result.permissions && result.permissions.length) {
-              const permissionsList = result.permissions
-              that.setPermissions(permissionsList)
-              that.setUserInfo(result)
-            } else {
-              reject(new Error('getInfo: permissionsList must be a non-null array !'))
-            }
-            that.setAvatar(result.avatar)
-            resolve(res)
-          })
-          .catch((error) => {
-            reject(error)
-          })
-      })
-    },
-
-    // 登出
-    async logout() {
-      this.setPermissions([])
-      this.setUserInfo('')
-      storage.remove(ACCESS_TOKEN)
-      storage.remove(CURRENT_USER)
-      return Promise.resolve('')
     }
   }
 })
