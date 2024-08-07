@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { RouteLocationNormalized } from 'vue-router'
 import { store } from '@/store'
-import { PageEnum } from '@/router/type'
+import { PageEnum } from '@tingcode/system'
 import { toRaw } from 'vue'
 export const TABS_ROUTES = 'TABS_ROUTES'
 // 不需要出现在标签页中的路由

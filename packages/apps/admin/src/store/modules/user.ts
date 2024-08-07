@@ -1,68 +1,61 @@
 import { defineStore } from 'pinia'
-import { createStorage } from '@tingcode/utils'
 import { store } from '@/store'
-
-export const ACCESS_TOKEN = 'ACCESS-TOKEN' // 用户token
-export const CURRENT_USER = 'CURRENT-USER' // 当前用户信息
-export const IS_LOCKSCREEN = 'IS-LOCKSCREEN' // 是否锁屏
-const Storage = createStorage({ storage: localStorage })
-export interface IUserState {
-  token: string
-}
+import { constantRouter } from '@/router'
+import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
+import { IMenu } from '@tingcode/system/apiSystem'
 
 export interface IUserState {
-  token: string
-  username: string
-  welcome: string
-  avatar: string
-  permissions: any[]
-  info: any
+  menu: IMenu[]
+  auth: Omit<IMenu, 'children'>[]
+  routers: any[]
+  addRouters: any[]
+  keepAliveComponents: string[]
+  isDynamicAddedRoute: boolean
 }
 
 export const useUserStore = defineStore({
   id: 'app-user',
   state: (): IUserState => ({
-    token: Storage.get(ACCESS_TOKEN, ''),
-    username: '',
-    welcome: '',
-    avatar: '',
-    permissions: [],
-    info: Storage.get(CURRENT_USER, {})
+    menu: [],
+    auth: [],
+    routers: constantRouter,
+    addRouters: [],
+    keepAliveComponents: [],
+    isDynamicAddedRoute: false
   }),
   getters: {
-    getToken(): string {
-      return this.token
+    getMenu(): any[] {
+      return this.menu
     },
-    getAvatar(): string {
-      return this.avatar
-    },
-    getNickname(): string {
-      return this.username
-    },
-    getPermissions(): [any][] {
-      return this.permissions
-    },
-    getUserInfo(): object {
-      return this.info
+    getIsDynamicAddedRoute(): boolean {
+      return this.isDynamicAddedRoute
     }
   },
   actions: {
-    setToken(token: string) {
-      this.token = token
+    setDynamicAddedRoute(added: boolean) {
+      this.isDynamicAddedRoute = added
     },
-    setAvatar(avatar: string) {
-      this.avatar = avatar
+    setRouters(routers) {
+      this.addRouters = routers
+      this.routers = constantRouter.concat(routers)
     },
-    setPermissions(permissions: any[]) {
-      this.permissions = permissions
+    setMenu(menu: IMenu[]) {
+      this.menu = menu
     },
-    setUserInfo(info: any) {
-      this.info = info
+    setAuth(auth: Omit<IMenu, 'children'>[]) {
+      this.auth = auth
+    },
+    setKeepAliveComponents(compNames) {
+      // 设置需要缓存的组件
+      this.keepAliveComponents = compNames
+    },
+    delKeepAliveCompName(_route?: RouteLocationNormalizedLoaded | { name: string }) {
+      const route = _route || useRoute()
+      this.keepAliveComponents = this.keepAliveComponents.filter((item) => item !== route.name)
     }
   }
 })
 
-// Need to be used outside the setup
 export function useUserStoreWidthOut() {
   return useUserStore(store)
 }

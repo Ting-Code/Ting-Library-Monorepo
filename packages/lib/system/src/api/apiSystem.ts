@@ -1,16 +1,30 @@
-import { request } from '../init'
+import { request, BasicResponseModel } from '../init'
 
-export interface BasicResponseModel<T = any> {
-  code: number
-  message: string
-  result: T
+export interface IMeta {
+  keepAlive?: boolean
+  transition?: boolean
+  title: string
+  affix?: boolean
+  icon?: string
+}
+
+export interface IMenu {
+  name: string
+  path?: string
+  meta: IMeta
+  module?: string
+  children?: IMenu[]
+}
+
+export interface IUserInfo {
+  menu: IMenu[]
 }
 
 /**
  * @description: 获取用户信息 （前端权限）啊
  */
 export function apiGetUserInfo() {
-  return request.request({
+  return request.request<IUserInfo>({
     url: '/admin_info',
     method: 'GET'
   })

@@ -1,6 +1,5 @@
 import type { RouteLocationRaw, Router } from 'vue-router'
-
-import { PageEnum } from '@/router/type'
+import { PageEnum } from '@tingcode/system'
 import { unref } from 'vue'
 
 import { useRouter } from 'vue-router'

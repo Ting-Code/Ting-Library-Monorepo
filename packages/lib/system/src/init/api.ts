@@ -19,6 +19,11 @@ import { deepMerge, setObjToUrlParams } from '@tingcode/utils'
 import { getGlobalDataEnv, getGlobalStorageToken } from '../index'
 import { PageEnum } from '../index'
 import { getGlobalDataElement } from '../index'
+export interface BasicResponseModel<T = any> {
+  code: number
+  message: string
+  result: T
+}
 
 /**
  * @description: 数据处理，方便区分多种处理方式

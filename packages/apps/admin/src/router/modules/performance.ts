@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '../routerBase'
 
 /**
  * @param name 路由名称, 必须设置,且不能重名
@@ -13,25 +12,9 @@ import { Layout } from '../routerBase'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/performance',
-    name: 'performance',
-    redirect: '/performance/virtual-scroll',
-    component: Layout,
-    meta: {
-      title: '性能优化',
-      icon: 'Coin',
-      sort: 2
-    },
-    children: [
-      {
-        path: 'virtual-scroll',
-        name: 'performance_virtual_scroll',
-        meta: {
-          title: '虚拟列表'
-        },
-        component: () => import('@/views/pages/performance/virtual-scroll/index.docs.vue')
-      }
-    ]
+    path: '/performance/virtual-scroll',
+    name: 'performance_virtual_scroll',
+    component: () => import('@/views/pages/performance/virtual-scroll/index.docs.vue')
   }
 ]
 

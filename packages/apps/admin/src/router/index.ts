@@ -1,7 +1,66 @@
+import { App } from 'vue'
+import type { AppRouteRecordRaw } from '@/router/type'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { createRouterGuards } from './routerGuards.js'
-import { App } from 'vue'
-import { publicRoutes, RedirectRouter } from '@/router/routerBase.js'
+import { PageEnum } from '@tingcode/system'
+export const ErrorPage = () => import('@/views/common/error/404.vue')
+const Layout = () => import('@/views/layouts/default/index.vue')
+
+export const publicRoutes: AppRouteRecordRaw[] = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/common/login/index.vue'),
+    meta: {
+      title: 'Ting Library'
+    }
+  },
+  {
+    path: '/',
+    name: 'Root',
+    redirect: PageEnum.BASE_HOME,
+    meta: {
+      title: 'Root'
+    }
+  }
+]
+// 404 on a page
+export const ErrorPageRoute: AppRouteRecordRaw = {
+  path: '/:path(.*)*',
+  name: 'ErrorPage',
+  component: Layout,
+  meta: {
+    title: 'ErrorPage'
+  },
+  children: [
+    {
+      path: '/:path(.*)*',
+      name: 'ErrorPageSon',
+      component: ErrorPage,
+      meta: {
+        title: 'ErrorPage'
+      }
+    }
+  ]
+}
+export const RedirectRouter: AppRouteRecordRaw = {
+  path: '/redirect',
+  component: Layout,
+  name: 'redirect',
+  meta: {
+    title: PageEnum.REDIRECT_NAME
+  },
+  children: [
+    {
+      path: '/redirect/:path(.*)/:_redirect_type(.*)/:_origin_params(.*)',
+      name: PageEnum.REDIRECT_NAME,
+      component: () => import('@/views/common/redirect/index.vue'),
+      meta: {
+        title: PageEnum.REDIRECT_NAME
+      }
+    }
+  ]
+}
 
 const modules: any = import.meta.glob('./modules/**/*.ts', { eager: true })
 const routeModuleList: RouteRecordRaw[] = []

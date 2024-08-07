@@ -28,14 +28,14 @@
   import { ArrowDown } from '@element-plus/icons-vue'
   import { watch, toRaw, ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
+  import { useUserStoreWidthOut } from '@/store/modules/user'
   import { useNamespace } from '@/hooks/useNamespace'
 
   defineOptions({
     name: 'HeaderBreadcrumb'
   })
   const ns = useNamespace('header-breadcrumb')
-  const { getMenus } = useAsyncRouteStoreWidthOut()
+  const { getMenu } = useUserStoreWidthOut()
   const router = useRouter()
   const breadcrumb = ref<any>(null)
 
@@ -43,7 +43,7 @@
     () => router.currentRoute.value.path,
     () => {
       const matched = router.currentRoute.value.matched
-      const menus = toRaw(getMenus)
+      const menus = toRaw(getMenu)
       if (matched[0] && matched[0].path !== '/:path(.*)*') {
         breadcrumb.value = matched.map((item, index) => {
           if (index > 0) {

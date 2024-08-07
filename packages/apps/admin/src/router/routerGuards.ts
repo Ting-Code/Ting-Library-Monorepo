@@ -1,10 +1,21 @@
 import type { RouteRecordRaw } from 'vue-router'
-import { isNavigationFailure, Router } from 'vue-router'
-import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
-import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
-import { ErrorPageRoute } from '@/router/routerBase.js'
-import NProgress from 'nprogress' // progress bar
+import { asyncRoutes, ErrorPageRoute } from '@/router'
+
+import { groupBy } from '@tingcode/utils'
 import 'nprogress/nprogress.css'
+import { isNavigationFailure, Router } from 'vue-router'
+import { useUserStoreWidthOut } from '@/store/modules/user'
+import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
+import { IMenu } from '@tingcode/system/apiSystem'
+import NProgress from 'nprogress'
+import { AppRouteRecordRaw } from '@/router/type'
+const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
+const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
+const Iframe = () => import('@/views/common/iframe/index.vue')
+const Layout = () => import('@/views/layouts/default/index.vue')
+
+LayoutMap.set('LAYOUT', Layout)
+LayoutMap.set('IFRAME', Iframe)
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN
 const ERROR_PAGE_NAME = PageEnum.ERROR_PAGE_NAME
@@ -12,7 +23,7 @@ const ERROR_PAGE_NAME = PageEnum.ERROR_PAGE_NAME
 const whitePathList = [LOGIN_PATH] // 一级白名单
 
 export function createRouterGuards(router: Router) {
-  const asyncRouteStore = useAsyncRouteStoreWidthOut()
+  const userStore = useUserStoreWidthOut()
   /**
    * @description 路由跳转前执行守卫
    */
@@ -29,7 +40,6 @@ export function createRouterGuards(router: Router) {
       return
     }
     const token = getGlobalStorageToken()
-    console.log('===================== getToken ===================', token)
     if (!token) {
       // 无token情况下可配置ignoreAuth跳过路由鉴权
       if (to.meta.ignoreAuth) {
@@ -51,16 +61,26 @@ export function createRouterGuards(router: Router) {
       return
     }
 
-    if (asyncRouteStore.getIsDynamicAddedRoute) {
+    if (userStore.getIsDynamicAddedRoute) {
       next()
       return
     }
-    const { menu } = await getUserInfo()
-    const routes = await asyncRouteStore.generateRoutes(menu)
-    // 动态添加可访问路由表
-    routes.forEach((item) => {
-      router.addRoute(item as unknown as RouteRecordRaw)
-    })
+    try {
+      const userStore = useUserStoreWidthOut()
+      const { auth, menu } = await getUserInfo()
+      const addRouters = generateRoutes(transRouter(auth))
+      userStore.setAuth(auth)
+      userStore.setMenu(menu)
+      userStore.setRouters(addRouters)
+      // 动态添加可访问路由表
+      addRouters.forEach((item) => {
+        router.addRoute(item as unknown as RouteRecordRaw)
+      })
+      console.log('======router', addRouters, router.currentRoute)
+    } catch (error) {
+      console.log(error)
+    }
+
     //添加404
     const isErrorPage = router.getRoutes().findIndex((item) => item.name === ErrorPageRoute.name)
     if (isErrorPage === -1) {
@@ -70,7 +90,7 @@ export function createRouterGuards(router: Router) {
     const redirectPath = (from.query.redirect || to.path) as string
     const redirect = decodeURIComponent(redirectPath)
     const nextData = to.path === redirect ? { ...to, replace: true } : { path: redirect }
-    asyncRouteStore.setDynamicAddedRoute(true) // 设置为true那么就不会刷新权限
+    userStore.setDynamicAddedRoute(true) // 设置为true那么就不会刷新权限
     next(nextData)
     NProgress.done()
   })
@@ -82,7 +102,7 @@ export function createRouterGuards(router: Router) {
     if (isNavigationFailure(failure)) {
       //console.log('failed navigation', failure)
     }
-    const asyncRouteStore = useAsyncRouteStoreWidthOut()
+    const asyncRouteStore = useUserStoreWidthOut()
     // 在这里设置需要缓存的组件名称
     const keepAliveComponents = asyncRouteStore.keepAliveComponents
     const currentComName: any = to.matched.find((item) => item.name == to.name)?.name
@@ -103,4 +123,67 @@ export function createRouterGuards(router: Router) {
   router.onError((error) => {
     console.error(error, '路由错误')
   })
+}
+
+export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[] {
+  const grouped = groupBy(auth, 'module')
+  return Object.keys(grouped).map((key) => ({
+    name: key,
+    component: 'LAYOUT',
+    path: `/${key}`,
+    children: grouped[key].map((item) => ({
+      component: item?.name,
+      path: item?.path || '',
+      ...item
+    }))
+  }))
+}
+
+/**格式化 后端 结构信息并递归生成层级路由表
+ * @param routerMap
+ * @param parent
+ * @returns {*}
+ */
+export function generateRoutes(routerMap): AppRouteRecordRaw[] {
+  const currentRoutes = routerMap.map((item) => {
+    const currentRoute: any = {
+      // 路由地址 动态拼接生成如 /dashboard/workplace
+      path: item.path,
+      name: item.name ?? '',
+      component: dynamicComponent(item),
+      meta: {
+        ...item.meta
+      }
+    }
+    // 为了防止出现后端返回结果不规范，处理有可能出现拼接出两个 反斜杠
+    currentRoute.path = currentRoute.path.replace('//', '/')
+    // 重定向
+    item.redirect && (currentRoute.redirect = item.redirect)
+    // 是否有子菜单，并递归处理
+    if (item.children && item.children.length > 0) {
+      //如果未定义 redirect 默认第一个子路由为 redirect
+      !item.redirect && (currentRoute.redirect = item.children[0].path)
+      currentRoute.children = generateRoutes(item.children)
+    }
+    return currentRoute
+  })
+  return currentRoutes
+}
+
+/**
+ * 动态导入
+ * */
+export function dynamicComponent(routerItem: AppRouteRecordRaw) {
+  const component = routerItem?.component
+  if (component) {
+    const layoutFound = LayoutMap.get(component as string)
+    if (layoutFound) return layoutFound
+    const router = asyncRoutes.find((router) => {
+      return router.name === routerItem.name
+    })
+    if (router?.component) return router?.component
+    return ParentLayout
+  } else {
+    return ParentLayout
+  }
 }

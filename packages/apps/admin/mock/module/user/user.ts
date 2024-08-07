@@ -5,28 +5,92 @@ const Random = Mock.Random
 
 const token = Random.string('upper', 32, 32)
 
-const adminInfo = {
-  menu: [],
-  auth: [
+const menu = {
+  menu: [
     {
-      url: '主控台',
-      value: 'dashboard_console'
+      name: 'system',
+      meta: {
+        title: '架构设计',
+        icon: 'Box'
+      },
+      module: 'system',
+      children: [
+        {
+          name: 'system_home',
+          path: '/system/home',
+          module: 'system',
+          meta: {
+            title: 'Ting Library 介绍'
+          },
+          auth: []
+        },
+        {
+          name: 'system_markdown',
+          path: '/system/markdown',
+          module: 'system',
+          meta: {
+            title: '🔥文档的设计'
+          },
+          auth: []
+        },
+        {
+          name: 'system_micro',
+          path: '/system/micro',
+          module: 'system',
+          title: '🔥微前端',
+          meta: {
+            title: '🔥文档的设计'
+          },
+          auth: []
+        },
+        {
+          name: 'system_404',
+          path: '/system/404',
+          module: 'system',
+          meta: {
+            title: '404页面'
+          },
+          auth: []
+        }
+      ]
     },
     {
-      label: '监控页',
-      value: 'dashboard_monitor'
+      name: 'performance',
+      meta: {
+        title: '性能优化',
+        icon: 'Coin'
+      },
+      module: 'performance',
+      children: [
+        {
+          name: 'performance_virtual_scroll',
+          path: '/performance/virtual-scroll',
+          module: 'performance',
+          meta: {
+            title: '虚拟列表'
+          },
+          auth: []
+        }
+      ]
     },
     {
-      label: '工作台',
-      value: 'dashboard_workplace'
-    },
-    {
-      label: '基础列表',
-      value: 'basic_list'
-    },
-    {
-      label: '基础列表删除',
-      value: 'basic_list_delete'
+      name: 'repackage',
+      meta: {
+        title: '二次封装',
+        icon: 'Brush'
+      },
+      module: 'repackage',
+      children: [
+        {
+          name: 'repackage_home',
+          path: '/repackage/home',
+          module: 'repackage',
+          meta: {
+            title: '🔥Vue二次封装思考'
+          },
+          auth: []
+        }
+      ]
     }
   ]
 }
@@ -45,7 +109,7 @@ export default [
     timeout: 1000,
     method: 'get',
     response: () => {
-      return resultSuccess(adminInfo)
+      return resultSuccess(menu)
     }
   }
 ]

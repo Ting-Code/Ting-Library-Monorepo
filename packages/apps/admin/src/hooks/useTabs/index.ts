@@ -1,15 +1,15 @@
 import { useRoute, useRouter, Router } from 'vue-router'
 import { RouteItem, TABS_ROUTES, useTabsStoreWidthOut } from '@/store/modules/tabs'
-import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
+import { useUserStoreWidthOut } from '@/store/modules/user'
 import { toRef, unref } from 'vue'
-import { PageEnum } from '@/router/type'
+import { PageEnum } from '@tingcode/system'
 import { createStorage } from '@tingcode/utils'
 import { useGo, useRedo } from '@/hooks/usePage'
 import { toRaw } from 'vue'
 export const useTabs = (_router?: Router) => {
   const router = useRouter()
   const tabsStore = useTabsStoreWidthOut()
-  const asyncRouteStore = useAsyncRouteStore()
+  const asyncRouteStore = useUserStoreWidthOut()
   const Storage = createStorage({ storage: localStorage })
   const _route_ = useRoute()
   const _router_ = _router || useRouter()

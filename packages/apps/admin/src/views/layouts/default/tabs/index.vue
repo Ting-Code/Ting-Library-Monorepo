@@ -34,7 +34,7 @@
   import { watch, ref, computed } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
-  import { PageEnum } from '@/router/type'
+  import { PageEnum } from '@tingcode/system'
   import { useGo } from '@/hooks/usePage'
   import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
   defineOptions({

@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '../routerBase'
 
 /**
  * @param name 路由名称, 必须设置,且不能重名
@@ -13,50 +12,27 @@ import { Layout } from '../routerBase'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/system',
-    name: 'System',
-    redirect: '/system/home',
-    component: Layout,
+    path: '/system/home',
+    name: 'system_home',
+    component: () => import('@/views/pages/system/home/index.docs.vue')
+  },
+  {
+    path: '/system/markdown',
+    name: 'system_markdown',
+    component: () => import('@/views/pages/system/docs/index.docs.vue')
+  },
+  {
+    path: '/system/micro',
+    name: 'system_micro',
+    component: () => import('@/views/pages/system/micro/index.docs.vue')
+  },
+  {
+    path: '/system/404',
+    name: 'system_404',
     meta: {
-      title: '架构设计',
-      icon: 'Box',
-      sort: 1
+      transition: true
     },
-    children: [
-      {
-        path: 'home',
-        name: 'system_home',
-        meta: {
-          title: 'Ting Library 介绍'
-        },
-        component: () => import('@/views/pages/system/home/index.docs.vue')
-      },
-      {
-        path: 'markdown',
-        name: 'system_markdown',
-        meta: {
-          title: '🔥文档的设计'
-        },
-        component: () => import('@/views/pages/system/docs/index.docs.vue')
-      },
-      {
-        path: 'micro',
-        name: 'system_micro',
-        meta: {
-          title: '浅尝微前端'
-        },
-        component: () => import('@/views/pages/system/micro/index.docs.vue')
-      },
-      {
-        path: '404',
-        name: 'system_404',
-        meta: {
-          title: '404页面',
-          transition: true
-        },
-        component: () => import('@/views/common/error/404.vue')
-      }
-    ]
+    component: () => import('@/views/common/error/404.vue')
   }
 ]
 

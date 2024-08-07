@@ -1,5 +1,4 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '../routerBase'
 
 /**
  * @param name 路由名称, 必须设置,且不能重名
@@ -13,25 +12,9 @@ import { Layout } from '../routerBase'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/repackage',
-    name: 'Repackage',
-    redirect: '/repackage/home',
-    component: Layout,
-    meta: {
-      title: '二次封装',
-      icon: 'Brush',
-      sort: 2
-    },
-    children: [
-      {
-        path: 'home',
-        name: 'repackage_home',
-        meta: {
-          title: '🔥Vue二次封装思考'
-        },
-        component: () => import('@/views/pages/repackage/home/index.docs.vue')
-      }
-    ]
+    path: 'home',
+    name: 'repackage_home',
+    component: () => import('@/views/pages/repackage/home/index.docs.vue')
   }
 ]
 

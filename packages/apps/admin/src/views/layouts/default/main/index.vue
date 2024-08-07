@@ -19,13 +19,12 @@
 
 <script lang="ts" setup>
   import { useNamespace } from '@/hooks/useNamespace'
-  import { useAsyncRouteStoreWidthOut } from '@/store/modules/asyncRoute'
+  import { useUserStoreWidthOut } from '@/store/modules/user'
   import { computed } from 'vue'
-  // import { isProdMode } from '@/utils/env'
-  const asyncRouteStore = useAsyncRouteStoreWidthOut()
+  const userStore = useUserStoreWidthOut()
   defineOptions({ name: 'LayoutMain' })
 
-  const keepAliveComponents = computed(() => asyncRouteStore.keepAliveComponents)
+  const keepAliveComponents = computed(() => userStore.keepAliveComponents)
 
   const ns = useNamespace('layout-main')
 </script>
