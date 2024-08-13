@@ -29,7 +29,7 @@
   import { watch, toRaw, ref } from 'vue'
   import { useRouter } from 'vue-router'
   import { useUserStoreWidthOut } from '@/store/modules/user'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'HeaderBreadcrumb'
@@ -57,6 +57,7 @@
   )
 
   const handleClickMenu = (path: string) => {
+    console.log('=========', path)
     router.push(path)
   }
 </script>

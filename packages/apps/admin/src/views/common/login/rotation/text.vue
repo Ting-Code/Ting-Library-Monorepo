@@ -14,8 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNamespace } from '@/hooks/useNamespace'
-  import { loginSystem } from '@tingcode/system'
+  import { useNamespace, loginSystem } from '@tingcode/system'
 
   defineOptions({
     name: 'RotationText'

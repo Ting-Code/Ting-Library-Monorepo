@@ -7,19 +7,31 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
+  import { addScreenListen, onScreenListen } from '@tingcode/system'
   import { createAppProviderContext } from './useAppContext'
-  import { useBreakpointListen } from '@/views/application/useBreakpoint'
-  import { NAMESPACE } from '@/hooks/useNamespace'
+  import { initSettingMitt, NAMESPACE } from '@/hooks/useSetting'
   const namespace = ref(NAMESPACE)
-
-  // 监听视窗宽度
-  const {
-    screenComputedRef: screen,
-    widthComputedRef: width,
-    isMobileComputedRef: isMobile,
-    realWidthComputedRef: realWidth
-  } = useBreakpointListen()
+  const isMobile = ref<boolean>(false)
+  const screen = ref()
+  const width = ref()
+  const screenWidth = ref()
+  nextTick(() => {
+    // 监听屏幕
+    onScreenListen((opt) => {
+      isMobile.value = opt.isMobile
+      screen.value = opt.screen
+      width.value = opt.width
+      screenWidth.value = opt.screenWidth
+    })
+    // 添加事件触发监听
+    addScreenListen()
+    // 初始化监听setting
+    const offSettingMitt = initSettingMitt()
+    onUnmounted(() => {
+      offSettingMitt()
+    })
+  })
 
   // 变量注入全局
-  createAppProviderContext({ namespace, isMobile, screen, width, realWidth })
+  createAppProviderContext({ namespace, isMobile, screen, width, screenWidth })
 </script>

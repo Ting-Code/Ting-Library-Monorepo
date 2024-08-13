@@ -1,13 +1,13 @@
-import { ComputedRef, InjectionKey, Ref } from 'vue'
+import { InjectionKey, Ref } from 'vue'
 import { createContext, useContext } from '@/hooks/useContext'
-import { sizeEnum } from '@/views/application/useBreakpoint'
+import { screenSizeEnum } from '@tingcode/system'
 
 export interface AppProviderContextProps {
   namespace: Ref<string>
-  screen: ComputedRef<sizeEnum | undefined>
-  width: ComputedRef<number>
-  realWidth: ComputedRef<number>
-  isMobile: ComputedRef<boolean>
+  screen: Ref<screenSizeEnum | undefined>
+  width: Ref<number>
+  screenWidth: Ref<number>
+  isMobile: Ref<boolean>
 }
 
 const key: InjectionKey<AppProviderContextProps> = Symbol()

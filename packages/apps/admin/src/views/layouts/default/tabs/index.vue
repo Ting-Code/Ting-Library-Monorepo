@@ -12,7 +12,7 @@
           class="sortable"
           v-for="item in tabsList"
           :key="item.path"
-          :label="item?.meta?.title"
+          :label="item?.meta?.title as string"
           :name="item.path"
           :closable="true"
         />
@@ -28,15 +28,13 @@
 <script lang="ts" setup>
   import SetIcon from './set/index.vue'
   import FullIcon from './full/index.vue'
-  // @ts-ignore
   import { useSortable } from '@vueuse/integrations/useSortable'
-  import { useNamespace } from '@/hooks/useNamespace'
   import { watch, ref, computed } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
-  import { PageEnum } from '@tingcode/system'
+  import { PageEnum, useNamespace } from '@tingcode/system'
   import { useGo } from '@/hooks/usePage'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
+  import { useSetting } from '@/hooks/useSetting'
   defineOptions({
     name: 'LayoutTabs'
   })
@@ -55,7 +53,7 @@
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
   const go = useGo()
-  const { isOpenFullRef } = useRootSetting()
+  const { isOpenFullRef } = useSetting()
 
   initTabs()
 

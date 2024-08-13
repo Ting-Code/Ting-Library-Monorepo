@@ -11,7 +11,7 @@
 <script setup lang="ts">
   import LoginMain from './rotation/index.vue'
   import LoginNav from './nav.vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'Login'

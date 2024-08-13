@@ -19,9 +19,7 @@ export const permission: ObjectDirective = {
     let disabled = null
     let accesses: string[] = []
     if (isObject(value)) {
-      // @ts-ignore
       disabled = value.disabled
-      // @ts-ignore
       accesses = accessesVerified(value.auth)
     } else {
       accesses = accessesVerified(value)

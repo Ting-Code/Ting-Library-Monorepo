@@ -8,12 +8,12 @@
 </template>
 
 <script setup lang="ts">
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useSetting } from '@/hooks/useSetting'
+  import { useNamespace } from '@tingcode/system'
   defineOptions({
     name: 'HeaderTrigger'
   })
-  const { toggleIsOpenSlider, isOpenSliderRef } = useRootSetting()
+  const { toggleIsOpenSlider, isOpenSliderRef } = useSetting()
   const ns = useNamespace('header-trigger')
 </script>
 

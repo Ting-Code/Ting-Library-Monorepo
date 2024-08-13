@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'HeaderNavIcon'

@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  const { toggleIsOpenSetting } = useRootSetting()
+  import { useSetting } from '@/hooks/useSetting'
+  const { toggleIsOpenSetting } = useSetting()
 
   defineOptions({
     name: 'HeaderSetting'

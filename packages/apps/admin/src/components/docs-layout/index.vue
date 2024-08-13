@@ -15,7 +15,7 @@
   import DocsNavigation from './navigation/index-once.vue'
   import { highlightAllUnder } from 'prismjs'
   import { nextTick, onMounted, ref } from 'vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'DocsLayout'

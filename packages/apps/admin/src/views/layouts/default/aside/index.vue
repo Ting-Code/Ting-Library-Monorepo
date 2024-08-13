@@ -1,9 +1,9 @@
 <script lang="tsx">
   import Icon from '@/components/icon/icon.vue'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
+  import { useSetting } from '@/hooks/useSetting'
   import { defineComponent, toRaw, toRefs } from 'vue'
   import { useUserStoreWidthOut } from '@/store/modules/user'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import { useRoute } from 'vue-router'
   import { EPIcon } from '@/main'
   import { useAppProviderContext } from '@/views/application/useAppContext'
@@ -12,7 +12,7 @@
     setup() {
       const route = useRoute()
       const ns = useNamespace('layout-menu')
-      const { isOpenSliderRef } = useRootSetting()
+      const { isOpenSliderRef } = useSetting()
       const { isMobile } = toRefs(useAppProviderContext())
       const { getMenu } = useUserStoreWidthOut()
       const renderIcon = (icon) => {

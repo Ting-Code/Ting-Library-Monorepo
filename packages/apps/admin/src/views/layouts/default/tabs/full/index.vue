@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  const { toggleIsOpenFull } = useRootSetting()
+  import { useSetting } from '@/hooks/useSetting'
+  const { toggleIsOpenFull } = useSetting()
   defineOptions({
     name: 'TabsFull'
   })

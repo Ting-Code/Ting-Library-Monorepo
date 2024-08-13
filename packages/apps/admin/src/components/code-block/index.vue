@@ -17,7 +17,7 @@
   import SoundPath from './sound-path-once.vue'
   import SoundCode from './sound-code-once.vue'
   import type { Component } from 'vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'CodeBlock'

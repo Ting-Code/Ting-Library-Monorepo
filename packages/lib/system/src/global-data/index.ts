@@ -23,7 +23,8 @@ export enum GlobalDataKeyEnum {
   EL = 'EL',
   USER_INFO = 'USER_INFO',
   AUTH = 'AUTH',
-  MENU = 'MENU'
+  MENU = 'MENU',
+  MITT = 'MITT'
 }
 
 export function getMicroAppFn() {
@@ -36,9 +37,9 @@ export function getGlobalData() {
   return microAppFn?.getGlobalData() // 子应用返回全局数据
 }
 
-export function setGlobalData(key: GlobalDataKeyEnum, value: unknown, fn = () => {}) {
+export function setGlobalData(key: GlobalDataKeyEnum, value: unknown) {
   const microAppFn = getMicroAppFn()
-  microAppFn?.setGlobalData({ [key]: value }, fn)
+  microAppFn?.setGlobalData({ [key]: value })
 }
 
 export function addGlobalDataListener(fn: () => any) {
@@ -49,3 +50,4 @@ export function addGlobalDataListener(fn: () => any) {
 export * from './env'
 export * from './user'
 export * from './element'
+export * from './mitt'

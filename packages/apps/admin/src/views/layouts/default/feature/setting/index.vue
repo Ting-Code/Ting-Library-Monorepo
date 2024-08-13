@@ -16,11 +16,11 @@
 <script lang="ts" setup>
   import HeaderTheme from '../../theme/index.vue'
   import { useI18n } from '@/locale/use-i18n'
-  import { useNamespace } from '@/hooks/useNamespace'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
+  import { useNamespace } from '@tingcode/system'
+  import { useSetting } from '@/hooks/useSetting'
   const ns = useNamespace('setting-drawer')
   const { t } = useI18n()
-  const { isOpenSettingRef } = useRootSetting()
+  const { isOpenSettingRef } = useSetting()
 </script>
 
 <style lang="scss" scoped>

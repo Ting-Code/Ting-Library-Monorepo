@@ -63,7 +63,6 @@ export const useTabsStore = defineStore({
         // Add tab
         // 获取动态路由打开数，超过 0 即代表需要控制打开数
         const dynamicLevel = meta?.dynamicLevel ?? -1
-        // @ts-ignore
         if (dynamicLevel > 0) {
           // 如果动态路由层级大于 0 了，那么就要限制该路由的打开数限制了
           // 首先获取到真实的路由，使用配置方式减少计算开销.
@@ -71,7 +70,6 @@ export const useTabsStore = defineStore({
           const realPath = meta?.realPath ?? ''
           // 获取到已经打开的动态路由数, 判断是否大于某一个值
           if (
-            // @ts-ignore
             this.tabsList.filter((e) => e.meta?.realPath ?? '' === realPath).length >= dynamicLevel
           ) {
             // 关闭第一个

@@ -24,16 +24,16 @@
   import LayoutMain from './main/index.vue'
   import LayoutHeader from './header/index.vue'
   import LayoutFeature from './feature/index.vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import { useAppProviderContext } from '@/views/application/useAppContext'
   import { toRefs } from 'vue'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
+  import { useSetting } from '@/hooks/useSetting'
   defineOptions({
     name: 'DefaultLayout'
   })
   const ns = useNamespace('default-layout')
   const { isMobile } = toRefs(useAppProviderContext())
-  const { isOpenFullRef } = useRootSetting()
+  const { isOpenFullRef } = useSetting()
 </script>
 
 <style lang="scss">

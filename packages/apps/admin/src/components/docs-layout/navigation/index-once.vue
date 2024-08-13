@@ -22,7 +22,7 @@
 <script setup lang="ts">
   import DocsTree from './tree-once.vue'
   import { nextTick, ref, toRefs, watch } from 'vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import { useAppProviderContext } from '@/views/application/useAppContext'
 
   defineOptions({

@@ -16,8 +16,7 @@
   import HeaderTheme from '@/views/layouts/default/theme/index.vue'
   import HeaderNavIcon from '@/views/layouts/default/navIcon/index.vue'
   import Logo from '@/views/layouts/default/logo/index.vue'
-  import { useNamespace } from '@/hooks/useNamespace'
-  import { loginSystem } from '@tingcode/system'
+  import { useNamespace, loginSystem } from '@tingcode/system'
 
   const ns = useNamespace('login-nav')
 </script>

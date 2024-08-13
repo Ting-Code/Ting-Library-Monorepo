@@ -1,6 +1,12 @@
-import { useAppProviderContext } from '@/views/application/useAppContext'
-import { toRefs } from 'vue'
-export const NAMESPACE = 'ting'
+import { checkWindow } from '../init'
+import { error } from '@tingcode/utils'
+
+export function getNamespace() {
+  checkWindow()
+  if (!window?.namespace) return error('System windows not found or namespace not init')
+  return window.namespace
+}
+
 const _bem = (
   namespace: string,
   block: string,
@@ -22,21 +28,19 @@ const _bem = (
 }
 
 export const useNamespace = (block: string) => {
-  const { namespace } = toRefs(useAppProviderContext())
+  const namespace = getNamespace()
 
-  const b = (blockSuffix = '') => _bem(namespace.value, block, blockSuffix, '', '')
-  const e = (element?: string) => (element ? _bem(namespace.value, block, '', element, '') : '')
-  const m = (modifier?: string) => (modifier ? _bem(namespace.value, block, '', '', modifier) : '')
+  const b = (blockSuffix = '') => _bem(namespace, block, blockSuffix, '', '')
+  const e = (element?: string) => (element ? _bem(namespace, block, '', element, '') : '')
+  const m = (modifier?: string) => (modifier ? _bem(namespace, block, '', '', modifier) : '')
   const be = (blockSuffix?: string, element?: string) =>
-    blockSuffix && element ? _bem(namespace.value, block, blockSuffix, element, '') : ''
+    blockSuffix && element ? _bem(namespace, block, blockSuffix, element, '') : ''
   const em = (element?: string, modifier?: string) =>
-    element && modifier ? _bem(namespace.value, block, '', element, modifier) : ''
+    element && modifier ? _bem(namespace, block, '', element, modifier) : ''
   const bm = (blockSuffix?: string, modifier?: string) =>
-    blockSuffix && modifier ? _bem(namespace.value, block, blockSuffix, '', modifier) : ''
+    blockSuffix && modifier ? _bem(namespace, block, blockSuffix, '', modifier) : ''
   const bem = (blockSuffix?: string, element?: string, modifier?: string) =>
-    blockSuffix && element && modifier
-      ? _bem(namespace.value, block, blockSuffix, element, modifier)
-      : ''
+    blockSuffix && element && modifier ? _bem(namespace, block, blockSuffix, element, modifier) : ''
   const is: {
     (name: string, state: boolean | undefined): string
     (name: string): string
@@ -51,7 +55,7 @@ export const useNamespace = (block: string) => {
     const styles: Record<string, string> = {}
     for (const key in object) {
       if (object[key]) {
-        styles[`--${namespace.value}-${key}`] = object[key]
+        styles[`--${namespace}-${key}`] = object[key]
       }
     }
     return styles
@@ -61,14 +65,14 @@ export const useNamespace = (block: string) => {
     const styles: Record<string, string> = {}
     for (const key in object) {
       if (object[key]) {
-        styles[`--${namespace.value}-${block}-${key}`] = object[key]
+        styles[`--${namespace}-${block}-${key}`] = object[key]
       }
     }
     return styles
   }
 
-  const cssVarName = (name: string) => `--${namespace.value}-${name}`
-  const cssVarBlockName = (name: string) => `--${namespace.value}-${block}-${name}`
+  const cssVarName = (name: string) => `--${namespace}-${name}`
+  const cssVarBlockName = (name: string) => `--${namespace}-${block}-${name}`
 
   return {
     namespace,
@@ -87,5 +91,3 @@ export const useNamespace = (block: string) => {
     cssVarBlockName
   }
 }
-
-export type UseNamespaceReturn = ReturnType<typeof useNamespace>

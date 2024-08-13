@@ -1,6 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, ErrorPageRoute } from '@/router'
-
 import { groupBy } from '@tingcode/utils'
 import 'nprogress/nprogress.css'
 import { isNavigationFailure, Router } from 'vue-router'
@@ -16,6 +15,7 @@ const Layout = () => import('@/views/layouts/default/index.vue')
 
 LayoutMap.set('LAYOUT', Layout)
 LayoutMap.set('IFRAME', Iframe)
+LayoutMap.set('ParentLayout', ParentLayout)
 
 const LOGIN_PATH = PageEnum.BASE_LOGIN
 const ERROR_PAGE_NAME = PageEnum.ERROR_PAGE_NAME
@@ -68,7 +68,8 @@ export function createRouterGuards(router: Router) {
     try {
       const userStore = useUserStoreWidthOut()
       const { auth, menu } = await getUserInfo()
-      const addRouters = generateRoutes(transRouter(auth))
+      const addRouters = generateRoutes(menu)
+      console.log('addRouters', addRouters)
       userStore.setAuth(auth)
       userStore.setMenu(menu)
       userStore.setRouters(addRouters)
@@ -76,7 +77,6 @@ export function createRouterGuards(router: Router) {
       addRouters.forEach((item) => {
         router.addRoute(item as unknown as RouteRecordRaw)
       })
-      console.log('======router', addRouters, router.currentRoute)
     } catch (error) {
       console.log(error)
     }
@@ -100,7 +100,7 @@ export function createRouterGuards(router: Router) {
   router.afterEach((to, _, failure) => {
     document.title = (to?.meta?.title as string) || document.title
     if (isNavigationFailure(failure)) {
-      //console.log('failed navigation', failure)
+      console.log('failed navigation', failure)
     }
     const asyncRouteStore = useUserStoreWidthOut()
     // 在这里设置需要缓存的组件名称
@@ -125,6 +125,10 @@ export function createRouterGuards(router: Router) {
   })
 }
 
+/**
+ * 按model来分组（已弃用）
+ * @param auth
+ */
 export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[] {
   const grouped = groupBy(auth, 'module')
   return Object.keys(grouped).map((key) => ({
@@ -178,12 +182,10 @@ export function dynamicComponent(routerItem: AppRouteRecordRaw) {
   if (component) {
     const layoutFound = LayoutMap.get(component as string)
     if (layoutFound) return layoutFound
-    const router = asyncRoutes.find((router) => {
-      return router.name === routerItem.name
-    })
-    if (router?.component) return router?.component
-    return ParentLayout
-  } else {
-    return ParentLayout
   }
+  const router = asyncRoutes.find((router) => {
+    return router.name === routerItem.name
+  })
+  if (router?.component) return router?.component
+  return ParentLayout
 }

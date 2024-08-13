@@ -13,7 +13,8 @@ const menu = {
         title: '架构设计',
         icon: 'Box'
       },
-      module: 'system',
+      component: 'LAYOUT',
+      path: '/system',
       children: [
         {
           name: 'system_home',
@@ -37,9 +38,8 @@ const menu = {
           name: 'system_micro',
           path: '/system/micro',
           module: 'system',
-          title: '🔥微前端',
           meta: {
-            title: '🔥文档的设计'
+            title: '🔥微前端'
           },
           auth: []
         },
@@ -60,7 +60,8 @@ const menu = {
         title: '性能优化',
         icon: 'Coin'
       },
-      module: 'performance',
+      component: 'LAYOUT',
+      path: '/performance',
       children: [
         {
           name: 'performance_virtual_scroll',
@@ -79,7 +80,8 @@ const menu = {
         title: '二次封装',
         icon: 'Brush'
       },
-      module: 'repackage',
+      component: 'LAYOUT',
+      path: '/repackage',
       children: [
         {
           name: 'repackage_home',

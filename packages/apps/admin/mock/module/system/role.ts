@@ -2,10 +2,9 @@ import { resultSuccess, doCustomTimes } from '../../util'
 
 function getMenuKeys() {
   const keys = ['dashboard', 'console', 'workplace', 'basic-form', 'step-form', 'detail']
-  const newKeys = []
+  const newKeys = [] as any[]
   doCustomTimes(parseInt(Math.random() * 6), () => {
     const key = keys[Math.floor(Math.random() * keys.length)]
-    // @ts-ignore
     newKeys.push(key)
   })
   return Array.from(new Set(newKeys))

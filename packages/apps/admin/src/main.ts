@@ -14,15 +14,18 @@ import {
   initNamespace,
   setGlobalDataEnv,
   setGlobalDataElement,
-  initRequest
+  initRequest,
+  initMitt
 } from '@tingcode/system'
 import { useEnv } from '@/hooks/useEnv'
+import { NAMESPACE } from '@/hooks/useSetting'
 async function bootstrap() {
   initMicroApp()
-  initNamespace('admin')
+  initNamespace(NAMESPACE)
   setGlobalDataEnv(useEnv())
   setGlobalDataElement({ ElMessage, ElMessageBox })
   initRequest()
+  initMitt()
   const app = createApp(App)
   setupRouter(app)
   setupStore(app)

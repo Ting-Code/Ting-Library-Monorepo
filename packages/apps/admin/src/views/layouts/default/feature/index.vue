@@ -18,15 +18,15 @@
   import { toRefs } from 'vue'
   import { useAppProviderContext } from '@/views/application/useAppContext'
   import LayoutAside from '@/views/layouts/default/aside/index.vue'
-  import { useRootSetting } from '@/hooks/useSetting/useRootSetting'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useSetting } from '@/hooks/useSetting'
+  import { useNamespace } from '@tingcode/system'
   defineOptions({
     name: 'LayoutFeature'
   })
 
   const ns = useNamespace('layout-feature')
   const { isMobile } = toRefs(useAppProviderContext())
-  const { isOpenSliderRef, toggleIsOpenSlider } = useRootSetting()
+  const { isOpenSliderRef, toggleIsOpenSlider } = useSetting()
 </script>
 
 <style lang="scss">

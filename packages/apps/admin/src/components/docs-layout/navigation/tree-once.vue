@@ -1,7 +1,7 @@
 <script lang="tsx">
   import Icon from '@/components/icon/icon.vue'
   import { defineComponent } from 'vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   export default defineComponent({
     name: 'DocsTree',
     props: {

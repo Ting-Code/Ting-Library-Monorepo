@@ -178,7 +178,6 @@ const transform: AxiosTransform = {
    * @description: 响应错误处理
    */
   responseInterceptorsCatch: (error: any) => {
-    // @ts-ignore
     const { response, code, message } = error || {}
     const { ElMessage } = getGlobalDataElement()
     // TODO 此处要根据后端接口返回格式修改

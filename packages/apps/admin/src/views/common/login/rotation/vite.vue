@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
 
   defineOptions({
     name: 'RotationVite'

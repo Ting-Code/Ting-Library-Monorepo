@@ -20,7 +20,7 @@
   import HeaderSetting from './setting/index.vue'
   import HeaderTrigger from './trigger/index.vue'
   import HeaderBreadcrumb from './breadcrumb/index.vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import { computed } from 'vue'
 
   defineOptions({

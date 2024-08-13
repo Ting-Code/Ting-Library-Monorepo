@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import Icon from '@/components/icon/icon.vue'
 
   defineOptions({

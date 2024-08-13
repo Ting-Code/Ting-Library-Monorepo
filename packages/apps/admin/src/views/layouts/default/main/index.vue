@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import { useUserStoreWidthOut } from '@/store/modules/user'
   import { computed } from 'vue'
   const userStore = useUserStoreWidthOut()

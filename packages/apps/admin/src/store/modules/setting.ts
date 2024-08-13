@@ -9,7 +9,7 @@ interface RootSettingState {
   isOpenFull: boolean // 全屏
 }
 
-export const useRootSettingStore = defineStore({
+export const useSettingStore = defineStore({
   id: 'app-root-setting',
   state: (): RootSettingState => ({
     rootTheme: 'dark',
@@ -32,6 +32,6 @@ export const useRootSettingStore = defineStore({
   }
 })
 
-export function useRootSettingStoreWithOut() {
-  return useRootSettingStore(store)
+export function useSettingStoreWithOut() {
+  return useSettingStore(store)
 }

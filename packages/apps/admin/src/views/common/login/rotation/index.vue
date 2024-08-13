@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   import RotationVue from './vue.vue'
   import RotationReact from './react.vue'
   import RotationVite from './vite.vue'

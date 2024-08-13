@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useNamespace } from '@/hooks/useNamespace'
+  import { useNamespace } from '@tingcode/system'
   const ns = useNamespace('app-logo')
 
   defineOptions({
