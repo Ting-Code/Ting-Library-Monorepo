@@ -1,0 +1,26 @@
+@use 'sass:map';
+
+// CSS3 var
+@use '../mixin/mixins' as *;
+@use 'default/var' as *;
+@use 'default/github-markdown' as *;
+@use 'default/prism' as *;
+// common
+:root {
+  @include github-markdown();
+  @include prism();
+  @include set-component-css-var('text-color', $text-color);
+  @include set-component-css-var('border-color', $border-color);
+  @include set-component-css-var('bg-color', $bg-color);
+
+  @include set-css-var-value('font-weight-primary', 500);
+  @include set-css-var-value('font-weight-bold', 700);
+
+  @include set-css-var-value('low-z-index', -1);
+  @include set-css-var-value('flat-z-index', 100);
+  @include set-css-var-value('high-z-index', 100);
+  @include set-css-var-value('top-z-index', 1000);
+
+  // 默认text-color
+  color: getCssVar('text-color', 'primary');
+}

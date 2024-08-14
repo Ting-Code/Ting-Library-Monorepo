@@ -1,0 +1,5 @@
+// global 会被全局引用 可以写scss变量mixin 等
+//  @use 'theme/index' as *; // 已废弃
+// 改变 element 的命名空间
+@use 'transition/index' as *;
+@use 'base/element';

@@ -12,7 +12,7 @@ const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
 const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
 const Iframe = () => import('@/views/common/iframe/index.vue')
 const Layout = () => import('@/views/layouts/default/index.vue')
-
+const Micro = () => import('@/views/layouts/micro/index.vue')
 LayoutMap.set('LAYOUT', Layout)
 LayoutMap.set('IFRAME', Iframe)
 LayoutMap.set('ParentLayout', ParentLayout)
@@ -69,7 +69,7 @@ export function createRouterGuards(router: Router) {
       const userStore = useUserStoreWidthOut()
       const { auth, menu } = await getUserInfo()
       const addRouters = generateRoutes(menu)
-      console.log('addRouters', addRouters)
+      console.log('addRouters', addRouters, auth)
       userStore.setAuth(auth)
       userStore.setMenu(menu)
       userStore.setRouters(addRouters)
@@ -187,5 +187,8 @@ export function dynamicComponent(routerItem: AppRouteRecordRaw) {
     return router.name === routerItem.name
   })
   if (router?.component) return router?.component
-  return ParentLayout
+  if (routerItem.children && routerItem.children.length > 0) {
+    return ParentLayout
+  }
+  return Micro
 }

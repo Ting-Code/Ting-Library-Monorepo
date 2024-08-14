@@ -6,6 +6,7 @@ export interface IMeta {
   title: string
   affix?: boolean
   icon?: string
+  module?: string
 }
 
 export interface IMenu {
@@ -14,6 +15,7 @@ export interface IMenu {
   meta: IMeta
   module?: string
   children?: IMenu[]
+  auth?: string[]
 }
 
 export interface IUserInfo {

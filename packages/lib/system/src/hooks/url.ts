@@ -25,9 +25,18 @@ export function getURL(url = window.location.href) {
     query[key] = value
   }
   return {
-    ...currentURL,
     query,
-    paramsOrigin
+    paramsOrigin,
+    hash: currentURL.hash,
+    host: currentURL.host,
+    hostname: currentURL.hostname,
+    href: currentURL.href,
+    origin: currentURL.origin,
+    password: currentURL.password,
+    pathname: currentURL.pathname,
+    port: currentURL.port,
+    protocol: currentURL.protocol,
+    search: currentURL.search
   }
 }
 

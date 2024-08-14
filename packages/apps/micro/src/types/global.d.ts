@@ -1,7 +1,7 @@
 declare global {
   namespace NodeJS {
     declare interface ProcessEnv {
-      NODE_ENV: 'development' | 'production'
+      NODE_ENV: 'development' | 'production' | 'test'
       [key: string]: string | undefined
     }
   }
@@ -14,6 +14,6 @@ interface Window {
 }
 
 interface Process {
-  NODE_ENV: 'development' | 'production'
+  NODE_ENV: 'development' | 'production' | 'test'
   [key: string]: string | undefined
 }

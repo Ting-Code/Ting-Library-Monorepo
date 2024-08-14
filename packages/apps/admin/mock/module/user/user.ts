@@ -11,7 +11,8 @@ const menu = {
       name: 'system',
       meta: {
         title: '架构设计',
-        icon: 'Box'
+        icon: 'Box',
+        module: 'docs'
       },
       component: 'LAYOUT',
       path: '/system',
@@ -19,34 +20,33 @@ const menu = {
         {
           name: 'system_home',
           path: '/system/home',
-          module: 'system',
           meta: {
-            title: 'Ting Library 介绍'
+            title: 'Ting Library 介绍',
+            module: 'docs'
           },
-          auth: []
+          auth: ['ting']
         },
         {
           name: 'system_markdown',
           path: '/system/markdown',
-          module: 'system',
           meta: {
-            title: '🔥文档的设计'
+            title: '🔥文档的设计',
+            module: 'docs'
           },
           auth: []
         },
         {
           name: 'system_micro',
           path: '/system/micro',
-          module: 'system',
           meta: {
-            title: '🔥微前端'
+            title: '🔥微前端',
+            module: 'docs'
           },
           auth: []
         },
         {
           name: 'system_404',
           path: '/system/404',
-          module: 'system',
           meta: {
             title: '404页面'
           },
@@ -58,7 +58,8 @@ const menu = {
       name: 'performance',
       meta: {
         title: '性能优化',
-        icon: 'Coin'
+        icon: 'Coin',
+        module: 'docs'
       },
       component: 'LAYOUT',
       path: '/performance',
@@ -66,9 +67,9 @@ const menu = {
         {
           name: 'performance_virtual_scroll',
           path: '/performance/virtual-scroll',
-          module: 'performance',
           meta: {
-            title: '虚拟列表'
+            title: '虚拟列表',
+            module: 'docs'
           },
           auth: []
         }
@@ -86,9 +87,9 @@ const menu = {
         {
           name: 'repackage_home',
           path: '/repackage/home',
-          module: 'repackage',
           meta: {
-            title: '🔥Vue二次封装思考'
+            title: '🔥Vue二次封装思考',
+            module: 'docs'
           },
           auth: []
         }

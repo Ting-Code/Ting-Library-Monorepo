@@ -1,4 +1,4 @@
-import { runPromptsSelect, runSingleScript, getPackages } from './helper'
+import { runPromptsSelect, runSingleScript, getPackages, runScript } from './helper'
 
 export async function runDev() {
   const command = 'dev'
@@ -13,10 +13,10 @@ export async function runDev() {
       runSingleScript(packages[0], command)
       return
     }
-    const { value } = await runPromptsSelect(packages)
+    const { value } = await runPromptsSelect(packages, { type: 'multiselect' })
 
-    runSingleScript(
-      packages.find((p) => p.name === value),
+    runScript(
+      packages.filter((p) => value.includes(p.name)),
       command
     )
   }

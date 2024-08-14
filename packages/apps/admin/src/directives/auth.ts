@@ -1,8 +1,8 @@
 import { ObjectDirective, App } from 'vue'
-import { usePermission } from '@/hooks/usePermission'
 import { isArray, isObject, isString } from '@tingcode/utils'
+import { hasAuth } from '@tingcode/system'
 
-const accessesVerified = (value) => {
+const accessesVerified = (value: string | string[] | unknown) => {
   if (isString(value)) {
     return [value]
   }
@@ -12,20 +12,23 @@ const accessesVerified = (value) => {
   throw new Error(`[v-auth]: ${value} auth 不是字符串或数组!`)
 }
 
-export const permission: ObjectDirective = {
-  mounted(el: HTMLButtonElement, binding) {
-    if (binding.value == undefined) return
+export interface IAuthObject {
+  disabled?: boolean
+  auth?: string | string[]
+}
+
+export const auth: ObjectDirective<HTMLButtonElement, IAuthObject> = {
+  mounted(el, binding) {
     const value = binding.value
-    let disabled = null
+    let disabled = false
     let accesses: string[] = []
     if (isObject(value)) {
-      disabled = value.disabled
-      accesses = accessesVerified(value.auth)
+      disabled = !!value.disabled
+      accesses = accessesVerified(value?.auth)
     } else {
       accesses = accessesVerified(value)
     }
-    const { hasPermission } = usePermission()
-    if (!hasPermission(accesses)) {
+    if (!hasAuth(accesses)) {
       if (disabled) {
         el.disabled = true
         el.style['disabled'] = 'disabled'
@@ -41,6 +44,6 @@ export const permission: ObjectDirective = {
   }
 }
 
-export function setupPermissionDirective(app: App) {
-  app.directive('auth', permission)
+export function setupAuthDirective(app: App) {
+  app.directive('auth', auth)
 }

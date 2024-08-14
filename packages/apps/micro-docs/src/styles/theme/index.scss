@@ -1,0 +1,43 @@
+// 该文件废弃 改为css变量主题模式
+$theme-default: (
+  layout: (
+    background: red
+  )
+);
+
+$themes: (
+  default: $theme-default
+);
+
+$theme-map: null;
+
+// 第三步: 定义混合指令, 切换主题,并将主题中的所有规则添加到theme-map中
+@mixin themify() {
+  @each $theme-name, $map in $themes {
+    // & 表示父级元素  !global 表示覆盖原来的
+    [data-theme='#{$theme-name}'] & {
+      $theme-map: () !global;
+      // 循环合并键值对
+      @each $namespaces, $value in $map {
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $namespaces: $value
+          )
+        ) !global;
+      }
+      // 表示包含 下面函数 themed()
+      @content;
+    }
+  }
+}
+
+@function themed($namespaces, $variety) {
+  @return map-get(map-get($theme-map, $namespaces), $variety);
+}
+
+@mixin them-pick($key, $namespaces, $variety) {
+  @include themify() {
+    $key: themed($namespaces, $variety);
+  }
+}

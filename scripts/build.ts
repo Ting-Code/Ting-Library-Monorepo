@@ -4,14 +4,15 @@ export async function runBuild() {
   const command = 'build'
   const main = async () => {
     const packages = await getPackages((pkg) => {
-      return [
-        '@apps/admin',
-        '@apps/micro',
-        '@tingcli/create',
-        '@tingcode/lib-vue',
-        '@tingcli/cli-utils',
-        'vite-plugin-code'
-      ].includes(pkg.name)
+      return !!pkg
+      // return [
+      //   '@apps/admin',
+      //   '@apps/micro',
+      //   '@tingcli/create',
+      //   '@tingcode/lib-vue',
+      //   '@tingcli/cli-utils',
+      //   'vite-plugin-code'
+      // ].includes(pkg.name)
     })
     if (!packages.length) {
       console.log('没识别到任何项目')

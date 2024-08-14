@@ -13,6 +13,6 @@ declare module '*.css' {
 }
 
 declare interface ProcessEnv {
-  NODE_ENV: 'development' | 'production'
+  NODE_ENV: 'development' | 'production' | 'test'
   [key: string]: string | undefined
 }
