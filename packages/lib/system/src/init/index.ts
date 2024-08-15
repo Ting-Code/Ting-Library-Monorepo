@@ -2,7 +2,7 @@ import mitt from 'mitt'
 import microApp from '@micro-zoe/micro-app'
 import { error } from '@tingcode/utils'
 import { createAxios, BasicResponseModel } from './api'
-import { IMittEvents, setGlobalDataMitt } from '../global-data/mitt'
+import { IMittEvents, setGlobalDataMitt } from '../global-data'
 export function checkWindow() {
   if (!window) return error('System windows not found')
 }
@@ -12,6 +12,14 @@ export function checkWindow() {
  */
 export function initMicroApp() {
   microApp.start()
+}
+/**
+ * @description 初始化docs嵌套微前端
+ */
+export function initDocsMicroApp() {
+  microApp.start({
+    tagName: 'micro-app-docs'
+  })
 }
 
 /**

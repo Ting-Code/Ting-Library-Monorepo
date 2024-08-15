@@ -10,11 +10,11 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // mockjs
-import { viteMockServe } from 'vite-plugin-mock'
+// import { viteMockServe } from 'vite-plugin-mock'
 // gzip压缩
 import viteCompression from 'vite-plugin-compression'
 // svg 加载
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+// import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import Markdown from 'vite-plugin-md'
 import ViteCode from 'vite-plugin-code'
 // 配置绝对路径
@@ -43,19 +43,19 @@ export default defineConfig(({ command, mode }) => {
         // exclude: [/once\.vue$/, /once\.vue\?vue/],
         dts: 'src/components.d.ts'
       }),
-      createSvgIconsPlugin({
-        iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
-        symbolId: 'icon-[dir]-[name]'
-      }),
-      viteMockServe({
-        mockPath: 'mock',
-        localEnabled: command === 'serve', // 线下用mock
-        prodEnabled: command !== 'serve', // 线上环境用mock
-        injectCode: `
-          import { setupProdMockServer } from '../mock/index.ts';
-          setupProdMockServer();
-        `
-      }),
+      // createSvgIconsPlugin({
+      //   iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
+      //   symbolId: 'icon-[dir]-[name]'
+      // }),
+      // viteMockServe({
+      //   mockPath: 'mock',
+      //   localEnabled: command === 'serve', // 线下用mock
+      //   prodEnabled: command !== 'serve', // 线上环境用mock
+      //   injectCode: `
+      //     import { setupProdMockServer } from '../mock/index.ts';
+      //     setupProdMockServer();
+      //   `
+      // }),
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
       }),
@@ -108,6 +108,11 @@ export default defineConfig(({ command, mode }) => {
           entryFileNames: 'js/[name]-[hash].js',
           assetFileNames: '[ext]/[name]-[hash].[ext]' // 其他文件进入后缀为目录名
         }
+      }
+    },
+    server: {
+      headers: {
+        'Access-Control-Allow-Origin': '*'
       }
     }
   }

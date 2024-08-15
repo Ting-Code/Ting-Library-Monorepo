@@ -48,7 +48,8 @@ const menu = {
           name: 'system_404',
           path: '/system/404',
           meta: {
-            title: '404页面'
+            title: '404页面',
+            transition: true
           },
           auth: []
         }

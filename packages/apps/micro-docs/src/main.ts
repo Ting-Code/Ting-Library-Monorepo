@@ -5,35 +5,29 @@ import App from './App.vue'
 import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
 import { setupGlobDirectives } from '@/directives'
-import 'virtual:svg-icons-register'
-import { setupI18n } from '@/locale/setup-i18n'
+// import 'virtual:svg-icons-register'
 import * as EPIcon from '@element-plus/icons-vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
-import {
-  initMicroApp,
-  initNamespace,
-  setGlobalDataEnv,
-  setGlobalDataElement,
-  initRequest,
-  initMitt
-} from '@tingcode/system'
-import { useEnv } from '@/hooks/useEnv'
+import { initDocsMicroApp, initNamespace } from '@tingcode/system'
 import { NAMESPACE } from '@/hooks/useSetting'
-async function bootstrap() {
-  initMicroApp()
+initDocsMicroApp()
+let app: App<Element>
+
+window.mount = () => {
   initNamespace(NAMESPACE)
-  setGlobalDataEnv(useEnv())
-  setGlobalDataElement({ ElMessage, ElMessageBox })
-  initRequest()
-  initMitt()
-  const app = createApp(App)
+  app = createApp(App)
   setupRouter(app)
   setupStore(app)
   setupGlobDirectives(app)
-  setupI18n(app)
-  app.mount('#app')
+  app.mount('#docs')
 }
 
-bootstrap()
+window.unmount = () => {
+  app.unmount()
+}
+
+// 如果不在微前端环境，则直接执行mount渲染
+if (!window.__MICRO_APP_ENVIRONMENT__) {
+  window.mount()
+}
 
 export { EPIcon }

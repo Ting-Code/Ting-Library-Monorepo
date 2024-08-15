@@ -15,7 +15,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: install pnpm
         run: npm install -g pnpm
@@ -28,6 +28,9 @@ jobs:
 
       - name: build @apps/micro
         run: pnpm --filter @apps/micro... build
+
+      - name: build @apps/micro-docs
+        run: pnpm --filter @apps/micro-docs... build
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2

@@ -14,17 +14,17 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/system/home',
     name: 'system_home',
-    component: () => import('@/views/pages/system/home/index.docs.vue')
+    component: () => import('@/views/system/home/index.docs.vue')
   },
   {
     path: '/system/markdown',
     name: 'system_markdown',
-    component: () => import('@/views/pages/system/docs/index.docs.vue')
+    component: () => import('@/views/system/docs/index.docs.vue')
   },
   {
     path: '/system/micro',
     name: 'system_micro',
-    component: () => import('@/views/pages/system/micro/index.docs.vue')
+    component: () => import('@/views/system/micro/index.docs.vue')
   },
   {
     path: '/system/404',

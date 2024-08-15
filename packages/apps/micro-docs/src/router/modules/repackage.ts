@@ -12,9 +12,9 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: 'home',
+    path: '/home',
     name: 'repackage_home',
-    component: () => import('@/views/pages/repackage/home/index.docs.vue')
+    component: () => import('@/views/repackage/home/index.docs.vue')
   }
 ]
 

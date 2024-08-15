@@ -23,7 +23,7 @@
   import DocsTree from './tree-once.vue'
   import { nextTick, ref, toRefs, watch } from 'vue'
   import { useNamespace } from '@tingcode/system'
-  import { useAppProviderContext } from '@/views/application/useAppContext'
+  import { useAppProviderContext } from '@/application/useAppContext'
 
   defineOptions({
     name: 'DocsNavigation'

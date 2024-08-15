@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { addScreenListen, onScreenListen } from '@tingcode/system'
+  import { onScreenListen } from '@tingcode/system'
   import { createAppProviderContext } from './useAppContext'
   import { initSettingMitt, NAMESPACE } from '@/hooks/useSetting'
   const namespace = ref(NAMESPACE)
@@ -23,8 +23,6 @@
       width.value = opt.width
       screenWidth.value = opt.screenWidth
     })
-    // 添加事件触发监听
-    addScreenListen()
     // 初始化监听setting
     const offSettingMitt = initSettingMitt()
     onUnmounted(() => {

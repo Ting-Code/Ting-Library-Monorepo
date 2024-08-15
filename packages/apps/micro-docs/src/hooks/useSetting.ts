@@ -12,7 +12,7 @@ import {
   fooMitt
 } from '@tingcode/system'
 
-export const NAMESPACE = 'admin'
+export const NAMESPACE = 'docs'
 
 export const useSetting = () => {
   const rootSettingStore = useSettingStoreWithOut()

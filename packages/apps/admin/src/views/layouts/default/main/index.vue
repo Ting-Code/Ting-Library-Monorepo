@@ -4,14 +4,14 @@
       <template #default="{ Component, route }">
         <transition v-if="route?.meta?.transition" name="fade-slide" mode="out-in" appear>
           <keep-alive v-if="keepAliveComponents.length" :include="keepAliveComponents">
-            <component :is="Component" :key="route.fullPath" />
+            <component :is="Component" :key="route.name" />
           </keep-alive>
-          <component v-else :is="Component" :key="route.fullPath" />
+          <component v-else :is="Component" :key="route.name" />
         </transition>
         <keep-alive v-else-if="keepAliveComponents.length" :include="keepAliveComponents">
-          <component :is="Component" :key="route.fullPath" />
+          <component :is="Component" :key="route.name" />
         </keep-alive>
-        <component v-else :is="Component" :key="route.fullPath" />
+        <component v-else :is="Component" :key="route.name" />
       </template>
     </router-view>
   </main>

@@ -1,5 +1,5 @@
 import { InjectionKey, Ref } from 'vue'
-import { createContext, useContext } from '@/hooks/useContext'
+import { createContext, useContext } from '@tingcode/lib-vue'
 import { screenSizeEnum } from '@tingcode/system'
 
 export interface AppProviderContextProps {

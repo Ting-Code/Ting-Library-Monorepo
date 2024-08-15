@@ -21,7 +21,6 @@ window.mount = () => {
 window.unmount = () => {
   rspack.unmount()
 }
-
 // 如果不在微前端环境，则直接执行mount渲染
 if (!window.__MICRO_APP_ENVIRONMENT__) {
   window.mount()

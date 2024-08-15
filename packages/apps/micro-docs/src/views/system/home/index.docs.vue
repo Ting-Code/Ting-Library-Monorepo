@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-  import HomeMd from '../../../../../../../../README.md'
+  import HomeMd from '../../../../../../../README.md'
 </script>
 
 <style>

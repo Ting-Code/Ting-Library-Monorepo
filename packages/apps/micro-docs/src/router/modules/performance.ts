@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/performance/virtual-scroll',
     name: 'performance_virtual_scroll',
-    component: () => import('@/views/pages/performance/virtual-scroll/index.docs.vue')
+    component: () => import('@/views/performance/virtual-scroll/index.docs.vue')
   }
 ]
 
