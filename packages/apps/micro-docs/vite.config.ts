@@ -26,7 +26,7 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd())
   console.log(env, command)
   return {
-    base: '/',
+    base: command === 'build' ? '/docs/' : '/',
     plugins: [
       vue({
         include: [/\.vue$/, /\.md$/] // markdown 兼容

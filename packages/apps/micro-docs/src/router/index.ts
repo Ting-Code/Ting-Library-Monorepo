@@ -29,7 +29,7 @@ export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute]
 // 创建路由
 const router = createRouter({
   // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
-  history: createWebHistory(''),
+  history: createWebHistory(import.meta.env.PROD ? '/docs' : ''),
   routes: constantRouter as unknown as RouteRecordRaw[],
   scrollBehavior() {
     return { left: 0, top: 0 }
