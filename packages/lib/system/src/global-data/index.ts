@@ -32,6 +32,11 @@ export function getMicroAppFn() {
   return namespace === 'admin' ? microApp : window.microApp
 }
 
+export function getMainWindow(): Window {
+  const namespace = window?.namespace
+  return namespace === 'admin' ? window : window.rawWindow
+}
+
 export function getGlobalData() {
   const microAppFn = getMicroAppFn()
   return microAppFn?.getGlobalData() // 子应用返回全局数据

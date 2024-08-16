@@ -15,6 +15,10 @@
   const screen = ref()
   const width = ref()
   const screenWidth = ref()
+  // 监听路由变化
+  onBeforeRouteUpdate((to) => {
+    console.log('===========路由更新===========', to)
+  })
   nextTick(() => {
     // 监听屏幕
     onScreenListen((opt) => {

@@ -7,7 +7,7 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { onScreenListen } from '@tingcode/system'
+  import { getGlobalData, onScreenListen } from '@tingcode/system'
   import { createAppProviderContext } from './useAppContext'
   import { initSettingMitt, NAMESPACE } from '@/hooks/useSetting'
   const namespace = ref(NAMESPACE)
@@ -16,6 +16,14 @@
   const width = ref()
   const screenWidth = ref()
   nextTick(() => {
+    console.log(
+      '子应用=======',
+      getGlobalData(),
+      window.microApp,
+      window.microApp.getGlobalData(),
+      window?.__MICRO_APP_BASE_APPLICATION__,
+      window.__micro_app_name__
+    )
     // 监听屏幕
     onScreenListen((opt) => {
       isMobile.value = opt.isMobile

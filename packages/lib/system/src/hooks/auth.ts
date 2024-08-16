@@ -1,12 +1,12 @@
-import { getURL } from './url'
+import { getURL } from './router'
 import { getGlobalDataAuth } from '../global-data'
 import { error, isArray, isString } from '@tingcode/utils'
 
 export function getAuthPathList(): string[] {
-  const { pathname } = getURL()
+  const url = getURL()
   const authList = getGlobalDataAuth()
   if (!authList || !authList.length) return []
-  const authPathList = authList.find((item) => item.path === pathname)
+  const authPathList = authList.find((item) => item.path === url?.pathname)
   return authPathList ? authPathList?.auth || [] : []
 }
 

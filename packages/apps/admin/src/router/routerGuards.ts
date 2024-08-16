@@ -68,7 +68,7 @@ export function createRouterGuards(router: Router) {
     try {
       const userStore = useUserStoreWidthOut()
       const { auth, menu } = await getUserInfo()
-      const addRouters = generateRoutes(menu)
+      const addRouters = generateRoutes(transRouter(menu))
       console.log('addRouters', addRouters, auth)
       userStore.setAuth(auth)
       userStore.setMenu(menu)
@@ -105,7 +105,6 @@ export function createRouterGuards(router: Router) {
     const asyncRouteStore = useUserStoreWidthOut()
     // 在这里设置需要缓存的组件名称
     const keepAliveComponents = asyncRouteStore.keepAliveComponents
-    console.log('=====keepAliveComponents====', toRaw(keepAliveComponents))
     const currentComName: any = to.matched.find((item) => item.name == to.name)?.name
     if (currentComName && !keepAliveComponents.includes(currentComName) && to.meta?.keepAlive) {
       // 需要缓存的组件
@@ -131,7 +130,7 @@ export function createRouterGuards(router: Router) {
  * @param auth
  */
 export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[] {
-  const grouped = groupBy(auth, 'module')
+  const grouped = groupBy(auth, 'meta.module')
   return Object.keys(grouped).map((key) => ({
     name: key,
     component: 'LAYOUT',

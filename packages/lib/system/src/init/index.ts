@@ -11,7 +11,9 @@ export function checkWindow() {
  * @description 初始化微前端
  */
 export function initMicroApp() {
-  microApp.start()
+  microApp.start({
+    'router-mode': 'native'
+  })
 }
 /**
  * @description 初始化docs嵌套微前端

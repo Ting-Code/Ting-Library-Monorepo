@@ -1,6 +1,6 @@
 import { apiLogin } from '../api/apiSystem'
 import { ResultEnum } from '@tingcode/request'
-import { getURL, PageEnum, setUrl } from './url'
+import { getURL, PageEnum, setUrl } from './router'
 import {
   getGlobalDataElement,
   removeGlobalStorageToken,
@@ -42,6 +42,6 @@ export function logoutSystem() {
   removeGlobalStorageToken()
   setGlobalDataAuth([])
   setGlobalDataUserInfo({})
-  const { pathname, query } = getURL()
-  setUrl({ path: PageEnum.BASE_LOGIN, query: { redirect: pathname, ...query } })
+  const url = getURL()
+  setUrl({ path: PageEnum.BASE_LOGIN, query: { redirect: url?.pathname, ...url?.query } })
 }

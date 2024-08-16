@@ -14,12 +14,12 @@ const menu = {
         icon: 'Box',
         module: 'docs'
       },
-      component: 'LAYOUT',
-      path: '/system',
+      // component: 'LAYOUT',
+      path: '/docs/system',
       children: [
         {
           name: 'system_home',
-          path: '/system/home',
+          path: '/docs/system/home',
           meta: {
             title: 'Ting Library 介绍',
             module: 'docs'
@@ -28,7 +28,7 @@ const menu = {
         },
         {
           name: 'system_markdown',
-          path: '/system/markdown',
+          path: '/docs/system/markdown',
           meta: {
             title: '🔥文档的设计',
             module: 'docs'
@@ -37,7 +37,7 @@ const menu = {
         },
         {
           name: 'system_micro',
-          path: '/system/micro',
+          path: '/docs/system/micro',
           meta: {
             title: '🔥微前端',
             module: 'docs'
@@ -46,7 +46,7 @@ const menu = {
         },
         {
           name: 'system_404',
-          path: '/system/404',
+          path: '/docs/system/404',
           meta: {
             title: '404页面',
             transition: true
@@ -62,12 +62,12 @@ const menu = {
         icon: 'Coin',
         module: 'docs'
       },
-      component: 'LAYOUT',
-      path: '/performance',
+      // component: 'LAYOUT',
+      path: '/docs/performance',
       children: [
         {
           name: 'performance_virtual_scroll',
-          path: '/performance/virtual-scroll',
+          path: '/docs/performance/virtual-scroll',
           meta: {
             title: '虚拟列表',
             module: 'docs'
@@ -80,14 +80,15 @@ const menu = {
       name: 'repackage',
       meta: {
         title: '二次封装',
-        icon: 'Brush'
+        icon: 'Brush',
+        module: 'docs'
       },
-      component: 'LAYOUT',
-      path: '/repackage',
+      // component: 'LAYOUT',
+      path: '/docs/repackage',
       children: [
         {
           name: 'repackage_home',
-          path: '/repackage/home',
+          path: '/docs/repackage/home',
           meta: {
             title: '🔥Vue二次封装思考',
             module: 'docs'

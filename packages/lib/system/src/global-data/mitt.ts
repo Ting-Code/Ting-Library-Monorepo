@@ -1,11 +1,12 @@
 import { getGlobalData, GlobalDataKeyEnum, setGlobalData } from './index'
 import { Emitter, EventType } from 'mitt'
-import { CreateCallbackParams } from '../hooks'
+import { CreateCallbackParams, IRouterInfo } from '../hooks'
 import { error } from '@tingcode/utils'
 
 export interface IMittEvents {
   [eventName: EventType]: unknown
   browserScreen: CreateCallbackParams
+  router: IRouterInfo
   theme: string
   isOpenSetting: boolean
   isOpenSlider: boolean

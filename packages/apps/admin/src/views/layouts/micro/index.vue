@@ -1,13 +1,10 @@
 <template>
-  <micro-app :name="name" :url="url" :default-page="path" :iframe="isIframe" />
+  <micro-app :name="name" :url="url" :iframe="isIframe" router-mode="native" />
 </template>
 
 <script setup lang="ts">
   import { useMicro } from '@tingcode/system'
-  // import { useRedo } from '@/hooks/usePage'
-  const { url, name, path, isIframe } = useMicro()
-  // useRedo()
-  console.log('=================重新渲染', url, name, path, isIframe)
+  const { url, name, isIframe } = useMicro()
 </script>
 
 <style lang="scss">
