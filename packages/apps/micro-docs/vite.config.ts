@@ -43,19 +43,6 @@ export default defineConfig(({ command, mode }) => {
         // exclude: [/once\.vue$/, /once\.vue\?vue/],
         dts: 'src/components.d.ts'
       }),
-      // createSvgIconsPlugin({
-      //   iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
-      //   symbolId: 'icon-[dir]-[name]'
-      // }),
-      // viteMockServe({
-      //   mockPath: 'mock',
-      //   localEnabled: command === 'serve', // 线下用mock
-      //   prodEnabled: command !== 'serve', // 线上环境用mock
-      //   injectCode: `
-      //     import { setupProdMockServer } from '../mock/index.ts';
-      //     setupProdMockServer();
-      //   `
-      // }),
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
       }),

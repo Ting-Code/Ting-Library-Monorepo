@@ -1,10 +1,9 @@
-import { useRoute, useRouter, Router } from 'vue-router'
+import { useRoute, useRouter, Router, RouteLocationRaw } from 'vue-router'
 import { RouteItem, TABS_ROUTES, useTabsStoreWidthOut } from '@/store/modules/tabs'
 import { useUserStoreWidthOut } from '@/store/modules/user'
 import { toRef, unref } from 'vue'
-import { PageEnum } from '@tingcode/system'
+import { PageEnum, setUrl } from '@tingcode/system'
 import { createStorage } from '@tingcode/utils'
-import { useGo, useRedo } from '@/hooks/usePage'
 import { toRaw } from 'vue'
 export const useTabs = (_router?: Router) => {
   const router = useRouter()
@@ -20,7 +19,6 @@ export const useTabs = (_router?: Router) => {
    */
   const goToPage = async (_router?: Router) => {
     const router = _router || _router_
-    const go = useGo(router)
     const len = tabsStore.getTabsList.length
     const { path } = unref(router.currentRoute)
 
@@ -33,7 +31,7 @@ export const useTabs = (_router?: Router) => {
         toPath = p
       }
     }
-    path !== toPath && (await go(toPath as PageEnum, true))
+    path !== toPath && (await setUrl({ path: toPath as PageEnum, replace: true }))
     if (len <= 0) {
       addTabsList(getRouteItem(_route_))
     }
@@ -191,4 +189,34 @@ export const useTabs = (_router?: Router) => {
     getTabsList,
     setTabsList
   }
+}
+
+export type PathAsPageEnum<T> = T extends { path: string } ? T & { path: PageEnum } : T
+export type RouteLocationRawEx = PathAsPageEnum<RouteLocationRaw>
+
+/**
+ * @description: redo current page
+ */
+export function useRedo(_router?: Router) {
+  const { replace, currentRoute } = _router || useRouter()
+  const { query, params = {}, name, fullPath } = unref(currentRoute.value)
+  function redo(): Promise<boolean> {
+    return new Promise((resolve) => {
+      if (name === PageEnum.REDIRECT_NAME) {
+        resolve(false)
+        return
+      }
+      if (name && Object.keys(params).length > 0) {
+        params['_origin_params'] = JSON.stringify(params ?? {})
+        params['_redirect_type'] = 'name'
+        params['path'] = String(name)
+      } else {
+        params['_origin_params'] = 'null'
+        params['_redirect_type'] = 'path'
+        params['path'] = fullPath
+      }
+      replace({ name: PageEnum.REDIRECT_NAME, params, query }).then(() => resolve(true))
+    })
+  }
+  return redo
 }

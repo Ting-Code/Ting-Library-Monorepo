@@ -15,8 +15,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 import viteCompression from 'vite-plugin-compression'
 // svg 加载
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import Markdown from 'vite-plugin-md'
-import ViteCode from 'vite-plugin-code'
 // 配置绝对路径
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
@@ -58,9 +56,7 @@ export default defineConfig(({ command, mode }) => {
       }),
       eslintPlugin({
         include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
-      }),
-      ViteCode(),
-      Markdown()
+      })
     ],
     css: {
       preprocessorOptions: {

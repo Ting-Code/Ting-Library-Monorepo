@@ -15,6 +15,8 @@
   const screen = ref()
   const width = ref()
   const screenWidth = ref()
+  let offSettingMitt
+
   nextTick(() => {
     console.log(
       '子应用=======',
@@ -32,10 +34,11 @@
       screenWidth.value = opt.screenWidth
     })
     // 初始化监听setting
-    const offSettingMitt = initSettingMitt()
-    onUnmounted(() => {
-      offSettingMitt()
-    })
+    offSettingMitt = initSettingMitt()
+  })
+
+  onBeforeUnmount(() => {
+    offSettingMitt()
   })
 
   // 变量注入全局

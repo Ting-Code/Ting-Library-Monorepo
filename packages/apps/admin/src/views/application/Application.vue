@@ -15,10 +15,7 @@
   const screen = ref()
   const width = ref()
   const screenWidth = ref()
-  // 监听路由变化
-  onBeforeRouteUpdate((to) => {
-    console.log('===========路由更新===========', to)
-  })
+  let offSettingMitt
   nextTick(() => {
     // 监听屏幕
     onScreenListen((opt) => {
@@ -30,10 +27,11 @@
     // 添加事件触发监听
     addScreenListen()
     // 初始化监听setting
-    const offSettingMitt = initSettingMitt()
-    onUnmounted(() => {
-      offSettingMitt()
-    })
+    offSettingMitt = initSettingMitt()
+  })
+
+  onBeforeUnmount(() => {
+    offSettingMitt()
   })
 
   // 变量注入全局

@@ -1,3 +1,4 @@
+import NProgress from 'nprogress'
 import type { RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, ErrorPageRoute } from '@/router'
 import { groupBy } from '@tingcode/utils'
@@ -6,7 +7,6 @@ import { isNavigationFailure, Router } from 'vue-router'
 import { useUserStoreWidthOut } from '@/store/modules/user'
 import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
 import { IMenu } from '@tingcode/system/apiSystem'
-import NProgress from 'nprogress'
 import { AppRouteRecordRaw } from '@/router/type'
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
 const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
@@ -28,6 +28,7 @@ export function createRouterGuards(router: Router) {
    * @description 路由跳转前执行守卫
    */
   router.beforeEach(async (to, from, next) => {
+    console.log('======= 路由beforeEach =======', to, from)
     NProgress.start()
     // 登录后如果重定向失败即重定向到首页
     if (from.path === LOGIN_PATH && to.name === ERROR_PAGE_NAME) {
@@ -41,11 +42,6 @@ export function createRouterGuards(router: Router) {
     }
     const token = getGlobalStorageToken()
     if (!token) {
-      // 无token情况下可配置ignoreAuth跳过路由鉴权
-      if (to.meta.ignoreAuth) {
-        next()
-        return
-      }
       // 重定向登录页面 (登录后会重定向回来)
       const redirectData: { path: string; replace: boolean; query?: Recordable<string> } = {
         path: LOGIN_PATH,
@@ -145,7 +141,6 @@ export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[
 
 /**格式化 后端 结构信息并递归生成层级路由表
  * @param routerMap
- * @param parent
  * @returns {*}
  */
 export function generateRoutes(routerMap): AppRouteRecordRaw[] {

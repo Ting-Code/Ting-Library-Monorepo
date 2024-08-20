@@ -1,7 +1,7 @@
 <template>
   <div :class="ns.b()">
     <a :href="`https://github.com/Ting-Code/Ting-Library-Monorepo/blob/master${src}`">
-      <span><icon icon="layout-github" size="28" /></span>
+      <span><Icon icon="layout-github" size="28" /></span>
       {{ src }}
     </a>
   </div>
@@ -10,7 +10,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { useNamespace } from '@tingcode/system'
-  import Icon from '@/components/icon/icon.vue'
+  import { Icon } from '@tingcode/lib-vue'
 
   defineOptions({
     name: 'CodeBlockPath'

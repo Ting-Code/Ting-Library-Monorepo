@@ -1,6 +1,6 @@
-import { getMainWindow, getMicroAppFn } from '../global-data'
+import { getMainWindow } from '../global-data'
 import { error } from '@tingcode/utils'
-import { RouterTarget } from '@micro-app/types'
+import microApp from '@micro-zoe/micro-app'
 
 export enum PageEnum {
   // 登录
@@ -10,10 +10,8 @@ export enum PageEnum {
   REDIRECT = '/redirect',
   REDIRECT_NAME = 'Redirect',
   // 首页
-  BASE_HOME = '/system/home',
+  BASE_HOME = 'docs/system/home',
   BASE_HOME_NAME = 'system_home',
-  //首页跳转默认路由
-  BASE_HOME_REDIRECT = '/dashboard/console',
   // 错误
   ERROR_PAGE_NAME = 'ErrorPage'
 }
@@ -30,7 +28,7 @@ export interface IRouterInfo {
  * @description 解析当前浏览器URL
  * @param href
  */
-export function getURL(href?: string) {
+export function getUrl(href?: string) {
   const mainWindow = getMainWindow()
   const url = href ? href : mainWindow?.location?.href
   if (!url) return
@@ -56,9 +54,15 @@ export function getURL(href?: string) {
   }
 }
 
-type IState = 'replaceState' | 'pushState'
+interface RouterTarget {
+  name?: string
+  path?: string
+  query?: object
+  replace?: boolean
+}
 
-export function setUrl({ query = {}, path }, state: IState = 'replaceState') {
+export async function setUrl(to: RouterTarget) {
+  const { path, replace, name, query } = to
   const mainWindow = getMainWindow()
   if (!mainWindow) return
   const urlObj = path
@@ -69,24 +73,28 @@ export function setUrl({ query = {}, path }, state: IState = 'replaceState') {
       urlObj.searchParams.set(key, query[key])
     }
   }
-  // 使用 history.replaceState 更新浏览器的 URL 而不刷新页面
-  mainWindow.history[state]({}, '', urlObj.toString())
-  // 手动触发 popstate 事件
-  const popStateEvent = new PopStateEvent('popstate', { state: { path: urlObj.pathname } })
-  mainWindow.dispatchEvent(popStateEvent)
-}
+  console.log(
+    '路由跳转======',
+    name,
+    urlObj.toString(),
+    microApp.getActiveApps(),
+    microApp.getAllApps()
+  )
 
-export function setMircoUrl(path?: string, query?: Object, replace: boolean = true) {
-  const micro = getMicroAppFn()
-  if (!micro.appName) error('It is not micro app')
-  const url = getURL()
-  const newPath = `${path || url?.pathname}${queryStringify(query || url?.query)}`
-  console.log('=====newPath=====', newPath)
-  window.microApp.router.push({
-    name: micro.appName,
-    path: newPath,
-    replace
-  } as RouterTarget)
+  try {
+    if (!name) {
+      return error('no app name')
+    }
+    console.log('====== microApp路由跳转 ======', { name, path: urlObj.toString() })
+    return await microApp.router.push({ name, path: urlObj.toString(), replace: !!replace })
+  } catch (e) {
+    console.log('====== 原生路由跳转 ======')
+    // 使用 history.replaceState 更新浏览器的 URL 而不刷新页面
+    mainWindow.history[replace ? 'replaceState' : 'pushState']({}, '', urlObj.toString())
+    // 手动触发 popstate 事件
+    const popStateEvent = new PopStateEvent('popstate', { state: { path: urlObj.pathname } })
+    mainWindow.dispatchEvent(popStateEvent)
+  }
 }
 
 export function queryStringify(query: unknown): string {

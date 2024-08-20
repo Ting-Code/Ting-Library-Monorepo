@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+  import { Icon } from '@tingcode/lib-vue'
   import { useSetting } from '@/hooks/useSetting'
   const { toggleIsOpenSetting } = useSetting()
 

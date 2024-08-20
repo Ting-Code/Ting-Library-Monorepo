@@ -1,6 +1,6 @@
 import { apiLogin } from '../api/apiSystem'
 import { ResultEnum } from '@tingcode/request'
-import { getURL, PageEnum, setUrl } from './router'
+import { getUrl, PageEnum, setUrl } from './router'
 import {
   getGlobalDataElement,
   removeGlobalStorageToken,
@@ -20,12 +20,12 @@ export async function loginSystem(userInfo?: any) {
     if (code === ResultEnum.SUCCESS) {
       setGlobalStorageToken(result.token)
       setGlobalDataUserInfo(result.userInfo)
-      if (getURL()?.query?.redirect) {
-        const { redirect, ...query } = getURL()?.query as any
+      if (getUrl()?.query?.redirect) {
+        const { redirect, ...query } = getUrl()?.query as any
         const toPath = decodeURIComponent((redirect as string) || '/')
-        setUrl({ path: toPath, query }, 'pushState')
+        setUrl({ path: toPath, query })
       } else {
-        setUrl({ path: '/' }, 'pushState')
+        setUrl({ path: '/' })
       }
       const { ElMessage } = getGlobalDataElement()
       ElMessage.success('欢迎来到Ting Library知识库！')
@@ -42,6 +42,6 @@ export function logoutSystem() {
   removeGlobalStorageToken()
   setGlobalDataAuth([])
   setGlobalDataUserInfo({})
-  const url = getURL()
+  const url = getUrl()
   setUrl({ path: PageEnum.BASE_LOGIN, query: { redirect: url?.pathname, ...url?.query } })
 }

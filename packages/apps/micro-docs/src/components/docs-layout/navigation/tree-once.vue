@@ -1,5 +1,5 @@
 <script lang="tsx">
-  import Icon from '@/components/icon/icon.vue'
+  import { Icon } from '@tingcode/lib-vue'
   import { defineComponent } from 'vue'
   import { useNamespace } from '@tingcode/system'
   export default defineComponent({

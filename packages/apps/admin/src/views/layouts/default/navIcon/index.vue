@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+  import { Icon } from '@tingcode/lib-vue'
   import { useNamespace } from '@tingcode/system'
 
   defineOptions({

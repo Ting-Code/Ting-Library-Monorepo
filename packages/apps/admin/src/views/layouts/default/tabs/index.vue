@@ -32,8 +32,7 @@
   import { watch, ref, computed } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
   import { useRoute } from 'vue-router'
-  import { PageEnum, useNamespace } from '@tingcode/system'
-  import { useGo } from '@/hooks/usePage'
+  import { PageEnum, setUrl, useNamespace } from '@tingcode/system'
   import { NAMESPACE, useSetting } from '@/hooks/useSetting'
   defineOptions({
     name: 'LayoutTabs'
@@ -52,7 +51,6 @@
 
   const ns = useNamespace('layout-tabs')
   const route = useRoute()
-  const go = useGo()
   const { isOpenFullRef } = useSetting()
 
   initTabs()
@@ -75,7 +73,9 @@
   useSortable(`.${NAMESPACE}-tabs__nav`, tabsList, { handle: `.${NAMESPACE}-tabs__item` })
 
   const handleTabsChange = (path) => {
-    go({ path })
+    console.log('点击tabs==========', path, tabsList.value)
+    const route = tabsList.value.find((item) => item.path === path)
+    setUrl({ path, name: route?.meta?.module as string, query: route?.query || {} })
   }
   const handleTabsEdit = (path, action) => {
     if (action === 'remove') {

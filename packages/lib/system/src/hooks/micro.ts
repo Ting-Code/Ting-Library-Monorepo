@@ -1,16 +1,20 @@
-import { getURL } from './router'
+import { getUrl } from './router'
 import { getGlobalDataAuth, getGlobalDataEnv } from '../global-data'
 import { error } from '@tingcode/utils'
 
 // 'development' | 'production'
 export const devMicroUrlMap = {
   docs: 'http://localhost:8680/docs/',
-  micro: 'http://localhost:8080/'
+  micro: 'http://139.199.173.241/'
+}
+export const proMicroUrlMap = {
+  docs: 'http://139.199.173.241:8680/docs/',
+  micro: 'http://139.199.173.241/micro/'
 }
 const IFRAME = ['docs']
 
 export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
-  const url = getURL()
+  const url = getUrl()
   const auth = getGlobalDataAuth()
   const ENV = getGlobalDataEnv()
   if (module) {
@@ -34,6 +38,7 @@ export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
 }
 
 export function getMicroUrl(module: string, env: 'development' | 'production' | 'test' | unknown) {
-  if (env === 'production') return `http://139.199.173.241/${module}/`
+  console.log('====== 加载子路路径 =======', env, proMicroUrlMap[module])
+  if (env === 'production') return proMicroUrlMap[module]
   return devMicroUrlMap[module]
 }

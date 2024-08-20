@@ -48,7 +48,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@micro-zoe/micro-app": "1.0.0-rc.5",
+    "@micro-zoe/micro-app": "1.0.0-rc.6",
     "@tingcode/request": "workspace:*",
     "@tingcode/utils": "workspace:*",
     "mitt": "^3.0.1",

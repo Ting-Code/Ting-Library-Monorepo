@@ -24,8 +24,11 @@ export const useUserStore = defineStore({
     isDynamicAddedRoute: false
   }),
   getters: {
-    getMenu(): any[] {
+    getMenu(): IMenu[] {
       return this.menu
+    },
+    getAuth(): Omit<IMenu, 'children'>[] {
+      return this.auth
     },
     getIsDynamicAddedRoute(): boolean {
       return this.isDynamicAddedRoute

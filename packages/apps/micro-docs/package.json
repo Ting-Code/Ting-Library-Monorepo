@@ -18,15 +18,10 @@
     "@tingcode/utils": "workspace:*",
     "dayjs": "^1.11.10",
     "element-plus": "^2.7.2",
-    "lodash-es": "^4.17.21",
-    "nprogress": "^0.2.0",
     "pinia": "^2.1.7",
     "prismjs": "^1.29.0",
-    "qs": "^6.11.2",
     "sass": "^1.71.1",
-    "sortablejs": "^1.15.2",
     "vue": "^3.4.21",
-    "vue-i18n": "^9.10.1",
     "vue-router": "^4.3.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/integrations": "^10.9.0"
@@ -46,7 +41,6 @@
     "vite-plugin-eslint": "^1.8.1",
     "vite-plugin-md": "^0.21.5",
     "vite-plugin-mock": "^2.9.6",
-    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^2.0.16"
   }
 }

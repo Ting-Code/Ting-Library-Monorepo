@@ -1,9 +1,9 @@
 <script lang="tsx">
-  import Icon from '@/components/icon/icon.vue'
+  import { Icon } from '@tingcode/lib-vue'
   import { useSetting } from '@/hooks/useSetting'
   import { defineComponent, toRaw, toRefs } from 'vue'
   import { useUserStoreWidthOut } from '@/store/modules/user'
-  import { useNamespace } from '@tingcode/system'
+  import { setUrl, useNamespace } from '@tingcode/system'
   import { useRoute } from 'vue-router'
   import { EPIcon } from '@/main'
   import { useAppProviderContext } from '@/views/application/useAppContext'
@@ -14,10 +14,16 @@
       const ns = useNamespace('layout-menu')
       const { isOpenSliderRef } = useSetting()
       const { isMobile } = toRefs(useAppProviderContext())
-      const { getMenu } = useUserStoreWidthOut()
+      const { getMenu, getAuth } = useUserStoreWidthOut()
       const renderIcon = (icon) => {
         const ELIcon = EPIcon?.[icon]
         return ELIcon ? <ELIcon /> : <Icon icon={icon} />
+      }
+      const handleSelect = (key: string) => {
+        const auth = toRaw(getAuth)
+        const name = auth.find((item) => item.path === key)?.meta?.module
+        console.log('====== 点击menu ======', name, key)
+        setUrl({ path: key, name })
       }
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
@@ -62,7 +68,7 @@
         <el-aside class={ns.b()} width="auto">
           <el-menu
             unique-opened
-            router
+            onSelect={handleSelect}
             default-active={route.path}
             class={ns.e('menu')}
             collapse={isOpenSliderRef.value && !isMobile.value}

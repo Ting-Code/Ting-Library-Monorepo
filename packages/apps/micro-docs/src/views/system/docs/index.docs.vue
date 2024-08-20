@@ -10,10 +10,7 @@ Vite插件中有许多的钩子，主要常用的钩子有
 `createFilter`用于筛选出目标文件，也有利于性能。`.demo.vue`和`.docs.vue` 才做处理
       </pre>
     </Markdown>
-    <CodeBlock
-      src="@root/packages/plugin/vite/vite-plugin-code/src/index.ts"
-      :defaultShowCode="false"
-    />
+    <CodeBlock src="@root/packages/plugin/vite-plugin-code/src/index.ts" :defaultShowCode="false" />
     <Markdown>
       <pre>
 ### 解析Vue代码
@@ -28,7 +25,7 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
       </pre>
     </Markdown>
     <CodeBlock
-      src="@root/packages/plugin/vite/vite-plugin-code/src/transform.ts"
+      src="@root/packages/plugin/vite-plugin-code/src/transform.ts"
       :defaultShowCode="false"
     />
     <Markdown>
@@ -49,7 +46,7 @@ ps: 为什么加个 pre 标签呢，因为我已经写好功能发现 vue 中会
       </pre>
     </Markdown>
     <CodeBlock
-      src="@root/packages/apps/admin/src/components/docs-layout/index.vue"
+      src="@root/packages/apps/micro-docs/src/components/docs-layout/index.vue"
       :defaultShowCode="false"
       type="html"
     />

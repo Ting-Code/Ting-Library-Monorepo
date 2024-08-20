@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+  import { Icon } from '@tingcode/lib-vue'
   import { EPIcon } from '@/main'
   import { useTabs } from '@/hooks/useTabs'
   defineOptions({

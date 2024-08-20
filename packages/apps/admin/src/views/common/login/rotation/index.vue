@@ -15,6 +15,7 @@
 
 <script lang="ts" setup>
   import { useNamespace } from '@tingcode/system'
+  import { Icon } from '@tingcode/lib-vue'
   import RotationVue from './vue.vue'
   import RotationReact from './react.vue'
   import RotationVite from './vite.vue'
