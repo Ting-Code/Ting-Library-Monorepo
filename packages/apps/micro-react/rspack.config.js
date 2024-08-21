@@ -18,7 +18,7 @@ module.exports = function (env, argv) {
     },
     devtool: false, // 关闭sourceMap
     output: {
-      publicPath: isProdMode ? '/micro/' : '/', // history路由
+      publicPath: isProdMode ? '/micro/react/' : '/', // history路由
       path: path.resolve(__dirname, 'dist'),
       filename: 'file/[name]-[hash:6][ext]',
       chunkFilename: 'chunk/[name]-[hash:6][ext]',

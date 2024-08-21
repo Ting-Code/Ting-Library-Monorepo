@@ -26,10 +26,11 @@ export const asyncRoutes = [...routeModuleList]
 //普通路由 无需验证权限
 export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute]
 
+console.log('window.__MICRO_APP_BASE_ROUTE__', window.__MICRO_APP_BASE_ROUTE__)
 // 创建路由
 const router = createRouter({
   // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
-  history: createWebHistory(import.meta.env.PROD ? '/docs' : '/docs'),
+  history: createWebHistory(window.__MICRO_APP_BASE_ROUTE__ || '/docs/'),
   routes: constantRouter as unknown as RouteRecordRaw[],
   scrollBehavior() {
     return { left: 0, top: 0 }

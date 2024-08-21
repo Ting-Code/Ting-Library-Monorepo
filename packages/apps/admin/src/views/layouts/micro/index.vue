@@ -1,5 +1,11 @@
 <template>
-  <micro-app :name="name" :url="url" :iframe="isIframe" router-mode="native" />
+  <micro-app
+    :name="name"
+    :url="url"
+    :baseroute="`/${name}/`"
+    :iframe="isIframe"
+    router-mode="native"
+  />
 </template>
 
 <script setup lang="ts">

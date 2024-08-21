@@ -10,7 +10,7 @@ export enum PageEnum {
   REDIRECT = '/redirect',
   REDIRECT_NAME = 'Redirect',
   // 首页
-  BASE_HOME = 'docs/system/home',
+  BASE_HOME = '/docs/system/home',
   BASE_HOME_NAME = 'system_home',
   // 错误
   ERROR_PAGE_NAME = 'ErrorPage'
@@ -73,19 +73,12 @@ export async function setUrl(to: RouterTarget) {
       urlObj.searchParams.set(key, query[key])
     }
   }
-  console.log(
-    '路由跳转======',
-    name,
-    urlObj.toString(),
-    microApp.getActiveApps(),
-    microApp.getAllApps()
-  )
-
+  console.log('路由跳转======', name, urlObj, microApp.getActiveApps(), microApp.getAllApps())
   try {
     if (!name) {
       return error('no app name')
     }
-    console.log('====== microApp路由跳转 ======', { name, path: urlObj.toString() })
+    console.log('====== microApp路由跳转 ======', { name, path: urlObj.pathname + urlObj.search })
     return await microApp.router.push({ name, path: urlObj.toString(), replace: !!replace })
   } catch (e) {
     console.log('====== 原生路由跳转 ======')

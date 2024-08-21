@@ -83,12 +83,12 @@ const menu = {
         icon: 'Brush',
         module: 'docs'
       },
-      // component: 'LAYOUT',
+      component: 'LAYOUT',
       path: '/docs/repackage',
       children: [
         {
           name: 'repackage_home',
-          path: '/docs/repackage/home',
+          path: '/repackage/home',
           meta: {
             title: '🔥Vue二次封装思考',
             module: 'docs'

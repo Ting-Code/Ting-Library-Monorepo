@@ -28,7 +28,6 @@ export function createRouterGuards(router: Router) {
    * @description 路由跳转前执行守卫
    */
   router.beforeEach(async (to, from, next) => {
-    console.log('======= 路由beforeEach =======', to, from)
     NProgress.start()
     // 登录后如果重定向失败即重定向到首页
     if (from.path === LOGIN_PATH && to.name === ERROR_PAGE_NAME) {
@@ -131,6 +130,7 @@ export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[
     name: key,
     component: 'LAYOUT',
     path: `/${key}`,
+    redirect: grouped[key]?.[0]?.path || '/',
     children: grouped[key].map((item) => ({
       component: item?.name,
       path: item?.path || '',

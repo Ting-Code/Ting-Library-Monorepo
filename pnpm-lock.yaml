@@ -233,64 +233,6 @@ importers:
         specifier: ^2.0.16
         version: 2.0.16(typescript@4.9.5)
 
-  packages/apps/micro:
-    dependencies:
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.9.0
-        version: 6.9.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-    devDependencies:
-      '@config/tsconfig':
-        specifier: workspace:*
-        version: link:../../../configs/tsconfig
-      '@react-spring/web':
-        specifier: ^9.7.1
-        version: 9.7.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@rspack/cli':
-        specifier: 0.2.4
-        version: 0.2.4(@types/express@4.17.17)(react-refresh@0.14.0)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@5.76.0)
-      '@types/node':
-        specifier: ^20.4.4
-        version: 20.7.0
-      '@types/react':
-        specifier: ^18.0.25
-        version: 18.0.28
-      '@types/react-dom':
-        specifier: ^18.0.8
-        version: 18.0.11
-      autoprefixer:
-        specifier: ^10.4.14
-        version: 10.4.14(postcss@8.4.38)
-      classnames:
-        specifier: ^2.3.2
-        version: 2.3.2
-      clean-webpack-plugin:
-        specifier: ^4.0.0
-        version: 4.0.0(webpack@5.76.0)
-      less:
-        specifier: ^4.1.3
-        version: 4.1.3
-      less-loader:
-        specifier: ^11.1.0
-        version: 11.1.0(less@4.1.3)(webpack@5.76.0)
-      postcss:
-        specifier: ^8.4.12
-        version: 8.4.38
-      postcss-loader:
-        specifier: ^7.1.0
-        version: 7.1.0(postcss@8.4.38)(webpack@5.76.0)
-      tailwindcss:
-        specifier: ^3.2.7
-        version: 3.2.7(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.7.0)(typescript@4.9.5))
-      typescript:
-        specifier: ^4.9.5
-        version: 4.9.5
-
   packages/apps/micro-docs:
     dependencies:
       '@config/lint':
@@ -381,6 +323,64 @@ importers:
       vue-tsc:
         specifier: ^2.0.16
         version: 2.0.16(typescript@4.9.5)
+
+  packages/apps/micro-react:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.9.0
+        version: 6.9.0(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+    devDependencies:
+      '@config/tsconfig':
+        specifier: workspace:*
+        version: link:../../../configs/tsconfig
+      '@react-spring/web':
+        specifier: ^9.7.1
+        version: 9.7.1(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+      '@rspack/cli':
+        specifier: 0.2.4
+        version: 0.2.4(@types/express@4.17.17)(react-refresh@0.14.0)(type-fest@3.8.0)(webpack-dev-server@4.13.1(webpack@5.76.0))(webpack@5.76.0)
+      '@types/node':
+        specifier: ^20.4.4
+        version: 20.7.0
+      '@types/react':
+        specifier: ^18.0.25
+        version: 18.0.28
+      '@types/react-dom':
+        specifier: ^18.0.8
+        version: 18.0.11
+      autoprefixer:
+        specifier: ^10.4.14
+        version: 10.4.14(postcss@8.4.38)
+      classnames:
+        specifier: ^2.3.2
+        version: 2.3.2
+      clean-webpack-plugin:
+        specifier: ^4.0.0
+        version: 4.0.0(webpack@5.76.0)
+      less:
+        specifier: ^4.1.3
+        version: 4.1.3
+      less-loader:
+        specifier: ^11.1.0
+        version: 11.1.0(less@4.1.3)(webpack@5.76.0)
+      postcss:
+        specifier: ^8.4.12
+        version: 8.4.38
+      postcss-loader:
+        specifier: ^7.1.0
+        version: 7.1.0(postcss@8.4.38)(webpack@5.76.0)
+      tailwindcss:
+        specifier: ^3.2.7
+        version: 3.2.7(postcss@8.4.38)(ts-node@10.9.2(@types/node@20.7.0)(typescript@4.9.5))
+      typescript:
+        specifier: ^4.9.5
+        version: 4.9.5
 
   packages/cli/create:
     dependencies:
@@ -2613,12 +2613,6 @@ packages:
     resolution:
       {
         integrity: sha512-uXHQKES6DQKKCLh441Xv/dwxOq1TVS3JPUMlEqoEglvlhR6Mxnlew/Xq/LRVHpLyk7iK3zODe1qYHIMltO7XGg==
-      }
-
-  '@types/qs@6.9.7':
-    resolution:
-      {
-        integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
       }
 
   '@types/range-parser@1.2.4':
@@ -9912,6 +9906,7 @@ packages:
       {
         integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
       }
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
@@ -9919,6 +9914,7 @@ packages:
       {
         integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
       }
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@5.0.5:
@@ -11099,12 +11095,6 @@ packages:
     resolution:
       {
         integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-      }
-
-  tslib@2.5.0:
-    resolution:
-      {
-        integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
       }
 
   tslib@2.6.2:
@@ -13524,14 +13514,14 @@ snapshots:
   '@types/express-serve-static-core@4.17.33':
     dependencies:
       '@types/node': 20.7.0
-      '@types/qs': 6.9.7
+      '@types/qs': 6.9.15
       '@types/range-parser': 1.2.4
 
   '@types/express@4.17.17':
     dependencies:
       '@types/body-parser': 1.19.2
       '@types/express-serve-static-core': 4.17.33
-      '@types/qs': 6.9.7
+      '@types/qs': 6.9.15
       '@types/serve-static': 1.15.1
 
   '@types/fs-extra@11.0.1':
@@ -13615,8 +13605,6 @@ snapshots:
   '@types/prop-types@15.7.5': {}
 
   '@types/qs@6.9.15': {}
-
-  '@types/qs@6.9.7': {}
 
   '@types/range-parser@1.2.4': {}
 
@@ -18393,7 +18381,7 @@ snapshots:
 
   rxjs@7.8.0:
     dependencies:
-      tslib: 2.5.0
+      tslib: 2.6.2
 
   safe-array-concat@1.1.0:
     dependencies:
@@ -19164,8 +19152,6 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@1.14.1: {}
-
-  tslib@2.5.0: {}
 
   tslib@2.6.2: {}
 

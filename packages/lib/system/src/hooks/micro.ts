@@ -4,12 +4,12 @@ import { error } from '@tingcode/utils'
 
 // 'development' | 'production'
 export const devMicroUrlMap = {
-  docs: 'http://localhost:8680/docs/',
-  micro: 'http://139.199.173.241/'
+  docs: 'http://localhost:8680/micro/docs/',
+  react: ' http://localhost:8080/'
 }
 export const proMicroUrlMap = {
-  docs: 'http://139.199.173.241:8680/docs/',
-  micro: 'http://139.199.173.241/micro/'
+  docs: 'http://139.199.173.241/micro/docs/',
+  react: 'http://139.199.173.241/micro/react/'
 }
 const IFRAME = ['docs']
 
