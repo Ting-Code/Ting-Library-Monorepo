@@ -25,8 +25,6 @@ Object.keys(modules).forEach((key) => {
 export const asyncRoutes = [...routeModuleList]
 //普通路由 无需验证权限
 export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute]
-
-console.log('window.__MICRO_APP_BASE_ROUTE__', window.__MICRO_APP_BASE_ROUTE__)
 // 创建路由
 const router = createRouter({
   // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),

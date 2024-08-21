@@ -73,15 +73,12 @@ export async function setUrl(to: RouterTarget) {
       urlObj.searchParams.set(key, query[key])
     }
   }
-  console.log('路由跳转======', name, urlObj, microApp.getActiveApps(), microApp.getAllApps())
   try {
     if (!name) {
       return error('no app name')
     }
-    console.log('====== microApp路由跳转 ======', { name, path: urlObj.pathname + urlObj.search })
     return await microApp.router.push({ name, path: urlObj.toString(), replace: !!replace })
   } catch (e) {
-    console.log('====== 原生路由跳转 ======')
     // 使用 history.replaceState 更新浏览器的 URL 而不刷新页面
     mainWindow.history[replace ? 'replaceState' : 'pushState']({}, '', urlObj.toString())
     // 手动触发 popstate 事件

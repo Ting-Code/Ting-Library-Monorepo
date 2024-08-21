@@ -57,7 +57,6 @@
   )
 
   const handleClickMenu = (path: string) => {
-    console.log('=========', path)
     router.push(path)
   }
 </script>

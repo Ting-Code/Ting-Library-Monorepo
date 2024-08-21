@@ -9,10 +9,7 @@
 </template>
 
 <script setup lang="ts">
-  import { onMounted } from 'vue'
-  onMounted(() => {
-    console.log('404页面')
-  })
+  console.log('404页面')
 </script>
 
 <style lang="sass" scoped>

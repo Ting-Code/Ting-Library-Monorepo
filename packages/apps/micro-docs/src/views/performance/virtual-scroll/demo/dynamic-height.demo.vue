@@ -24,7 +24,6 @@
     })
   }
   const listRef = ref(list)
-  console.log(listRef)
 </script>
 
 <style lang="scss" scoped>

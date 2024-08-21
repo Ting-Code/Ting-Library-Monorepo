@@ -38,7 +38,6 @@ export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
 }
 
 export function getMicroUrl(module: string, env: 'development' | 'production' | 'test' | unknown) {
-  console.log('====== 加载子路路径 =======', env, proMicroUrlMap[module])
   if (env === 'production') return proMicroUrlMap[module]
   return devMicroUrlMap[module]
 }

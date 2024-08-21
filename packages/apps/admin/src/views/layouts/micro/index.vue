@@ -11,7 +11,6 @@
 <script setup lang="ts">
   import { useMicro } from '@tingcode/system'
   const { url, name, isIframe } = useMicro()
-  console.log('======= useMicro ======', url, name, isIframe)
 </script>
 
 <style lang="scss">

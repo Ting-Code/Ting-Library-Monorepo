@@ -73,7 +73,6 @@
   useSortable(`.${NAMESPACE}-tabs__nav`, tabsList, { handle: `.${NAMESPACE}-tabs__item` })
 
   const handleTabsChange = (path) => {
-    console.log('点击tabs==========', path, tabsList.value)
     const route = tabsList.value.find((item) => item.path === path)
     setUrl({ path, name: route?.meta?.module as string, query: route?.query || {} })
   }

@@ -8,7 +8,6 @@ export const TransitionLayout: React.FC = () => {
   const location = useLocation()
   const outlet = useOutlet()
   map.current[location.pathname] = outlet
-  console.log(map.current)
   const transitions = useTransition(location.pathname, {
     from: { transform: 'translateX(100%)' },
     enter: { transform: 'translateX(0%)' },
@@ -16,7 +15,6 @@ export const TransitionLayout: React.FC = () => {
     config: { duration: 300 }
   })
   return transitions((style, pathname) => {
-    console.log(map.current[pathname])
     return (
       <animated.div key={pathname} style={style}>
         {map.current[location.pathname]}
