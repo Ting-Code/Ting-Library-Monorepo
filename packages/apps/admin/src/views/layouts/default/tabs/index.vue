@@ -29,10 +29,9 @@
   import SetIcon from './set/index.vue'
   import FullIcon from './full/index.vue'
   import { useSortable } from '@vueuse/integrations/useSortable'
-  import { watch, ref, computed } from 'vue'
+  import { ref, computed } from 'vue'
   import { useTabs } from '@/hooks/useTabs'
-  import { useRoute } from 'vue-router'
-  import { PageEnum, setUrl, useNamespace } from '@tingcode/system'
+  import { onMittRouter, PageEnum, setUrl, useNamespace } from '@tingcode/system'
   import { NAMESPACE, useSetting } from '@/hooks/useSetting'
   defineOptions({
     name: 'LayoutTabs'
@@ -50,19 +49,14 @@
   const tabs = ref<HTMLElement | null>(null)
 
   const ns = useNamespace('layout-tabs')
-  const route = useRoute()
   const { isOpenFullRef } = useSetting()
 
   initTabs()
 
-  watch(
-    () => route.path,
-    () => {
-      targetTabRef.value = route.path
-      addTabsList(getRouteItem(route))
-    },
-    { immediate: true }
-  )
+  onMittRouter((route) => {
+    targetTabRef.value = route.path
+    addTabsList(getRouteItem(route))
+  })
   // 拖拽 相关逻辑
   const tabsList = computed({
     get: () => getTabsList.value,

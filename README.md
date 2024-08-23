@@ -3,7 +3,7 @@
 <p align="center">
 <img src="https://img.shields.io/badge/pnpm-8.0+-brown.svg" alt="pnpm" />
 <img src="https://img.shields.io/badge/Vue-3.3+-green.svg" alt="Vite"  /> 
-<img src="https://img.shields.io/badge/Vite-4.3+-violet.svg" alt="Vite" />
+<img src="https://img.shields.io/badge/Vite-5.0+-violet.svg" alt="Vite" />
 </p>
 <p align="center">
 <img src="https://img.shields.io/badge/Rspack-0.2+-red.svg" alt="pnpm" />
@@ -14,7 +14,7 @@
 
 Ting Library：基于 pnpm 搭建的 monorepo 架构的知识库。架构与文档于一体的知识库，沉淀各种解决方案并直达源码的直观文档。
 
-Ting Library 目前实现基于 MicroApp 搭建微前端, rspack搭建React、Vite搭建Vue3 等子应用。独立的共享库、工具库、vue组件库等。集成前端各种解决方案以及可直达源码的文档设计。
+Ting Library 目前实现基于 MicroApp 搭建微前端, rspack搭建React、Vite搭建Vue3 等子应用,独立的共享库、工具库、vue组件库，集成前端各种解决方案以及可直达源码的文档设计。并实现了Github Action 自动化打包与部署Docker镜像。
 
 ## 快速开始
 

@@ -1,6 +1,7 @@
-import { getMainWindow } from '../global-data'
+import { emitMitt, getGlobalDataMenu, getMainWindow, onMitt } from '../global-data'
 import { error } from '@tingcode/utils'
 import microApp from '@micro-zoe/micro-app'
+import { IMenu, IMeta } from '../api/apiSystem'
 
 export enum PageEnum {
   // 登录
@@ -20,8 +21,22 @@ export interface IQuery {
 }
 
 export interface IRouterInfo {
+  name: string
+  matched: IMenu[]
+  meta: IMeta
   query?: object
+  fullPath?: string
+  path?: string
+  hash?: string
+  host?: string
+  hostname?: string
+  href?: string
+  origin?: string
+  password?: string
   pathname?: string
+  port?: string
+  protocol?: string
+  search?: string
 }
 
 /**
@@ -73,6 +88,7 @@ export async function setUrl(to: RouterTarget) {
       urlObj.searchParams.set(key, query[key])
     }
   }
+  emitMittRouter(urlObj.toString()) // 触发更新路由
   try {
     if (!name) {
       return error('no app name')
@@ -87,6 +103,35 @@ export async function setUrl(to: RouterTarget) {
   }
 }
 
+export function onMittRouter(fn: (route: IRouterInfo) => void) {
+  onMitt('router', fn)
+}
+
+export function emitMittRouter(href: string) {
+  const urlObj = getUrl(href)
+  const menu = getGlobalDataMenu()
+  if (!urlObj?.pathname || !menu) return
+  const matched = findRouteMatched(urlObj?.pathname, menu)
+  emitMitt('router', {
+    matched,
+    meta: matched?.[matched.length - 1]?.meta,
+    name: matched?.[matched.length - 1]?.name,
+    query: urlObj.query,
+    fullPath: urlObj.pathname + urlObj.search,
+    path: urlObj.pathname,
+    hash: urlObj.hash,
+    host: urlObj.host,
+    hostname: urlObj.hostname,
+    href: urlObj.href,
+    origin: urlObj.origin,
+    password: urlObj.password,
+    pathname: urlObj.pathname,
+    port: urlObj.port,
+    protocol: urlObj.protocol,
+    search: urlObj.search
+  })
+}
+
 export function queryStringify(query: unknown): string {
   // 如果查询对象为空或者是空对象，直接返回空字符串
   if (!query || Object.keys(query).length === 0) {
@@ -96,4 +141,19 @@ export function queryStringify(query: unknown): string {
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`)
     .join('&')
   return `?${queryString}`
+}
+
+export function findRouteMatched(path: string, menu: IMenu[]) {
+  let matched: any = []
+  menu.forEach((menuItem) => {
+    if (menuItem.children && menuItem.children.length > 0) {
+      const matchedItem = findRouteMatched(path, menuItem.children)
+      if (matchedItem && matchedItem.length > 0) {
+        matched = [menuItem, ...matchedItem]
+      }
+    } else if (menuItem.path === path) {
+      matched.push(menuItem)
+    }
+  })
+  return matched
 }

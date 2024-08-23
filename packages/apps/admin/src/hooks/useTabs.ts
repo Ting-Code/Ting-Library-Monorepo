@@ -96,11 +96,7 @@ export const useTabs = (_router?: Router) => {
     const router = _router || _router_
 
     const close = (route: RouteItem) => {
-      const { fullPath, meta: { affix } = {} } = route
-
-      if (affix) {
-        return
-      }
+      const { fullPath } = route
       const tabsList = tabsStore.getTabsList
       const index = tabsList.findIndex((item) => item.fullPath === fullPath)
       index !== -1 && tabsList.splice(index, 1)

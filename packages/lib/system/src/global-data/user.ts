@@ -34,20 +34,20 @@ export function getGlobalDataUserInfo(): IUserInfo | undefined {
   return globalData?.[GlobalDataKeyEnum.USER_INFO]
 }
 
-export function setGlobalDataAuth(auth: IMenu[]) {
+export function setGlobalDataAuth(auth: Omit<IMenu, 'children'>[]) {
   setGlobalData(GlobalDataKeyEnum.AUTH, auth)
 }
 
-export function getGlobalDataAuth(): IMenu[] | undefined {
+export function getGlobalDataAuth(): Omit<IMenu, 'children'>[] | undefined {
   const globalData = getGlobalData()
   return globalData?.[GlobalDataKeyEnum.AUTH]
 }
 
-export function setGlobalDataMenu(menu: Omit<IMenu, 'children'>[]) {
+export function setGlobalDataMenu(menu: IMenu[]) {
   setGlobalData(GlobalDataKeyEnum.MENU, menu)
 }
 
-export function getGlobalDataMenu(): Omit<IMenu, 'children'>[] | undefined {
+export function getGlobalDataMenu(): IMenu[] | undefined {
   const globalData = getGlobalData()
   return globalData?.[GlobalDataKeyEnum.MENU]
 }

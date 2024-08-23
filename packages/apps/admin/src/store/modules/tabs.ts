@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
-import { RouteLocationNormalized } from 'vue-router'
 import { store } from '@/store'
-import { PageEnum } from '@tingcode/system'
+import { PageEnum, IRouterInfo } from '@tingcode/system'
 import { toRaw } from 'vue'
 export const TABS_ROUTES = 'TABS_ROUTES'
 // 不需要出现在标签页中的路由
@@ -11,15 +10,7 @@ const whiteList: string[] = [
   PageEnum.ERROR_PAGE_NAME
 ]
 
-export type RouteItem = Partial<RouteLocationNormalized> & {
-  fullPath: string
-  path: string
-  name: string
-  hash: string
-  meta: object
-  params: object
-  query: object
-}
+export type RouteItem = Partial<IRouterInfo>
 
 export type ITabsViewState = {
   tabsList: RouteItem[] // 标签页

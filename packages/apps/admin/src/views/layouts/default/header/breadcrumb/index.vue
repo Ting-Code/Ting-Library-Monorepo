@@ -12,7 +12,7 @@
               v-for="menu of matched?.menu"
               :key="menu.path"
               :icon="EPIcon[menu?.meta?.icon]"
-              @click="handleClickMenu(menu?.path)"
+              @click="handleClickMenu(menu)"
             >
               {{ menu?.meta?.title }}
             </el-dropdown-item>
@@ -26,38 +26,36 @@
 <script lang="ts" setup>
   import { EPIcon } from '@/main'
   import { ArrowDown } from '@element-plus/icons-vue'
-  import { watch, toRaw, ref } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { toRaw, ref } from 'vue'
   import { useUserStoreWidthOut } from '@/store/modules/user'
-  import { useNamespace } from '@tingcode/system'
+  import { setUrl, useNamespace, onMittRouter } from '@tingcode/system'
+  import { IMenu } from '@tingcode/system/apiSystem'
 
   defineOptions({
     name: 'HeaderBreadcrumb'
   })
   const ns = useNamespace('header-breadcrumb')
   const { getMenu } = useUserStoreWidthOut()
-  const router = useRouter()
   const breadcrumb = ref<any>(null)
 
-  watch(
-    () => router.currentRoute.value.path,
-    () => {
-      const matched = router.currentRoute.value.matched
-      const menus = toRaw(getMenu)
-      if (matched[0] && matched[0].path !== '/:path(.*)*') {
-        breadcrumb.value = matched.map((item, index) => {
-          if (index > 0) {
-            return { ...item, menu: matched[index - 1]?.children }
-          }
-          return { ...item, menu: menus }
-        })
-      }
-    },
-    { immediate: true }
-  )
-
-  const handleClickMenu = (path: string) => {
-    router.push(path)
+  onMittRouter((route) => {
+    const matched = route.matched
+    const menus = toRaw(getMenu)
+    if (matched[0] && matched[0].path !== '/:path(.*)*') {
+      breadcrumb.value = matched.map((item, index) => {
+        if (index > 0) {
+          return { ...item, menu: matched[index - 1]?.children }
+        }
+        return { ...item, menu: menus }
+      })
+    }
+  })
+  const handleClickMenu = (menu: IMenu) => {
+    let menuItem = menu
+    if (menu.children && menu.children.length > 0) {
+      menuItem = menu.children[0]
+    }
+    setUrl({ path: menuItem.path, name: menuItem?.module })
   }
 </script>
 

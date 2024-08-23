@@ -83,7 +83,7 @@ const menu = {
         icon: 'Brush',
         module: 'docs'
       },
-      component: 'LAYOUT',
+      // component: 'LAYOUT',
       path: '/docs/repackage',
       children: [
         {

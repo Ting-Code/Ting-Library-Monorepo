@@ -74,7 +74,6 @@ export function createRouterGuards(router: Router) {
     } catch (error) {
       console.log(error)
     }
-
     //添加404
     const isErrorPage = router.getRoutes().findIndex((item) => item.name === ErrorPageRoute.name)
     if (isErrorPage === -1) {

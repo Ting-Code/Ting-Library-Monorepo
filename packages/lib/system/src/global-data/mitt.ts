@@ -22,12 +22,22 @@ export function getGlobalDataMitt<T extends IMittEvents>(): Emitter<T | IMittEve
   return globalData?.[GlobalDataKeyEnum.MITT]
 }
 
+/**
+ * @description 触发Mitt
+ * @param key
+ * @param value
+ */
 export function emitMitt<Key extends keyof IMittEvents>(key: Key, value: IMittEvents[Key]) {
   const mitt = getGlobalDataMitt()
   if (!mitt) return error('Mitt is not init')
   mitt.emit(key, value)
 }
 
+/**
+ * @description 监听Mitt
+ * @param key
+ * @param fn
+ */
 export function onMitt<Key extends keyof IMittEvents>(
   key: Key,
   fn: (opt: IMittEvents[Key]) => void
