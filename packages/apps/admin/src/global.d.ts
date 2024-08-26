@@ -17,10 +17,10 @@ declare global {
     }
     lastBuildTime: string
   }
-  // declare interface Window {
-  //   // Global vue app instance
-  //   __APP__: App<Element>;
-  // }
+  declare interface Window {
+    // Global vue app instance
+    __isOneRouter__: boolean
+  }
 
   // vue
   declare type PropType<T> = VuePropType<T>

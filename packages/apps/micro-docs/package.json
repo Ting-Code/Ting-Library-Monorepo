@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 8680",
+    "dev": "vite --port 8681",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
