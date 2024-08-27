@@ -5,7 +5,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix --ignore-path=../../../.eslintignore",
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "keywords": [],

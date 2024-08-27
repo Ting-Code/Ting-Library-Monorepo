@@ -21,7 +21,6 @@
     "preinstall": "npx only-allow pnpm",
     "lint:eslint": "turbo lint:eslint",
     "lint:prettier": "turbo lint:prettier",
-    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\"",
     "lint:lint-staged": "turbo lint:eslint lint:prettier & pnpm run lint:prettier",
     "prepare": "husky install"
   },

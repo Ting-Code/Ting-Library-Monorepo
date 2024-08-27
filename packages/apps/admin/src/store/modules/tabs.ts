@@ -31,8 +31,8 @@ export const useTabsStore = defineStore({
       this.tabsList = tabsList
     },
     addTab(route: RouteItem): boolean {
-      const { path, fullPath, params, query, meta } = route
-      if (whiteList.includes(route.name)) return false
+      const { path, fullPath, query, meta } = route
+      if (whiteList.includes(route.name || '')) return false
       let updateIndex = -1
       // 如果该选项卡已经存在，则执行更新操作
       const tabHasExits = this.tabsList.some((tab, index) => {
@@ -46,7 +46,6 @@ export const useTabsStore = defineStore({
         if (!curTab) {
           return false
         }
-        curTab.params = params || curTab.params
         curTab.query = query || curTab.query
         curTab.fullPath = fullPath || curTab.fullPath
         this.tabsList.splice(updateIndex, 1, curTab)
@@ -64,7 +63,7 @@ export const useTabsStore = defineStore({
             this.tabsList.filter((e) => e.meta?.realPath ?? '' === realPath).length >= dynamicLevel
           ) {
             // 关闭第一个
-            const index = this.tabsList.findIndex((item) => item.meta.realPath === realPath)
+            const index = this.tabsList.findIndex((item) => item?.meta?.realPath === realPath)
             index !== -1 && this.tabsList.splice(index, 1)
           }
         }

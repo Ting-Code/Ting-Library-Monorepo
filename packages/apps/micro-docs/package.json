@@ -7,7 +7,7 @@
     "dev": "vite --port 8681",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix --ignore-path=../../../.eslintignore",
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "dependencies": {

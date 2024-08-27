@@ -55,7 +55,7 @@
     if (menu.children && menu.children.length > 0) {
       menuItem = menu.children[0]
     }
-    setUrl({ path: menuItem.path, name: menuItem?.module })
+    setUrl({ path: menuItem.path, name: menuItem?.meta?.module })
   }
 </script>
 

@@ -125,8 +125,14 @@ Ting-Library-Monorepo
 - 导航 二次封装 v0.2.0 ✅
   - 二次封装技巧 v0.2.0 ✅
 
-## 游客打卡点
+## 贡献人员
 
-<a href="https://ting-code.github.io/tag/index.html">
+<a href="https://github.com/Ting-Code/Ting-Library-Monorepo">
+  <img src="https://contrib.rocks/image?repo=Ting-Code/Ting-Library-Monorepo" />
+</a>
+
+### 游客打卡点
+
+<a href="https://ting-code.github.io/Ting-Punch-Tag/index.html">
   <img src="https://contrib.rocks/image?repo=Ting-Code/tag" />
 </a>

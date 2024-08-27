@@ -42,12 +42,6 @@
     "postcss-less": "^6.0.0",
     "prettier": "^3.2.5",
     "pretty-quick": "^4.0.0",
-    "stylelint": "^16.2.1",
-    "stylelint-config-prettier": "^9.0.3",
-    "stylelint-config-recommended": "^14.0.0",
-    "stylelint-config-recommended-vue": "^1.5.0",
-    "stylelint-config-standard": "^36.0.0",
-    "stylelint-order": "^6.0.4",
     "vue-eslint-parser": "^9.4.2"
   }
 }

@@ -41,7 +41,7 @@
     "build": "unbuild",
     "dev": "unbuild",
     "up": "npm publish",
-    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix --ignore-path=../../../.eslintignore",
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "keywords": [],

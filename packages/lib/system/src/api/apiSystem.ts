@@ -7,6 +7,8 @@ export interface IMeta {
   affix?: boolean
   icon?: string
   module?: string
+  dynamicLevel?: number
+  realPath?: string
 }
 
 export interface IMenu {
