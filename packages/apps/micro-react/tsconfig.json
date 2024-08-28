@@ -13,6 +13,10 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "./src/types"]
   },
-
-  "include": ["src", "mock", "@/types/module.d.ts"]
+  "include": ["src", "mock", "@/types/module.d.ts"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
