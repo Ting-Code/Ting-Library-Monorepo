@@ -43,7 +43,7 @@
 ```
       </pre>
     </Markdown>
-    <CodeBlock src="@root/packages/apps/micro-react/rspack.config.js" :default-show-code="false" />
+    <CodeBlock src="@root/packages/apps/micro-react/rspack.config.ts" :default-show-code="false" />
     <Markdown>
       <pre>
 `Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/micro`下：
