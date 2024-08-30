@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/badge/Vite-5.0+-violet.svg" alt="Vite" />
 </p>
 <p align="center">
-<img src="https://img.shields.io/badge/Rspack-0.2+-red.svg" alt="pnpm" />
+<img src="https://img.shields.io/badge/Rspack-1.0+-red.svg" alt="pnpm" />
 <img src="https://img.shields.io/badge/React-18+-midnightblue.svg" alt="React"  /> 
 <img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" />
 <img src="https://img.shields.io/badge/Nextjs-13+-black.svg" alt="Nextjs" />
