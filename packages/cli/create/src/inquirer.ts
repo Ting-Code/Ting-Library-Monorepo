@@ -1,12 +1,12 @@
-import inquirer from 'inquirer'
+import inquirer, { type QuestionMap, type QuestionCollection } from 'inquirer'
 
 export interface Params {
-  type: 'list' | 'input' | 'password' | 'confirm' | 'expand' | 'checkbox' | 'editor'
+  type: keyof QuestionMap
   choices?: any[]
   message?: string
   mask?: string
   validate?: (value: string) => boolean
-  filter?: (value: string) => string // 过滤器, 返回修改后的回答。优先级高于 `validte`
+  filter?: (value: string) => string // 过滤器, 返回修改后的回答。优先级高于 `validate`
   transformer?: (value: string) => string // 转换器, 返回转换后的值，只作为显示，不影响收集结果
   defaultValue?: any
   loop?: boolean
@@ -41,7 +41,7 @@ export function inquirerInput({
   if (type === 'list') {
     options.choices = choices
   }
-  return inquirer.prompt(options)
+  return inquirer.prompt(options as QuestionCollection)
 }
 
 interface SelectParams extends Params {
@@ -50,9 +50,7 @@ interface SelectParams extends Params {
 }
 
 export const inquirerSelect = (params: SelectParams) => {
-  return inquirerInput({
-    ...params
-  })
+  return inquirerInput({ ...params })
 }
 
 export const test = (a: any) => {
@@ -63,6 +61,7 @@ export const TYPE = [
   { name: 'cli', value: 'cli' },
   { name: 'monorepo', value: 'monorepo' }
 ]
+
 export const getSelectType = () => {
   return inquirerSelect({
     type: 'list',
