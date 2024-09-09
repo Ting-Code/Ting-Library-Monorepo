@@ -1,27 +1,35 @@
 import { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } from 'matter-js'
 
 export function initMatter(element: HTMLElement) {
+  const boxWidth = element.clientWidth
+  const boxHeight = element.clientHeight
+  console.log(boxWidth, boxHeight)
   const engine = Engine.create()
   const render = Render.create({
     element: element,
     engine: engine,
     options: {
-      width: element.clientWidth,
-      height: element.clientHeight,
+      width: boxWidth,
+      height: boxHeight,
       wireframes: false
     }
   })
 
   const ball = Bodies.circle(400, 200, 20, {
-    restitution: 0.9,
+    restitution: 1.2,
     render: { fillStyle: 'blue' }
   })
-  const ballB = Bodies.circle(450, 50, 40, { restitution: 0.8 })
+  const ballB = Bodies.circle(450, 50, 40, {
+    restitution: 1.2
+  })
 
-  // 创建地面
-  const ground = Bodies.rectangle(400, 580, 810, 60, { isStatic: true })
+  // 创建上下左右四面墙
+  const groundTop = Bodies.rectangle(0, 0, boxWidth * 2, 10, { isStatic: true })
+  const groundBottom = Bodies.rectangle(0, boxHeight, boxWidth * 2, 10, { isStatic: true })
+  const groundLeft = Bodies.rectangle(0, 0, 10, boxHeight * 2, { isStatic: true })
+  const groundRight = Bodies.rectangle(boxWidth, 0, 10, boxHeight * 2, { isStatic: true })
 
-  Composite.add(engine.world, [ball, ground, ballB])
+  Composite.add(engine.world, [ball, ballB, groundTop, groundBottom, groundLeft, groundRight])
 
   // 添加鼠标控制
   const mouse = Mouse.create(render.canvas)
