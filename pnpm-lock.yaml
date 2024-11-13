@@ -150,6 +150,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      matter-js:
+        specifier: ^0.20.0
+        version: 0.20.0
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
@@ -175,6 +178,9 @@ importers:
         specifier: ^4.3.0
         version: 4.3.0(vue@3.4.21(typescript@4.9.5))
     devDependencies:
+      '@types/matter-js':
+        specifier: ^0.19.7
+        version: 0.19.7
       '@types/sortablejs':
         specifier: ^1.15.8
         version: 1.15.8
@@ -2157,6 +2163,7 @@ packages:
       }
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.17.2':
     resolution:
@@ -2165,6 +2172,7 @@ packages:
       }
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.17.2':
     resolution:
@@ -2173,6 +2181,7 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.17.2':
     resolution:
@@ -2181,6 +2190,7 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.17.2':
     resolution:
@@ -2189,6 +2199,7 @@ packages:
       }
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.17.2':
     resolution:
@@ -2197,6 +2208,7 @@ packages:
       }
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.17.2':
     resolution:
@@ -2205,6 +2217,7 @@ packages:
       }
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.17.2':
     resolution:
@@ -2213,6 +2226,7 @@ packages:
       }
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.17.2':
     resolution:
@@ -2221,6 +2235,7 @@ packages:
       }
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.17.2':
     resolution:
@@ -2269,6 +2284,7 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-arm64-musl@1.0.0-rc.1':
     resolution:
@@ -2277,6 +2293,7 @@ packages:
       }
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-linux-x64-gnu@1.0.0-rc.1':
     resolution:
@@ -2285,6 +2302,7 @@ packages:
       }
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rspack/binding-linux-x64-musl@1.0.0-rc.1':
     resolution:
@@ -2293,6 +2311,7 @@ packages:
       }
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rspack/binding-win32-arm64-msvc@1.0.0-rc.1':
     resolution:
@@ -2602,6 +2621,12 @@ packages:
     resolution:
       {
         integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==
+      }
+
+  '@types/matter-js@0.19.7':
+    resolution:
+      {
+        integrity: sha512-dlh50YEh1lQS4fiCDGBnK75ocHQIq/1E371Qk6hASJImICIivdZQC2GkOqnfBm0Hac2xLk5+yrqRFDAEfj/yLA==
       }
 
   '@types/mdast@3.0.11':
@@ -8035,6 +8060,12 @@ packages:
       }
     hasBin: true
 
+  matter-js@0.20.0:
+    resolution:
+      {
+        integrity: sha512-iC9fYR7zVT3HppNnsFsp9XOoQdQN2tUyfaKg4CHLH8bN+j6GT4Gw7IH2rP0tflAebrHFw730RR3DkVSZRX8hwA==
+      }
+
   mdast-util-from-markdown@0.8.5:
     resolution:
       {
@@ -13443,6 +13474,8 @@ snapshots:
       '@types/linkify-it': 3.0.2
       '@types/mdurl': 1.0.2
 
+  '@types/matter-js@0.19.7': {}
+
   '@types/mdast@3.0.11':
     dependencies:
       '@types/unist': 2.0.6
@@ -17061,6 +17094,8 @@ snapshots:
       linkify-it: 4.0.1
       mdurl: 1.0.1
       uc.micro: 1.0.6
+
+  matter-js@0.20.0: {}
 
   mdast-util-from-markdown@0.8.5:
     dependencies:

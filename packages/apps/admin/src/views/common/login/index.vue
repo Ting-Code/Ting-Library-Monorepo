@@ -3,14 +3,15 @@
     <!--   头部header   -->
     <el-header :class="ns.e('header')"> <LoginNav /> </el-header>
     <el-main :class="ns.e('main')">
-      <LoginMain />
+      <Matter />
     </el-main>
   </el-container>
 </template>
 
 <script setup lang="ts">
-  import LoginMain from './rotation/index.vue'
-  import LoginNav from './nav.vue'
+  // import LoginMain from './components/rotation/index.vue'
+  import Matter from './components/matter/index.vue'
+  import LoginNav from './components/nav/index.vue'
   import { useNamespace } from '@tingcode/system'
 
   defineOptions({
