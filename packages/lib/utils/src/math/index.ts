@@ -291,3 +291,12 @@ export const numberToUnit = (val: unknown, config: Config = {}) => {
   const unitArr2 = ['十亿', '百亿', '千亿', '万亿', '十万亿', '百万亿', '千万亿', '兆']
   return [...unitArr, ...unitArr2][Number(val).toFixed(0).length - 1]
 }
+
+/**
+ * @description 生成参数范围内的随机数
+ * @param min
+ * @param max
+ */
+export function getRandomNumber(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}

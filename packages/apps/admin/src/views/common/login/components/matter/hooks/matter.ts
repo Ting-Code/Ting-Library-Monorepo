@@ -1,9 +1,20 @@
 import { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint } from 'matter-js'
+import { getRandomNumber } from '@tingcode/utils'
+import vueSvg from '@/assets/svg/logo/vue.svg'
+import elementuiSvg from '@/assets/svg/logo/elementui.svg'
+import echartsSvg from '@/assets/svg/logo/echarts.svg'
+import microappSvg from '@/assets/svg/logo/microapp.svg'
+import nextjsSvg from '@/assets/svg/logo/nextjs.svg'
+import piniaSvg from '@/assets/svg/logo/pinia.svg'
+import pnpmSvg from '@/assets/svg/logo/pnpm.svg'
+import rspackSvg from '@/assets/svg/logo/rspack.svg'
+import unocssSvg from '@/assets/svg/logo/unocss.svg'
+import reactSvg from '@/assets/svg/logo/react.svg'
+import typescriptSvg from '@/assets/svg/logo/typescript.svg'
 
 export function initMatter(element: HTMLElement) {
   const boxWidth = element.clientWidth
   const boxHeight = element.clientHeight
-  console.log(boxWidth, boxHeight)
   const engine = Engine.create()
   const render = Render.create({
     element: element,
@@ -14,7 +25,38 @@ export function initMatter(element: HTMLElement) {
       wireframes: false
     }
   })
+  const iconBallList = [
+    vueSvg,
+    elementuiSvg,
+    echartsSvg,
+    microappSvg,
+    nextjsSvg,
+    piniaSvg,
+    pnpmSvg,
+    rspackSvg,
+    unocssSvg,
+    reactSvg,
+    typescriptSvg
+  ].map((svg) => {
+    const Scale = getRandomNumber(0.6, 1)
+    return Bodies.circle(
+      getRandomNumber(20, boxWidth - 20),
+      getRandomNumber(20, boxHeight - 20),
+      20,
+      {
+        restitution: 1.2, // 弹力系数
+        render: {
+          sprite: {
+            texture: svg,
+            xScale: Scale, // 图片缩放比例
+            yScale: Scale
+          }
+        }
+      }
+    )
+  })
 
+  // 创建球
   const ball = Bodies.circle(400, 200, 20, {
     restitution: 1.2,
     render: { fillStyle: 'blue' }
@@ -29,7 +71,15 @@ export function initMatter(element: HTMLElement) {
   const groundLeft = Bodies.rectangle(0, 0, 10, boxHeight * 2, { isStatic: true })
   const groundRight = Bodies.rectangle(boxWidth, 0, 10, boxHeight * 2, { isStatic: true })
 
-  Composite.add(engine.world, [ball, ballB, groundTop, groundBottom, groundLeft, groundRight])
+  Composite.add(engine.world, [
+    ball,
+    ballB,
+    groundTop,
+    groundBottom,
+    groundLeft,
+    groundRight,
+    ...iconBallList
+  ])
 
   // 添加鼠标控制
   const mouse = Mouse.create(render.canvas)
