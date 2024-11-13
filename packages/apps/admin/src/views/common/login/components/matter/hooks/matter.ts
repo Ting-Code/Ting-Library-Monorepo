@@ -42,7 +42,6 @@ export function initMatter(element: HTMLElement) {
     ].map((svg) => {
       const boxWidthScale = boxWidth / (30 * 200)
       const Scale = getRandomNumber(boxWidthScale, boxWidthScale + 0.3, 2)
-      console.log('Scale:', Scale, 'boxWidth:', boxWidth, boxHeight, getRandomNumber(0.8, 1, 2))
       return Bodies.circle(
         getRandomNumber(20, boxWidth - 20),
         // getRandomNumber(20, boxHeight - 20),
@@ -63,10 +62,10 @@ export function initMatter(element: HTMLElement) {
   }
 
   // 创建上下左右四面墙
-  // const groundTop = Bodies.rectangle(0, 0, boxWidth * 2, 10, { isStatic: true })
-  const groundBottom = Bodies.rectangle(0, boxHeight, boxWidth * 2, 10, { isStatic: true })
-  const groundLeft = Bodies.rectangle(0, 0, 10, boxHeight * 2, { isStatic: true })
-  const groundRight = Bodies.rectangle(boxWidth, 0, 10, boxHeight * 2, { isStatic: true })
+  // const groundTop = Bodies.rectangle(0, 0, boxWidth * 2, 3, { isStatic: true })
+  const groundBottom = Bodies.rectangle(0, boxHeight, boxWidth * 2, 6, { isStatic: true })
+  const groundLeft = Bodies.rectangle(0, 0, 6, boxHeight * 2, { isStatic: true })
+  const groundRight = Bodies.rectangle(boxWidth, 0, 6, boxHeight * 2, { isStatic: true })
 
   Composite.add(engine.world, [groundBottom, groundLeft, groundRight, ...getIconBallList()])
 

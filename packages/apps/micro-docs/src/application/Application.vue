@@ -7,23 +7,29 @@
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { onScreenListen } from '@tingcode/system'
+  import { onScreenListen, getWindowScreen, screenSizeEnum } from '@tingcode/system'
   import { createAppProviderContext } from './useAppContext'
   import { initSettingMitt, NAMESPACE } from '@/hooks/useSetting'
+  const {
+    screen: screenInit,
+    width: widthInit,
+    screenWidth: screenWidthInit,
+    isMobile: isMobileInit
+  } = getWindowScreen()
   const namespace = ref(NAMESPACE)
-  const isMobile = ref<boolean>(false)
-  const screen = ref()
-  const width = ref()
-  const screenWidth = ref()
+  const isMobile = ref<boolean>(isMobileInit)
+  const screen = ref<screenSizeEnum>(screenInit || screenSizeEnum.XXL)
+  const width = ref(widthInit)
+  const screenWidth = ref<number>(screenWidthInit || 0)
   let offSettingMitt
 
   nextTick(() => {
     // 监听屏幕
     onScreenListen((opt) => {
       isMobile.value = opt.isMobile
-      screen.value = opt.screen
       width.value = opt.width
-      screenWidth.value = opt.screenWidth
+      screenWidth.value = opt.screenWidth || 0
+      screen.value = opt.screen || screenSizeEnum.XXL
     })
     // 初始化监听setting
     offSettingMitt = initSettingMitt()

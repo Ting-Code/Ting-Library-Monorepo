@@ -33,6 +33,7 @@
     }
 
     @include e(main) {
+      padding: 0;
       background-color: getCssVar('bg-color', 'main');
     }
   }
