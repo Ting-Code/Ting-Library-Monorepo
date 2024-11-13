@@ -8,8 +8,8 @@ export const devMicroUrlMap = {
   react: ' http://localhost:8080/'
 }
 export const proMicroUrlMap = {
-  docs: 'http://139.199.173.241/micro/docs/',
-  react: 'http://139.199.173.241/micro/react/'
+  docs: 'http://159.75.104.173/micro/docs/',
+  react: 'http://159.75.104.173/micro/react/'
 }
 const IFRAME = ['docs']
 
