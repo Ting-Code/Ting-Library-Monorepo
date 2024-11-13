@@ -18,7 +18,7 @@
 
   const handleTipLogin = () => {
     const userConfirmed = window.confirm(
-      '点击确认进入文档，取消则继续停留该页面，或者点击左上方Ting图标可进入文档？'
+      '点击【确认】可进入文档，【取消】则继续停留该页面，或者点击左上方[Ting图标]可进入文档。'
     )
     if (userConfirmed) {
       loginSystem()
