@@ -25,38 +25,41 @@ export function initMatter(element: HTMLElement) {
       wireframes: false
     }
   })
-  const iconBallList = [
-    vueSvg,
-    elementuiSvg,
-    echartsSvg,
-    microappSvg,
-    nextjsSvg,
-    piniaSvg,
-    pnpmSvg,
-    rspackSvg,
-    unocssSvg,
-    reactSvg,
-    typescriptSvg
-  ].map((svg) => {
-    const boxWidthScale = boxWidth / (30 * 200)
-    const Scale = getRandomNumber(boxWidthScale, boxWidthScale + 0.2, 2)
-    console.log('Scale:', Scale, 'boxWidth:', boxWidth, boxHeight, getRandomNumber(0.8, 1, 2))
-    return Bodies.circle(
-      getRandomNumber(20, boxWidth - 20),
-      getRandomNumber(20, boxHeight - 20),
-      200 * Scale,
-      {
-        restitution: getRandomNumber(0.6, 1, 2), // 弹力系数
-        render: {
-          sprite: {
-            texture: svg,
-            xScale: Scale, // 图片缩放比例
-            yScale: Scale
+
+  const getIconBallList = () => {
+    return [
+      vueSvg,
+      elementuiSvg,
+      echartsSvg,
+      microappSvg,
+      nextjsSvg,
+      piniaSvg,
+      pnpmSvg,
+      rspackSvg,
+      unocssSvg,
+      reactSvg,
+      typescriptSvg
+    ].map((svg) => {
+      const boxWidthScale = boxWidth / (30 * 200)
+      const Scale = getRandomNumber(boxWidthScale, boxWidthScale + 0.2, 2)
+      console.log('Scale:', Scale, 'boxWidth:', boxWidth, boxHeight, getRandomNumber(0.8, 1, 2))
+      return Bodies.circle(
+        getRandomNumber(20, boxWidth - 20),
+        getRandomNumber(20, boxHeight - 20),
+        200 * Scale,
+        {
+          restitution: getRandomNumber(0.6, 1, 2), // 弹力系数
+          render: {
+            sprite: {
+              texture: svg,
+              xScale: Scale, // 图片缩放比例
+              yScale: Scale
+            }
           }
         }
-      }
-    )
-  })
+      )
+    })
+  }
 
   // 创建上下左右四面墙
   const groundTop = Bodies.rectangle(0, 0, boxWidth * 2, 10, { isStatic: true })
@@ -64,7 +67,13 @@ export function initMatter(element: HTMLElement) {
   const groundLeft = Bodies.rectangle(0, 0, 10, boxHeight * 2, { isStatic: true })
   const groundRight = Bodies.rectangle(boxWidth, 0, 10, boxHeight * 2, { isStatic: true })
 
-  Composite.add(engine.world, [groundTop, groundBottom, groundLeft, groundRight, ...iconBallList])
+  Composite.add(engine.world, [
+    groundTop,
+    groundBottom,
+    groundLeft,
+    groundRight,
+    ...getIconBallList()
+  ])
 
   // 添加鼠标控制
   const mouse = Mouse.create(render.canvas)
@@ -79,6 +88,9 @@ export function initMatter(element: HTMLElement) {
   })
 
   Composite.add(engine.world, mouseConstraint)
+  setInterval(() => {
+    Composite.add(engine.world, [...getIconBallList()])
+  }, 10000)
 
   // 确保鼠标在渲染器中正常工作
   render.mouse = mouse
