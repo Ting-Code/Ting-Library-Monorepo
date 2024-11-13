@@ -38,13 +38,15 @@ export function initMatter(element: HTMLElement) {
     reactSvg,
     typescriptSvg
   ].map((svg) => {
-    const Scale = getRandomNumber(0.6, 1)
+    const boxWidthScale = boxWidth / (30 * 200)
+    const Scale = getRandomNumber(boxWidthScale, boxWidthScale + 0.2, 2)
+    console.log('Scale:', Scale, 'boxWidth:', boxWidth, boxHeight, getRandomNumber(0.8, 1, 2))
     return Bodies.circle(
       getRandomNumber(20, boxWidth - 20),
       getRandomNumber(20, boxHeight - 20),
-      20,
+      200 * Scale,
       {
-        restitution: 1.2, // 弹力系数
+        restitution: getRandomNumber(0.6, 1, 2), // 弹力系数
         render: {
           sprite: {
             texture: svg,
@@ -56,30 +58,13 @@ export function initMatter(element: HTMLElement) {
     )
   })
 
-  // 创建球
-  const ball = Bodies.circle(400, 200, 20, {
-    restitution: 1.2,
-    render: { fillStyle: 'blue' }
-  })
-  const ballB = Bodies.circle(450, 50, 40, {
-    restitution: 1.2
-  })
-
   // 创建上下左右四面墙
   const groundTop = Bodies.rectangle(0, 0, boxWidth * 2, 10, { isStatic: true })
   const groundBottom = Bodies.rectangle(0, boxHeight, boxWidth * 2, 10, { isStatic: true })
   const groundLeft = Bodies.rectangle(0, 0, 10, boxHeight * 2, { isStatic: true })
   const groundRight = Bodies.rectangle(boxWidth, 0, 10, boxHeight * 2, { isStatic: true })
 
-  Composite.add(engine.world, [
-    ball,
-    ballB,
-    groundTop,
-    groundBottom,
-    groundLeft,
-    groundRight,
-    ...iconBallList
-  ])
+  Composite.add(engine.world, [groundTop, groundBottom, groundLeft, groundRight, ...iconBallList])
 
   // 添加鼠标控制
   const mouse = Mouse.create(render.canvas)

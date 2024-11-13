@@ -25,6 +25,9 @@ export const round = (val: unknown, decimalPlaces: number = 0, config: Config = 
 
 /**
  * @description  取整 向下取整 支持 number | string
+ * @param val
+ * @param repair 错误占位符
+ * @return number | repair
  */
 export const roundDown = (val: unknown, repair: unknown = 0) => {
   return round(val, 0, { repair, roundingMode: BigNumber.ROUND_DOWN })
@@ -32,6 +35,9 @@ export const roundDown = (val: unknown, repair: unknown = 0) => {
 
 /**
  * @description  保留两位小数四舍五入 支持 number | string
+ * @param val
+ * @param repair 错误占位符
+ * @return number | repair
  */
 export const round2D = (val: unknown, repair: unknown = 0) => {
   return round(val, 2, { repair })
@@ -39,6 +45,9 @@ export const round2D = (val: unknown, repair: unknown = 0) => {
 
 /**
  * @description  保留两位小数 向下取整 支持 number | string
+ * @param val
+ * @param repair 错误占位符
+ * @return number | repair
  */
 export const roundDown2D = (val: unknown, repair: unknown = 0) => {
   return round(val, 2, { repair, roundingMode: BigNumber.ROUND_DOWN })
@@ -57,7 +66,9 @@ export const fixed = (val: unknown, decimalPlaces: number = 0, config: Config = 
 
 /**
  * @description 保留两位小数 补全 0 四舍五入 支持 number | string
- * @return string 返回字符串 ！
+ * @param val
+ * @param repair 错误占位符
+ * @return string | repair
  */
 export const fixed2D = (val: unknown, repair: unknown = '') => {
   return fixed(val, 2, { repair })
@@ -65,7 +76,9 @@ export const fixed2D = (val: unknown, repair: unknown = '') => {
 
 /**
  * @description 取整 补全 0 向下取整 支持 number | string
- * @return string 返回字符串 ！
+ * @param val
+ * @param repair 错误占位符
+ * @return string | repair
  */
 export const fixedDown = (val: unknown, repair: unknown = '') => {
   return fixed(val, 0, { repair, roundingMode: BigNumber.ROUND_DOWN })
@@ -73,7 +86,9 @@ export const fixedDown = (val: unknown, repair: unknown = '') => {
 
 /**
  * @description 保留两位小数 补全 0 向下取整 支持 number | string
- * @return string 返回字符串 ！
+ * @param val
+ * @param repair 错误占位符
+ * @return string | repair
  */
 export const fixedDown2D = (val: unknown, repair: unknown = '') => {
   return fixed(val, 2, { repair, roundingMode: BigNumber.ROUND_DOWN })
@@ -296,7 +311,8 @@ export const numberToUnit = (val: unknown, config: Config = {}) => {
  * @description 生成参数范围内的随机数
  * @param min
  * @param max
+ * @param decimalPlaces 保留几位小数
  */
-export function getRandomNumber(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min
+export function getRandomNumber(min: number, max: number, decimalPlaces: number = 0): number {
+  return round(Math.random() * computational([max, min], 'minus') + min, decimalPlaces)
 }

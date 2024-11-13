@@ -3,14 +3,27 @@
 </template>
 
 <script lang="ts" setup>
-  import { useNamespace } from '@tingcode/system'
+  // import { ElMessageBox } from 'element-plus'
+  import { useNamespace, loginSystem } from '@tingcode/system'
   import { initMatter } from './hooks/matter'
   const ns = useNamespace('matter')
 
   const matterRef = ref()
   onMounted(() => {
     initMatter(matterRef.value)
+    setTimeout(() => {
+      handleTipLogin()
+    }, 3000)
   })
+
+  const handleTipLogin = () => {
+    const userConfirmed = window.confirm(
+      '点击确认进入文档，取消则继续停留该页面，或者点击左上方Ting图标可进入文档？'
+    )
+    if (userConfirmed) {
+      loginSystem()
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
