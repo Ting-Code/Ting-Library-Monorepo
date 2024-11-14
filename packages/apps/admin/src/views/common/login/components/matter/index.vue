@@ -5,15 +5,23 @@
 <script lang="ts" setup>
   // import { ElMessageBox } from 'element-plus'
   import { useNamespace, loginSystem } from '@tingcode/system'
-  import { initMatter } from './hooks/matter'
+  import { useMatter } from './hooks/matter'
   const ns = useNamespace('matter')
-
   const matterRef = ref()
+  let clearMatter = () => {
+    console.log('先执行createMatter， 再执行createMatter')
+  }
+
+  const { createMatter } = useMatter()
+
   onMounted(() => {
-    initMatter(matterRef.value)
+    clearMatter = createMatter(matterRef.value)
     setTimeout(() => {
       handleTipLogin()
-    }, 3000)
+    }, 10000)
+  })
+  onBeforeUnmount(() => {
+    clearMatter()
   })
 
   const handleTipLogin = () => {

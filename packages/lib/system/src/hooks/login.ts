@@ -22,10 +22,10 @@ export async function loginSystem(userInfo?: any) {
       setGlobalDataUserInfo(result.userInfo)
       if (getUrl()?.query?.redirect) {
         const { redirect, ...query } = getUrl()?.query as any
-        const toPath = decodeURIComponent((redirect as string) || '/')
+        const toPath = decodeURIComponent((redirect as string) || PageEnum.BASE_HOME)
         setUrl({ path: toPath, query })
       } else {
-        setUrl({ path: '/' })
+        setUrl({ path: PageEnum.BASE_HOME })
       }
       const { ElMessage } = getGlobalDataElement()
       ElMessage.success('欢迎来到Ting Library知识库！')
