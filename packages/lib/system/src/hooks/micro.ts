@@ -4,7 +4,7 @@ import { error } from '@tingcode/utils'
 
 // 'development' | 'production'
 export const devMicroUrlMap = {
-  docs: 'http://localhost:8681/docs/',
+  docs: 'http://localhost:8682/docs/',
   react: ' http://localhost:8080/'
 }
 export const proMicroUrlMap = {

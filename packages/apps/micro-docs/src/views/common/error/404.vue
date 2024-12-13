@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-  console.log('404页面')
+  console.log('404页面DOCS')
 </script>
 
 <style lang="sass" scoped>
@@ -41,7 +41,6 @@
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent
         background-size: 400%
-        text-shadow: 1px 1px 2px transparentize(#fff, .75)
         animation: animateTextBackground 10s ease-in-out infinite
 
       + p
@@ -59,7 +58,6 @@
           left: 0
           right: 0
           color: transparent
-          text-shadow: 1px 1px 2px transparentize(#fff, .5)
           -webkit-background-clip: text
 
   #particles-js

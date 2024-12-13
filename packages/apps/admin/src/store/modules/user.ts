@@ -3,6 +3,7 @@ import { store } from '@/store'
 import { constantRouter } from '@/router'
 import { RouteLocationNormalizedLoaded, useRoute } from 'vue-router'
 import { IMenu } from '@tingcode/system/apiSystem'
+import { RouteItem } from '@/store/modules/tabs'
 
 export interface IUserState {
   menu: IMenu[]
@@ -52,7 +53,7 @@ export const useUserStore = defineStore({
       // 设置需要缓存的组件
       this.keepAliveComponents = compNames
     },
-    delKeepAliveCompName(_route?: RouteLocationNormalizedLoaded | { name: string }) {
+    delKeepAliveCompName(_route?: RouteLocationNormalizedLoaded | RouteItem) {
       const route = _route || useRoute()
       this.keepAliveComponents = this.keepAliveComponents.filter((item) => item !== route.name)
     }

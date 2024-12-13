@@ -15,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/repackage/home',
     name: 'repackage_home',
     component: () => import('@/views/repackage/home/index.docs.vue')
+  },
+  {
+    path: '/repackage/components',
+    name: 'repackage_components',
+    component: () => import('@/views/repackage/components/index.docs.vue')
   }
 ]
 

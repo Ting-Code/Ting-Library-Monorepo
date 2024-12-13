@@ -16,7 +16,7 @@
     name: 'DynamicHeight',
     inheritAttrs: false
   })
-  const list = []
+  const list: unknown[] = []
   for (let i = 0; i < 10000; i++) {
     list.push({
       id: i,
