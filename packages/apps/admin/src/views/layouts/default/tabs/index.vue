@@ -45,7 +45,7 @@
     setTabsList,
     removeTabByName
   } = useTabs()
-  const targetTabRef = ref<string | null | undefined>(PageEnum.BASE_HOME_NAME)
+  const targetTabRef = ref<string | undefined>(PageEnum.BASE_HOME_NAME)
   const tabs = ref<HTMLElement | null>(null)
 
   const ns = useNamespace('layout-tabs')

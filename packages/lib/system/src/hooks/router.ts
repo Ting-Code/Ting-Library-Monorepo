@@ -37,6 +37,7 @@ export interface IRouterInfo {
   port?: string
   protocol?: string
   search?: string
+  params?: object
 }
 
 /**

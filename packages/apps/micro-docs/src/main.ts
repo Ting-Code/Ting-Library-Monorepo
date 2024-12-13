@@ -1,7 +1,7 @@
 import '@s/index.scss'
 import '@tingcode/lib-vue/dist/css/components/index.css'
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp, App } from 'vue'
+import AppVue from './App.vue'
 import { setupStore } from '@/store'
 import { setupRouter } from '@/router'
 import { setupGlobDirectives } from '@/directives'
@@ -14,7 +14,7 @@ let app: App<Element>
 
 window.mount = () => {
   initNamespace(NAMESPACE)
-  app = createApp(App)
+  app = createApp(AppVue)
   setupRouter(app)
   setupStore(app)
   setupGlobDirectives(app)

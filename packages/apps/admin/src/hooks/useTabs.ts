@@ -1,10 +1,17 @@
-import { useRoute, useRouter, Router, RouteLocationRaw } from 'vue-router'
+import {
+  useRoute,
+  useRouter,
+  Router,
+  RouteLocationRaw,
+  RouteLocationNormalizedLoaded
+} from 'vue-router'
 import { RouteItem, TABS_ROUTES, useTabsStoreWidthOut } from '@/store/modules/tabs'
 import { useUserStoreWidthOut } from '@/store/modules/user'
 import { toRef, unref } from 'vue'
 import { PageEnum, setUrl } from '@tingcode/system'
 import { createStorage } from '@tingcode/utils'
 import { toRaw } from 'vue'
+import { IMeta } from '@tingcode/system/apiSystem'
 export const useTabs = (_router?: Router) => {
   const router = useRouter()
   const tabsStore = useTabsStoreWidthOut()
@@ -48,17 +55,6 @@ export const useTabs = (_router?: Router) => {
   /**
    * @description 更新 tab title （用于详情页插入：id信息）
    */
-  const setTabsTitle = async (title: string, tab?: RouteItem) => {
-    const targetTab = tab || getCurrentTab()
-    const findTab = tabsStore.getTabsList.find((item) => item === targetTab)
-    if (findTab) {
-      findTab.meta.title = title
-    }
-  }
-
-  /**
-   * @description 更新 tab title （用于详情页插入：id信息）
-   */
   const setTabsPath = async (path: string, tab?: RouteItem) => {
     const targetTab = tab || getCurrentTab()
     const findTab = tabsStore.getTabsList.find((item) => item === targetTab)
@@ -92,10 +88,10 @@ export const useTabs = (_router?: Router) => {
    * @param _router
    */
   const removeTab = async (_tab?: RouteItem, _router?: Router) => {
-    const tab = _tab || (_route_ as RouteItem)
+    const tab = _tab || _route_
     const router = _router || _router_
 
-    const close = (route: RouteItem) => {
+    const close = (route: RouteItem | RouteLocationNormalizedLoaded) => {
       const { fullPath } = route
       const tabsList = tabsStore.getTabsList
       const index = tabsList.findIndex((item) => item.fullPath === fullPath)
@@ -135,14 +131,16 @@ export const useTabs = (_router?: Router) => {
     try {
       cacheRoutes = routesStr ? JSON.parse(routesStr) : [routerItem]
     } catch (e) {
-      cacheRoutes = [routerItem as RouteItem]
+      // @ts-ignore
+      cacheRoutes = [routerItem] as RouteItem[]
     }
     // 将最新的路由信息同步到 localStorage 中
     const routes = router.getRoutes()
     cacheRoutes.forEach((cacheRoute) => {
       const route = routes.find((route) => route.path === cacheRoute.path)
       if (route) {
-        cacheRoute.meta = route.meta || cacheRoute.meta
+        // @ts-ignore
+        cacheRoute.meta = (route.meta || cacheRoute.meta) as IMeta
         cacheRoute.name = (route.name || cacheRoute.name) as string
       }
     })
@@ -172,7 +170,6 @@ export const useTabs = (_router?: Router) => {
   return {
     goToPage,
     getCurrentTab,
-    setTabsTitle,
     setTabsPath,
     reloadPage,
     closeAll,

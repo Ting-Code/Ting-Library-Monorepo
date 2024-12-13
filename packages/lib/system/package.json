@@ -52,6 +52,6 @@
     "@tingcode/request": "workspace:*",
     "@tingcode/utils": "workspace:*",
     "mitt": "^3.0.1",
-    "typescript": "^4.9.5"
+    "typescript": "5.6.3"
   }
 }
