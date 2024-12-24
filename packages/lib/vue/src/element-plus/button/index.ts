@@ -16,10 +16,6 @@ export type ReButtonProps = ITButtonProps
 
 export interface ReButtonEmits extends /** @vue-ignore */ IElButtonEmits {}
 
-export interface ReButtonSlots extends /** @vue-ignore */ IElButtonSlots {
-  default(): any
-  loading(): any
-  icon(): any
-}
+export type ReButtonSlots = IElButtonSlots
 export const ReButton = Button
 export default ReButton
