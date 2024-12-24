@@ -5,7 +5,6 @@
       <slot :name="name" v-bind="slotData || {}"></slot>
     </template>
   </ElButton>
-  {{ isUnNative }}
 </template>
 
 <script setup lang="ts">

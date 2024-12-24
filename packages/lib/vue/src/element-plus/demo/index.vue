@@ -4,10 +4,12 @@
       <slot :name="name" v-bind="slotData || {}"></slot>
     </template>
   </ElButton>
+  <ReButton type="default" size="default" />
 </template>
 
 <script setup lang="ts">
   import { ElButton } from 'element-plus'
+  import ReButton from '../button'
 
   defineOptions({
     name: 'REDemo',

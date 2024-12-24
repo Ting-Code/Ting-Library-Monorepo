@@ -1,20 +1,18 @@
-import ReButton from './index.vue'
-import { ElButton, ButtonProps } from 'element-plus'
-import { ExtractPropTypes } from 'vue'
+import Button from './index.vue'
+import ElButton from 'element-plus/es/components/button/src/button.vue'
 
 export type IButtonMapType = 'confirm' | 'cancel' | 'search'
 export type ITButtonType = IButtonMapType | 'native'
 
-// 获取子组件props类型
-type IElButton = InstanceType<typeof ElButton>
-export type IElButtonAttrs = IElButton['$props']
-export type IElButtonSlots = IElButton['$slots']
-export type IElButtonEmits = IElButton['$emit']
+export type ElButtonInstance = InstanceType<typeof ElButton>
+export type IElButtonAttrs = ElButtonInstance['$props']
+export type IElButtonSlots = ElButtonInstance['$slots']
+export type IElButtonEmits = ElButtonInstance['$emit']
 
-export interface ITButtonProps extends /** @vue-ignore */ Omit<ButtonProps, 'type'> {
-  readonly type?: ITButtonType | ButtonProps['type']
+export interface ITButtonProps extends /** @vue-ignore */ Omit<IElButtonAttrs, 'type'> {
+  type?: ITButtonType | IElButtonAttrs['type']
 }
-export type ReButtonProps = ExtractPropTypes<ITButtonProps>
+export type ReButtonProps = ITButtonProps
 
 export interface ReButtonEmits extends /** @vue-ignore */ IElButtonEmits {}
 
@@ -23,5 +21,5 @@ export interface ReButtonSlots extends /** @vue-ignore */ IElButtonSlots {
   loading(): any
   icon(): any
 }
-
-export { ReButton }
+export const ReButton = Button
+export default ReButton
