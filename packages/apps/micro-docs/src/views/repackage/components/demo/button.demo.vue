@@ -10,12 +10,12 @@
   </el-input>
   <ReInput
     size="large"
-    @ting="(s) => console.log('=========清除=maxlength=======')"
+    @t="(s) => console.log('=========清除=maxlength=======')"
     clearable
     v-model="data"
     maxlength="2"
   >
-    <template #prefix> 222 </template>
+    <template #append> 222 </template>
   </ReInput>
 </template>
 <script setup lang="ts">
