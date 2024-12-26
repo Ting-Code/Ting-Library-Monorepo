@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
   import { ElInput } from 'element-plus'
-  import { ReInputProps, ReInputSlots, ReInputEmits, Format } from './index'
+  import { ReInputProps, ReInputSlots, ReInputEmits, Format, FormatMap } from './index'
   import { computed, ref } from 'vue'
   import { isArray, isFunction, isString } from '@tingcode/utils'
 
@@ -28,8 +28,6 @@
     format: (value) => value,
     valueFormat: (value) => value
   })
-
-  const FormatMap = {}
 
   const slots = defineSlots<ReInputSlots>()
 
@@ -71,6 +69,7 @@
   }
 
   const handleFocus = (event: FocusEvent) => {
+    console.log('=========focusfocusfocusfocus===============')
     isShowOriginValue.value = true
     emits('focus', event)
   }

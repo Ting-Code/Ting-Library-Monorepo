@@ -9,11 +9,16 @@
     <template #prepend> 666 </template>
   </el-input>
   <ReInput
+    format="fixed2D"
     size="large"
-    @t="(s) => console.log('=========清除=maxlength=======')"
     clearable
     v-model="data"
     maxlength="2"
+    @focus="
+      () => {
+        console.log('==========focusfocusfocus=======')
+      }
+    "
   >
     <template #append> 222 </template>
   </ReInput>
