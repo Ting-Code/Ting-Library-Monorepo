@@ -1,5 +1,6 @@
 import { expect, test, describe } from 'vitest'
 import {
+  keepNumbers,
   compared,
   computational,
   div,
@@ -23,6 +24,17 @@ import {
   times
 } from '../index'
 import { curryRight } from '../../util'
+
+describe('测试 keepNumbers 相关函数', async () => {
+  test('测试 keepNumbers 格式化', () => {
+    expect(keepNumbers(123)).toBe(123)
+    expect(keepNumbers('123.')).toBe(123)
+    expect(keepNumbers('123.123')).toBe(123.123)
+    expect(keepNumbers('abv123.123abc123')).toBe(123.123)
+    expect(keepNumbers('abv-123.123abc123')).toBe(-123.123)
+    expect(keepNumbers('123.00000')).toBe(123)
+  })
+})
 
 describe('测试 round 相关函数', async () => {
   test('测试 round 数字各种情况 四舍五入', () => {

@@ -5,7 +5,8 @@
   <!--    <template #prepend> 666 </template>-->
   <!--  </el-input>-->
   <ReInput
-    :format="['thousandsRound2D', (val: unknown) => val + '$']"
+    valueFormat="keepNumbers"
+    format="thousandsRound2D"
     size="large"
     clearable
     v-model="data"

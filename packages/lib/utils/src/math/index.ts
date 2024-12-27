@@ -1,10 +1,17 @@
 import BigNumber from 'bignumber.js'
-import { isNumberString } from '../is'
+import { isNumberString, isNumber, isString } from '../is'
 import Nzh from 'nzh'
+
 export interface MathConfig {
   repair?: unknown
   error?: Function
   roundingMode?: BigNumber.RoundingMode
+}
+
+export const keepNumbers = (val: unknown, repair = '', error?: Function) => {
+  if (!(isNumber(val) || isString(val))) return error ? error() : repair
+  const matchResult = val.toString().match(/[+-]?\d+(\.\d+)?/)
+  return matchResult ? new BigNumber(matchResult[0]).toNumber() : repair
 }
 /**
  * @description  省略数字（默认四舍五入取整） 支持 number | string
@@ -16,7 +23,7 @@ export interface MathConfig {
  *   roundingMode： 舍去方式
  * }
  */
-export const round = (val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) => {
+export function round(val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) {
   const { repair = 0, error, roundingMode = BigNumber.ROUND_HALF_UP } = config
   if (!isNumberString(val)) return error ? error() : repair
   const math = new BigNumber(val as number)

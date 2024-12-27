@@ -3,6 +3,7 @@ import ElInput from 'element-plus/es/components/input/src/input.vue'
 import { round2D } from '@tingcode/utils'
 
 import {
+  keepNumbers,
   fixed,
   fixed2D,
   fixedDown,
@@ -21,6 +22,7 @@ import {
 
 // eslint-ignore
 export const FormatMap = {
+  keepNumbers,
   round,
   round2D,
   roundDown2D,
@@ -52,10 +54,8 @@ export interface ReInputProps extends /** @vue-ignore */ IElInputAttrs {
 }
 
 export interface ReInputEmits {
-  (event: 'ting', events: FocusEvent): void
   (event: 'focus', events: FocusEvent): void
   (event: 'blur', events: FocusEvent): void
-  (event: 'input', events: FocusEvent): void
   (event: 'update:modelValue', events: unknown): void
 }
 
