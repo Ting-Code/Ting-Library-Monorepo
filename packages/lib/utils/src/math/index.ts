@@ -8,7 +8,13 @@ export interface MathConfig {
   roundingMode?: BigNumber.RoundingMode
 }
 
-export const keepNumbers = (val: unknown, repair = '', error?: Function) => {
+/**
+ * @description  只返回有效数字部分 如: 123abc => 123
+ * @param val
+ * @param repair 错误占位符
+ * @param error 错误处理函数
+ */
+export const keepNumbers = (val: unknown, repair: unknown = '', error?: Function) => {
   if (!(isNumber(val) || isString(val))) return error ? error() : repair
   const matchResult = val.toString().match(/[+-]?\d+(\.\d+)?/)
   return matchResult ? new BigNumber(matchResult[0]).toNumber() : repair
