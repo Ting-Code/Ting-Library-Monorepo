@@ -15,7 +15,7 @@
 <script setup lang="ts">
   import { ElInput } from 'element-plus'
   import { ReInputProps, ReInputSlots, ReInputEmits, Format, FormatMap } from './index'
-  import { computed, ref } from 'vue'
+  import { computed, onMounted, ref } from 'vue'
   import { isArray, isFunction, isString } from '@tingcode/utils'
 
   defineOptions({
@@ -25,8 +25,12 @@
 
   // 继承子组件props类型
   const props = withDefaults(defineProps<ReInputProps>(), {
-    format: (value) => value,
-    valueFormat: (value) => value
+    format: () => [(val: unknown) => val],
+    valueFormat: () => (val: unknown) => val
+  })
+
+  onMounted(() => {
+    console.log(props, props.modelValue, props.size, props.format)
   })
 
   const slots = defineSlots<ReInputSlots>()
@@ -36,6 +40,7 @@
   const isShowOriginValue = ref<boolean>(false)
 
   const displayValue = computed(() => {
+    console.log('========modelValue=========', props.modelValue, props.size, props.format)
     if (isShowOriginValue.value) return props.modelValue
     if (isArray(props.format)) {
       return props.format.reduce((value, format) => {
@@ -56,6 +61,7 @@
   }
 
   const emitInput = (value) => {
+    console.log('=========input============', value)
     let updateValue = value
     if (isArray(props.valueFormat)) {
       updateValue = props.valueFormat.reduce((preValue, format) => {
@@ -69,7 +75,7 @@
   }
 
   const handleFocus = (event: FocusEvent) => {
-    console.log('=========focusfocusfocusfocus===============')
+    console.log('=========handleFocus===============')
     isShowOriginValue.value = true
     emits('focus', event)
   }

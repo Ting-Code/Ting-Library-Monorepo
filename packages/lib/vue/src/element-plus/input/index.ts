@@ -37,19 +37,27 @@ export const FormatMap = {
   numberToMoney,
   numberToUnit
 }
-
+export type FormatFn = (value: unknown) => any
 export type FormatName = keyof typeof FormatMap
-export type Format = ((value: unknown) => string | number) | FormatName
+export type Format = (FormatName | FormatFn | string)[] | FormatName | FormatFn | string
 export type ElInputInstance = InstanceType<typeof ElInput>
 export type IElInputAttrs = ElInputInstance['$props']
 export type IElInputSlots = ElInputInstance['$slots']
 export type IElInputEmits = ElInputInstance['$emit']
-export type ReInputProps = /** @vue-ignore */ IElInputAttrs & {
-  format?: Format | Format[]
-  valueFormat?: Format | Format[]
+
+export interface ReInputProps extends /** @vue-ignore */ IElInputAttrs {
+  modelValue: string | number
+  format?: Format
+  valueFormat?: Format
 }
 
-export type ReInputEmits = /** @vue-ignore */ IElInputEmits
+export interface ReInputEmits {
+  (event: 'ting', events: FocusEvent): void
+  (event: 'focus', events: FocusEvent): void
+  (event: 'blur', events: FocusEvent): void
+  (event: 'input', events: FocusEvent): void
+  (event: 'update:modelValue', events: unknown): void
+}
 
 export type ReInputSlots = IElInputSlots
 export const ReInput = Input
