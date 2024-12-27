@@ -1,10 +1,23 @@
 import BigNumber from 'bignumber.js'
-import { isNumberString } from '../is'
+import { isNumberString, isNumber, isString } from '../is'
 import Nzh from 'nzh'
-interface Config {
+
+export interface MathConfig {
   repair?: unknown
   error?: Function
   roundingMode?: BigNumber.RoundingMode
+}
+
+/**
+ * @description  只返回有效数字部分 如: 123abc => 123
+ * @param val
+ * @param repair 错误占位符
+ * @param error 错误处理函数
+ */
+export const keepNumbers = (val: unknown, repair: unknown = '', error?: Function) => {
+  if (!(isNumber(val) || isString(val))) return error ? error() : repair
+  const matchResult = val.toString().match(/[+-]?\d+(\.\d+)?/)
+  return matchResult ? new BigNumber(matchResult[0]).toNumber() : repair
 }
 /**
  * @description  省略数字（默认四舍五入取整） 支持 number | string
@@ -16,7 +29,7 @@ interface Config {
  *   roundingMode： 舍去方式
  * }
  */
-export const round = (val: unknown, decimalPlaces: number = 0, config: Config = {}) => {
+export function round(val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) {
   const { repair = 0, error, roundingMode = BigNumber.ROUND_HALF_UP } = config
   if (!isNumberString(val)) return error ? error() : repair
   const math = new BigNumber(val as number)
@@ -57,7 +70,7 @@ export const roundDown2D = (val: unknown, repair: unknown = 0) => {
  * @description 省略数字并 补全 0 （默认四舍五入取整） 支持 number | string
  * @return string 返回字符串 ！
  */
-export const fixed = (val: unknown, decimalPlaces: number = 0, config: Config = {}) => {
+export const fixed = (val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) => {
   const { repair = '', error, roundingMode = BigNumber.ROUND_HALF_UP } = config
   if (!isNumberString(val)) return error ? error() : repair
   const math = new BigNumber(val as number)
@@ -94,7 +107,7 @@ export const fixedDown2D = (val: unknown, repair: unknown = '') => {
   return fixed(val, 2, { repair, roundingMode: BigNumber.ROUND_DOWN })
 }
 
-interface ThousandsConfig extends BigNumber.Format {
+export interface ThousandsConfig extends BigNumber.Format {
   repair?: unknown
   error?: Function
   roundingMode?: BigNumber.RoundingMode
@@ -161,7 +174,11 @@ type ComputationalMethod = 'plus' | 'minus' | 'times' | 'div'
  * @param method
  * @param config
  */
-export const computational = (arr: unknown[], method: ComputationalMethod, config: Config = {}) => {
+export const computational = (
+  arr: unknown[],
+  method: ComputationalMethod,
+  config: MathConfig = {}
+) => {
   const { repair = 0, error } = config
   const computeArr: BigNumber.Value[] = []
   // check 非数数据
@@ -238,7 +255,7 @@ export const createNzh = (toCnConfig: Partial<ToCnConfig> = {}) => {
   return new Nzh({ ch, ch_u, ch_f, ch_d, m_t, m_z, m_u })
 }
 
-interface NumberToConfig {
+export interface NumberToConfig {
   /*
    *  十的口语化开关, 默认值为 false
    *  注: Nzh.cn和Nzh.hk中的encodeS方法默认 true
@@ -273,7 +290,7 @@ export const numberToTraditional = (val: unknown, config: NumberToConfig = {}) =
   return Nzh.cn.encodeB(val as string | number, option)
 }
 
-interface ToMoneyConfig extends NumberToConfig {
+export interface ToMoneyConfig extends NumberToConfig {
   // 输出完整金额开关, toMoney 函数专用配置, 默认 false
   complete?: boolean
   // 输出金额前缀字符, toMoney 函数专用配置, 默认 true
@@ -299,7 +316,7 @@ export const numberToMoney = (val: unknown, config: ToMoneyConfig = {}) => {
  * @param val
  * @param config
  */
-export const numberToUnit = (val: unknown, config: Config = {}) => {
+export const numberToUnit = (val: unknown, config: MathConfig = {}) => {
   const { repair = '', error } = config
   if (!isNumberString(val)) return error ? error() : repair
   const unitArr = ['', '十', '百', '千', '万', '十万', '百万', '千万', '亿']
