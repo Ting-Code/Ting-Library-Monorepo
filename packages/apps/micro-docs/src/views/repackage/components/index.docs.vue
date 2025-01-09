@@ -1,5 +1,6 @@
 <template>
   <DocsLayout>
+    <CodeBlock :is="RadioDemo" type="html" />
     <Markdown>
       <pre>
 ## Input二次封装案例
@@ -13,4 +14,5 @@
 <script setup lang="ts">
   // import IndexMd from './index.md'
   import InputDemo from './demo/input.demo.vue'
+  import RadioDemo from './demo/radio.demo.vue'
 </script>
