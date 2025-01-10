@@ -1,5 +1,6 @@
 <template>
   <DocsLayout>
+    <CodeBlock :is="SelectDemo" type="html" />
     <CodeBlock :is="RadioDemo" type="html" />
     <Markdown>
       <pre>
@@ -15,4 +16,5 @@
   // import IndexMd from './index.md'
   import InputDemo from './demo/input.demo.vue'
   import RadioDemo from './demo/radio.demo.vue'
+  import SelectDemo from './demo/select.demo.vue'
 </script>

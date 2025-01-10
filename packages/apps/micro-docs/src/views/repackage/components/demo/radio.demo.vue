@@ -1,16 +1,16 @@
 <template>
-  <div>利用valueFormat处理绑定值，keepNumbers只允许数字</div>
+  <div>options来传递对应选项参数</div>
   <ReRadio
     @change="handleChange"
     v-model="data"
     :options="[
       { value: '1', label: '一' },
       { value: '2', label: '二' },
-      { value: '3', label: '三' }
+      { value: '3', label: '三', disabled: true }
     ]"
   >
     <template #default="{ label }">
-      <span style="padding: 12px">
+      <span>
         {{ label }}
       </span>
     </template>

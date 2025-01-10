@@ -21,10 +21,10 @@ export type IElRadioEmits = ElRadioInstance['$emit']
 export type ReRadioOptionItem = {
   value: string | number | boolean
   label: string | number | boolean
-  disabled: boolean
-  border: boolean
-  size: 'large' | 'default' | 'small'
-  name: string
+  disabled?: boolean
+  border?: boolean
+  size?: 'large' | 'default' | 'small'
+  name?: string
 }
 
 export interface ReRadioProps extends /** @vue-ignore */ IElRadioAttrs {
