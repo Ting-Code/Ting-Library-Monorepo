@@ -1,5 +1,5 @@
 <template>
-  <div>options来传递对应选项参数</div>
+  <div>options来传递对应选项参数，并且支持原有组件插件传递</div>
   <ReRadio
     @change="handleChange"
     v-model="data"

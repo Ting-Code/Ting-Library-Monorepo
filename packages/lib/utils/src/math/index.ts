@@ -9,13 +9,23 @@ export interface MathConfig {
 }
 
 /**
+ * @description  转为字符串
+ * @param val
+ * @param repair 错误占位符
+ * @param error 错误处理函数
+ */
+export function keepString(val: unknown, repair: unknown = val, error?: Function) {
+  if (!(isNumber(val) || isString(val))) return error ? error(val) : repair
+  return val.toString()
+}
+/**
  * @description  只返回有效数字部分 如: 123abc => 123
  * @param val
  * @param repair 错误占位符
  * @param error 错误处理函数
  */
-export const keepNumbers = (val: unknown, repair: unknown = '', error?: Function) => {
-  if (!(isNumber(val) || isString(val))) return error ? error() : repair
+export const keepNumbers = (val: unknown, repair: unknown = val, error?: Function) => {
+  if (!(isNumber(val) || isString(val))) return error ? error(val) : repair
   const matchResult = val.toString().match(/[+-]?\d+(\.\d+)?/)
   return matchResult ? new BigNumber(matchResult[0]).toNumber() : repair
 }
@@ -31,7 +41,7 @@ export const keepNumbers = (val: unknown, repair: unknown = '', error?: Function
  */
 export function round(val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) {
   const { repair = val, error, roundingMode = BigNumber.ROUND_HALF_UP } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   const math = new BigNumber(val as number)
   return math.dp(decimalPlaces, roundingMode).toNumber()
 }
@@ -72,7 +82,7 @@ export const roundDown2D = (val: unknown, repair: unknown = val) => {
  */
 export const fixed = (val: unknown, decimalPlaces: number = 0, config: MathConfig = {}) => {
   const { repair = val, error, roundingMode = BigNumber.ROUND_HALF_UP } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   const math = new BigNumber(val as number)
   return math.toFixed(decimalPlaces, roundingMode)
 }
@@ -133,7 +143,7 @@ export const thousands = (
     decimalSeparator = '.',
     ...formatParams
   } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   const math = new BigNumber(val as number)
   return math.toFormat(decimalPlaces, roundingMode, {
     groupSize,
@@ -276,7 +286,7 @@ export interface NumberToConfig {
  */
 export const numberToSimplified = (val: unknown, config: NumberToConfig = {}) => {
   const { repair = val, error, ...option } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   return Nzh.cn.encodeS(val as string | number, option)
 }
 /**
@@ -286,7 +296,7 @@ export const numberToSimplified = (val: unknown, config: NumberToConfig = {}) =>
  */
 export const numberToTraditional = (val: unknown, config: NumberToConfig = {}) => {
   const { repair = val, error, ...option } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   return Nzh.cn.encodeB(val as string | number, option)
 }
 
@@ -308,7 +318,7 @@ export interface ToMoneyConfig extends NumberToConfig {
  */
 export const numberToMoney = (val: unknown, config: ToMoneyConfig = {}) => {
   const { repair = val, error, outSymbol = false, ...option } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   return Nzh.cn.toMoney(val as string | number, { outSymbol, ...option })
 }
 /**
@@ -318,7 +328,7 @@ export const numberToMoney = (val: unknown, config: ToMoneyConfig = {}) => {
  */
 export const numberToUnit = (val: unknown, config: MathConfig = {}) => {
   const { repair = val, error } = config
-  if (!isNumberString(val)) return error ? error() : repair
+  if (!isNumberString(val)) return error ? error(val) : repair
   const unitArr = ['', '十', '百', '千', '万', '十万', '百万', '千万', '亿']
   const unitArr2 = ['十亿', '百亿', '千亿', '万亿', '十万亿', '百万亿', '千万亿', '兆']
   return [...unitArr, ...unitArr2][Number(val).toFixed(0).length - 1]

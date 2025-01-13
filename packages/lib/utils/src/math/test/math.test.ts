@@ -53,8 +53,8 @@ describe('测试 round 相关函数', async () => {
   })
 
   test('测试 round 非数字各种情况 四舍五入', () => {
-    expect(round(undefined)).toBe(0)
-    expect(round(null)).toBe(0)
+    expect(round(undefined, 0, { repair: 0 })).toBe(0)
+    expect(round(null, 0, { repair: 0 })).toBe(0)
     expect(
       round('123.1aa', 2, {
         error: () => 'error'
@@ -105,8 +105,8 @@ describe('测试 fixed 相关函数', async () => {
   })
 
   test('测试 fixed 非数字各种情况 四舍五入', () => {
-    expect(fixed(undefined)).toBe('')
-    expect(fixed(null)).toBe('')
+    expect(fixed(undefined, 0, { repair: '' })).toBe('')
+    expect(fixed(null, 0, { repair: '' })).toBe('')
     expect(
       fixed('123.1aa', 2, {
         error: () => 'error'
@@ -167,26 +167,26 @@ describe('测试 computational 比较大小 相关函数', async () => {
 
 describe('测试 数字转为中文文字 相关函数', async () => {
   test('测试 numberToSimplified 数字转简体中文', () => {
-    expect(numberToSimplified(undefined)).toBe('')
+    expect(numberToSimplified(undefined, { repair: '' })).toBe('')
     expect(numberToSimplified('12312.122')).toBe('一万二千三百一十二点一二二')
     expect(numberToSimplified(12345678)).toBe('一千二百三十四万五千六百七十八')
     expect(numberToSimplified('0')).toBe('零')
   })
   test('测试 numberToTraditional 数字转繁体中文', () => {
-    expect(numberToTraditional(undefined)).toBe('')
+    expect(numberToTraditional(undefined, { repair: '' })).toBe('')
     expect(numberToTraditional('12312.122')).toBe('壹万贰仟叁佰壹拾贰点壹贰贰')
     expect(numberToTraditional(12345678)).toBe('壹仟贰佰叁拾肆万伍仟陆佰柒拾捌')
     expect(numberToTraditional(0)).toBe('零')
   })
   test('测试 numberToMoney 数字转银行金额', () => {
-    expect(numberToMoney(undefined)).toBe('')
+    expect(numberToMoney(undefined, { repair: '' })).toBe('')
     expect(numberToMoney('12312.122')).toBe('壹万贰仟叁佰壹拾贰元壹角贰分')
     expect(numberToMoney(12345678)).toBe('壹仟贰佰叁拾肆万伍仟陆佰柒拾捌元整')
     expect(numberToMoney(0)).toBe('零元整')
   })
 
   test('测试 numberToUnit 数字单位', () => {
-    expect(numberToUnit(undefined)).toBe('')
+    expect(numberToUnit(undefined, { repair: '' })).toBe('')
     expect(numberToUnit(12345678)).toBe('千万')
     expect(numberToUnit('12345678')).toBe('千万')
   })

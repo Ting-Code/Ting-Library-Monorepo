@@ -1,10 +1,20 @@
 import Select from './index.vue'
 import ElSelect from 'element-plus/es/components/select/src/select.vue'
-import { keepNumbers } from '@tingcode/utils'
+import {
+  keepString,
+  keepNumbers,
+  stringSplitArray,
+  stringSplitNumberArray,
+  arrayJoinString
+} from '@tingcode/utils'
 
 // eslint-ignore
 export const ReSelectFormatMap = {
-  keepNumbers
+  keepNumbers,
+  keepString,
+  stringSplitArray,
+  stringSplitNumberArray,
+  arrayJoinString
 }
 export type ReSelectFormatFn = (value: unknown) => any
 export type ReSelectFormatName = keyof typeof ReSelectFormatMap
@@ -46,14 +56,14 @@ export interface ReSelectEmits {
 }
 
 export type ReSelectSlots = IElSelectSlots & {
-  default(props: unknown): unknown
-  header(props: unknown): unknown
-  footer(props: unknown): unknown
-  prefix(props: unknown): unknown
-  empty(props: unknown): unknown
-  tag(props: unknown): unknown
-  loading(props: unknown): unknown
-  label(props: unknown): unknown
+  default(props: any): any
+  header(props: any): any
+  footer(props: any): any
+  prefix(props: any): any
+  empty(props: any): any
+  tag(props: any): any
+  loading(props: any): any
+  label(props: any): any
 }
 export const ReSelect = Select
 export default ReSelect

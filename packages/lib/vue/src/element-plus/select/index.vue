@@ -61,7 +61,7 @@
     ReSelectGroupOptionItem,
     ReSelectOptionItem
   } from './index'
-  import { ref, computed } from 'vue'
+  import { computed } from 'vue'
   import { isArray, isFunction, isString } from '@tingcode/utils'
 
   defineOptions({
@@ -79,8 +79,6 @@
   const slots = defineSlots<ReSelectSlots>()
 
   const emits = defineEmits<ReSelectEmits>()
-
-  const isShowOriginValue = ref<boolean>(false)
 
   const displayValue = computed(() => {
     if (isArray(props.format)) {
@@ -110,7 +108,6 @@
     } else {
       updateValue = transformFormatValue(props.valueFormat, event)
     }
-    isShowOriginValue.value = true
     emits('change', event, updateValue)
     emits('update:modelValue', updateValue)
   }

@@ -1,9 +1,9 @@
 <template>
-  <div>options来传递对应选项参数</div>
+  <div>options来传递对应选项参数，支持format来更改映射值</div>
   <ReSelect
     multiple
-    :format="handleFormat"
-    :value-format="handleValueFormat"
+    format="stringSplitArray"
+    value-format="arrayJoinString"
     @change="handleChange"
     v-model="data"
     :options="[
@@ -13,28 +13,15 @@
     ]"
   >
     <template #label="{ label, value }">
-      <span>{{ label }}: 666</span>
+      <span>{{ label }}：</span>
       <span style="font-weight: bold">{{ value }}</span>
     </template>
   </ReSelect>
-  <el-select v-model="data">
-    <el-option label="1" value="2" />
-    <template #label="{ label, value }">
-      <span>{{ label }}: 666</span>
-      <span style="font-weight: bold">{{ value }}</span>
-    </template>
-  </el-select>
 </template>
 <script setup lang="ts">
   import { ReSelect } from '@tingcode/lib-vue'
   const data = ref('1')
   const handleChange = (value1, value2) => {
     console.log(value1, value2)
-  }
-  const handleFormat = (val) => {
-    return val
-  }
-  const handleValueFormat = (val) => {
-    return val
   }
 </script>
