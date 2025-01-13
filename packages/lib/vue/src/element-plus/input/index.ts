@@ -21,7 +21,7 @@ import {
 } from '@tingcode/utils'
 
 // eslint-ignore
-export const FormatMap = {
+export const ReInputFormatMap = {
   keepNumbers,
   round,
   round2D,
@@ -39,9 +39,13 @@ export const FormatMap = {
   numberToMoney,
   numberToUnit
 }
-export type FormatFn = (value: unknown) => any
-export type FormatName = keyof typeof FormatMap
-export type Format = (FormatName | FormatFn | string)[] | FormatName | FormatFn | string
+export type ReInputFormatFn = (value: unknown) => any
+export type ReInputFormatName = keyof typeof ReInputFormatMap
+export type ReInputFormat =
+  | (ReInputFormatName | ReInputFormatFn | string)[]
+  | ReInputFormatName
+  | ReInputFormatFn
+  | string
 export type ElInputInstance = InstanceType<typeof ElInput>
 export type IElInputAttrs = ElInputInstance['$props']
 export type IElInputSlots = ElInputInstance['$slots']
@@ -49,8 +53,8 @@ export type IElInputEmits = ElInputInstance['$emit']
 
 export interface ReInputProps extends /** @vue-ignore */ IElInputAttrs {
   modelValue: string | number
-  format?: Format
-  valueFormat?: Format
+  format?: ReInputFormat
+  valueFormat?: ReInputFormat
 }
 
 export interface ReInputEmits {

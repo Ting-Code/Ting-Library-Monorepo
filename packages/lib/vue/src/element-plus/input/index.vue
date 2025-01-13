@@ -8,7 +8,13 @@
 
 <script setup lang="ts">
   import { ElInput } from 'element-plus'
-  import { ReInputProps, ReInputSlots, ReInputEmits, Format, FormatMap } from './index'
+  import {
+    ReInputProps,
+    ReInputSlots,
+    ReInputEmits,
+    ReInputFormat,
+    ReInputFormatMap
+  } from './index'
   import { watchEffect, ref } from 'vue'
   import { isArray, isFunction, isString } from '@tingcode/utils'
 
@@ -31,9 +37,9 @@
 
   const displayValue = ref(props.modelValue)
 
-  const transformFormatValue = (format: Format, value: unknown) => {
+  const transformFormatValue = (format: ReInputFormat, value: unknown) => {
     if (isString(format)) {
-      return FormatMap[format] ? FormatMap[format]?.(value) : value
+      return ReInputFormatMap[format] ? ReInputFormatMap[format]?.(value) : value
     }
     if (isFunction(format)) {
       return format(value)
