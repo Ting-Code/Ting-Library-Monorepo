@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { ReRadio } from '@tingcode/lib-vue'
   const data = ref('1')
-  const handleChange = (value1, value2) => {
-    console.log(value1, value2)
+  const handleChange = (...val1) => {
+    console.log(val1)
   }
 </script>
