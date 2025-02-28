@@ -1,6 +1,6 @@
 import { useEventListener } from './eventListener'
 import { getGlobalDataMitt } from '../global-data/mitt'
-import { error } from '@tingcode/utils'
+import { warn } from '@tingcode/utils'
 
 export enum screenSizeEnum {
   XS = 'XS',
@@ -96,7 +96,7 @@ export function screenListen(fn?: (opt: CreateCallbackParams) => void) {
 
 export function addScreenListen() {
   const mitt = getGlobalDataMitt()
-  if (!mitt) return error('Mitt is not init')
+  if (!mitt) return warn('Mitt is not init')
 
   screenListen((opt) => {
     mitt.emit('browserScreen', opt)
@@ -105,6 +105,6 @@ export function addScreenListen() {
 
 export function onScreenListen(fn: (opt: CreateCallbackParams) => void) {
   const mitt = getGlobalDataMitt()
-  if (!mitt) return error('Mitt is not init')
+  if (!mitt) return warn('Mitt is not init')
   mitt.on('browserScreen', fn)
 }
