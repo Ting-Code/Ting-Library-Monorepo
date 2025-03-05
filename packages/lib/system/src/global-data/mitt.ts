@@ -1,7 +1,7 @@
 import { getGlobalData, GlobalDataKeyEnum, setGlobalData } from './index'
 import { Emitter, EventType } from 'mitt'
 import { CreateCallbackParams, IRouterInfo } from '../hooks'
-import { error } from '@tingcode/utils'
+import { warn } from '@tingcode/utils'
 
 export interface IMittEvents {
   [eventName: EventType]: unknown
@@ -29,7 +29,7 @@ export function getGlobalDataMitt<T extends IMittEvents>(): Emitter<T | IMittEve
  */
 export function emitMitt<Key extends keyof IMittEvents>(key: Key, value: IMittEvents[Key]) {
   const mitt = getGlobalDataMitt()
-  if (!mitt) return error('Mitt is not init')
+  if (!mitt) return warn('Mitt is not init')
   mitt.emit(key, value)
 }
 
@@ -43,7 +43,7 @@ export function onMitt<Key extends keyof IMittEvents>(
   fn: (opt: IMittEvents[Key]) => void
 ) {
   const mitt = getGlobalDataMitt()
-  if (!mitt) return error('Mitt is not init')
+  if (!mitt) return warn('Mitt is not init')
   mitt.on(key, fn)
 }
 
@@ -52,6 +52,6 @@ export function fooMitt<Key extends keyof IMittEvents>(
   fn: (opt: IMittEvents[Key]) => void
 ) {
   const mitt = getGlobalDataMitt()
-  if (!mitt) return error('Mitt is not init')
+  if (!mitt) return warn('Mitt is not init')
   mitt.off(key, fn)
 }
