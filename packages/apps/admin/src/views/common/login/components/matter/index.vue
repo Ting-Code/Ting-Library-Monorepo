@@ -8,6 +8,7 @@
   import { useMatter } from './hooks/matter'
   const ns = useNamespace('matter')
   const matterRef = ref()
+  let tipSetTimeout: NodeJS.Timeout | null = null
   let clearMatter = () => {
     console.log('先执行createMatter， 再执行createMatter')
   }
@@ -16,12 +17,15 @@
 
   onMounted(() => {
     clearMatter = createMatter(matterRef.value)
-    setTimeout(() => {
+    tipSetTimeout = setTimeout(() => {
       handleTipLogin()
     }, 10000)
   })
   onBeforeUnmount(() => {
     clearMatter()
+    if (tipSetTimeout) {
+      clearTimeout(tipSetTimeout)
+    }
   })
 
   const handleTipLogin = () => {
