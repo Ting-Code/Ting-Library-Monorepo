@@ -4,5 +4,5 @@
 
 <script setup lang="ts">
   import { useMicro } from '@tingcode/system'
-  const { name, url } = useMicro('react')
+  const { name, url } = useMicro('demo')
 </script>

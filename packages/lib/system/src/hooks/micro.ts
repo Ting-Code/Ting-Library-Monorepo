@@ -5,11 +5,11 @@ import { error } from '@tingcode/utils'
 // 'development' | 'production'
 export const devMicroUrlMap = {
   docs: 'http://localhost:8682/docs/',
-  react: ' http://localhost:8080/'
+  demo: ' http://localhost:8080/'
 }
 export const proMicroUrlMap = {
   docs: 'http://159.75.104.173/micro/docs/',
-  react: 'http://159.75.104.173/micro/demo/'
+  demo: 'http://159.75.104.173/micro/demo/'
 }
 const IFRAME = ['docs']
 
