@@ -26,8 +26,8 @@ jobs:
       - name: build @apps/admin
         run: pnpm --filter @apps/admin... build
 
-      - name: build @apps/micro-react
-        run: pnpm --filter @apps/micro-react... build
+      - name: build @apps/micro-rspack
+        run: pnpm --filter @apps/micro-rspack... build
 
       - name: build @apps/micro-docs
         run: pnpm --filter @apps/micro-docs... build
