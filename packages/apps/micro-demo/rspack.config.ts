@@ -27,7 +27,7 @@ export default defineConfig({
     }
   },
   output: {
-    publicPath: isProdMode ? '/micro/react/' : '/', // history路由
+    publicPath: isProdMode ? '/micro/demo/' : '/', // history路由
     path: path.resolve(__dirname, 'dist'),
     // filename: 'file/[name]-[hash:6][ext]',
     chunkFilename: 'chunk/[name]-[hash:6].js',

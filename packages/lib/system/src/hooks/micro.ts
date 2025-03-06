@@ -9,7 +9,7 @@ export const devMicroUrlMap = {
 }
 export const proMicroUrlMap = {
   docs: 'http://159.75.104.173/micro/docs/',
-  react: 'http://159.75.104.173/micro/react/'
+  react: 'http://159.75.104.173/micro/demo/'
 }
 const IFRAME = ['docs']
 

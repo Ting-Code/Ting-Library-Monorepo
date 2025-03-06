@@ -27,7 +27,7 @@
 
       </pre>
     </Markdown>
-    <CodeBlock src="@root/packages/apps/micro-rspack/src/main.tsx" :default-show-code="true" />
+    <CodeBlock src="@root/packages/apps/micro-demo/src/main.tsx" :default-show-code="true" />
     <Markdown>
       <pre>
 高于部署，我选择部署同域名下的子路由/micro/中，需要配置以下。
@@ -43,7 +43,7 @@
 ```
       </pre>
     </Markdown>
-    <CodeBlock src="@root/packages/apps/micro-rspack/rspack.config.ts" :default-show-code="false" />
+    <CodeBlock src="@root/packages/apps/micro-demo/rspack.config.ts" :default-show-code="false" />
     <Markdown>
       <pre>
 `Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/micro`下：

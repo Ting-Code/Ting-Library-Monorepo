@@ -83,7 +83,7 @@ Ting-Library-Monorepo
 |    ├─apps
 |    |  ├─admin # Vite搭建vue3主应用
 |    |  ├─micro-docs # Vite 搭建Docs文档子应用
-|    |  ├─micro-rspack # Rspack 搭建React子应用
+|    |  ├─micro-demo # Rspack 搭建React子应用
 |    ├─cli # 自定义脚手架cli
 |    |  ├─utils
 |    |  ├─template # cli模板

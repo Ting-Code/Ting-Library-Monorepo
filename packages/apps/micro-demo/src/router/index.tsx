@@ -3,5 +3,5 @@ import { routers } from '@/router/baseRouters'
 import { isProdMode } from '@/utils/env'
 
 export const router: any = createBrowserRouter(routers, {
-  basename: isProdMode() ? '/micro/react' : ''
+  basename: isProdMode() ? '/micro/demo' : ''
 })

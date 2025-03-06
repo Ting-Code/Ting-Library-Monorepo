@@ -312,7 +312,7 @@ importers:
         specifier: ^2.1.10
         version: 2.1.10(typescript@5.6.3)
 
-  packages/apps/micro-rspack:
+  packages/apps/micro-demo:
     dependencies:
       react:
         specifier: ^18.2.0
