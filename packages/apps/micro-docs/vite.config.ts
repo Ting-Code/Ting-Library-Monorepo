@@ -53,6 +53,8 @@ export default defineConfig(({ command, mode }) => {
       preprocessorOptions: {
         scss: {
           charset: false,
+          silenceDeprecations: ['legacy-js-api'],
+          api: 'modern-compiler', // 或 'modern'
           additionalData: `
             @use "@/styles/global.scss" as *;
             @use "element-plus/theme-chalk/src/mixins/mixins" as *;

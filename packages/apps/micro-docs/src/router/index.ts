@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router'
 export const ErrorPage = () => import('@/views/common/error/404.vue')
 
 // 404 on a page
@@ -25,21 +25,33 @@ Object.keys(modules).forEach((key) => {
 export const asyncRoutes = [...routeModuleList]
 //普通路由 无需验证权限
 export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute]
-// 创建路由
-const router = createRouter({
-  // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
-  history: createWebHistory(window.__MICRO_APP_BASE_ROUTE__ || '/docs/'),
-  routes: constantRouter as unknown as RouteRecordRaw[],
-  scrollBehavior() {
-    return { left: 0, top: 0 }
-  }
-})
+
+let router: null | Router = null
+export function initRouter() {
+  // 创建路由
+  return createRouter({
+    // history: process.env.NODE_ENV === 'production' ? createWebHistory() : createWebHashHistory(),
+    history: createWebHistory(window.__MICRO_APP_BASE_ROUTE__ || '/docs/'),
+    routes: constantRouter as unknown as RouteRecordRaw[],
+    scrollBehavior() {
+      return { left: 0, top: 0 }
+    }
+  })
+}
+
+// 重置动态路由
+export function unmountRouter() {
+  if (!router) return
+  router.clearRoutes()
+  router = null
+}
 
 /**
  * @description 初始化router
  * @param app
  */
 export function setupRouter(app: App<Element>) {
+  router = initRouter()
   app.use(router)
 }
 

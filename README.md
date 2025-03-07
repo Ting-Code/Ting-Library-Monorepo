@@ -93,8 +93,7 @@ Ting-Library-Monorepo
 |    |  ├─system # 微前端共享库
 |    |  ├─utils # 工具函数库
 |    |  ├─vue # vue组件库
-|    ├─plugin # 相关自定义插件
-|    |   ├─vite-plugin-code # docs文档生成插件
+|    |  ├─vite-plugin-code # docs文档生成插件
 ├─scripts # 构建脚本
 
 ```

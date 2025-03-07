@@ -3,7 +3,7 @@ import '@tingcode/lib-vue/dist/css/components/index.css'
 import { createApp, App } from 'vue'
 import AppVue from './App.vue'
 import { setupStore } from '@/store'
-import { setupRouter } from '@/router'
+import { unmountRouter, setupRouter } from '@/router'
 import { setupGlobDirectives } from '@/directives'
 // import 'virtual:svg-icons-register'
 import * as EPIcon from '@element-plus/icons-vue'
@@ -23,6 +23,7 @@ window.mount = () => {
 
 window.unmount = () => {
   app.unmount()
+  unmountRouter()
 }
 
 // 如果不在微前端环境，则直接执行mount渲染
