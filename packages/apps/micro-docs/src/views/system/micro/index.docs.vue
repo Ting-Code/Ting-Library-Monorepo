@@ -3,7 +3,7 @@
     <Markdown>
       <pre>
 # 微前端
-微前端这个饼画了好久，一直没时间推进。回到主题，微前端技术选型博客有很多，如: [2023微前端技术方案选型](https://juejin.cn/post/7236021829000691771)。
+微前端借鉴了后端微服务的架构理念，将不同的功能模块独立化，最终通过统一的基座应用进行整合。每个子应用技术栈没有约束，可独立运行，独立发布。
 
 ## 微前端技术选型
 
@@ -46,28 +46,24 @@
     <CodeBlock src="@root/packages/apps/micro-demo/rspack.config.ts" :default-show-code="false" />
     <Markdown>
       <pre>
-`Nginx`配置子路由转发，主应用放在`/usr/share/nginx/html/`,子应用放在`/usr/share/nginx/html/micro`下：
-```
-        location /micro {
-            if ($request_filename ~* .*\.(?:htm|html)$)  ## 配置页面不缓存html和htm结尾的文件
-            {
-               add_header Cache-Control "private, no-store, no-cache, must-revalidate, proxy-revalidate";
-            }
-            # 把匹配到的路径重写, 注意要以/结尾
-            alias /usr/share/nginx/html/micro;
-            # 默认首页
-            index  index.html;
-            try_files $uri $uri/ /micro/index.html;
-        }
-```
+## 最终Micro-App方案
+演示的快速接入虽然简单，但不太满足大部分项目需要，因为默认的路由模式会侵入url参数，给项目带来不确定的风险。
+
+### 路由模式
+Micro-App 1.X的[`路由模式`](https://jd-opensource.github.io/micro-app/docs.html#/zh-cn/router)有多种，最终选用的`native`模式。
+`native`模式特点主路由和子路由都共享浏览器的url，缺点是会增加一些配置兼容。
+1. 创建路由要加上`baseRoute``createWebHistory(window.__MICRO_APP_BASE_ROUTE__ || '/docs/')`
+2. 打包配置也要对应加上配置`base: command === 'build' ? '/micro/docs/' : '/docs/'`
+3. Nginx发布配置要正确配置代理映射
       </pre>
     </Markdown>
-    <CodeBlock src="@root/.github/workflows/nginx.conf" :default-show-code="false" />
+    <CodeBlock src="@root/packages/lib/system/src/hooks/micro.ts" :default-show-code="false" />
     <Markdown>
       <pre>
     实现了Github Action配合Dockerfile实现了自动化部署具体可看`/.github/workflows/`
       </pre>
     </Markdown>
+    <CodeBlock src="@root/.github/workflows/nginx.conf" :default-show-code="false" />
   </DocsLayout>
 </template>
 
