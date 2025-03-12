@@ -16,8 +16,7 @@ export type ITabsViewState = {
   tabsList: RouteItem[] // 标签页
 }
 
-export const useTabsStore = defineStore({
-  id: 'app-tabs-view',
+export const useTabsStore = defineStore('app-tabs-view', {
   state: (): ITabsViewState => ({
     tabsList: []
   }),

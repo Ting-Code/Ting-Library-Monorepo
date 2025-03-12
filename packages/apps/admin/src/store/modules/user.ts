@@ -14,8 +14,7 @@ export interface IUserState {
   isDynamicAddedRoute: boolean
 }
 
-export const useUserStore = defineStore({
-  id: 'app-user',
+export const useUserStore = defineStore('app-user', {
   state: (): IUserState => ({
     menu: [],
     auth: [],

@@ -28,8 +28,8 @@
 <script lang="ts" setup>
   import SetIcon from './set/index.vue'
   import FullIcon from './full/index.vue'
-  import { useSortable } from '@vueuse/integrations/useSortable'
   import { ref, computed } from 'vue'
+  import { useSortable } from '@vueuse/integrations'
   import { useTabs } from '@/hooks/useTabs'
   import { onMittRouter, PageEnum, setUrl, useNamespace } from '@tingcode/system'
   import { NAMESPACE, useSetting } from '@/hooks/useSetting'
