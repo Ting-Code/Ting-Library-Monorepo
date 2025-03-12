@@ -2,3 +2,25 @@ packages:
   - 'packages/**'
   - 'configs/*'
   - 'scripts'
+catalog:
+  '@vueuse/core': 13.0.0
+  '@vueuse/integrations': 13.0.0
+  '@vitejs/plugin-vue': 5.2.1
+  '@vitejs/plugin-vue-jsx': 4.1.1
+  typescript: 5.8.2
+  vite: 6.2.1
+  unbuild: 3.5.0
+  vue: 3.5.13
+  element-plus: 2.9.6
+  pinia: 3.0.1
+  vue-router: 4.5.0
+  sass: 1.85.1
+  dayjs: 1.11.13
+  vite-plugin-compression: 0.5.1
+  vite-plugin-eslint: 1.8.1
+  vite-plugin-md: 0.21.5
+  vite-plugin-mock: 2.9.6
+  vite-plugin-svg-icons: 2.0.1
+  vue-tsc: 2.2.8
+  unplugin-auto-import: 19.1.1
+  unplugin-vue-components: 28.4.1

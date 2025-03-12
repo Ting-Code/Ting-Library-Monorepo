@@ -31,7 +31,7 @@
     "@inquirer/type": "^1.5.3",
     "@types/fs-extra": "^11.0.1",
     "esno": "^0.16.3",
-    "typescript": "5.6.3",
+    "typescript": "catalog:",
     "unbuild": "^1.2.0",
     "vitest": "^0.29.8"
   },

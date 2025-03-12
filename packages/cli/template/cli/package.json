@@ -31,7 +31,7 @@
   "devDependencies": {
     "esno": "^0.16.3",
     "execa": "^7.1.1",
-    "typescript": "5.6.3",
+    "typescript": "catalog:",
     "unbuild": "^1.2.0"
   }
 }

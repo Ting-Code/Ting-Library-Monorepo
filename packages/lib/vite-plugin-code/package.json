@@ -37,7 +37,7 @@
     "markdown-it": "^13.0.1",
     "node-html-parser": "^6.1.5",
     "pug": "^3.0.2",
-    "vite": "4.3.9"
+    "vite": "catalog:"
   },
   "devDependencies": {
     "unbuild": "^1.2.0"
