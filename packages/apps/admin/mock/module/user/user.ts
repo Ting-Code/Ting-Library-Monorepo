@@ -48,8 +48,28 @@ const menu = {
           name: 'system_404',
           path: '/docs/system/404',
           meta: {
-            title: '404页面',
+            title: '❗404页面',
             transition: true
+          },
+          auth: []
+        }
+      ]
+    },
+    {
+      name: 'basics',
+      meta: {
+        title: '基础知识',
+        icon: 'MessageBox',
+        module: 'docs'
+      },
+      path: '/docs/basics',
+      children: [
+        {
+          name: 'basics_docker',
+          path: '/docs/basics/docker',
+          meta: {
+            title: '📋Docker基础',
+            module: 'docs'
           },
           auth: []
         }
@@ -79,7 +99,7 @@ const menu = {
     {
       name: 'repackage',
       meta: {
-        title: '二次封装',
+        title: '组件封装',
         icon: 'Brush',
         module: 'docs'
       },
@@ -100,6 +120,26 @@ const menu = {
           path: '/docs/repackage/components',
           meta: {
             title: 'Vue二次封装组件',
+            module: 'docs'
+          },
+          auth: []
+        }
+      ]
+    },
+    {
+      name: 'vitual',
+      meta: {
+        title: '可视化图表',
+        icon: 'Picture',
+        module: 'docs'
+      },
+      path: '/docs/vitual',
+      children: [
+        {
+          name: 'vitual_demographic',
+          path: '/docs/vitual/demographic',
+          meta: {
+            title: '📊人口统计',
             module: 'docs'
           },
           auth: []
