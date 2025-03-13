@@ -12,7 +12,7 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: 'vitual/demographic',
+    path: '/vitual/demographic',
     name: 'vitual_demographic',
     component: () => import('@/views/visual/demographic/index.docs.vue')
   }

@@ -12,7 +12,7 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: 'basics/docker',
+    path: '/basics/docker',
     name: 'basics_docker',
     component: () => import('@/views/basics/docker/index.docs.vue')
   }
