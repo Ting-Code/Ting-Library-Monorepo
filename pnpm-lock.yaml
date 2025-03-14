@@ -374,6 +374,9 @@ importers:
       '@vueuse/integrations':
         specifier: 'catalog:'
         version: 13.0.0(async-validator@4.2.5)(axios@1.3.4)(nprogress@0.2.0)(sortablejs@1.15.6)(vue@3.5.13(typescript@5.8.2))
+      chart.js:
+        specifier: ^4.4.8
+        version: 4.4.8
       dayjs:
         specifier: 'catalog:'
         version: 1.11.13
@@ -395,6 +398,9 @@ importers:
       vue:
         specifier: 'catalog:'
         version: 3.5.13(typescript@5.8.2)
+      vue-chartjs:
+        specifier: ^5.3.2
+        version: 5.3.2(chart.js@4.4.8)(vue@3.5.13(typescript@5.8.2))
       vue-router:
         specifier: 'catalog:'
         version: 4.5.0(vue@3.5.13(typescript@5.8.2))
@@ -1189,18 +1195,21 @@ packages:
       {
         integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==
       }
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/core-utils@3.1.0':
     resolution:
       {
         integrity: sha512-Uuk8RpCg/7fdHSceR1M6XbSZFSuMrxcePFuGgyvsBn+u339dk5OeL4jv2EojwTN2st/unJGsVm4qHWjWNmJ/tw==
       }
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild-kit/esm-loader@2.5.5':
     resolution:
       {
         integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==
       }
+    deprecated: 'Merged into tsx: https://tsx.is'
 
   '@esbuild/aix-ppc64@0.20.2':
     resolution:
@@ -2107,6 +2116,12 @@ packages:
     engines: { node: '>=10.0' }
     peerDependencies:
       tslib: '2'
+
+  '@kurkle/color@0.3.4':
+    resolution:
+      {
+        integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==
+      }
 
   '@leichtgewicht/ip-codec@2.0.4':
     resolution:
@@ -4727,6 +4742,13 @@ packages:
         integrity: sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
       }
 
+  chart.js@4.4.8:
+    resolution:
+      {
+        integrity: sha512-IkGZlVpXP+83QpMm4uxEiGqSI7jFizwVtF3+n5Pc3k7sMO+tkd0qxh2OzLhenM0K80xtmAONWGBn082EiBQSDA==
+      }
+    engines: { pnpm: '>=8' }
+
   check-error@1.0.3:
     resolution:
       {
@@ -6092,6 +6114,7 @@ packages:
         integrity: sha512-QUp6pM9pjKEVannNAbSJNeRuYwW3LshejfyBBpjeMGaJjaDUpVps4C6KVR8R7dWZnD3i0synmrE36znjTkJvdQ==
       }
     engines: { node: '>=18.0.0', npm: '>=9.0.0', pnpm: '>=8.6.0' }
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   eslint-import-resolver-node@0.3.9:
     resolution:
@@ -6259,6 +6282,7 @@ packages:
         integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==
       }
     engines: { node: ^12.22.0 || ^14.17.0 || >=16.0.0 }
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   esno@0.16.3:
@@ -12329,6 +12353,15 @@ packages:
         integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==
       }
 
+  vue-chartjs@5.3.2:
+    resolution:
+      {
+        integrity: sha512-NrkbRRoYshbXbWqJkTN6InoDVwVb90C0R7eAVgMWcB9dPikbruaOoTFjFYHE/+tNPdIe6qdLCDjfjPHQ0fw4jw==
+      }
+    peerDependencies:
+      chart.js: ^4.1.1
+      vue: ^3.0.0-0 || ^2.7.0
+
   vue-demi@0.14.10:
     resolution:
       {
@@ -13723,6 +13756,8 @@ snapshots:
   '@jsonjoy.com/util@1.3.0(tslib@2.6.2)':
     dependencies:
       tslib: 2.6.2
+
+  '@kurkle/color@0.3.4': {}
 
   '@leichtgewicht/ip-codec@2.0.4': {}
 
@@ -15484,6 +15519,10 @@ snapshots:
   character-reference-invalid@1.1.4: {}
 
   chardet@0.7.0: {}
+
+  chart.js@4.4.8:
+    dependencies:
+      '@kurkle/color': 0.3.4
 
   check-error@1.0.3:
     dependencies:
@@ -20543,6 +20582,11 @@ snapshots:
   void-elements@3.1.0: {}
 
   vscode-uri@3.0.8: {}
+
+  vue-chartjs@5.3.2(chart.js@4.4.8)(vue@3.5.13(typescript@5.8.2)):
+    dependencies:
+      chart.js: 4.4.8
+      vue: 3.5.13(typescript@5.8.2)
 
   vue-demi@0.14.10(vue@3.5.13(typescript@5.8.2)):
     dependencies:

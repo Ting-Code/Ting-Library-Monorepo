@@ -11,21 +11,23 @@
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "dependencies": {
-    "@tingcode/system": "workspace:*",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "@tingcode/lib-vue": "workspace:*",
+    "@tingcode/system": "workspace:*",
     "@tingcode/utils": "workspace:*",
-    "vite-plugin-code": "workspace:*",
+    "@vueuse/core": "catalog:",
+    "@vueuse/integrations": "catalog:",
+    "chart.js": "^4.4.8",
     "dayjs": "catalog:",
     "element-plus": "catalog:",
     "pinia": "catalog:",
     "prismjs": "^1.30.0",
     "sass": "catalog:",
+    "vite-plugin-code": "workspace:*",
     "vue": "catalog:",
-    "vue-router": "catalog:",
-    "@vueuse/core": "catalog:",
-    "@vueuse/integrations": "catalog:"
+    "vue-chartjs": "^5.3.2",
+    "vue-router": "catalog:"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.5",
