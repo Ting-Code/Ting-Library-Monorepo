@@ -84,6 +84,8 @@
         position: fixed;
         padding: 6px 0 8px 18px;
         border-left: 1px solid getCssVar('text-color', 'primary');
+        height: 100%;
+        overflow-y: auto;
       }
     }
   }

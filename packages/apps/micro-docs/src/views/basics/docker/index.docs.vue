@@ -1,12 +1,9 @@
 <template>
   <DocsLayout>
-    <Markdown>
-      <pre>
-## 大学人数统计
-      </pre>
-    </Markdown>
-    <CodeBlock src="@root/.github/workflows/nginx.conf" :default-show-code="false" />
+    <Index />
   </DocsLayout>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import Index from './index.md'
+</script>
