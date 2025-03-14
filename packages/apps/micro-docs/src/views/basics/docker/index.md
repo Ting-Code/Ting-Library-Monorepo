@@ -15,7 +15,7 @@ systemctl restart docker
 
 ### image镜像
 
-image 镜像是用来快速生成container容器的readonly文件。<font style="color:rgb(0, 0, 0);">image具有分层的概念，可以在原来镜像基础是添加环境，生成新的镜像。</font>
+image 镜像是用来快速生成container容器的readonly文件。image具有分层的概念，可以在原来镜像基础是添加环境，生成新的镜像。
 
 ```bash
 # 查看帮助文档
@@ -97,16 +97,16 @@ docker image rm <name:tag>
 docker ps -a
 ```
 
-### <font style="color:rgb(0, 0, 0);">container容器</font>
+### container容器
 
-Docker下可<font style="color:rgb(0, 0, 0);">基于同一个image可以创建多个container，容器间环境互相隔离。</font>
+Docker下可基于同一个image可以创建多个container，容器间环境互相隔离。
 
 ```bash
 # 查看帮助文档
 docker container --help
 ```
 
-#### <font style="color:rgb(0, 0, 0);">容器的创建</font>
+#### 容器的创建
 
 ```bash
 # 根据镜像生成容器，如果本地没有该镜像则去docker hub下载
@@ -152,7 +152,7 @@ docker stop $(docker ps -aq)
 docker container satrt <container name or ID>
 ```
 
-#### <font style="color:rgb(0, 0, 0);">容器的删除</font>
+#### 容器的删除
 
 ```bash
 # 一样省略 container 也可以
@@ -225,13 +225,13 @@ docker image build -f <Dockerfile> -t <image name> <path>
 docker image build -f Dockerfile -t image-name .
 ```
 
-#### FROM <font style="color:rgb(0, 0, 0);">基础镜像</font>
+#### FROM 基础镜像
 
 FROM会拉取容器的基础镜像，然后再通过其他命令添加层级
 
-- <font style="color:rgb(0, 0, 0);">官方镜像优于非官方的镜像，如果没有官方镜像，则尽量选择Dockerfile开源的</font>
-- <font style="color:rgb(0, 0, 0);">固定版本tag而不是每次都使用latest</font>
-- <font style="color:rgb(0, 0, 0);">尽量选择体积小的镜像</font>
+- 官方镜像优于非官方的镜像，如果没有官方镜像，则尽量选择Dockerfile开源的
+- 固定版本tag而不是每次都使用latest
+- 尽量选择体积小的镜像
 
 ```bash
 FROM nginx:1.21.0-alpine
@@ -243,7 +243,7 @@ FROM nginx:1.21.0-alpine
 FROM scratch
 ```
 
-#### RUN <font style="color:rgb(0, 0, 0);">执行指令</font>
+#### RUN 执行指令
 
 Dockerfile执行一个指令会多一层，为了减少层级冗余应尽量放到一个RUN里
 
@@ -282,7 +282,7 @@ FROM ubuntu:20.04
 ADD <file name.gz> </path>
 ```
 
-#### <font style="color:rgb(0, 0, 0);">ARG vs ENV</font>
+#### ARG vs ENV
 
 ARG可以创建一个变量，并且在构建image时通过命令修改。ARG变量仅在构建image中有效
 
@@ -315,9 +315,9 @@ RUN apt-get update && \
     rm -rf ipinfo_${VERSION}_linux_amd64.tar.gz
 ```
 
-#### CMD vs <font style="color:rgb(0, 0, 0);">ENTRYPOINT</font>
+#### CMD vs ENTRYPOINT
 
-<font style="color:rgb(0, 0, 0);">CMD 设置的命令，可以在docker container run 时传入其它命令，覆盖掉 CMD 的命令</font>
+CMD 设置的命令，可以在docker container run 时传入其它命令，覆盖掉 CMD 的命令
 
 ```bash
 FROM ubuntu:20.04
@@ -329,7 +329,7 @@ docker container run -it --rm demo-cmd echo "hello world"
 hello world
 ```
 
-<font style="color:rgb(0, 0, 0);">ENTRYPOINT 所设置的命令是一定会被执行，并且可以拼接</font>
+ENTRYPOINT 所设置的命令是一定会被执行，并且可以拼接
 
 ```bash
 FROM ubuntu:20.04
@@ -341,7 +341,7 @@ hello docker
 hello world
 ```
 
-**<font style="color:rgb(0, 0, 0);">Shell 格式和 Exec 格式</font>**
+**Shell 格式和 Exec 格式**
 
 ```bash
 # Shell格式
@@ -380,16 +380,16 @@ COPY <file name> </path/file name>
 
 **Dockerfile构建时会把当前文件夹eontext都放到image**
 
-<font style="color:rgb(0, 0, 0);">.dockerignore可以把不需要的文件排除</font>
+.dockerignore可以把不需要的文件排除
 
 ```bash
 .vscode/
 env/
 ```
 
-**<font style="color:rgb(0, 0, 0);">多阶段构建</font>**
+**多阶段构建**
 
-<font style="color:rgb(0, 0, 0);">假如有一个C的程序，我们想用gcc去做编译，但编译后并不需要gcc。那么可以多阶段构建，利用gcc编译后则不需要gcc来构建环境。</font>
+假如有一个C的程序，我们想用gcc去做编译，但编译后并不需要gcc。那么可以多阶段构建，利用gcc编译后则不需要gcc来构建环境。
 
 ```bash
 FROM gcc:9.4 AS builder
@@ -411,7 +411,7 @@ ENTRYPOINT [ "/src/hello" ]
 CMD []
 ```
 
-**<font style="color:rgb(0, 0, 0);">Root的危险性</font>**
+**Root的危险性**
 
 创建flask用户，来限制权限
 
@@ -636,7 +636,7 @@ EXPOSE 80
 
 ### Docker compose
 
-<font style="color:rgb(43, 43, 43);">通过一个yml声明式的配置文件描述整个应用，配置文件还可以置于版本控制系统中进行存储和管理。</font>
+<font style="color:rgb(43, 43, 43);">通过一个yml声明式的配置文件描述整个应用，配置文件还可以置于版本控制系统中进行存储和管理。
 
 ```bash
 version: "3.8"
