@@ -26,7 +26,7 @@ git config --global user.email "xxx@xxx.com"
 
 ![](https://cdn.nlark.com/yuque/0/2022/png/2868710/1669201991283-b5ba7365-a218-4740-aac0-76e837d9680a.png)
 
-**执行** `**git init**`即可初始化仓库
+**执行** `git init`即可初始化仓库
 
 ![](https://cdn.nlark.com/yuque/0/2022/png/2868710/1669202606390-3363718d-ca24-431f-ac41-bdf40af46ae8.png)
 
@@ -34,7 +34,7 @@ git config --global user.email "xxx@xxx.com"
 
 ![](https://cdn.nlark.com/yuque/0/2022/png/2868710/1669202741276-10bb3beb-53e8-4a4d-a2b0-a40ca5450fa4.png)
 
-初始化后项目目录即成为一个**<font style="background-color:rgba(171,205,239,1);">Git仓库</font>**，可以进行一系列操作来管理项目的代码版本。
+初始化后项目目录即成为一个**Git仓库**，可以进行一系列操作来管理项目的代码版本。
 
 ### 提交流程
 
@@ -217,7 +217,7 @@ $ git branch -d 分支名
 
 ## Git常用命令
 
-### <font style="color:#202124;">查看历史</font>
+### 查看历史
 
 ```bash
 #查看档案commit信息
@@ -326,9 +326,9 @@ git rebase -i [HEAD]
 
 选择好后用wq保存
 
-1. git rebase --abort 会放弃合并，回到rebase操作之前的状态，之前的提交的不会丢弃
-2. <font style="color:rgb(51, 51, 51);">git rebase --skip 则会将引起冲突的commits丢弃掉（慎用！！）</font>
-3. <font style="color:rgb(51, 51, 51);">git rebase --continue 合并冲突，结合"git add 文件"命令一起用与修复冲突，提示开发者，一步一步地有没有解决冲突。（fix conflicts and then run "git rebase --continue"）</font>
+1. `git rebase --abort` 会放弃合并，回到rebase操作之前的状态，之前的提交的不会丢弃
+2. `git rebase --skip` 则会将引起冲突的commits丢弃掉（慎用！！）
+3. `git rebase --continue` 合并冲突，结合"git add 文件"命令一起用与修复冲突，提示开发者，一步一步地有没有解决冲突。（fix conflicts and then run "git rebase --continue"）
 
 ### Tag
 
@@ -442,7 +442,7 @@ git rm --cached readme1.txt
 git rm --f readme1.txt
 ```
 
-<font style="color:#4D4D4D;">然后git commit 即可。但是git status查看状态时还是会列出来</font>
+然后 `git commit` 即可。但是`git status`查看状态时还是会列出来
 
 ### 当误删分支时
 
