@@ -65,10 +65,28 @@ const menu = {
       path: '/docs/basics',
       children: [
         {
+          name: 'basics_git',
+          path: '/docs/basics/git',
+          meta: {
+            title: '📋Git基础',
+            module: 'docs'
+          },
+          auth: []
+        },
+        {
           name: 'basics_docker',
           path: '/docs/basics/docker',
           meta: {
             title: '📋Docker基础',
+            module: 'docs'
+          },
+          auth: []
+        },
+        {
+          name: 'basics_linux',
+          path: '/docs/basics/linux',
+          meta: {
+            title: '📋Linux基础',
             module: 'docs'
           },
           auth: []

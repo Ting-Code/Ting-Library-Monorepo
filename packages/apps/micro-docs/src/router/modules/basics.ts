@@ -12,9 +12,19 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/basics/git',
+    name: 'basics_git',
+    component: () => import('@/views/basics/git/index.docs.vue')
+  },
+  {
     path: '/basics/docker',
     name: 'basics_docker',
     component: () => import('@/views/basics/docker/index.docs.vue')
+  },
+  {
+    path: '/basics/linux',
+    name: 'basics_linux',
+    component: () => import('@/views/basics/linux/index.docs.vue')
   }
 ]
 
