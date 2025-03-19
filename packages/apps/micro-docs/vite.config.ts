@@ -9,8 +9,8 @@ import eslintPlugin from 'vite-plugin-eslint'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// mockjs
-// import { viteMockServe } from 'vite-plugin-mock'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 // gzip压缩
 import viteCompression from 'vite-plugin-compression'
 // svg 加载
@@ -61,6 +61,9 @@ export default defineConfig(({ command, mode }) => {
             @use "element-plus/theme-chalk/src/mixins/function" as *;
             `
         }
+      },
+      postcss: {
+        plugins: [tailwindcss, autoprefixer]
       }
     },
     resolve: {

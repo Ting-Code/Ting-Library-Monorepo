@@ -21,28 +21,34 @@ const menu = {
           name: 'system_home',
           path: '/docs/system/home',
           meta: {
-            title: 'Ting Library 介绍',
+            title: '📖Ting Library 介绍',
             module: 'docs'
           },
-          auth: ['ting']
+          auth: ['ting'] // 非必填 按钮级别权限
         },
         {
           name: 'system_markdown',
           path: '/docs/system/markdown',
           meta: {
-            title: '🔥文档的设计',
+            title: '📝文档的设计',
             module: 'docs'
-          },
-          auth: []
+          }
         },
         {
           name: 'system_micro',
           path: '/docs/system/micro',
           meta: {
-            title: '🔥微前端',
+            title: '🧩微前端',
             module: 'docs'
-          },
-          auth: []
+          }
+        },
+        {
+          name: 'system_css',
+          path: '/docs/system/css',
+          meta: {
+            title: '🎨CSS架构设计',
+            module: 'docs'
+          }
         },
         {
           name: 'system_404',
@@ -50,8 +56,7 @@ const menu = {
           meta: {
             title: '❗404页面',
             transition: true
-          },
-          auth: []
+          }
         }
       ]
     },
@@ -70,8 +75,7 @@ const menu = {
           meta: {
             title: '📋Git基础',
             module: 'docs'
-          },
-          auth: []
+          }
         },
         {
           name: 'basics_docker',
@@ -79,8 +83,7 @@ const menu = {
           meta: {
             title: '📋Docker基础',
             module: 'docs'
-          },
-          auth: []
+          }
         },
         {
           name: 'basics_linux',
@@ -88,8 +91,7 @@ const menu = {
           meta: {
             title: '📋Linux基础',
             module: 'docs'
-          },
-          auth: []
+          }
         }
       ]
     },
@@ -109,8 +111,7 @@ const menu = {
           meta: {
             title: '虚拟列表',
             module: 'docs'
-          },
-          auth: []
+          }
         }
       ]
     },
@@ -130,8 +131,7 @@ const menu = {
           meta: {
             title: '🔥Vue二次封装思考',
             module: 'docs'
-          },
-          auth: []
+          }
         },
         {
           name: 'repackage_components',
@@ -139,8 +139,7 @@ const menu = {
           meta: {
             title: 'Vue二次封装组件',
             module: 'docs'
-          },
-          auth: []
+          }
         }
       ]
     },
@@ -159,8 +158,7 @@ const menu = {
           meta: {
             title: '📊人口统计',
             module: 'docs'
-          },
-          auth: []
+          }
         }
       ]
     }

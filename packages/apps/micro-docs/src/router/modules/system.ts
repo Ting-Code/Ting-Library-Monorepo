@@ -27,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/system/micro/index.docs.vue')
   },
   {
+    path: '/system/css',
+    name: 'system_css',
+    component: () => import('@/views/system/css/index.docs.vue')
+  },
+  {
     path: '/system/404',
     name: 'system_404',
     meta: {

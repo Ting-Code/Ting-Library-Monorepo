@@ -14,3 +14,7 @@
 @use 'element-plus/theme-chalk/src/radio-button.scss';
 @use 'element-plus/theme-chalk/src/radio-group.scss';
 @use 'element-plus/theme-chalk/src/select.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

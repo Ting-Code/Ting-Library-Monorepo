@@ -40,6 +40,7 @@
     .title-h3,
     .title-h4,
     .title-h5 {
+      display: flex;
       overflow: hidden;
       text-overflow: ellipsis;
       flex-wrap: nowrap;

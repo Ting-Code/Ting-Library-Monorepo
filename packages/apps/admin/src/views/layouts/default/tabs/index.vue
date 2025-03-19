@@ -88,7 +88,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: getCssVar(bg-cokor);
+    background-color: getCssVar(bg-color);
 
     @include e(left) {
       flex: 1;

@@ -64,6 +64,22 @@ Micro-App 1.X的[`路由模式`](https://jd-opensource.github.io/micro-app/docs.
       </pre>
     </Markdown>
     <CodeBlock src="@root/.github/workflows/nginx.conf" :default-show-code="false" />
+    <Markdown>
+      <pre>
+### 应用通信
+Micro-App中有完善的主应用和子应用之间的通信方式，具体可看官方文档。
+但里使用的是`EventBus`来实现的，通过主应用全局Window传递对应初始化函数，再在每个子应用监听对应事件，实现通信。
+      </pre>
+    </Markdown>
+    <CodeBlock src="@root/packages/lib/system/src/global-data/mitt.ts" />
+    <Markdown>
+      <pre>
+### CSS隔离
+Micro-App中具备完善的 CSS 隔离机制，这有助于防止不同微应用之间的样式相互干扰。下面为你详细介绍 Micro-App 里的 CSS 隔离相关内容。
+这里适用命名空间区别于各个子应用，即避免各个子应用样式冲突，也可以灵活调整样式。
+        具体可看[CSS架构中的namespace](/docs/system/css)
+      </pre>
+    </Markdown>
   </DocsLayout>
 </template>
 
