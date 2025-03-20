@@ -18,15 +18,15 @@
     "@tingcode/utils": "workspace:*",
     "@vueuse/core": "catalog:",
     "@vueuse/integrations": "catalog:",
-    "chart.js": "^4.4.8",
     "dayjs": "catalog:",
+    "echarts": "^5.6.0",
     "element-plus": "catalog:",
     "pinia": "catalog:",
     "prismjs": "^1.30.0",
     "sass": "catalog:",
     "vite-plugin-code": "workspace:*",
     "vue": "catalog:",
-    "vue-chartjs": "^5.3.2",
+    "vue-echarts": "^7.0.3",
     "vue-router": "catalog:"
   },
   "devDependencies": {

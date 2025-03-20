@@ -6,7 +6,6 @@
       </pre>
     </Markdown>
     <CodeBlock :is="ChartDemo" type="html" />
-    <ChartDemo />
   </DocsLayout>
 </template>
 
