@@ -27,6 +27,14 @@ const menu = {
           auth: ['ting'] // 非必填 按钮级别权限
         },
         {
+          name: 'system_engineering',
+          path: '/docs/system/engineering',
+          meta: {
+            title: '🛠️工程化设计',
+            module: 'docs'
+          }
+        },
+        {
           name: 'system_markdown',
           path: '/docs/system/markdown',
           meta: {

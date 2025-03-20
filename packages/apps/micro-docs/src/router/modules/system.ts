@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/system/home/index.docs.vue')
   },
   {
+    path: '/system/engineering',
+    name: 'system_engineering',
+    component: () => import('@/views/system/engineering/index.docs.vue')
+  },
+  {
     path: '/system/markdown',
     name: 'system_markdown',
     component: () => import('@/views/system/docs/index.docs.vue')
