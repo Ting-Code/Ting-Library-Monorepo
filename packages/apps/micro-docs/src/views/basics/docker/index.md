@@ -1,4 +1,6 @@
-## Docker 入门
+# 📋Docker 基础
+
+## Docker 基础命令
 
 安装过程自行查询，安装完成后检验是否安装成功
 
@@ -34,9 +36,7 @@ docker image pull nginx:1.10.0
 docker image history <image name or ID>
 ```
 
-![](https://cdn.nlark.com/yuque/0/2023/png/2868710/1684392092110-c41b5594-10b3-4526-8b4d-49b282b063a1.png)
-
-#### 构建镜像
+### 构建镜像
 
 1. Dockerfile
 
@@ -67,7 +67,7 @@ docker image save nginx:1.10.0 -o nginx.image
 docker image load -i ./nginx.image
 ```
 
-#### 镜像上传Docker Hub
+### 镜像上传Docker Hub
 
 上传的镜像名格式必须为 username/imageName
 
@@ -85,7 +85,7 @@ docker login
 docker image push <image name:tag>
 ```
 
-#### 删除镜像
+### 删除镜像
 
 ```bash
 docker image rm <image ID>
@@ -97,7 +97,7 @@ docker image rm <name:tag>
 docker ps -a
 ```
 
-### container容器
+## container容器
 
 Docker下可基于同一个image可以创建多个container，容器间环境互相隔离。
 
@@ -106,7 +106,7 @@ Docker下可基于同一个image可以创建多个container，容器间环境互
 docker container --help
 ```
 
-#### 容器的创建
+### 容器的创建
 
 ```bash
 # 根据镜像生成容器，如果本地没有该镜像则去docker hub下载
@@ -116,7 +116,7 @@ docker container run <image name>
 docker run <image name>
 ```
 
-#### 容器查询
+### 容器查询
 
 ```bash
 # 新版本
@@ -133,7 +133,7 @@ docker container ls -aq
 docker ps -aq
 ```
 
-#### 容器停止
+### 容器停止
 
 ```bash
 # 一样省略 container 也可以
@@ -152,7 +152,7 @@ docker stop $(docker ps -aq)
 docker container satrt <container name or ID>
 ```
 
-#### 容器的删除
+### 容器的删除
 
 ```bash
 # 一样省略 container 也可以
@@ -171,7 +171,7 @@ docker rm -f $(docker ps -aq)
 docker system prune -f
 ```
 
-#### 交互模式
+### 交互模式
 
 1. attached模式运行是默认运行模式,弊端是容易误操作
 
@@ -216,7 +216,7 @@ docker exec -it <container name or ID> sh
 exit
 ```
 
-### Dockerfile
+## Dockerfile
 
 Dockerfile是生成image镜像的脚本，是比较推荐的生成image的方式
 
@@ -225,7 +225,7 @@ docker image build -f <Dockerfile> -t <image name> <path>
 docker image build -f Dockerfile -t image-name .
 ```
 
-#### FROM 基础镜像
+### FROM 基础镜像
 
 FROM会拉取容器的基础镜像，然后再通过其他命令添加层级
 
@@ -243,7 +243,7 @@ FROM nginx:1.21.0-alpine
 FROM scratch
 ```
 
-#### RUN 执行指令
+### RUN 执行指令
 
 Dockerfile执行一个指令会多一层，为了减少层级冗余应尽量放到一个RUN里
 
@@ -257,7 +257,7 @@ RUN apt-get update && \
     rm -rf ipinfo_2.0.1_linux_amd64.tar.gz
 ```
 
-#### WORKDIR 进入
+### WORKDIR 进入
 
 WORKDIR会进入指定目录，没有该目录则会创建并进入
 
@@ -266,7 +266,7 @@ FROM ubuntu:20.04
 WORKDIR </path>
 ```
 
-#### COPY vs ADD 复制
+### COPY vs ADD 复制
 
 COPY是完全复制文件
 
@@ -282,7 +282,7 @@ FROM ubuntu:20.04
 ADD <file name.gz> </path>
 ```
 
-#### ARG vs ENV
+### ARG vs ENV
 
 ARG可以创建一个变量，并且在构建image时通过命令修改。ARG变量仅在构建image中有效
 
@@ -315,7 +315,7 @@ RUN apt-get update && \
     rm -rf ipinfo_${VERSION}_linux_amd64.tar.gz
 ```
 
-#### CMD vs ENTRYPOINT
+### CMD vs ENTRYPOINT
 
 CMD 设置的命令，可以在docker container run 时传入其它命令，覆盖掉 CMD 的命令
 
@@ -359,7 +359,7 @@ ENV NAME=docker
 CMD ["sh", "-c", "echo hello $NAME"]
 ```
 
-#### Dockerfile技巧
+### Dockerfile技巧
 
 **Dockerfile构建时会沿用CACHED缓存**，当某一行命令发生改变，该行以下命令都不用缓存了。
 
@@ -435,11 +435,11 @@ EXPOSE 5000
 CMD ["flask", "run", "-h", "0.0.0.0"]
 ```
 
-### 存储 Volume
+## 存储 Volume
 
 当删除container时，里面的数据也会删除。如果我们需要容器持久化存储时我们需要构建Volume。
 
-#### Dockerfile方式创建Volume
+### Dockerfile方式创建Volume
 
 ```bash
 FROM alpine:latest
@@ -511,7 +511,7 @@ $ docker image build -t my-cron .
 $ docker container run -d -v $(pwd):/app my-cron
 ```
 
-#### 删除volume
+### 删除volume
 
 删除valume前需要保证绑定的container已经删除
 
@@ -520,7 +520,7 @@ $ docker container run -d -v $(pwd):/app my-cron
 docker volume prune
 ```
 
-#### 配置mysql
+### 配置mysql
 
 ```bash
 docker run -d --restart=always --name mysql \
@@ -535,11 +535,9 @@ mysql \
 
 ```
 
-### Docker网络
+## Docker网络
 
 Docker容器之间通过bridge（docker0）通信
-
-![](https://cdn.nlark.com/yuque/0/2023/webp/2868710/1685415399419-65254881-8e0e-4115-8c33-cf4f2e5d8969.webp)
 
 ```bash
 # 查看网络
@@ -574,7 +572,7 @@ docker container inspect <container ID>
     }
 ```
 
-#### 创建bridge
+### 创建bridge
 
 容器之间默认通过bridge（docker0）通信，也可以创建新的bridge
 
@@ -594,17 +592,15 @@ NETWORK ID     NAME      DRIVER    SCOPE
 docker network inspect 4b5b378bb922
 ```
 
-#### 建立连接
+### 建立连接
 
 docker container 可以连接 多个 bridge
-
-![画板](https://cdn.nlark.com/yuque/0/2023/jpeg/2868710/1685418213739-91e9e1fc-61b7-4d0b-abd6-4602c4859363.jpeg)
 
 ```bash
 docker network connect <bridge name> <container name>
 ```
 
-#### 网络bridge的意义
+### 网络bridge的意义
 
 docker container之间通过ip可以ping通，那么bridge的意义是什么呢？
 
@@ -615,11 +611,9 @@ docker container exec -it <container01> ping 172.17.0.3
 docker container exec -it <container01> ping <container02>
 ```
 
-#### 容器网络端口转发
+### 容器网络端口转发
 
 上面知道容器之间可以通信，但是外部如何通过公网IP来访问容器内部呢？
-
-![画板](https://cdn.nlark.com/yuque/0/2023/jpeg/2868710/1685419525998-9d6332a5-ad7d-4932-a38a-04203a12edc1.jpeg)
 
 可以通过端口映射转发来访问容器内部`-p 80:80`
 

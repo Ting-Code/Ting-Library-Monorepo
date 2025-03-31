@@ -1,4 +1,6 @@
-### Linux常用命令
+# 📋Linux基础
+
+## Linux常用命令
 
 ```bash
 # 列出目录
@@ -50,9 +52,7 @@ mv <file name> <file name>
 mv <file name> <directory name / file name>
 ```
 
-### vim
-
-![](https://cdn.nlark.com/yuque/0/2023/png/2868710/1685622554891-8e0ebe29-30f8-421f-930d-49cc803d6a67.png)
+## vim
 
 ```bash
 # 打开文件
@@ -66,9 +66,7 @@ vim <file name>
 :wq
 ```
 
-### Linux目录结构
-
-![](https://cdn.nlark.com/yuque/0/2023/png/2868710/1685612332531-32ab8da4-8902-4377-9b11-c6943850c405.png)
+## Linux目录结构
 
 - **/bin**：bin是Binary的缩写, 这个目录存放着最经常使用的命令。
 - **/boot**：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。
@@ -93,7 +91,7 @@ vim <file name>
 - **/var**：这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。
 - **/run**：是一个临时文件系统，存储系统启动以来的信息。当系统重启时，这个目录下的文件应该被删掉或清除。
 
-### Linux文件属性
+## Linux文件属性
 
 ```bash
 [root@VM-20-9-centos /]# ls -la
@@ -117,9 +115,7 @@ drwxr-xr-x.   3 root root  4096 Jul 20  2021 home
 - 若是[ **b** ]则表示为装置文件里面的可供储存的接口设备 ( 可随机存取装置 )；
 - 若是[ **c** ]则表示为装置文件里面的串行端口设备，例如键盘、鼠标 ( 一次性读取装置 )。
 
-![](https://cdn.nlark.com/yuque/0/2023/png/2868710/1685621108373-f4dbc224-b5f1-488b-8805-08523ab192cd.png)
-
-#### 文件属性命令
+### 文件属性命令
 
 ```bash
 # 更改文件属组
@@ -133,7 +129,7 @@ chown [-R] <属主名>：<属组名> <文件名>
 chmod [-R] xyz <文件或目录>
 ```
 
-### Linux网络
+## Linux网络
 
 ```bash
 # 查看ip地址
@@ -142,7 +138,7 @@ ifconfig
 ip addr
 ```
 
-#### 测试网络联通
+### 测试网络联通
 
 ```bash
 # 测试ip
@@ -154,7 +150,7 @@ telnet www.baidu.com 80
 
 [curl 的用法指南](http://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
 
-### Linux防火墙
+## Linux防火墙
 
 第一次链接远程服务的时候发现连不上，安全组也开通了端口。
 
@@ -187,9 +183,9 @@ firewall-cmd --permanent --zone=public --add-port=22/tcp
 firewall-cmd --reload
 ```
 
-### Linux用户管理
+## Linux用户管理
 
-#### 用户管理
+### 用户管理
 
 新账号，然后为新账号分配用户号、用户组、主目录和登录Shell等资源。
 
@@ -219,7 +215,7 @@ usermod -m <username>
 usermod -s /bin/xxx -d /home/xxx –g developer xxx
 ```
 
-#### 用户口令
+### 用户口令
 
 超级用户可以为自己和其他用户指定口令，普通用户只能用它修改自己的口令
 
@@ -239,7 +235,7 @@ passwd -l <username>
 passwd -d <username>
 ```
 
-### 用户组管理
+## 用户组管理
 
 系统可以对一个用户组中的所有用户进行集中管理。
 
@@ -264,7 +260,7 @@ groupmod <name>
 newgrp root
 ```
 
-### 磁盘管理
+## 磁盘管理
 
 Linux磁盘管理好坏直接关系到整个系统的性能问题。
 
