@@ -134,18 +134,10 @@ const menu = {
       path: '/docs/repackage',
       children: [
         {
-          name: 'repackage_home',
-          path: '/docs/repackage/home',
-          meta: {
-            title: '🔥Vue二次封装思考',
-            module: 'docs'
-          }
-        },
-        {
           name: 'repackage_components',
           path: '/docs/repackage/components',
           meta: {
-            title: 'Vue二次封装组件',
+            title: '🛠️二次封装组件',
             module: 'docs'
           }
         }

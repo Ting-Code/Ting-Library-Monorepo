@@ -2,23 +2,23 @@
   <ElRadioGroup v-bind="$attrs" :model-value="displayValue" @change="handleChange">
     <template v-if="props.type === 'button'">
       <ElRadioButton
-        v-for="radioItem in props.options"
-        v-bind="{ ...radioItem }"
-        :key="`${radioItem.value}${radioItem.label}`"
+        v-for="item in props.options"
+        v-bind="{ ...item }"
+        :key="`${item.value}${item.label}`"
       >
-        <template v-for="(_, name) in slots" #[name]="slotData">
-          <slot :name="name" v-bind="{ ...radioItem, ...slotData }"></slot>
+        <template v-for="(_, name) in slots" #[name]="native">
+          <slot :name="name" v-bind="{ row: item, native }"></slot>
         </template>
       </ElRadioButton>
     </template>
     <template v-else>
       <ElRadio
-        v-for="radioItem in props.options"
-        v-bind="{ ...radioItem }"
-        :key="`${radioItem.value}${radioItem.label}`"
+        v-for="item in props.options"
+        v-bind="{ ...item }"
+        :key="`${item.value}${item.label}`"
       >
-        <template v-for="(_, name) in slots" #[name]="slotData">
-          <slot :name="name" v-bind="{ ...radioItem, ...slotData }"></slot>
+        <template v-for="(_, name) in slots" #[name]="native">
+          <slot :name="name" v-bind="{ row: item, native }"></slot>
         </template>
       </ElRadio>
     </template>

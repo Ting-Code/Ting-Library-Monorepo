@@ -41,7 +41,7 @@ export interface ReRadioEmits {
 }
 
 export type ReRadioSlots = {
-  default(props: ReRadioOptionItem): any
+  default(props: any): any
 }
 export const ReRadio = Radio
 export default ReRadio

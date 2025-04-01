@@ -1,8 +1,8 @@
 <template>
   <ElSelect v-bind="$attrs" :model-value="displayValue" @change="handleChange">
-    <template v-for="(_, name) in slots" #[name]="slotData">
+    <template v-for="(_, name) in slots" #[name]="native">
       <template v-if="name !== 'default'">
-        <slot :name="name" v-bind="slotData"></slot>
+        <slot :name="name" v-bind="native"></slot>
       </template>
     </template>
     <template v-if="props.type === 'group'">
@@ -13,36 +13,36 @@
         :key="selectGroupItem.label"
       >
         <ElOption
-          v-for="selectItem in selectGroupItem.options"
-          :disabled="!!selectItem.disabled"
-          :value="selectItem.value"
-          :label="selectItem.label"
-          :key="`${selectItem.value}${selectItem.label}`"
+          v-for="item in selectGroupItem.options"
+          :disabled="!!item.disabled"
+          :value="item.value"
+          :label="item.label"
+          :key="`${item.value}${item.label}`"
         >
           <template v-for="(_, name) in slots" #[name]="native">
-            <template v-if="selectItem.slot === name">
-              <slot :name="name" v-bind="{ selectGroupItem, selectItem, native }"></slot>
+            <template v-if="item.slot === name">
+              <slot :name="name" v-bind="{ groupRow: selectGroupItem, row: item, native }"></slot>
             </template>
           </template>
         </ElOption>
         <template v-for="(_, name) in slots" #[name]="native">
           <template v-if="selectGroupItem.slot === name">
-            <slot :name="name" v-bind="{ selectGroupItem, native }"></slot>
+            <slot :name="name" v-bind="{ groupRow: selectGroupItem, native }"></slot>
           </template>
         </template>
       </ElOptionGroup>
     </template>
     <template v-else>
       <ElOption
-        v-for="selectItem in props.options as ReSelectOptionItem[]"
-        :disabled="!!selectItem.disabled"
-        :value="selectItem.value"
-        :label="selectItem.label"
-        :key="`${selectItem.value}${selectItem.label}`"
+        v-for="item in props.options as ReSelectOptionItem[]"
+        :disabled="!!item.disabled"
+        :value="item.value"
+        :label="item.label"
+        :key="`${item.value}${item.label}`"
       >
         <template v-for="(_, name) in slots" #[name]="native">
-          <template v-if="selectItem.slot === name">
-            <slot :name="name" v-bind="{ selectItem, native }"></slot>
+          <template v-if="item.slot === name">
+            <slot :name="name" v-bind="{ row: item, native }"></slot>
           </template>
         </template>
       </ElOption>

@@ -22,6 +22,7 @@
   import { ReSelect } from '@tingcode/lib-vue'
   const data = ref('1')
   const handleChange = (value1, value2) => {
+    data.value = value2
     console.log(value1, value2)
   }
 </script>

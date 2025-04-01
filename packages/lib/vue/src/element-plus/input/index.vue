@@ -1,7 +1,7 @@
 <template>
   <ElInput v-bind="$attrs" v-model="displayValue" @focus="handleFocus" @blur="handleBlur">
-    <template v-for="(_, name) in slots" #[name]="slotData">
-      <slot :name="name" v-bind="slotData || {}"></slot>
+    <template v-for="(_, name) in slots" #[name]="native">
+      <slot :name="name" v-bind="native || {}"></slot>
     </template>
   </ElInput>
 </template>

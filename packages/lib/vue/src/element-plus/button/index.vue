@@ -1,8 +1,8 @@
 <template>
   <ButtonMap v-if="isUnNative" :type="props?.type as IButtonMapType" v-bind="$attrs" />
   <ElButton v-else v-bind="$attrs" :type="props?.type as IElButtonAttrs['type']">
-    <template v-for="(_, name) in slots" #[name]="slotData">
-      <slot :name="name" v-bind="slotData || {}"></slot>
+    <template v-for="(_, name) in slots" #[name]="native">
+      <slot :name="name" v-bind="native || {}"></slot>
     </template>
   </ElButton>
 </template>

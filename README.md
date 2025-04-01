@@ -1,4 +1,4 @@
-# <a id="ting">Ting Library 介绍</a>
+# <a id="ting">📖Ting Library 介绍</a>
 
 <p align="center">
 <img src="https://img.shields.io/badge/pnpm-8.0+-brown.svg" alt="pnpm" />

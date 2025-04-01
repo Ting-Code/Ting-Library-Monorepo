@@ -46,7 +46,7 @@
 type IElButtonProps = InstanceType<typeof ElButton>['$props']
 // 继承子组件props类型
 interface IProps extends IElButtonProps {
-    ...
+  ...
 }
 // 继承子组件props类型
 const props = defineProps<IProps>()
