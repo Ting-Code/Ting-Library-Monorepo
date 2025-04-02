@@ -12,6 +12,11 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/performance/optimization',
+    name: 'performance_optimization',
+    component: () => import('@/views/performance/optimization/index.docs.vue')
+  },
+  {
     path: '/performance/virtual-scroll',
     name: 'performance_virtual_scroll',
     component: () => import('@/views/performance/virtual-scroll/index.docs.vue')

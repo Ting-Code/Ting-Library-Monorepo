@@ -114,10 +114,18 @@ const menu = {
       path: '/docs/performance',
       children: [
         {
+          name: 'performance_optimization',
+          path: '/docs/performance/optimization',
+          meta: {
+            title: '⚡性能优化综述',
+            module: 'docs'
+          }
+        },
+        {
           name: 'performance_virtual_scroll',
           path: '/docs/performance/virtual-scroll',
           meta: {
-            title: '虚拟列表',
+            title: '📜虚拟列表',
             module: 'docs'
           }
         }

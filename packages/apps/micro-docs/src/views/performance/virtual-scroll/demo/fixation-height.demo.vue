@@ -30,6 +30,5 @@
 <style lang="scss" scoped>
   .fixation-height-wrapper {
     height: 300px;
-    border: 1px solid #797979;
   }
 </style>
