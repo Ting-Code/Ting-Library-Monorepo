@@ -2,7 +2,7 @@
   <DocsLayout>
     <Markdown>
       <pre>
-## 大学人数统计
+# 📊数据图表
       </pre>
     </Markdown>
     <CodeBlock :is="ChartDemo" type="html" />

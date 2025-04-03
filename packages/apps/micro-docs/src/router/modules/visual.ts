@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/visual/flow',
     name: 'visual_flow',
-    component: () => import('@/views/visual/flow/index.docs.vue')
+    component: () => import('@/views/visual/flow/index.vue')
   }
 ]
 
