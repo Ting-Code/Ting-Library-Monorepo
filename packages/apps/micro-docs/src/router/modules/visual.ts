@@ -12,9 +12,14 @@ import { RouteRecordRaw } from 'vue-router'
  * */
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/vitual/demographic',
-    name: 'vitual_demographic',
-    component: () => import('@/views/visual/demographic/index.docs.vue')
+    path: '/visual/chart',
+    name: 'visual_chart',
+    component: () => import('@/views/visual/chart/index.docs.vue')
+  },
+  {
+    path: '/visual/flow',
+    name: 'visual_flow',
+    component: () => import('@/views/visual/flow/index.docs.vue')
   }
 ]
 

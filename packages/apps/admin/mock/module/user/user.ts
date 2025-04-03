@@ -161,10 +161,18 @@ const menu = {
       path: '/docs/vitual',
       children: [
         {
-          name: 'vitual_demographic',
-          path: '/docs/vitual/demographic',
+          name: 'visual_chart',
+          path: '/docs/visual/chart',
           meta: {
-            title: '📊人口统计',
+            title: '📊数据图表',
+            module: 'docs'
+          }
+        },
+        {
+          name: 'visual_flow',
+          path: '/docs/visual/flow',
+          meta: {
+            title: '🗺️流程图',
             module: 'docs'
           }
         }

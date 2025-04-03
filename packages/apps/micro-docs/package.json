@@ -11,6 +11,7 @@
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "dependencies": {
+    "@antv/x6": "^2.18.1",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "@tingcode/lib-vue": "workspace:*",
