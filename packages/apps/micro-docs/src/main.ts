@@ -8,7 +8,9 @@ import { setupGlobDirectives } from '@/directives'
 import * as EPIcon from '@element-plus/icons-vue'
 import { initDocsMicroApp, initNamespace } from '@tingcode/system'
 import { NAMESPACE } from '@/hooks/useSetting'
+import { graphRegisterNodes } from '@/hooks/useX6'
 initDocsMicroApp()
+graphRegisterNodes()
 let app: App<Element>
 
 window.mount = () => {

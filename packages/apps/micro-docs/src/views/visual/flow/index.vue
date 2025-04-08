@@ -1,6 +1,14 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('head')">头部</div>
+    <div :class="ns.e('head')">
+      <ReButton @click="generateConfig" :icon="Share">复制配置</ReButton>
+      <ReButton @click="generateConfig" :icon="CaretLeft" />
+      <ReButton @click="generateConfig" :icon="CaretRight" />
+      <ReButton @click="generateConfig" :icon="Delete" />
+      <ReButton @click="generateConfig" :icon="ZoomIn" />
+      <ReButton @click="generateConfig" :icon="ZoomOut" />
+      <ReButton @click="generateConfig" :icon="Aim" />
+    </div>
     <div :class="ns.e('main')">
       <div ref="stencilRef" :class="ns.em('main', 'stencil-box')"></div>
       <div ref="graphRef" :class="ns.em('main', 'graph-box')"></div>
@@ -9,6 +17,18 @@
 </template>
 
 <script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+  import { ReButton } from '@tingcode/lib-vue'
+  import { useNamespace, getGlobalDataElement } from '@tingcode/system'
+  import {
+    Delete,
+    ZoomIn,
+    ZoomOut,
+    Aim,
+    CaretLeft,
+    CaretRight,
+    Share
+  } from '@element-plus/icons-vue'
   import { Graph, Shape } from '@antv/x6'
   import { Stencil } from '@antv/x6-plugin-stencil'
   import { Transform } from '@antv/x6-plugin-transform'
@@ -17,19 +37,39 @@
   import { Keyboard } from '@antv/x6-plugin-keyboard'
   import { Clipboard } from '@antv/x6-plugin-clipboard'
   import { History } from '@antv/x6-plugin-history'
-  import { useNamespace } from '@tingcode/system'
-  import { useSetting } from '@/hooks/useSetting'
-  const { getRootTheme } = useSetting()
+
   const ns = useNamespace('visual-flow')
   const stencilRef = ref<HTMLDivElement | null>(null)
   const graphRef = ref<HTMLDivElement | null>(null)
   let graph: null | Graph = null
+
+  const generateConfig = async () => {
+    document.body.focus()
+    const config = graph!.toJSON()
+    const configJson = JSON.stringify(config, null, 2)
+    try {
+      const input = document.createElement('input')
+      input.value = configJson
+      document.body.appendChild(input)
+      input.select() // 选择实例内容
+      document.execCommand('Copy') // 执行复制
+      document.body.removeChild(input)
+      const El = getGlobalDataElement()
+      El.ElMessage({
+        message: '复制到剪贴板成功',
+        type: 'success'
+      })
+    } catch (error) {
+      console.error('复制到剪贴板失败:', error)
+    }
+  }
+
   onMounted(() => {
     graph = new Graph({
       container: graphRef.value!,
       grid: true,
       background: {
-        color: getRootTheme.value === 'dark' ? '#161616' : '#ffffff'
+        color: '#ffffff'
       },
       mousewheel: {
         enabled: true,
@@ -84,6 +124,7 @@
         }
       }
     })
+
     graph
       .use(
         new Transform({
@@ -130,6 +171,7 @@
       }
     })
     stencilRef.value!.appendChild(stencil.container)
+
     graph!.bindKey(['meta+c', 'ctrl+c'], () => {
       const cells = graph!.getSelectedCells()
       if (cells.length) {
@@ -152,7 +194,6 @@
       }
       return false
     })
-
     // undo redo
     graph!.bindKey(['meta+z', 'ctrl+z'], () => {
       if (graph!.canUndo()) {
@@ -166,7 +207,6 @@
       }
       return false
     })
-
     // select all
     graph!.bindKey(['meta+a', 'ctrl+a'], () => {
       const nodes = graph!.getNodes()
@@ -174,7 +214,6 @@
         graph!.select(nodes)
       }
     })
-
     // delete
     graph!.bindKey('backspace', () => {
       const cells = graph!.getSelectedCells()
@@ -182,7 +221,6 @@
         graph!.removeCells(cells)
       }
     })
-
     // zoom
     graph!.bindKey(['ctrl+1', 'meta+1'], () => {
       const zoom = graph!.zoom()
@@ -196,7 +234,6 @@
         graph!.zoom(-0.1)
       }
     })
-
     // 控制连接桩显示/隐藏
     const showPorts = (ports: NodeListOf<SVGElement>, show: boolean) => {
       for (let i = 0, len = ports.length; i < len; i += 1) {
@@ -204,216 +241,24 @@
       }
     }
     graph!.on('node:mouseenter', () => {
-      const container = document.getElementById('graph-container')!
+      const container = graphRef.value!
       const ports = container.querySelectorAll('.x6-port-body') as NodeListOf<SVGElement>
       showPorts(ports, true)
     })
     graph!.on('node:mouseleave', () => {
-      const container = document.getElementById('graph-container')!
+      const container = graphRef.value!
       const ports = container.querySelectorAll('.x6-port-body') as NodeListOf<SVGElement>
       showPorts(ports, false)
     })
+    // 为节点添加编辑功能
+    graph!.on('node:click', ({ cell }) => {
+      const label = cell.attr('label/text')
+      const newLabel = prompt('请输入新的文本', label as string)
+      if (newLabel !== null) {
+        cell.attr('label/text', newLabel)
+      }
+    })
     // #endregion
-
-    // #region 初始化图形
-    const ports = {
-      groups: {
-        top: {
-          position: 'top',
-          attrs: {
-            circle: {
-              r: 4,
-              magnet: true,
-              stroke: '#5F95FF',
-              strokeWidth: 1,
-              fill: '#fff',
-              style: {
-                visibility: 'hidden'
-              }
-            }
-          }
-        },
-        right: {
-          position: 'right',
-          attrs: {
-            circle: {
-              r: 4,
-              magnet: true,
-              stroke: '#5F95FF',
-              strokeWidth: 1,
-              fill: '#fff',
-              style: {
-                visibility: 'hidden'
-              }
-            }
-          }
-        },
-        bottom: {
-          position: 'bottom',
-          attrs: {
-            circle: {
-              r: 4,
-              magnet: true,
-              stroke: '#5F95FF',
-              strokeWidth: 1,
-              fill: '#fff',
-              style: {
-                visibility: 'hidden'
-              }
-            }
-          }
-        },
-        left: {
-          position: 'left',
-          attrs: {
-            circle: {
-              r: 4,
-              magnet: true,
-              stroke: '#5F95FF',
-              strokeWidth: 1,
-              fill: '#fff',
-              style: {
-                visibility: 'hidden'
-              }
-            }
-          }
-        }
-      },
-      items: [
-        {
-          group: 'top'
-        },
-        {
-          group: 'right'
-        },
-        {
-          group: 'bottom'
-        },
-        {
-          group: 'left'
-        }
-      ]
-    }
-
-    Graph.registerNode(
-      'custom-rect',
-      {
-        inherit: 'rect',
-        width: 66,
-        height: 36,
-        attrs: {
-          body: {
-            strokeWidth: 1,
-            stroke: '#5F95FF',
-            fill: '#EFF4FF'
-          },
-          text: {
-            fontSize: 12,
-            fill: '#262626'
-          }
-        },
-        ports: { ...ports }
-      },
-      true
-    )
-
-    Graph.registerNode(
-      'custom-polygon',
-      {
-        inherit: 'polygon',
-        width: 66,
-        height: 36,
-        attrs: {
-          body: {
-            strokeWidth: 1,
-            stroke: '#5F95FF',
-            fill: '#EFF4FF'
-          },
-          text: {
-            fontSize: 12,
-            fill: '#262626'
-          }
-        },
-        ports: {
-          ...ports,
-          items: [
-            {
-              group: 'top'
-            },
-            {
-              group: 'bottom'
-            }
-          ]
-        }
-      },
-      true
-    )
-
-    Graph.registerNode(
-      'custom-circle',
-      {
-        inherit: 'circle',
-        width: 45,
-        height: 45,
-        attrs: {
-          body: {
-            strokeWidth: 1,
-            stroke: '#5F95FF',
-            fill: '#EFF4FF'
-          },
-          text: {
-            fontSize: 12,
-            fill: '#262626'
-          }
-        },
-        ports: { ...ports }
-      },
-      true
-    )
-
-    Graph.registerNode(
-      'custom-image',
-      {
-        inherit: 'rect',
-        width: 52,
-        height: 52,
-        markup: [
-          {
-            tagName: 'rect',
-            selector: 'body'
-          },
-          {
-            tagName: 'image'
-          },
-          {
-            tagName: 'text',
-            selector: 'label'
-          }
-        ],
-        attrs: {
-          body: {
-            stroke: '#5F95FF',
-            fill: '#5F95FF'
-          },
-          image: {
-            width: 26,
-            height: 26,
-            refX: 13,
-            refY: 16
-          },
-          label: {
-            refX: 3,
-            refY: 2,
-            textAnchor: 'left',
-            textVerticalAnchor: 'top',
-            fontSize: 12,
-            fill: '#fff'
-          }
-        },
-        ports: { ...ports }
-      },
-      true
-    )
     const r1 = graph!.createNode({
       shape: 'custom-rect',
       label: '开始',
@@ -461,7 +306,6 @@
       label: '连接'
     })
     stencil.load([r1, r2, r3, r4, r5, r6], 'group1')
-
     const imageShapes = [
       {
         label: 'Client',
@@ -510,6 +354,9 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    @include e(head) {
+      padding: 6px 12px;
+    }
     @include e(main) {
       position: relative;
       flex: 1;
