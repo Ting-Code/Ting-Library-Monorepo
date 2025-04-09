@@ -1,16 +1,19 @@
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('head')">
-      <ReButton @click="generateConfig" :icon="Share">复制配置</ReButton>
-      <ReButton @click="generateConfig" :icon="CaretLeft" />
-      <ReButton @click="generateConfig" :icon="CaretRight" />
-      <ReButton @click="generateConfig" :icon="Delete" />
-      <ReButton @click="generateConfig" :icon="ZoomIn" />
-      <ReButton @click="generateConfig" :icon="ZoomOut" />
-      <ReButton @click="generateConfig" :icon="Aim" />
+      <template v-if="isMobile">
+        <ReButton v-show="!isShowStencil" @click="isShowStencil = true" :icon="DArrowRight" />
+        <ReButton v-show="isShowStencil" @click="isShowStencil = false" :icon="DArrowLeft" />
+      </template>
+      <ReButton @click="generateConfig(graph)" :icon="Share" />
+      <ReButton @click="undo(graph)" :icon="CaretLeft" />
+      <ReButton @click="redo(graph)" :icon="CaretRight" />
+      <ReButton @click="removeCells(graph)" :icon="Delete" />
+      <ReButton @click="zoomIn(graph)" :icon="ZoomIn" />
+      <ReButton @click="zoomOut(graph)" :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
-      <div ref="stencilRef" :class="ns.em('main', 'stencil-box')"></div>
+      <div ref="stencilRef" :class="ns.em('main', 'stencil-box')" v-show="isShowStencil"></div>
       <div ref="graphRef" :class="ns.em('main', 'graph-box')"></div>
     </div>
   </div>
@@ -20,14 +23,16 @@
   import { ref, onMounted } from 'vue'
   import { ReButton } from '@tingcode/lib-vue'
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
+  import { useAppProviderContext } from '@/application/useAppContext'
   import {
     Delete,
     ZoomIn,
     ZoomOut,
-    Aim,
     CaretLeft,
     CaretRight,
-    Share
+    Share,
+    DArrowRight,
+    DArrowLeft
   } from '@element-plus/icons-vue'
   import { Graph, Shape } from '@antv/x6'
   import { Stencil } from '@antv/x6-plugin-stencil'
@@ -38,12 +43,25 @@
   import { Clipboard } from '@antv/x6-plugin-clipboard'
   import { History } from '@antv/x6-plugin-history'
 
+  const { isMobile } = toRefs(useAppProviderContext())
   const ns = useNamespace('visual-flow')
   const stencilRef = ref<HTMLDivElement | null>(null)
   const graphRef = ref<HTMLDivElement | null>(null)
+  const isShowStencil = ref(true)
   let graph: null | Graph = null
+  watch(
+    isMobile,
+    (val) => {
+      if (val) {
+        isShowStencil.value = false
+      } else {
+        isShowStencil.value = true
+      }
+    },
+    { immediate: true }
+  )
 
-  const generateConfig = async () => {
+  const generateConfig = async (graph) => {
     document.body.focus()
     const config = graph!.toJSON()
     const configJson = JSON.stringify(config, null, 2)
@@ -63,6 +81,36 @@
       console.error('复制到剪贴板失败:', error)
     }
   }
+  const undo = (graph) => {
+    if (graph!.canUndo()) {
+      graph!.undo()
+    }
+    return false
+  }
+  const redo = (graph) => {
+    if (graph!.canRedo()) {
+      graph!.redo()
+    }
+    return false
+  }
+  const removeCells = (graph) => {
+    const cells = graph!.getSelectedCells()
+    if (cells.length) {
+      graph!.removeCells(cells)
+    }
+  }
+  const zoomIn = (graph) => {
+    const zoom = graph!.zoom()
+    if (zoom < 1.5) {
+      graph!.zoom(0.1)
+    }
+  }
+  const zoomOut = (graph) => {
+    const zoom = graph!.zoom()
+    if (zoom > 0.5) {
+      graph!.zoom(-0.1)
+    }
+  }
 
   onMounted(() => {
     graph = new Graph({
@@ -71,6 +119,7 @@
       background: {
         color: '#ffffff'
       },
+      panning: true,
       mousewheel: {
         enabled: true,
         zoomAtMousePosition: true,
@@ -195,18 +244,8 @@
       return false
     })
     // undo redo
-    graph!.bindKey(['meta+z', 'ctrl+z'], () => {
-      if (graph!.canUndo()) {
-        graph!.undo()
-      }
-      return false
-    })
-    graph!.bindKey(['meta+shift+z', 'ctrl+shift+z'], () => {
-      if (graph!.canRedo()) {
-        graph!.redo()
-      }
-      return false
-    })
+    graph!.bindKey(['meta+z', 'ctrl+z'], () => undo(graph))
+    graph!.bindKey(['meta+shift+z', 'ctrl+shift+z'], () => redo(graph))
     // select all
     graph!.bindKey(['meta+a', 'ctrl+a'], () => {
       const nodes = graph!.getNodes()
@@ -215,25 +254,10 @@
       }
     })
     // delete
-    graph!.bindKey('backspace', () => {
-      const cells = graph!.getSelectedCells()
-      if (cells.length) {
-        graph!.removeCells(cells)
-      }
-    })
+    graph!.bindKey('backspace', () => removeCells(graph))
     // zoom
-    graph!.bindKey(['ctrl+1', 'meta+1'], () => {
-      const zoom = graph!.zoom()
-      if (zoom < 1.5) {
-        graph!.zoom(0.1)
-      }
-    })
-    graph!.bindKey(['ctrl+2', 'meta+2'], () => {
-      const zoom = graph!.zoom()
-      if (zoom > 0.5) {
-        graph!.zoom(-0.1)
-      }
-    })
+    graph!.bindKey(['ctrl+1', 'meta+1'], () => zoomIn(graph))
+    graph!.bindKey(['ctrl+2', 'meta+2'], () => zoomOut(graph))
     // 控制连接桩显示/隐藏
     const showPorts = (ports: NodeListOf<SVGElement>, show: boolean) => {
       for (let i = 0, len = ports.length; i < len; i += 1) {
@@ -356,6 +380,9 @@
     flex-direction: column;
     @include e(head) {
       padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
     }
     @include e(main) {
       position: relative;
@@ -363,12 +390,13 @@
       width: 100%;
       overflow: hidden;
       display: flex;
+      flex-direction: row;
       @include m(stencil-box) {
         width: 180px;
         height: 100%;
       }
       @include m(graph-box) {
-        width: calc(100% - 180px);
+        flex: 1;
         height: 100%;
       }
     }
