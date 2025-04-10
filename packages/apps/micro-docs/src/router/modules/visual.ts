@@ -20,6 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/visual/flow',
     name: 'visual_flow',
     component: () => import('@/views/visual/flow/index.vue')
+  },
+  {
+    path: '/visual/animation',
+    name: 'visual_animation',
+    component: () => import('@/views/visual/animation/index.docs.vue')
   }
 ]
 

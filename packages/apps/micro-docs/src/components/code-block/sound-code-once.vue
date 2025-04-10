@@ -72,10 +72,9 @@
       overflow-x: auto;
       overflow-y: hidden;
       transition: height 0.25s;
-      padding-top: 12px;
 
       > pre {
-        padding: 0 calc(2vw);
+        padding: 18px calc(2vw) 0;
         font-size: 13px;
         font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
       }

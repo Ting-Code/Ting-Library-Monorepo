@@ -161,6 +161,14 @@ const menu = {
       path: '/docs/vitual',
       children: [
         {
+          name: 'visual_flow',
+          path: '/docs/visual/flow',
+          meta: {
+            title: '🗺️流程图',
+            module: 'docs'
+          }
+        },
+        {
           name: 'visual_chart',
           path: '/docs/visual/chart',
           meta: {
@@ -169,10 +177,10 @@ const menu = {
           }
         },
         {
-          name: 'visual_flow',
-          path: '/docs/visual/flow',
+          name: 'visual_animation',
+          path: '/docs/visual/animation',
           meta: {
-            title: '🗺️流程图',
+            title: '🎞️动画',
             module: 'docs'
           }
         }

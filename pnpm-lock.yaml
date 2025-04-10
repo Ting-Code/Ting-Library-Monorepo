@@ -407,6 +407,9 @@ importers:
       element-plus:
         specifier: 'catalog:'
         version: 2.9.6(vue@3.5.13(typescript@5.8.2))
+      gsap:
+        specifier: ^3.12.7
+        version: 3.12.7
       pinia:
         specifier: 'catalog:'
         version: 3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
@@ -432,6 +435,9 @@ importers:
         specifier: 2.0.0-beta.8
         version: 2.0.0-beta.8(vue@3.5.13(typescript@5.8.2))
     devDependencies:
+      '@types/gsap':
+        specifier: ^3.0.0
+        version: 3.0.0
       '@types/prismjs':
         specifier: ^1.26.5
         version: 1.26.5
@@ -3103,6 +3109,13 @@ packages:
       {
         integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==
       }
+
+  '@types/gsap@3.0.0':
+    resolution:
+      {
+        integrity: sha512-BbWLi4WRHGze4C8NV7U7yRevuBFiPkPZZyGa0rryanvh/9HPUFXTNBXsGQxJZJq7Ix7j4RXMYodP3s+OsqCErg==
+      }
+    deprecated: This is a stub types definition. gsap provides its own type definitions, so you do not need this installed.
 
   '@types/http-errors@2.0.4':
     resolution:
@@ -7116,6 +7129,12 @@ packages:
     resolution:
       {
         integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
+      }
+
+  gsap@3.12.7:
+    resolution:
+      {
+        integrity: sha512-V4GsyVamhmKefvcAKaoy0h6si0xX7ogwBoBSs2CTJwt7luW0oZzC0LhdkyuKV8PJAXr7Yaj8pMjCKD4GJ+eEMg==
       }
 
   gzip-size@6.0.0:
@@ -14486,6 +14505,10 @@ snapshots:
       '@types/jsonfile': 6.1.1
       '@types/node': 20.7.0
 
+  '@types/gsap@3.0.0':
+    dependencies:
+      gsap: 3.12.7
+
   '@types/http-errors@2.0.4': {}
 
   '@types/http-proxy@1.17.10':
@@ -17341,6 +17364,8 @@ snapshots:
   grapheme-splitter@1.0.4: {}
 
   graphemer@1.4.0: {}
+
+  gsap@3.12.7: {}
 
   gzip-size@6.0.0:
     dependencies:
