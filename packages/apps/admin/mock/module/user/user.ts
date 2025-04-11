@@ -59,6 +59,14 @@ const menu = {
           }
         },
         {
+          name: 'system_auto_publish',
+          path: '/docs/system/auto-publish',
+          meta: {
+            title: '🚀CI/CD',
+            module: 'docs'
+          }
+        },
+        {
           name: 'system_404',
           path: '/docs/system/404',
           meta: {

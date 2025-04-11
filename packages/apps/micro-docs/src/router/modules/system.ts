@@ -37,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/system/css/index.docs.vue')
   },
   {
+    path: '/system/auto-publish',
+    name: 'system_auto_publish',
+    component: () => import('@/views/system/auto-publish/index.docs.vue')
+  },
+  {
     path: '/system/404',
     name: 'system_404',
     meta: {
