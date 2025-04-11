@@ -74,7 +74,7 @@
       transition: height 0.25s;
 
       > pre {
-        padding: 18px calc(2vw) 0;
+        padding: 26px calc(2vw) 0;
         font-size: 13px;
         font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
       }

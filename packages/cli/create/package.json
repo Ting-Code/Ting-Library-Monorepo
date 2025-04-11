@@ -33,7 +33,7 @@
     "esno": "^0.16.3",
     "typescript": "catalog:",
     "unbuild": "^1.2.0",
-    "vitest": "^0.29.8"
+    "vitest": "catalog:"
   },
   "dependencies": {
     "@inquirer/prompts": "^5.4.0",
