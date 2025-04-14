@@ -1,7 +1,8 @@
 packages:
-  - 'packages/**'
-  - 'configs/*'
-  - 'scripts'
+  - packages/**
+  - configs/*
+  - scripts
+
 catalog:
   '@vueuse/core': 13.0.0
   '@vueuse/integrations': 13.0.0
@@ -25,3 +26,8 @@ catalog:
   vue-tsc: 2.2.8
   unplugin-auto-import: 19.1.1
   unplugin-vue-components: 28.4.1
+
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - vue-demi

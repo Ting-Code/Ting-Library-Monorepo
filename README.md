@@ -63,6 +63,21 @@ Instructions:
       ...
 ```
 
+### 如果无法启动可以尝试
+
+```
+# 允许下载依赖
+pnpm approve-builds
+
+# 全部选择
+  ● @parcel/watcher
+  ● esbuild
+❯ ● vue-demi
+
+# 输入y
+Do you approve? (y/N) · true
+```
+
 ## 目录结构
 
 ```
