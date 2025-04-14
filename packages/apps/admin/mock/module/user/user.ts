@@ -162,7 +162,7 @@ const menu = {
     {
       name: 'vitual',
       meta: {
-        title: '可视化图表',
+        title: '可视化',
         icon: 'Picture',
         module: 'docs'
       },
