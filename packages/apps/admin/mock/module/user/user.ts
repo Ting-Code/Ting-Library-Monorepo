@@ -156,6 +156,14 @@ const menu = {
             title: '🛠️二次封装组件',
             module: 'docs'
           }
+        },
+        {
+          name: 'repackage_low_code',
+          path: '/docs/repackage/low-code',
+          meta: {
+            title: '🧱低代码',
+            module: 'docs'
+          }
         }
       ]
     },

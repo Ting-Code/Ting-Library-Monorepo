@@ -15,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/repackage/components',
     name: 'repackage_components',
     component: () => import('@/views/repackage/components/index.docs.vue')
+  },
+  {
+    path: '/repackage/low-code',
+    name: 'repackage_low_code',
+    component: () => import('@/views/repackage/low-code/index.docs.vue')
   }
 ]
 

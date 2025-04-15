@@ -8,17 +8,12 @@ export async function runBuild() {
       // return [
       //   '@apps/admin',
       //   '@apps/micro',
-      //   '@tingcli/create',
-      //   '@tingcode/lib-vue',
-      //   '@tingcli/cli-utils',
-      //   'vite-plugin-code'
       // ].includes(pkg.name)
     })
     if (!packages.length) {
       console.log('没识别到任何项目')
       return
     }
-
     if (packages.length === 1) {
       runSingleScript(packages[0], command)
       return
