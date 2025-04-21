@@ -142,7 +142,7 @@ const menu = {
     {
       name: 'repackage',
       meta: {
-        title: '组件封装',
+        title: '方案与封装',
         icon: 'Brush',
         module: 'docs'
       },
