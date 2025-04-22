@@ -1,0 +1,47 @@
+<template>
+  <div :class="ns.b()">
+    <ReButton @click="startAnimation">开始缩放动画</ReButton>
+    <ReButton @click="endAnimation">结束缩放动画</ReButton>
+    <div :class="ns.e('animated-element')"></div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import gsap from 'gsap'
+  import { ReButton } from '@tingcode/lib-vue'
+  import { useNamespace } from '@tingcode/system'
+
+  const ns = useNamespace('scale-animation')
+
+  const startAnimation = () => {
+    gsap.to(`.${ns.e('animated-element')}`, {
+      duration: 1,
+      scale: 1.5,
+      repeat: 1,
+      yoyo: true,
+      ease: 'power2.out'
+    })
+  }
+
+  const endAnimation = () => {
+    gsap.to(`.${ns.e('animated-element')}`, {
+      duration: 0.5,
+      scale: 1,
+      ease: 'power2.out'
+    })
+  }
+</script>
+
+<style lang="scss" scoped>
+  @include b(scale-animation) {
+    @include e(animated-element) {
+      margin-top: 18px;
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, #ff00ff, #00ffff);
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+</style>
