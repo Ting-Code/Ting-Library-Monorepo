@@ -7,7 +7,7 @@
   import 'echarts'
 
   // 模拟数据
-  const data = []
+  const data: number[][] = []
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       data.push([i, j, Math.floor(Math.random() * 100)])
