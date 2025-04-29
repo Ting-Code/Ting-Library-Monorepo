@@ -16,7 +16,7 @@
   const startAnimation = () => {
     gsap.to(`.${ns.e('animated-element')}`, {
       duration: 1,
-      y: -50,
+      x: -30, // 修改为 x 轴位移
       repeat: 2,
       yoyo: true,
       ease: 'bounce.out'
@@ -26,7 +26,7 @@
   const endAnimation = () => {
     gsap.to(`.${ns.e('animated-element')}`, {
       duration: 0.5,
-      y: 0,
+      x: 0,
       ease: 'power2.out'
     })
   }

@@ -17,15 +17,16 @@
     gsap.to(`.${ns.e('animated-element')}`, {
       duration: 1,
       rotation: 360,
-      repeat: -1,
+      repeat: 1,
       ease: 'linear'
     })
   }
 
   const endAnimation = () => {
     gsap.to(`.${ns.e('animated-element')}`, {
-      duration: 0.5,
+      duration: 1,
       rotation: 0,
+      repeat: 1,
       ease: 'power2.out'
     })
   }
