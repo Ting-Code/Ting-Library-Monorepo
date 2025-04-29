@@ -17,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/basics/git/index.docs.vue')
   },
   {
+    path: '/basics/node',
+    name: 'basics_node',
+    component: () => import('@/views/basics/node/index.docs.vue')
+  },
+  {
     path: '/basics/docker',
     name: 'basics_docker',
     component: () => import('@/views/basics/docker/index.docs.vue')
@@ -25,6 +30,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/basics/linux',
     name: 'basics_linux',
     component: () => import('@/views/basics/linux/index.docs.vue')
+  },
+  {
+    path: '/basics/network',
+    name: 'basics_network',
+    component: () => import('@/views/basics/network/index.docs.vue')
   }
 ]
 

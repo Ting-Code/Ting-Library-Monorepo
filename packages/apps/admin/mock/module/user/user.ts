@@ -94,6 +94,14 @@ const menu = {
           }
         },
         {
+          name: 'basics_node',
+          path: '/docs/basics/node',
+          meta: {
+            title: '📋Nodejs基础',
+            module: 'docs'
+          }
+        },
+        {
           name: 'basics_docker',
           path: '/docs/basics/docker',
           meta: {
@@ -106,6 +114,14 @@ const menu = {
           path: '/docs/basics/linux',
           meta: {
             title: '📋Linux基础',
+            module: 'docs'
+          }
+        },
+        {
+          name: 'basics_network',
+          path: '/docs/basics/network',
+          meta: {
+            title: '📋计算机网络基础',
             module: 'docs'
           }
         }
