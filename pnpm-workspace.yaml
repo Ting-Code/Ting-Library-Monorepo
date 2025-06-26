@@ -4,8 +4,8 @@ packages:
   - scripts
 
 catalog:
-  '@vueuse/core': 13.0.0
-  '@vueuse/integrations': 13.0.0
+  '@vueuse/core': 13.3.0
+  '@vueuse/integrations': 13.3.0
   '@vitejs/plugin-vue': 5.2.1
   '@vitejs/plugin-vue-jsx': 4.1.1
   typescript: 5.8.2

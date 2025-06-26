@@ -1,17 +1,23 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('head')">
-      <template v-if="isMobile">
-        <ReButton v-show="!isShowStencil" @click="isShowStencil = true" />
-        <ReButton v-show="isShowStencil" @click="isShowStencil = false" />
-      </template>
-      <ReButton :icon="Share" />
-      <ReButton :icon="CaretLeft" />
-      <ReButton :icon="CaretRight" />
-      <ReButton :icon="Delete" />
-      <ReButton :icon="ZoomIn" />
-      <ReButton :icon="ZoomOut" />
+    <div :class="ns.e('left')">
+      <ComponentPlate />
     </div>
+    <div :class="ns.e('main')">
+      <div :class="ns.e('head')">
+        <template v-if="isMobile">
+          <ReButton v-show="!isShowStencil" @click="isShowStencil = true" />
+          <ReButton v-show="isShowStencil" @click="isShowStencil = false" />
+        </template>
+        <ReButton :icon="Share" />
+        <ReButton :icon="CaretLeft" />
+        <ReButton :icon="CaretRight" />
+        <ReButton :icon="Delete" />
+        <ReButton :icon="ZoomIn" />
+        <ReButton :icon="ZoomOut" />
+      </div>
+    </div>
+    <div :class="ns.e('right')">右边</div>
   </div>
 </template>
 
@@ -20,7 +26,9 @@
   import { Delete, ZoomIn, ZoomOut, CaretLeft, CaretRight, Share } from '@element-plus/icons-vue'
   import { useNamespace } from '@tingcode/system'
   import { useAppProviderContext } from '@/application/useAppContext'
+  import ComponentPlate from './layout/component-plate.vue'
   const { isMobile } = toRefs(useAppProviderContext())
+  defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)
   const ns = useNamespace('low-code')
   watch(
@@ -42,6 +50,22 @@
     height: 100%;
     overflow: hidden;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+
+    @include e(main) {
+      height: 100%;
+      overflow: hidden;
+      flex: 1;
+    }
+    @include e(left) {
+      width: 200px;
+      height: 100%;
+      overflow: hidden;
+    }
+    @include e(right) {
+      width: 200px;
+      height: 100%;
+      overflow: hidden;
+    }
   }
 </style>

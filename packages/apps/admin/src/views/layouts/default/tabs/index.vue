@@ -29,7 +29,6 @@
   import SetIcon from './set/index.vue'
   import FullIcon from './full/index.vue'
   import { ref, computed } from 'vue'
-  // @ts-ignore
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { useTabs } from '@/hooks/useTabs'
   import { onMittRouter, PageEnum, setUrl, useNamespace } from '@tingcode/system'
