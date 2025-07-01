@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   defineOptions({ name: 'RenderWidget' })
-  import { componentMap, ISlotName, RenderWidgetProps } from './index'
+  import { ComponentMap, ISlotName, RenderWidgetProps } from './index'
   import { isString, isArray, isObject } from '@tingcode/utils'
 
   const props = withDefaults(defineProps<RenderWidgetProps>(), {})
@@ -73,7 +73,7 @@
   }
 
   const getComponent = (type: string) => {
-    return componentMap[type] || type
+    return ComponentMap[type] || type
   }
 
   const getChild = (child: undefined | unknown[] | unknown) => {

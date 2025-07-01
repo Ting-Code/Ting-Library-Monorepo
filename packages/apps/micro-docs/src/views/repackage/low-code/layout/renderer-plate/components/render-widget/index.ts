@@ -1,14 +1,27 @@
-import { ReButton, ReButtonProps } from '@tingcode/lib-vue'
-
-export const componentMap = {
-  ReButton
+import {
+  ReButton,
+  ReButtonProps,
+  ReInput,
+  ReInputProps,
+  ReRadio,
+  ReRadioProps
+} from '@tingcode/lib-vue'
+import { ReForm, ReFormProps } from '../form/index'
+import { ReFormItem, ReFormItemProps } from '../form-item/index'
+export const ComponentMap = {
+  ReButton,
+  ReForm,
+  ReFormItem,
+  ReInput,
+  ReRadio
 }
 
-type IFieldAttrs = ReButtonProps
+type IFieldAttrs = ReButtonProps | ReFormProps | ReFormItemProps | ReInputProps | ReRadioProps
+
 export type ISlotName = string | { native?: string; name: string }
 
 export interface IField {
-  type: string
+  type: keyof typeof ComponentMap
   attrs?: IFieldAttrs
   wrapper?: string
   wrapperAttrs?: IFieldAttrs

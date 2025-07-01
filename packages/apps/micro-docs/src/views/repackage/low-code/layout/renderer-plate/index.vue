@@ -48,13 +48,18 @@
   const ns = useNamespace('renderer-plate')
 
   const schema = ref<IField>({
-    type: 'ReButton',
+    type: 'ReForm',
     slotName: { native: 'icon', name: 'one' },
-    attrs: { size: 'small' },
     child: {
-      type: 'ReButton',
-      attrs: { size: 'small' },
-      slotName: { native: 'default', name: 'tow' }
+      type: 'ReFormItem',
+      attrs: {
+        label: '请输入'
+      },
+      child: {
+        type: 'ReInput',
+        attrs: { size: 'small' },
+        slotName: { native: 'default', name: 'tow' }
+      }
     }
   })
 </script>
