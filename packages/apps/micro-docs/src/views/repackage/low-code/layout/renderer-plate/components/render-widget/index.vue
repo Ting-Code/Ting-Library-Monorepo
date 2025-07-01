@@ -1,52 +1,22 @@
 <template>
-  <template v-if="props.field.wrapper">
-    <component :is="getComponent(props.field.wrapper)">
-      <component :is="getComponent(props.field.type)" v-bind="props.field.attrs || {}">
-        <template
-          v-for="item in props.field.child || []"
-          :key="item.type + JSON.stringify(item.attrs)"
-        >
-          <RenderWidget :field="item">
-            <template v-for="(_, name) in slots" #[name]="native">
-              <slot :name="name" v-bind="native || {}"></slot>
-            </template>
-          </RenderWidget>
+  <component :is="getComponent(props.field.type)" v-bind="props.field.attrs || {}">
+    <template
+      v-for="item in getChild(props.field.child) || []"
+      :key="item.type + JSON.stringify(item.attrs)"
+    >
+      <RenderWidget :field="item">
+        <template v-for="(_, name) in slots" #[name]="native">
+          <slot :name="name" v-bind="native || {}"></slot>
         </template>
-        <template
-          v-for="{ name, native } in filterSlots(slots, props.field.slotName)"
-          #[native]="scope"
-        >
-          <slot :name="name" v-bind="scope || {}"></slot>
-        </template>
-      </component>
-      <template
-        v-for="{ name, native } in filterSlots(slots, props.field.wrapperSlotName)"
-        #[native]="scope"
-      >
-        <slot :name="name" v-bind="scope || {}"></slot>
-      </template>
-    </component>
-  </template>
-  <template v-else>
-    <component :is="getComponent(props.field.type)" v-bind="props.field.attrs || {}">
-      <template
-        v-for="item in props.field.child || []"
-        :key="item.type + JSON.stringify(item.attrs)"
-      >
-        <RenderWidget :field="item">
-          <template v-for="(_, name) in slots" #[name]="native">
-            <slot :name="name" v-bind="native || {}"></slot>
-          </template>
-        </RenderWidget>
-      </template>
-      <template
-        v-for="{ name, native } in filterSlots(slots, props.field.slotName)"
-        #[native]="scope"
-      >
-        <slot :name="name" v-bind="scope || {}"></slot>
-      </template>
-    </component>
-  </template>
+      </RenderWidget>
+    </template>
+    <template
+      v-for="{ name, native } in filterSlots(slots, props.field.slotName)"
+      #[native]="scope"
+    >
+      <slot :name="name" v-bind="scope || {}"></slot>
+    </template>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -102,10 +72,14 @@
       })
   }
 
-  filterSlots(slots, props.field.slotName)
-
   const getComponent = (type: string) => {
     return componentMap[type] || type
+  }
+
+  const getChild = (child: undefined | unknown[] | unknown) => {
+    if (!child) return []
+    if (isArray(child)) return child
+    if (isObject(child)) return [child]
   }
 </script>
 

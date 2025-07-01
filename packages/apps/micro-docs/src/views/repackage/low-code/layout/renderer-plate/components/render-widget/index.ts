@@ -14,7 +14,7 @@ export interface IField {
   wrapperAttrs?: IFieldAttrs
   wrapperSlotName?: string | ISlotName[] | ISlotName
   slotName?: string | ISlotName[] | ISlotName
-  child?: IField[]
+  child?: IField[] | IField
 }
 
 export interface RenderWidgetProps {

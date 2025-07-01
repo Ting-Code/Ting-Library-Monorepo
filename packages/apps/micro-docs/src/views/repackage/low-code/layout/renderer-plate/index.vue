@@ -51,9 +51,11 @@
     type: 'ReButton',
     slotName: { native: 'icon', name: 'one' },
     attrs: { size: 'small' },
-    child: [
-      { type: 'ReButton', attrs: { size: 'small' }, slotName: { native: 'default', name: 'tow' } }
-    ]
+    child: {
+      type: 'ReButton',
+      attrs: { size: 'small' },
+      slotName: { native: 'default', name: 'tow' }
+    }
   })
 </script>
 
