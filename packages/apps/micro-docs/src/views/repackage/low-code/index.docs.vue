@@ -4,29 +4,17 @@
       <ComponentPlate />
     </div>
     <div :class="ns.e('main')">
-      <div :class="ns.e('head')">
-        <template v-if="isMobile">
-          <ReButton v-show="!isShowStencil" @click="isShowStencil = true" />
-          <ReButton v-show="isShowStencil" @click="isShowStencil = false" />
-        </template>
-        <ReButton :icon="Share" />
-        <ReButton :icon="CaretLeft" />
-        <ReButton :icon="CaretRight" />
-        <ReButton :icon="Delete" />
-        <ReButton :icon="ZoomIn" />
-        <ReButton :icon="ZoomOut" />
-      </div>
+      <RendererPlate v-model:isShowStencil="isShowStencil" :isMobile="isMobile" />
     </div>
     <div :class="ns.e('right')">右边</div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ReButton } from '@tingcode/lib-vue'
-  import { Delete, ZoomIn, ZoomOut, CaretLeft, CaretRight, Share } from '@element-plus/icons-vue'
   import { useNamespace } from '@tingcode/system'
   import { useAppProviderContext } from '@/application/useAppContext'
-  import ComponentPlate from './layout/component-plate.vue'
+  import ComponentPlate from './layout/component-plate/index.vue'
+  import RendererPlate from '@/views/repackage/low-code/layout/renderer-plate/index.vue'
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)

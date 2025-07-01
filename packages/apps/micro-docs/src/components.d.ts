@@ -13,6 +13,7 @@ declare module 'vue' {
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
+    ElForm: typeof import('element-plus/es')['ElForm']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     Flow: typeof import('./components/flow/index.vue')['default']
     Icon: typeof import('./components/icon/icon.vue')['default']

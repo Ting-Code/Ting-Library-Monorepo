@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <div class="source-box">
+  <div :class="ns.b()">
+    <div :class="ns.e('source-box')">
       <div
         v-for="(item, index) in dataList"
         :key="index"
@@ -10,7 +10,7 @@
         {{ item }}
       </div>
     </div>
-    <div class="target-box" @drop="drop" @dragover.prevent>
+    <div :class="ns.e('target-box')" @drop="drop" @dragover.prevent>
       <div v-for="(item, index) in targetList" :key="index">
         {{ item }}
       </div>
@@ -21,6 +21,10 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import { useSortable } from '@vueuse/integrations/useSortable'
+  import { useNamespace } from '@tingcode/system'
+
+  defineOptions({ name: 'ComponentPlate' })
+  const ns = useNamespace('component-plate')
 
   const dataList = ref(['item1', 'item2', 'item3'])
   const targetList = ref(['item6'])
@@ -34,28 +38,33 @@
   const drop = () => {
     if (draggedItem.value) {
       targetList.value.push(draggedItem.value)
-      dataList.value = dataList.value.filter((i) => i !== draggedItem.value)
       draggedItem.value = null
     }
   }
 
   // 依据类名添加选择器
-  useSortable('.source-box', dataList, {})
-  useSortable('.target-box', targetList, {})
+  useSortable(ns.e('source-box'), dataList, {})
+  useSortable(ns.e('target-box'), targetList, {})
 </script>
 
 <style lang="scss" scoped>
-  .container {
+  @include b(component-plate) {
     width: 100%;
     display: flex;
     flex-direction: column;
-  }
-  .source-box,
-  .target-box {
-    border: 1px solid #fc0707;
-    padding: 10px;
-    margin: 10px;
-    width: 100%;
-    min-height: 200px;
+    @include e(source-box) {
+      border: 1px solid #fc0707;
+      padding: 10px;
+      margin: 10px;
+      width: 100%;
+      min-height: 200px;
+    }
+    @include e(target-box) {
+      border: 1px solid #fc0707;
+      padding: 10px;
+      margin: 10px;
+      width: 100%;
+      min-height: 200px;
+    }
   }
 </style>
