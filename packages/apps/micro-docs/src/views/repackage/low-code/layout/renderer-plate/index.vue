@@ -47,13 +47,15 @@
   })
   const ns = useNamespace('renderer-plate')
 
-  const model = ref({})
+  const model = ref({
+    one: ''
+  })
 
   const schema = ref<IField>({
     type: 'ReForm',
     slotName: { native: 'icon', name: 'one' },
     child: {
-      type: 'ReRow',
+      type: 'ReForm',
       child: [
         {
           type: 'ReCol',
@@ -67,7 +69,7 @@
             },
             child: {
               type: 'ReInput',
-              attrs: { size: 'small' },
+              attrs: { size: 'small', modelValue: model.value.one },
               slotName: { native: 'default', name: 'tow' }
             }
           }
