@@ -8,15 +8,26 @@ import {
 } from '@tingcode/lib-vue'
 import { ReForm, ReFormProps } from '../form/index'
 import { ReFormItem, ReFormItemProps } from '../form-item/index'
+import { ReRow, ReRowProps } from '../row/index'
+import { ReCol, ReColProps } from '../col/index'
 export const ComponentMap = {
   ReButton,
   ReForm,
   ReFormItem,
   ReInput,
-  ReRadio
+  ReRadio,
+  ReRow,
+  ReCol
 }
 
-type IFieldAttrs = ReButtonProps | ReFormProps | ReFormItemProps | ReInputProps | ReRadioProps
+type IFieldAttrs =
+  | ReButtonProps
+  | ReFormProps
+  | ReFormItemProps
+  | ReInputProps
+  | ReRadioProps
+  | ReRowProps
+  | ReColProps
 
 export type ISlotName = string | { native?: string; name: string }
 
@@ -32,6 +43,7 @@ export interface IField {
 
 export interface RenderWidgetProps {
   field: IField
+  model?: any
 }
 
 export { default as RenderWidget, default } from './index.vue'

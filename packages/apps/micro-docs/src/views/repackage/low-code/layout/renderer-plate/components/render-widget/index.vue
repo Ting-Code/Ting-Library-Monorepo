@@ -4,7 +4,7 @@
       v-for="item in getChild(props.field.child) || []"
       :key="item.type + JSON.stringify(item.attrs)"
     >
-      <RenderWidget :field="item">
+      <RenderWidget :field="item" :model="props.model">
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
         </template>

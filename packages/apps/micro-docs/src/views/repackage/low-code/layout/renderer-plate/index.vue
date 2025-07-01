@@ -13,7 +13,7 @@
       <ReButton :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
-      <RenderWidget :field="schema">
+      <RenderWidget :field="schema" v-model="model">
         <template #one>
           <div>按钮#one</div>
         </template>
@@ -47,19 +47,66 @@
   })
   const ns = useNamespace('renderer-plate')
 
+  const model = ref({})
+
   const schema = ref<IField>({
     type: 'ReForm',
     slotName: { native: 'icon', name: 'one' },
     child: {
-      type: 'ReFormItem',
-      attrs: {
-        label: '请输入'
-      },
-      child: {
-        type: 'ReInput',
-        attrs: { size: 'small' },
-        slotName: { native: 'default', name: 'tow' }
-      }
+      type: 'ReRow',
+      child: [
+        {
+          type: 'ReCol',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              attrs: { size: 'small' },
+              slotName: { native: 'default', name: 'tow' }
+            }
+          }
+        },
+        {
+          type: 'ReCol',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              attrs: { size: 'small' },
+              slotName: { native: 'default', name: 'tow' }
+            }
+          }
+        },
+        {
+          type: 'ReCol',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              attrs: { size: 'small' },
+              slotName: { native: 'default', name: 'tow' }
+            }
+          }
+        }
+      ]
     }
   })
 </script>
