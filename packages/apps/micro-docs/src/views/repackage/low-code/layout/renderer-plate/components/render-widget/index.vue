@@ -1,19 +1,16 @@
 <template>
-  <component :is="getComponent(props.field.type)" v-bind="props.field.attrs || {}">
+  <component :is="getComponent(schema.type)" v-bind="schema.attrs || {}">
     <template
-      v-for="item in getChild(props.field.child) || []"
+      v-for="item in getChild(schema.child) || []"
       :key="item.type + JSON.stringify(item.attrs)"
     >
-      <RenderWidget :field="item" :model="props.model">
+      <RenderWidget :schema="item" :model="model">
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
         </template>
       </RenderWidget>
     </template>
-    <template
-      v-for="{ name, native } in filterSlots(slots, props.field.slotName)"
-      #[native]="scope"
-    >
+    <template v-for="{ name, native } in filterSlots(slots, schema.slotName)" #[native]="scope">
       <slot :name="name" v-bind="scope || {}"></slot>
     </template>
   </component>
@@ -24,7 +21,7 @@
   import { ComponentMap, ISlotName, RenderWidgetProps } from './index'
   import { isString, isArray, isObject } from '@tingcode/utils'
 
-  const props = withDefaults(defineProps<RenderWidgetProps>(), {})
+  const { model, schema } = withDefaults(defineProps<RenderWidgetProps>(), {})
 
   const slots = defineSlots()
 

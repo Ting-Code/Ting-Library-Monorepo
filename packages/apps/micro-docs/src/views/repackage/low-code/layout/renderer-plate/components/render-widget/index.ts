@@ -20,7 +20,7 @@ export const ComponentMap = {
   ReCol
 }
 
-type IFieldAttrs =
+type ISchemaAttrs =
   | ReButtonProps
   | ReFormProps
   | ReFormItemProps
@@ -31,18 +31,16 @@ type IFieldAttrs =
 
 export type ISlotName = string | { native?: string; name: string }
 
-export interface IField {
+export interface ISchema {
   type: keyof typeof ComponentMap
-  attrs?: IFieldAttrs
-  wrapper?: string
-  wrapperAttrs?: IFieldAttrs
-  wrapperSlotName?: string | ISlotName[] | ISlotName
+  field?: string
+  attrs?: ISchemaAttrs
   slotName?: string | ISlotName[] | ISlotName
-  child?: IField[] | IField
+  child?: ISchema[] | ISchema
 }
 
 export interface RenderWidgetProps {
-  field: IField
+  schema: ISchema
   model?: any
 }
 

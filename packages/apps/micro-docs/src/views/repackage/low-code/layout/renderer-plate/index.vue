@@ -13,7 +13,9 @@
       <ReButton :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
-      <RenderWidget :field="schema" v-model="model">
+      {{ model.one }}
+      {{ model.tow }}
+      <RenderWidget :schema="schema" v-model="model">
         <template #one>
           <div>按钮#one</div>
         </template>
@@ -30,7 +32,8 @@
   import { useNamespace } from '@tingcode/system'
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
   import { RenderWidget } from './components/render-widget/index'
-  import { IField } from './components/render-widget/index'
+  import { ISchema } from './components/render-widget/index'
+  import { useSchema } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
   defineOptions({ name: 'RendererPlate' })
   interface Props {
     isShowStencil: boolean
@@ -47,70 +50,70 @@
   })
   const ns = useNamespace('renderer-plate')
 
-  const model = ref({
-    one: ''
-  })
-
-  const schema = ref<IField>({
-    type: 'ReForm',
-    slotName: { native: 'icon', name: 'one' },
-    child: {
+  const { schema, model } = useSchema<ISchema, any>(
+    {
       type: 'ReForm',
-      child: [
-        {
-          type: 'ReCol',
-          attrs: {
-            span: 12
-          },
-          child: {
-            type: 'ReFormItem',
-            attrs: {
-              label: '请输入'
+      slotName: { native: 'icon', name: 'one' },
+      child: {
+        type: 'ReForm',
+        child: {
+          type: 'ReRow',
+          child: [
+            {
+              type: 'ReCol',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'one'
+                }
+              }
             },
-            child: {
-              type: 'ReInput',
-              attrs: { size: 'small', modelValue: model.value.one },
-              slotName: { native: 'default', name: 'tow' }
-            }
-          }
-        },
-        {
-          type: 'ReCol',
-          attrs: {
-            span: 12
-          },
-          child: {
-            type: 'ReFormItem',
-            attrs: {
-              label: '请输入'
+            {
+              type: 'ReCol',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key'
+                }
+              }
             },
-            child: {
-              type: 'ReInput',
-              attrs: { size: 'small' },
-              slotName: { native: 'default', name: 'tow' }
+            {
+              type: 'ReCol',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key',
+                  slotName: { native: 'suffix', name: 'tow' }
+                }
+              }
             }
-          }
-        },
-        {
-          type: 'ReCol',
-          attrs: {
-            span: 12
-          },
-          child: {
-            type: 'ReFormItem',
-            attrs: {
-              label: '请输入'
-            },
-            child: {
-              type: 'ReInput',
-              attrs: { size: 'small' },
-              slotName: { native: 'default', name: 'tow' }
-            }
-          }
+          ]
         }
-      ]
-    }
-  })
+      }
+    },
+    { one: '123123' }
+  )
 </script>
 
 <style lang="scss" scoped>
