@@ -28,7 +28,7 @@ export function getParent<T extends ISchema>(root: T, target: T): T | null {
   }
   return null
 }
-export function filterSchema<T extends ISchema>(schema: T, conditions: Record<string, any>): T[] {
+export function filterSchema<T extends ISchema>(schema: T, conditions: Partial<T>): T[] {
   const result: T[] = []
   recursionSchema(schema, (item: T) => {
     const match = Object.entries(conditions).every(([key, value]) => {
@@ -40,10 +40,7 @@ export function filterSchema<T extends ISchema>(schema: T, conditions: Record<st
   })
   return result
 }
-export function findSchema<T extends ISchema>(
-  schema: T,
-  conditions: Record<string, any>
-): T | null {
+export function findSchema<T extends ISchema>(schema: T, conditions: Partial<T>): T | null {
   let result: T | null = null
   recursionSchema(schema, (item: T) => {
     if (result) return
@@ -80,7 +77,6 @@ export function conductFormModel<T extends ISchema, U extends Record<string, any
 }
 export function conductHide<T extends ISchema>(schema: T, schemaItem: T) {
   if (schemaItem.hide) {
-    console.log('=======schemaItem=======', schemaItem)
     const parent = getParent(schema, schemaItem)
     if (parent) {
       if (isArray(parent.child)) {
@@ -112,13 +108,44 @@ export function useSchema<T extends ISchema, U extends Record<string, any>>(sche
     originSchema,
     () => {
       renderSchema.value = generateRenderSchema(cloneDeep(toValue(originSchema)), originModel)
-      console.log('========触发重新生成==========', toValue(originSchema), toValue(renderSchema))
     },
     { deep: true, immediate: true }
   )
+
+  function switchHide(conditions: Partial<T>, hide: boolean | 'switch') {
+    const target = findSchema(toValue(originSchema), conditions)
+    if (target) {
+      if (hide === 'switch') {
+        target.hide = !target.hide
+      } else {
+        target.hide = hide
+      }
+    } else {
+      console.error('[switchHide function error]: No matching schema item was found')
+    }
+    return originSchema
+  }
+  function switchAllHide(conditions: Partial<T>, hide: boolean | 'switch') {
+    const targets = filterSchema(toValue(originSchema), conditions)
+    if (targets && targets.length) {
+      targets.forEach((target) => {
+        if (hide === 'switch') {
+          target.hide = !target.hide
+        } else {
+          target.hide = hide
+        }
+      })
+    } else {
+      console.error('[switchAllHide function error]: No matching schema item was found')
+    }
+    return originSchema
+  }
+
   return {
     model: originModel,
     renderSchema: renderSchema,
-    schema: originSchema
+    schema: originSchema,
+    switchHide,
+    switchAllHide
   }
 }

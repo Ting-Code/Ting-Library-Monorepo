@@ -32,10 +32,7 @@
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
   import { RenderWidget } from './components/render-widget/index'
   import { ISchema } from './components/render-widget/index'
-  import {
-    useSchema,
-    findSchema
-  } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
+  import { useSchema } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
   defineOptions({ name: 'RendererPlate' })
   interface Props {
     isShowStencil: boolean
@@ -52,7 +49,7 @@
   })
   const ns = useNamespace('renderer-plate')
 
-  const { renderSchema, model, schema } = useSchema<ISchema, any>(
+  const { renderSchema, model, switchAllHide } = useSchema<ISchema, any>(
     {
       type: 'ReForm',
       slotName: { native: 'icon', name: 'one' },
@@ -79,6 +76,7 @@
             },
             {
               type: 'ReCol',
+              hide: true,
               attrs: {
                 span: 12
               },
@@ -118,19 +116,9 @@
     },
     { one: '123123' }
   )
-  watch(
-    renderSchema,
-    () => {
-      console.log('======renderSchemarenderSchema======', renderSchema)
-    },
-    { deep: true, immediate: true }
-  )
+  watch(renderSchema, () => {}, { deep: true, immediate: true })
   const handleOut = () => {
-    const ond = findSchema(toValue(schema), { key: 'hide' })
-    console.log('🚀 ~ handleOut ~ ond:', ond)
-    if (ond) {
-      ond.hide = !ond.hide
-    }
+    switchAllHide({ type: 'ReCol' }, 'switch')
   }
 </script>
 

@@ -53,14 +53,12 @@
     display: flex;
     flex-direction: column;
     @include e(source-box) {
-      border: 1px solid #fc0707;
       padding: 10px;
       margin: 10px;
       width: 100%;
       min-height: 200px;
     }
     @include e(target-box) {
-      border: 1px solid #fc0707;
       padding: 10px;
       margin: 10px;
       width: 100%;

@@ -24,14 +24,6 @@
   const props = withDefaults(defineProps<RenderWidgetProps>(), {})
   const { model, schema } = toRefs(props)
 
-  watch(
-    () => schema,
-    () => {
-      console.log('======schema======', schema)
-    },
-    { deep: true, immediate: true }
-  )
-
   const slots = defineSlots()
 
   const hasSlot = (slotName: string | ISlotName[] | ISlotName | undefined, name: string) => {
