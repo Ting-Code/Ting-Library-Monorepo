@@ -1,9 +1,55 @@
 import { ref, Ref, toValue, toRef, watch } from 'vue'
-import { isArray } from '@tingcode/utils'
+import { isArray, isString, isObject } from '@tingcode/utils'
 import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
 import set from 'lodash/set'
 import get from 'lodash/get'
 import { cloneDeep } from 'lodash'
+
+export type ISlotName = string | { native?: string; name: string }
+
+export function hasSlot(slotName: string | ISlotName[] | ISlotName | undefined, name: string) {
+  if (!slotName || !name) return false
+  if (isString(slotName)) {
+    return slotName === name
+  }
+  if (isArray(slotName)) {
+    return slotName.some((i) => {
+      return hasSlot(i, name)
+    })
+  }
+  if (isObject(slotName)) {
+    return slotName.name === name
+  }
+  return false
+}
+
+export function getSlotName(slotName: string | ISlotName[] | ISlotName | undefined, name: string) {
+  if (!hasSlot(slotName, name)) return name
+  if (isString(slotName)) {
+    return slotName
+  }
+  if (isArray(slotName)) {
+    const slotNameItem = slotName.find((i) => {
+      return hasSlot(i, name)
+    })
+    if (slotNameItem) return getSlotName(slotNameItem, name)
+    return name
+  }
+  if (isObject(slotName)) {
+    return slotName?.native || name
+  }
+}
+
+export function filterSlots(
+  slots: Record<string, any>,
+  slotName: string | ISlotName[] | ISlotName | undefined
+) {
+  return Object.entries(slots)
+    .filter(([name]) => hasSlot(slotName, name))
+    .map(([name]) => {
+      return { name, native: getSlotName(slotName, name) }
+    })
+}
 
 export function recursionSchema<T extends ISchema>(schema: T, callback: (item: T) => void) {
   callback(schema)
@@ -53,6 +99,13 @@ export function findSchema<T extends ISchema>(schema: T, conditions: Partial<T>)
   })
   return result
 }
+export function conductChild<T extends ISchema>(schema: T) {
+  if (!schema.child) return
+  if (isArray(schema.child)) return
+  if (isObject(schema.child)) {
+    schema.child = [schema.child]
+  }
+}
 export function conductFormModel<T extends ISchema, U extends Record<string, any>>(
   schemaItem: T,
   model: Ref<U>
@@ -61,7 +114,7 @@ export function conductFormModel<T extends ISchema, U extends Record<string, any
     if (!schemaItem.attrs) {
       schemaItem.attrs = {} as any
     }
-    ;(schemaItem.attrs as any).model = model
+    ;(schemaItem.attrs as any).model = toRef(() => toValue(model))
   }
   if (schemaItem.field) {
     if (!schemaItem.attrs) {
@@ -94,6 +147,7 @@ export function generateRenderSchema<T extends ISchema, U extends Record<string,
   recursionSchema(schema, (schemaItem: T) => {
     conductFormModel(schemaItem, model)
     conductHide(schema, schemaItem)
+    conductChild(schemaItem)
   })
 
   return schema

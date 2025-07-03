@@ -29,8 +29,6 @@ type ISchemaAttrs =
   | ReRowProps
   | ReColProps
 
-export type ISlotName = string | { native?: string; name: string }
-
 export interface ISchema {
   type: keyof typeof ComponentMap
   field?: string
