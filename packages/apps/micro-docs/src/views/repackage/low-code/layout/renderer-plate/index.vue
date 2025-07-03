@@ -10,12 +10,11 @@
       <ReButton :icon="CaretRight" />
       <ReButton :icon="Delete" />
       <ReButton :icon="ZoomIn" />
-      <ReButton :icon="ZoomOut" />
+      <ReButton :icon="ZoomOut" @click="handleOut" />
     </div>
     <div :class="ns.e('main')">
-      {{ model.one }}
-      {{ model.tow }}
-      <RenderWidget :schema="schema" v-model="model">
+      {{ model }}
+      <RenderWidget :schema="renderSchema" v-model="model">
         <template #one>
           <div>按钮#one</div>
         </template>
@@ -33,7 +32,10 @@
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
   import { RenderWidget } from './components/render-widget/index'
   import { ISchema } from './components/render-widget/index'
-  import { useSchema } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
+  import {
+    useSchema,
+    findSchema
+  } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
   defineOptions({ name: 'RendererPlate' })
   interface Props {
     isShowStencil: boolean
@@ -50,7 +52,7 @@
   })
   const ns = useNamespace('renderer-plate')
 
-  const { schema, model } = useSchema<ISchema, any>(
+  const { renderSchema, model, schema } = useSchema<ISchema, any>(
     {
       type: 'ReForm',
       slotName: { native: 'icon', name: 'one' },
@@ -93,6 +95,8 @@
             },
             {
               type: 'ReCol',
+              key: 'hide',
+              hide: true,
               attrs: {
                 span: 12
               },
@@ -114,6 +118,20 @@
     },
     { one: '123123' }
   )
+  watch(
+    renderSchema,
+    () => {
+      console.log('======renderSchemarenderSchema======', renderSchema)
+    },
+    { deep: true, immediate: true }
+  )
+  const handleOut = () => {
+    const ond = findSchema(toValue(schema), { key: 'hide' })
+    console.log('🚀 ~ handleOut ~ ond:', ond)
+    if (ond) {
+      ond.hide = !ond.hide
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -21,7 +21,16 @@
   import { ComponentMap, ISlotName, RenderWidgetProps } from './index'
   import { isString, isArray, isObject } from '@tingcode/utils'
 
-  const { model, schema } = withDefaults(defineProps<RenderWidgetProps>(), {})
+  const props = withDefaults(defineProps<RenderWidgetProps>(), {})
+  const { model, schema } = toRefs(props)
+
+  watch(
+    () => schema,
+    () => {
+      console.log('======schema======', schema)
+    },
+    { deep: true, immediate: true }
+  )
 
   const slots = defineSlots()
 

@@ -37,6 +37,8 @@ export interface ISchema {
   attrs?: ISchemaAttrs
   slotName?: string | ISlotName[] | ISlotName
   child?: ISchema[] | ISchema
+  hide?: boolean
+  key?: string
 }
 
 export interface RenderWidgetProps {
