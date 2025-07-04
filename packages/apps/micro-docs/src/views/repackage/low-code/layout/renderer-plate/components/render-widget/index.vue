@@ -1,5 +1,5 @@
 <template>
-  <component :is="getComponent(schema.type)" v-bind="schema.attrs || {}">
+  <component :is="getComponent(schema.type)" v-bind="schema.attrs || {}" ref="el">
     <template v-for="item in schema.child || []" :key="item.type + JSON.stringify(item.attrs)">
       <RenderWidget :schema="item" :model="model">
         <template v-for="(_, name) in slots" #[name]="native">
@@ -14,17 +14,25 @@
 </template>
 
 <script setup lang="ts">
-  defineOptions({ name: 'RenderWidget' })
+  import { useSortable } from '@vueuse/integrations/useSortable'
   import { ComponentMap, RenderWidgetProps } from './index'
   import { filterSlots } from '../../hooks/useSchema'
+
+  defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {})
   const { model, schema } = toRefs(props)
-
   const slots = defineSlots()
 
   const getComponent = (type: string) => {
     return ComponentMap[type] || type
   }
+
+  const el = useTemplateRef<HTMLElement>('el')
+  useSortable(el, (schema.value.child || []) as any[], {
+    onUpdate: (e) => {
+      console.log('🚀 ~ e:', e)
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

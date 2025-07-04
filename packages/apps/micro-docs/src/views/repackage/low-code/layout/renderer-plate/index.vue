@@ -76,7 +76,6 @@
             },
             {
               type: 'ReCol',
-              hide: true,
               attrs: {
                 span: 12
               },
@@ -94,7 +93,6 @@
             {
               type: 'ReCol',
               key: 'hide',
-              hide: true,
               attrs: {
                 span: 12
               },

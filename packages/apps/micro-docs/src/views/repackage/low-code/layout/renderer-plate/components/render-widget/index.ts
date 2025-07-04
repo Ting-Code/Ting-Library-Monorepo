@@ -10,6 +10,7 @@ import { ReForm, ReFormProps } from '../form/index'
 import { ReFormItem, ReFormItemProps } from '../form-item/index'
 import { ReRow, ReRowProps } from '../row/index'
 import { ReCol, ReColProps } from '../col/index'
+import { ISlotName } from '../../hooks/useSchema'
 export const ComponentMap = {
   ReButton,
   ReForm,
