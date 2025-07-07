@@ -8,6 +8,7 @@ catalog:
   '@vueuse/integrations': 13.3.0
   '@vitejs/plugin-vue': 5.2.1
   '@vitejs/plugin-vue-jsx': 4.1.1
+  '@types/sortablejs': 1.15.8
   typescript: 5.8.2
   vite: 6.2.1
   vitest: 3.1.1
@@ -24,6 +25,7 @@ catalog:
   vite-plugin-mock: 2.9.6
   vite-plugin-svg-icons: 2.0.1
   vue-tsc: 2.2.8
+  sortablejs: 1.15.6
   unplugin-auto-import: 19.1.1
   unplugin-vue-components: 28.4.1
 

@@ -17,6 +17,7 @@
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { ComponentMap, RenderWidgetProps } from './index'
   import { filterSlots } from '../../hooks/useSchema'
+  import type { ComponentPublicInstance } from 'vue'
 
   defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {})
@@ -27,9 +28,12 @@
     return ComponentMap[type] || type
   }
 
-  const el = useTemplateRef<HTMLElement>('el')
-  useSortable(el, (schema.value.child || []) as any[], {
-    onUpdate: (e) => {
+  const el = ref<ComponentPublicInstance | null>(null)
+  onMounted(() => {
+    console.log('=========el==========', el.value?.$el)
+  })
+  useSortable(el.value?.$el, (schema.value.child || []) as any[], {
+    onStart: (e) => {
       console.log('🚀 ~ e:', e)
     }
   })

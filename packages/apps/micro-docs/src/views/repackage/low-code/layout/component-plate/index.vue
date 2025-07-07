@@ -4,14 +4,14 @@
       <div
         v-for="(item, index) in dataList"
         :key="index"
-        :draggable="true"
         @dragstart="dragstart(item)"
+        :class="ns.em('source-box', 'item')"
       >
         {{ item }}
       </div>
     </div>
     <div :class="ns.e('target-box')" @drop="drop" @dragover.prevent>
-      <div v-for="(item, index) in targetList" :key="index">
+      <div v-for="(item, index) in targetList" :key="index" :class="ns.em('target-box', 'item')">
         {{ item }}
       </div>
     </div>
@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { useSortable } from '@vueuse/integrations/useSortable'
+  import { useSortable, moveArrayElement } from '@vueuse/integrations/useSortable'
   import { useNamespace } from '@tingcode/system'
 
   defineOptions({ name: 'ComponentPlate' })
@@ -43,8 +43,16 @@
   }
 
   // 依据类名添加选择器
-  useSortable(ns.e('source-box'), dataList, {})
-  useSortable(ns.e('target-box'), targetList, {})
+  useSortable(`.${ns.e('source-box')}`, dataList, {
+    handle: `.${ns.em('source-box', 'item')}`
+  })
+  useSortable(`.${ns.e('target-box')}`, targetList.value, {
+    handle: `.${ns.em('target-box', 'item')}`,
+    onUpdate: (e) => {
+      console.log('🚀 ~ e:', e)
+      moveArrayElement(targetList.value, e.oldIndex!, e.newIndex!)
+    }
+  })
 </script>
 
 <style lang="scss" scoped>

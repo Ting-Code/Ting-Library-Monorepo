@@ -20,14 +20,16 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "catalog:",
     "@vitejs/plugin-vue-jsx": "catalog:",
+    "@types/sortablejs": "catalog:",
     "postcss": "8.4.49",
     "sass": "catalog:",
-    "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-dts": "^4.3.0",
     "vite-plugin-svg-icons": "catalog:"
   },
   "dependencies": {
+    "typescript": "catalog:",
+    "sortablejs": "catalog:",
     "@tingcode/utils": "workspace:*",
     "@vueuse/core": "catalog:",
     "element-plus": "catalog:",

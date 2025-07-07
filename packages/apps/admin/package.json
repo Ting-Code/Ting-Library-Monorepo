@@ -26,14 +26,14 @@
     "pinia": "catalog:",
     "qs": "^6.13.1",
     "sass": "catalog:",
-    "sortablejs": "^1.15.6",
+    "sortablejs": "catalog:",
     "vue": "catalog:",
     "vue-i18n": "^10.0.5",
     "vue-router": "catalog:"
   },
   "devDependencies": {
     "@types/matter-js": "^0.19.8",
-    "@types/sortablejs": "^1.15.8",
+    "@types/sortablejs": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vitejs/plugin-vue-jsx": "catalog:",
     "mockjs": "^1.1.0",
