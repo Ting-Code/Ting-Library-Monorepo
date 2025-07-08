@@ -110,25 +110,14 @@
       handle: `.${ns.e('handler')}`,
       ghostClass: ns.e('ghost'), // drop placeholder的css类名
       dragClass: ns.e('drag'), // 正在被拖拽中的css类名
-      // 元素被选中
-      onChoose: (evt) => {
-        console.log('🚀 ~ onChoose:', evt, schema.value?.id)
-      },
-      // 开始拖拽的时候
-      onStart: (evt) => {
-        console.log('🚀 ~ eonStart:', evt, schema.value?.id)
-      },
-      // 结束拖拽
-      onEnd: (evt) => {
-        console.log('🚀 ~ onEnd:', evt, schema.value?.id)
-      },
-      // 元素从一个列表拖拽到另一个列表
       onAdd: (evt) => {
-        console.log('🚀 ~ onAdd:', evt, schema.value?.id)
+        console.log('🚀 ~ onAdd:', schema.value?.id, evt)
       },
-      // 元素从列表中移除进入另一个列表
       onRemove: (evt) => {
-        console.log('🚀 ~ onRemove:', evt, schema.value?.id)
+        console.log('🚀 ~ onRemove:', schema.value?.id, evt)
+      },
+      onUpdate: (evt) => {
+        console.log('🚀 ~ onUpdate:', schema.value?.id, evt)
       }
     })
   }

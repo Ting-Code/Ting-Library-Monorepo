@@ -66,64 +66,124 @@
     {
       type: 'ReForm',
       slotName: { native: 'icon', name: 'one' },
-      child: {
-        id: 'ReRow',
-        type: 'ReRow',
-        child: [
-          {
-            type: 'ReCol',
-            id: 'ReCol1',
-            attrs: {
-              span: 12
-            },
-            child: {
-              type: 'ReFormItem',
+      child: [
+        {
+          id: 'ReRow',
+          type: 'ReRow',
+          child: [
+            {
+              type: 'ReCol',
+              id: 'ReCol1',
               attrs: {
-                label: '请输入'
+                span: 12
               },
               child: {
-                type: 'ReInput',
-                field: 'one'
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'one'
+                }
               }
-            }
-          },
-          {
-            type: 'ReCol',
-            id: 'ReCol2',
-            attrs: {
-              span: 12
             },
-            child: {
-              type: 'ReFormItem',
+            {
+              type: 'ReCol',
+              id: 'ReCol2',
               attrs: {
-                label: '请输入'
+                span: 12
               },
               child: {
-                type: 'ReInput',
-                field: 'tow.key'
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key'
+                }
               }
-            }
-          },
-          {
-            type: 'ReCol',
-            id: 'ReCol3',
-            attrs: {
-              span: 12
             },
-            child: {
-              type: 'ReFormItem',
+            {
+              type: 'ReCol',
+              id: 'ReCol3',
               attrs: {
-                label: '请输入'
+                span: 12
               },
               child: {
-                type: 'ReInput',
-                field: 'tow.key',
-                slotName: { native: 'suffix', name: 'tow' }
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key',
+                  slotName: { native: 'suffix', name: 'tow' }
+                }
               }
             }
-          }
-        ]
-      }
+          ]
+        },
+        {
+          id: 'ReRow2',
+          type: 'ReRow',
+          child: [
+            {
+              type: 'ReCol',
+              id: 'ReCol12',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'one'
+                }
+              }
+            },
+            {
+              type: 'ReCol',
+              id: 'ReCol22',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key'
+                }
+              }
+            },
+            {
+              type: 'ReCol',
+              id: 'ReCol32',
+              attrs: {
+                span: 12
+              },
+              child: {
+                type: 'ReFormItem',
+                attrs: {
+                  label: '请输入'
+                },
+                child: {
+                  type: 'ReInput',
+                  field: 'tow.key',
+                  slotName: { native: 'suffix', name: 'tow' }
+                }
+              }
+            }
+          ]
+        }
+      ]
     },
     { one: '123123' }
   )

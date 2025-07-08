@@ -1,25 +1,20 @@
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('source-box')" ref="el">
-      <el-card>
-        <div v-for="(item, index) in dataList" :key="index" :class="ns.em('source-box', 'item')">
-          {{ item }}
-        </div>
-      </el-card>
+      <div v-for="(item, index) in dataList" :key="index" :class="ns.em('source-box', 'item')">
+        {{ item }}
+      </div>
     </div>
     <div :class="ns.e('target-box')" ref="el2">
-      <el-card>
-        {{ selectItem }}
-        <div v-for="(item, index) in targetList" :key="index" @click="selectItem = item">
-          <span
-            v-if="item === selectItem"
-            :class="{ [`${ns.em('target-box', 'item')}`]: item === selectItem }"
-          >
-            {{ selectItem }}
-          </span>
-          <span>{{ item }}</span>
-        </div>
-      </el-card>
+      <div v-for="(item, index) in targetList" :key="index" @click="selectItem = item">
+        <span
+          v-if="item === selectItem"
+          :class="{ [`${ns.em('target-box', 'item')}`]: item === selectItem }"
+        >
+          {{ selectItem }}
+        </span>
+        <span>{{ item }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +37,7 @@
     handle: `.${ns.em('source-box', 'item')}`,
     group,
     onUpdate: (evt) => {
-      console.log('🚀 ~ onUpdate:', evt, dataList.value)
+      console.log('🚀 ~ onUpdate:', evt)
     },
     // 开始拖拽的时候
     onStart: (evt) => {
