@@ -23,10 +23,17 @@
       </RenderWidget>
     </template>
     <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
-      <div :class="ns.e('action')"> <i>拖拽栏</i> </div>
+      <div :class="ns.e('action')">
+        <el-icon><Back /></el-icon>
+        <el-icon><Top /></el-icon>
+        <el-icon><Bottom /></el-icon>
+        <el-icon><Delete /></el-icon>
+        <el-icon><CopyDocument /></el-icon>
+      </div>
 
       <div :class="ns.e('handler')">
-        <i>拖拽栏</i>
+        <el-icon><Rank /></el-icon>
+        <span>{{ schema.type }}</span>
       </div>
     </div>
 
