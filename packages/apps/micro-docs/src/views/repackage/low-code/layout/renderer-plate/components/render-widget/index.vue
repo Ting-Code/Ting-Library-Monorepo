@@ -100,9 +100,6 @@
   const el = useTemplateRef<HTMLElement>('el')
 
   if (toValue(isInitSortable)) {
-    setTimeout(() => {
-      console.log('========初始化useSortable========', schema.value.id)
-    }, 1000)
     useSortable(el, (schema.value.child || []) as any[], {
       group: 'items',
       animation: 150, // ms, number 单位：ms，定义排序动画的时间
