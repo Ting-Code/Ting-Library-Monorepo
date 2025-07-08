@@ -3,7 +3,7 @@
     :is="getComponent(schema.type)"
     v-bind="schema.attrs || {}"
     v-if="isChildDrag || isInitSortable"
-    :class="['render-widget-drag', schema.id]"
+    :class="[ns.e('drag'), schema.id]"
     ref="el"
     @click.stop="handleClickEl"
   >
@@ -61,7 +61,7 @@
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { ComponentMap, RenderWidgetEmits, RenderWidgetProps } from './index'
   import { filterSlots } from '../../hooks/useSchema'
-
+  import { useNamespace } from 'element-plus'
   defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {
     isDrag: false,
@@ -78,6 +78,8 @@
   } = toRefs(props)
   const emits = defineEmits<RenderWidgetEmits>()
   const slots = defineSlots()
+
+  const ns = useNamespace('render-widget')
 
   const getComponent = (type: string) => {
     return ComponentMap[type] || type
@@ -140,15 +142,18 @@
 </script>
 
 <style lang="scss">
-  .render-widget-drag {
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    min-height: 38px;
-    padding: 6px;
-    outline: 1px dotted #cccccc;
-    position: relative;
+  @include b('render-widget') {
+    @include e('drag') {
+      width: 100%;
+      height: 100%;
+      display: inline-block;
+      min-height: 38px;
+      padding: 6px;
+      outline: 1px dotted #cccccc;
+      position: relative;
+    }
   }
+
   .sortable-chosen {
     outline: 1px dotted #ef8484;
   }
