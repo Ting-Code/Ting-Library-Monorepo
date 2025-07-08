@@ -22,7 +22,7 @@
         </template>
       </RenderWidget>
     </template>
-    <div v-if="schema.id === selectSchemaId">
+    <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
       <div :class="ns.e('action')"> <i>拖拽栏</i> </div>
 
       <div :class="ns.e('handler')">
@@ -151,35 +151,42 @@
       outline: 1px dotted getCssVar('border-color', 'darker');
       position: relative;
     }
-
     @include e(drag) {
-      outline: 1px dotted #0659c7;
+      outline: 1px dotted getCssVar('text-color', 'primary');
     }
-
     @include e(ghost) {
       content: '';
       font-size: 0;
       height: 3px;
       box-sizing: border-box;
-      background: red;
-      border: 2px solid blue;
+      background: getCssVar('text-color', 'placeholder');
+      border: getCssVar('text-color', 'primary');
       outline-width: 0;
       padding: 0;
       overflow: hidden;
     }
-
+    @include e(active) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid getCssVar('text-color', 'placeholder');
+    }
     @include e(action) {
       position: absolute;
       bottom: 0;
       right: -2px;
       height: 28px;
       line-height: 28px;
-      background: red;
+      background: getCssVar('text-color', 'placeholder');
       z-index: 999;
 
       i {
         font-size: 14px;
-        color: #fff;
+        color: getCssVar('text-color', 'primary');
         margin: 0 5px;
         cursor: pointer;
       }
@@ -190,13 +197,13 @@
       left: -2px;
       height: 22px;
       line-height: 22px;
-      background: blue;
+      background: getCssVar('text-color', 'placeholder');
       z-index: 9;
 
       i {
         font-size: 14px;
         font-style: normal;
-        color: #fff;
+        color: getCssVar('text-color', 'primary');
         margin: 4px;
         cursor: default;
       }
