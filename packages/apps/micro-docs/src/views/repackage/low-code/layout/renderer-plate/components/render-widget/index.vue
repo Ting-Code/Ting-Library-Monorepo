@@ -109,7 +109,6 @@
       sort: true, // 是否日期内可以拖拽排序
       handle: `.${ns.e('handler')}`,
       ghostClass: ns.e('ghost'), // drop placeholder的css类名
-      chosenClass: ns.e('chosen'), // 被选中项的css 类名
       dragClass: ns.e('drag'), // 正在被拖拽中的css类名
       // 元素被选中
       onChoose: (evt) => {
@@ -143,22 +142,21 @@
 
 <style lang="scss">
   @include b('render-widget') {
-    @include e('wrapper') {
+    @include e(wrapper) {
       width: 100%;
       height: 100%;
       display: inline-block;
       min-height: 38px;
       padding: 6px;
-      outline: 1px dotted #cccccc;
+      outline: 1px dotted getCssVar('border-color', 'darker');
       position: relative;
     }
-    .sortable-chosen {
-      outline: 1px dotted #ef8484;
-    }
-    .sortable-drag {
+
+    @include e(drag) {
       outline: 1px dotted #0659c7;
     }
-    .sortable-ghost {
+
+    @include e(ghost) {
       content: '';
       font-size: 0;
       height: 3px;
@@ -170,7 +168,7 @@
       overflow: hidden;
     }
 
-    .grid-col-action {
+    @include e(action) {
       position: absolute;
       bottom: 0;
       right: -2px;
@@ -186,8 +184,7 @@
         cursor: pointer;
       }
     }
-
-    .grid-col-handler {
+    @include e(handler) {
       position: absolute;
       top: -2px;
       left: -2px;
