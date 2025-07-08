@@ -3,7 +3,7 @@
     :is="getComponent(schema.type)"
     v-bind="schema.attrs || {}"
     v-if="isChildDrag || isInitSortable"
-    :class="[ns.e('drag'), schema.id]"
+    :class="[ns.e('wrapper'), schema.id]"
     ref="el"
     @click.stop="handleClickEl"
   >
@@ -23,9 +23,9 @@
       </RenderWidget>
     </template>
     <div v-if="schema.id === selectSchemaId">
-      <div class="grid-col-action"> <i>拖拽栏</i> </div>
+      <div :class="ns.e('action')"> <i>拖拽栏</i> </div>
 
-      <div class="grid-col-handler">
+      <div :class="ns.e('handler')">
         <i>拖拽栏</i>
       </div>
     </div>
@@ -107,10 +107,10 @@
       group: 'items',
       animation: 150, // ms, number 单位：ms，定义排序动画的时间
       sort: true, // 是否日期内可以拖拽排序
-      handle: '.grid-col-handler',
-      ghostClass: 'sortable-ghost', // drop placeholder的css类名
-      chosenClass: 'sortable-chosen', // 被选中项的css 类名
-      dragClass: 'sortable-drag', // 正在被拖拽中的css类名
+      handle: `.${ns.e('handler')}`,
+      ghostClass: ns.e('ghost'), // drop placeholder的css类名
+      chosenClass: ns.e('chosen'), // 被选中项的css 类名
+      dragClass: ns.e('drag'), // 正在被拖拽中的css类名
       // 元素被选中
       onChoose: (evt) => {
         console.log('🚀 ~ onChoose:', evt, schema.value?.id)
@@ -143,7 +143,7 @@
 
 <style lang="scss">
   @include b('render-widget') {
-    @include e('drag') {
+    @include e('wrapper') {
       width: 100%;
       height: 100%;
       display: inline-block;
@@ -152,58 +152,57 @@
       outline: 1px dotted #cccccc;
       position: relative;
     }
-  }
-
-  .sortable-chosen {
-    outline: 1px dotted #ef8484;
-  }
-  .sortable-drag {
-    outline: 1px dotted #0659c7;
-  }
-  .sortable-ghost {
-    content: '';
-    font-size: 0;
-    height: 3px;
-    box-sizing: border-box;
-    background: red;
-    border: 2px solid blue;
-    outline-width: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-
-  .grid-col-action {
-    position: absolute;
-    bottom: 0;
-    right: -2px;
-    height: 28px;
-    line-height: 28px;
-    background: red;
-    z-index: 999;
-
-    i {
-      font-size: 14px;
-      color: #fff;
-      margin: 0 5px;
-      cursor: pointer;
+    .sortable-chosen {
+      outline: 1px dotted #ef8484;
     }
-  }
+    .sortable-drag {
+      outline: 1px dotted #0659c7;
+    }
+    .sortable-ghost {
+      content: '';
+      font-size: 0;
+      height: 3px;
+      box-sizing: border-box;
+      background: red;
+      border: 2px solid blue;
+      outline-width: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-  .grid-col-handler {
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    height: 22px;
-    line-height: 22px;
-    background: blue;
-    z-index: 9;
+    .grid-col-action {
+      position: absolute;
+      bottom: 0;
+      right: -2px;
+      height: 28px;
+      line-height: 28px;
+      background: red;
+      z-index: 999;
 
-    i {
-      font-size: 14px;
-      font-style: normal;
-      color: #fff;
-      margin: 4px;
-      cursor: default;
+      i {
+        font-size: 14px;
+        color: #fff;
+        margin: 0 5px;
+        cursor: pointer;
+      }
+    }
+
+    .grid-col-handler {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      height: 22px;
+      line-height: 22px;
+      background: blue;
+      z-index: 9;
+
+      i {
+        font-size: 14px;
+        font-style: normal;
+        color: #fff;
+        margin: 4px;
+        cursor: default;
+      }
     }
   }
 </style>
