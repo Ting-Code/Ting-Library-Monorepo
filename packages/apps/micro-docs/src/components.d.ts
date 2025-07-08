@@ -10,6 +10,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CodeBlock: typeof import('./components/code-block/index.vue')['default']
     DocsLayout: typeof import('./components/docs-layout/index.vue')['default']
+    ElCard: typeof import('element-plus/es')['ElCard']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDrawer: typeof import('element-plus/es')['ElDrawer']
     Flow: typeof import('./components/flow/index.vue')['default']

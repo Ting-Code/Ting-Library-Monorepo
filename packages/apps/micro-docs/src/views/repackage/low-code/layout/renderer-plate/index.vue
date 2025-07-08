@@ -14,7 +14,13 @@
     </div>
     <div :class="ns.e('main')">
       {{ model }}
-      <RenderWidget :schema="renderSchema" v-model="model">
+      <RenderWidget
+        :schema="renderSchema"
+        v-model="model"
+        :isDrag="true"
+        :select-schema-id="selectSchemaId"
+        :setSelectSchemaId="setSelectSchemaId"
+      >
         <template #one>
           <div>按钮#one</div>
         </template>
@@ -49,67 +55,74 @@
   })
   const ns = useNamespace('renderer-plate')
 
+  const selectSchemaId = ref('')
+
+  const setSelectSchemaId = (id: string): void => {
+    console.log('=======setSelectSchemaId', id)
+    selectSchemaId.value = id
+  }
+
   const { renderSchema, model, switchAllHide } = useSchema<ISchema, any>(
     {
       type: 'ReForm',
       slotName: { native: 'icon', name: 'one' },
       child: {
-        type: 'ReForm',
-        child: {
-          type: 'ReRow',
-          child: [
-            {
-              type: 'ReCol',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'one'
-                }
-              }
+        id: 'ReRow',
+        type: 'ReRow',
+        child: [
+          {
+            type: 'ReCol',
+            id: 'ReCol1',
+            attrs: {
+              span: 12
             },
-            {
-              type: 'ReCol',
+            child: {
+              type: 'ReFormItem',
               attrs: {
-                span: 12
+                label: '请输入'
               },
               child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key'
-                }
-              }
-            },
-            {
-              type: 'ReCol',
-              key: 'hide',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key',
-                  slotName: { native: 'suffix', name: 'tow' }
-                }
+                type: 'ReInput',
+                field: 'one'
               }
             }
-          ]
-        }
+          },
+          {
+            type: 'ReCol',
+            id: 'ReCol2',
+            attrs: {
+              span: 12
+            },
+            child: {
+              type: 'ReFormItem',
+              attrs: {
+                label: '请输入'
+              },
+              child: {
+                type: 'ReInput',
+                field: 'tow.key'
+              }
+            }
+          },
+          {
+            type: 'ReCol',
+            id: 'ReCol3',
+            attrs: {
+              span: 12
+            },
+            child: {
+              type: 'ReFormItem',
+              attrs: {
+                label: '请输入'
+              },
+              child: {
+                type: 'ReInput',
+                field: 'tow.key',
+                slotName: { native: 'suffix', name: 'tow' }
+              }
+            }
+          }
+        ]
       }
     },
     { one: '123123' }

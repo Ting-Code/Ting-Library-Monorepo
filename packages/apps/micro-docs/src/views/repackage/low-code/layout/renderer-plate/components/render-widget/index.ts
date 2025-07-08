@@ -37,12 +37,17 @@ export interface ISchema {
   slotName?: string | ISlotName[] | ISlotName
   child?: ISchema[] | ISchema
   hide?: boolean
-  key?: string
+  id?: string
 }
 
 export interface RenderWidgetProps {
   schema: ISchema
   model?: any
+  isDrag?: boolean
+  parentSchemaId?: string
+  parentSchemaType?: keyof typeof ComponentMap
+  selectSchemaId?: string
+  setSelectSchemaId?: (id?: string) => void
 }
 
 export { default as RenderWidget, default } from './index.vue'
