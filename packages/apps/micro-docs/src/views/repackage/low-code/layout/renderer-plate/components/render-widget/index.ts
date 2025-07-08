@@ -50,4 +50,8 @@ export interface RenderWidgetProps {
   setSelectSchemaId?: (id?: string) => void
 }
 
+export interface RenderWidgetEmits {
+  (event: 'click', events: FocusEvent): void
+}
+
 export { default as RenderWidget, default } from './index.vue'

@@ -3,7 +3,6 @@
     :is="getComponent(schema.type)"
     v-bind="schema.attrs || {}"
     v-if="isChildDrag || isInitSortable"
-    style="position: relative"
     :class="['render-widget-drag', schema.id]"
     ref="el"
     @click.stop="handleClickEl"
@@ -60,7 +59,7 @@
 
 <script setup lang="ts">
   import { useSortable } from '@vueuse/integrations/useSortable'
-  import { ComponentMap, RenderWidgetProps } from './index'
+  import { ComponentMap, RenderWidgetEmits, RenderWidgetProps } from './index'
   import { filterSlots } from '../../hooks/useSchema'
 
   defineOptions({ name: 'RenderWidget' })
@@ -77,6 +76,7 @@
     parentSchemaId,
     parentSchemaType
   } = toRefs(props)
+  const emits = defineEmits<RenderWidgetEmits>()
   const slots = defineSlots()
 
   const getComponent = (type: string) => {
@@ -132,7 +132,8 @@
     })
   }
 
-  const handleClickEl = () => {
+  const handleClickEl = (event) => {
+    emits('click', event)
     if (!toValue(isChildDrag)) return
     toValue(setSelectSchemaId)(schema.value.id)
   }
