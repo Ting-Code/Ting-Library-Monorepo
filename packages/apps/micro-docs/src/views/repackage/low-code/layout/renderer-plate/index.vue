@@ -52,11 +52,11 @@
   const emit = defineEmits<{
     (event: 'update:isShowStencil', value: boolean): void
     (event: 'selectSchema', schemaItem: ISchema): void
-    (event: 'startSchema', schemaItem: ISchema, evt?: SortableEvent): void
-    (event: 'addSchema', schemaItem: ISchema, evt?: SortableEvent): void
-    (event: 'removeSchema', schemaItem: ISchema, evt?: SortableEvent): void
-    (event: 'updateSchema', schemaItem: ISchema, evt?: SortableEvent): void
-    (event: 'endSchema', schemaItem: ISchema, evt?: SortableEvent): void
+    (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
   }>()
 
   const props = withDefaults(defineProps<Props>(), {
