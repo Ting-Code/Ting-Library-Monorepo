@@ -53,11 +53,11 @@ export interface RenderWidgetProps {
 export interface RenderWidgetEmits {
   (event: 'click', events: FocusEvent): void
   (event: 'selectSchema', schemaItem: ISchema): void
-  (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
-  (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
-  (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
-  (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
-  (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'startSchema', schemaItem: ISchema, evt?: SortableEvent): void
+  (event: 'addSchema', schemaItem: ISchema, evt?: SortableEvent): void
+  (event: 'removeSchema', schemaItem: ISchema, evt?: SortableEvent): void
+  (event: 'updateSchema', schemaItem: ISchema, evt?: SortableEvent): void
+  (event: 'endSchema', schemaItem: ISchema, evt?: SortableEvent): void
 }
 
 export { default as RenderWidget, default } from './index.vue'

@@ -15,7 +15,12 @@
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
         :selectSchemaId="selectSchemaId"
-        :setSelectSchemaId="setSelectSchemaId"
+        @selectSchema="(schema) => emits('selectSchema', schema)"
+        @startSchema="(schema, evt) => emits('startSchema', schema, evt)"
+        @addSchema="(schema, evt) => emits('addSchema', schema, evt)"
+        @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
+        @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
+        @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
       >
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
@@ -24,15 +29,15 @@
     </template>
     <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
       <div :class="ns.e('action')">
-        <el-icon><Back /></el-icon>
-        <el-icon><Top /></el-icon>
-        <el-icon><Bottom /></el-icon>
-        <el-icon><Delete /></el-icon>
-        <el-icon><CopyDocument /></el-icon>
+        <ElIcon><Back /></ElIcon>
+        <ElIcon><Top /></ElIcon>
+        <ElIcon><Bottom /></ElIcon>
+        <ElIcon><Delete /></ElIcon>
+        <ElIcon><CopyDocument /></ElIcon>
       </div>
 
       <div :class="ns.e('handler')">
-        <el-icon><Rank /></el-icon>
+        <ElIcon><Rank /></ElIcon>
         <span>{{ schema.type }}</span>
       </div>
     </div>
@@ -51,7 +56,12 @@
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
         :selectSchemaId="selectSchemaId"
-        :setSelectSchemaId="setSelectSchemaId"
+        @selectSchema="(schema) => emits('selectSchema', schema)"
+        @startSchema="(schema, evt) => emits('startSchema', schema, evt)"
+        @addSchema="(schema, evt) => emits('addSchema', schema, evt)"
+        @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
+        @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
+        @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
       >
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
@@ -65,24 +75,16 @@
 </template>
 
 <script setup lang="ts">
+  import { useNamespace, ElIcon } from 'element-plus'
+  import { Rank, Back, Top, Bottom, Delete, CopyDocument } from '@element-plus/icons-vue'
   import { useSortable } from '@vueuse/integrations/useSortable'
-  import { ComponentMap, RenderWidgetEmits, RenderWidgetProps } from './index'
+  import { ComponentMap, RenderWidget, RenderWidgetEmits, RenderWidgetProps } from './index'
   import { filterSlots } from '../../../../hooks/useSchema'
-  import { useNamespace } from 'element-plus'
   defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {
-    isDrag: false,
-    setSelectSchemaId: () => {}
+    isDrag: false
   })
-  const {
-    model,
-    schema,
-    isDrag,
-    selectSchemaId,
-    setSelectSchemaId,
-    parentSchemaId,
-    parentSchemaType
-  } = toRefs(props)
+  const { model, schema, isDrag, selectSchemaId, parentSchemaId, parentSchemaType } = toRefs(props)
   const emits = defineEmits<RenderWidgetEmits>()
   const slots = defineSlots()
 
