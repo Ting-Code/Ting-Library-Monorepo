@@ -11,6 +11,7 @@ import { ReFormItem, ReFormItemProps } from '../form-item/index'
 import { ReRow, ReRowProps } from '../row/index'
 import { ReCol, ReColProps } from '../col/index'
 import { ISlotName } from '../../hooks/useSchema'
+import type { SortableEvent } from 'sortablejs'
 export const ComponentMap = {
   ReButton,
   ReForm,
@@ -47,11 +48,16 @@ export interface RenderWidgetProps {
   parentSchemaId?: string
   parentSchemaType?: keyof typeof ComponentMap
   selectSchemaId?: string
-  setSelectSchemaId?: (id?: string) => void
 }
 
 export interface RenderWidgetEmits {
   (event: 'click', events: FocusEvent): void
+  (event: 'selectSchema', schemaItem: ISchema): void
+  (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
 }
 
 export { default as RenderWidget, default } from './index.vue'

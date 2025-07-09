@@ -2,24 +2,27 @@
   <div :class="ns.b()">
     <div :class="ns.e('head')">
       <template v-if="isMobile">
-        <ReButton v-show="!props.isShowStencil" @click="emit('update:isShowStencil', true)" />
-        <ReButton v-show="props.isShowStencil" @click="emit('update:isShowStencil', false)" />
+        <ReButton v-show="!isShowStencil" @click="emit('update:isShowStencil', true)" />
+        <ReButton v-show="isShowStencil" @click="emit('update:isShowStencil', false)" />
       </template>
       <ReButton :icon="Share" />
       <ReButton :icon="CaretLeft" />
       <ReButton :icon="CaretRight" />
       <ReButton :icon="Delete" />
       <ReButton :icon="ZoomIn" />
-      <ReButton :icon="ZoomOut" @click="handleOut" />
+      <ReButton :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
-      {{ model }}
       <RenderWidget
         :schema="renderSchema"
-        v-model="model"
         :isDrag="true"
-        :select-schema-id="selectSchemaId"
-        :setSelectSchemaId="setSelectSchemaId"
+        :selectSchemaId="selectSchemaId"
+        @selectSchema="(schema) => emit('selectSchema', schema)"
+        @startSchema="(schema, evt) => emit('startSchema', schema, evt)"
+        @addSchema="(schema, evt) => emit('addSchema', schema, evt)"
+        @removeSchema="(schema, evt) => emit('removeSchema', schema, evt)"
+        @updateSchema="(schema, evt) => emit('updateSchema', schema, evt)"
+        @endSchema="(schema, evt) => emit('endSchema', schema, evt)"
       >
         <template #one>
           <div>按钮#one</div>
@@ -36,161 +39,33 @@
   import { ReButton } from '@tingcode/lib-vue'
   import { useNamespace } from '@tingcode/system'
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
-  import { RenderWidget } from './components/render-widget/index'
-  import { ISchema } from './components/render-widget/index'
-  import { useSchema } from '@/views/repackage/low-code/layout/renderer-plate/hooks/useSchema'
+  import { ISchema, RenderWidget } from './components/render-widget/index'
+  import type { SortableEvent } from 'sortablejs'
   defineOptions({ name: 'RendererPlate' })
   interface Props {
     isShowStencil: boolean
     isMobile: boolean
+    selectSchemaId?: string
+    renderSchema: ISchema
   }
 
   const emit = defineEmits<{
-    (e: 'update:isShowStencil', value: boolean): void
+    (event: 'update:isShowStencil', value: boolean): void
+    (event: 'selectSchema', schemaItem: ISchema): void
+    (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
   }>()
 
-  const props = withDefaults(defineProps<Props>(), {
-    isShowStencil: false,
-    isMobile: false
-  })
-  const ns = useNamespace('renderer-plate')
-
-  const selectSchemaId = ref('')
-
-  const setSelectSchemaId = (id: string): void => {
-    console.log('=======setSelectSchemaId', id)
-    selectSchemaId.value = id
-  }
-
-  const { renderSchema, model, switchAllHide } = useSchema<ISchema, any>(
-    {
-      type: 'ReForm',
-      slotName: { native: 'icon', name: 'one' },
-      child: [
-        {
-          id: 'ReRow',
-          type: 'ReRow',
-          child: [
-            {
-              type: 'ReCol',
-              id: 'ReCol1',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'one'
-                }
-              }
-            },
-            {
-              type: 'ReCol',
-              id: 'ReCol2',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key'
-                }
-              }
-            },
-            {
-              type: 'ReCol',
-              id: 'ReCol3',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key',
-                  slotName: { native: 'suffix', name: 'tow' }
-                }
-              }
-            }
-          ]
-        },
-        {
-          id: 'ReRow2',
-          type: 'ReRow',
-          child: [
-            {
-              type: 'ReCol',
-              id: 'ReCol12',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'one'
-                }
-              }
-            },
-            {
-              type: 'ReCol',
-              id: 'ReCol22',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key'
-                }
-              }
-            },
-            {
-              type: 'ReCol',
-              id: 'ReCol32',
-              attrs: {
-                span: 12
-              },
-              child: {
-                type: 'ReFormItem',
-                attrs: {
-                  label: '请输入'
-                },
-                child: {
-                  type: 'ReInput',
-                  field: 'tow.key',
-                  slotName: { native: 'suffix', name: 'tow' }
-                }
-              }
-            }
-          ]
-        }
-      ]
-    },
-    { one: '123123' }
+  const { isShowStencil, isMobile, renderSchema, selectSchemaId } = toRefs(
+    withDefaults(defineProps<Props>(), {
+      isShowStencil: false,
+      isMobile: false
+    })
   )
-  watch(renderSchema, () => {}, { deep: true, immediate: true })
-  const handleOut = () => {
-    switchAllHide({ type: 'ReCol' }, 'switch')
-  }
+  const ns = useNamespace('renderer-plate')
 </script>
 
 <style lang="scss" scoped>

@@ -1,10 +1,6 @@
 import { ref, Ref, toValue, toRef, watch } from 'vue'
-import { isArray, isString, isObject } from '@tingcode/utils'
+import { isArray, isString, isObject, set, get, cloneDeep } from '@tingcode/utils'
 import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
-import set from 'lodash/set'
-import get from 'lodash/get'
-import { cloneDeep } from 'lodash'
-
 export type ISlotName = string | { native?: string; name: string }
 
 export function hasSlot(slotName: string | ISlotName[] | ISlotName | undefined, name: string) {
@@ -106,6 +102,12 @@ export function conductChild<T extends ISchema>(schema: T) {
     schema.child = [schema.child]
   }
 }
+
+/**
+ * @description bind model & bing updateModel
+ * @param schemaItem
+ * @param model
+ */
 export function conductFormModel<T extends ISchema, U extends Record<string, any>>(
   schemaItem: T,
   model: Ref<U>
@@ -128,6 +130,12 @@ export function conductFormModel<T extends ISchema, U extends Record<string, any
     }
   }
 }
+
+/**
+ * @description hide to remove
+ * @param schema
+ * @param schemaItem
+ */
 export function conductHide<T extends ISchema>(schema: T, schemaItem: T) {
   if (schemaItem.hide) {
     const parent = getParent(schema, schemaItem)
@@ -140,6 +148,12 @@ export function conductHide<T extends ISchema>(schema: T, schemaItem: T) {
     }
   }
 }
+
+/**
+ * @description generate renderSchema
+ * @param schema
+ * @param model
+ */
 export function generateRenderSchema<T extends ISchema, U extends Record<string, any>>(
   schema: T,
   model: Ref<U>
