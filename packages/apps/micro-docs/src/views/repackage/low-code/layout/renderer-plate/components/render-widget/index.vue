@@ -152,7 +152,7 @@
       width: 100%;
       height: 100%;
       display: inline-block;
-      min-height: 38px;
+      min-height: 28px;
       padding: 6px;
       outline: 1px dotted getCssVar('border-color', 'darker');
       position: relative;
