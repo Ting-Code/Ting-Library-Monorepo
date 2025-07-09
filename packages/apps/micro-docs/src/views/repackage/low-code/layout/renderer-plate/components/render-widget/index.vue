@@ -38,7 +38,7 @@
 
       <div :class="ns.e('handler')">
         <ElIcon><Rank /></ElIcon>
-        <span>{{ schema.type }}</span>
+        <span>{{ `${schema.type}-${schema.id}` }}</span>
       </div>
     </div>
 

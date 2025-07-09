@@ -9,7 +9,10 @@
         :isMobile="isMobile"
         :renderSchema="renderSchema"
         :selectSchemaId="selectSchemaId"
-        @select-schema="setSelectSchema"
+        @selectSchema="setSelectSchema"
+        @addSchema="addSchema"
+        @removeSchema="removeSchema"
+        @updateSchema="updateSchema"
       />
     </div>
     <div :class="ns.e('right')">右边</div>
@@ -41,14 +44,34 @@
     { immediate: true }
   )
   const selectSchemaId = ref('')
-  const selectSchema = ref({})
+  const selectSchema = ref<ISchema>()
+  const { renderSchema } = useSchema<ISchema, any>(defaultSchema, {})
 
   const setSelectSchema = (schema: ISchema): void => {
     selectSchemaId.value = schema.id || ''
-    selectSchema.value = cloneDeep(schema)
+    selectSchema.value = schema
   }
 
-  const { renderSchema } = useSchema<ISchema, any>(defaultSchema, { one: '123123' })
+  const addSchema = (schema: ISchema, evt): void => {
+    if (!toValue(selectSchema)) return
+    if (schema.child && (schema.child as ISchema[]).length && toValue(selectSchema)) {
+      ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
+    } else {
+      schema.child = [cloneDeep(toValue(selectSchema)!)]
+    }
+  }
+
+  const removeSchema = (schema: ISchema, evt): void => {
+    if (!schema.child || (schema.child as ISchema[]).length) return
+    ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
+  }
+
+  const updateSchema = (schema: ISchema, evt): void => {
+    if (!toValue(selectSchema)) return evt
+    if (!schema.child || (schema.child as ISchema[]).length) return
+    ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
+    ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
+  }
 </script>
 
 <style lang="scss" scoped>
