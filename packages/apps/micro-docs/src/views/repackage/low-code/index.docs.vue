@@ -27,7 +27,7 @@
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
   import { useSchema } from './hooks/useSchema'
   import { defaultSchema } from '@/views/repackage/low-code/hooks/schema'
-  import { addDrag, removeDrag, updateDrag } from '@/views/repackage/low-code/hooks/useDrag'
+  import { addList, removeList, updateList } from '@/views/repackage/low-code/hooks/useDrag'
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)
@@ -53,17 +53,17 @@
   }
 
   const addSchema = (schema: ISchema, evt): void => {
-    schema.child = addDrag<ISchema>(
+    schema.child = addList<ISchema>(
       schema.child as ISchema[],
       toValue(selectSchema!)!,
       evt.newIndex
     )
   }
   const removeSchema = (schema: ISchema, evt): void => {
-    schema.child = removeDrag(schema.child as ISchema[], evt.oldIndex)
+    schema.child = removeList(schema.child as ISchema[], evt.oldIndex)
   }
   const updateSchema = (schema: ISchema, evt): void => {
-    schema.child = updateDrag(schema.child as ISchema[], evt.newIndex, evt.oldIndex)
+    schema.child = updateList(schema.child as ISchema[], evt.newIndex, evt.oldIndex)
   }
 </script>
 
