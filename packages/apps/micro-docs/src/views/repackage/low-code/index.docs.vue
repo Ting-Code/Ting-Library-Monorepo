@@ -69,6 +69,10 @@
   const updateSchema = (schema: ISchema, evt): void => {
     if (!toValue(selectSchema)) return evt
     if (!schema.child || (schema.child as ISchema[]).length) return
+    if (evt) {
+      removeNode(e.item)
+      insertNodeAt(e.from, e.item, from)
+    }
     ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
     ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
   }

@@ -79,7 +79,7 @@
   import { Rank, Back, Top, Bottom, Delete, CopyDocument } from '@element-plus/icons-vue'
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { ComponentMap, RenderWidget, RenderWidgetEmits, RenderWidgetProps } from './index'
-  import { filterSlots } from '../../../../hooks/useSchema'
+  import { filterSlots } from '@tingcode/lib-vue'
   defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {
     isDrag: false

@@ -10,7 +10,7 @@ import { ReForm, ReFormProps } from '../form/index'
 import { ReFormItem, ReFormItemProps } from '../form-item/index'
 import { ReRow, ReRowProps } from '../row/index'
 import { ReCol, ReColProps } from '../col/index'
-import { ISlotName } from '../../hooks/useSchema'
+import type { ISlotName } from '@tingcode/lib-vue'
 import type { SortableEvent } from 'sortablejs'
 export const ComponentMap = {
   ReButton,
