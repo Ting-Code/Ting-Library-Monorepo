@@ -21,13 +21,13 @@
 
 <script setup lang="ts">
   import { useNamespace } from '@tingcode/system'
-  import { cloneDeep } from '@tingcode/utils'
   import { useAppProviderContext } from '@/application/useAppContext'
   import ComponentPlate from './layout/component-plate/index.vue'
   import RendererPlate from '@/views/repackage/low-code/layout/renderer-plate/index.vue'
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
   import { useSchema } from './hooks/useSchema'
   import { defaultSchema } from '@/views/repackage/low-code/hooks/schema'
+  import { addDrag, removeDrag, updateDrag } from '@/views/repackage/low-code/hooks/useDrag'
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)
@@ -53,33 +53,17 @@
   }
 
   const addSchema = (schema: ISchema, evt): void => {
-    if (!toValue(selectSchema)) return
-    if (schema.child && (schema.child as ISchema[]).length && toValue(selectSchema)) {
-      ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
-    } else {
-      schema.child = [cloneDeep(toValue(selectSchema)!)]
-    }
-    console.log('======new schema=======', schema)
-  }
-
-  const removeSchema = (schema: ISchema, evt): void => {
-    if (!schema.child || (schema.child as ISchema[]).length) return
-    ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
-    console.log('======new schema=======', schema)
-  }
-
-  const updateSchema = (schema: ISchema, evt): void => {
-    if (!toValue(selectSchema)) return evt
-    if (!schema.child || !(schema.child as ISchema[]).length) return
-    ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
-    ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
-    console.log(
-      '======new schema=======',
-      evt.oldIndex,
-      evt.newIndex,
-      toValue(selectSchema),
-      cloneDeep(schema)
+    schema.child = addDrag<ISchema>(
+      schema.child as ISchema[],
+      toValue(selectSchema!)!,
+      evt.newIndex
     )
+  }
+  const removeSchema = (schema: ISchema, evt): void => {
+    schema.child = removeDrag(schema.child as ISchema[], evt.oldIndex)
+  }
+  const updateSchema = (schema: ISchema, evt): void => {
+    schema.child = updateDrag(schema.child as ISchema[], evt.newIndex, evt.oldIndex)
   }
 </script>
 
