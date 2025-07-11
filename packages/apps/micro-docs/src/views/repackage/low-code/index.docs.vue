@@ -59,18 +59,27 @@
     } else {
       schema.child = [cloneDeep(toValue(selectSchema)!)]
     }
+    console.log('======new schema=======', schema)
   }
 
   const removeSchema = (schema: ISchema, evt): void => {
     if (!schema.child || (schema.child as ISchema[]).length) return
     ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
+    console.log('======new schema=======', schema)
   }
 
   const updateSchema = (schema: ISchema, evt): void => {
     if (!toValue(selectSchema)) return evt
-    if (!schema.child || (schema.child as ISchema[]).length) return
-    ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
+    if (!schema.child || !(schema.child as ISchema[]).length) return
     ;(schema.child as ISchema[]).splice(evt.oldIndex, 1)
+    ;(schema.child as ISchema[]).splice(evt.newIndex, 0, cloneDeep(toValue(selectSchema)!))
+    console.log(
+      '======new schema=======',
+      evt.oldIndex,
+      evt.newIndex,
+      toValue(selectSchema),
+      cloneDeep(schema)
+    )
   }
 </script>
 

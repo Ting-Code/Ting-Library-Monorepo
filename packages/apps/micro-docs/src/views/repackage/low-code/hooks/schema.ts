@@ -68,7 +68,7 @@ export const defaultSchema: ISchema = {
       child: [
         {
           type: 'ReCol',
-          id: 'ReCol12',
+          id: 'ReCol21',
           attrs: {
             span: 12
           },
@@ -102,7 +102,61 @@ export const defaultSchema: ISchema = {
         },
         {
           type: 'ReCol',
-          id: 'ReCol32',
+          id: 'ReCol23',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              field: 'tow.key',
+              slotName: { native: 'suffix', name: 'tow' }
+            }
+          }
+        },
+        {
+          type: 'ReCol',
+          id: 'ReCol25',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              field: 'tow.key',
+              slotName: { native: 'suffix', name: 'tow' }
+            }
+          }
+        },
+        {
+          type: 'ReCol',
+          id: 'ReCol26',
+          attrs: {
+            span: 12
+          },
+          child: {
+            type: 'ReFormItem',
+            attrs: {
+              label: '请输入'
+            },
+            child: {
+              type: 'ReInput',
+              field: 'tow.key',
+              slotName: { native: 'suffix', name: 'tow' }
+            }
+          }
+        },
+        {
+          type: 'ReCol',
+          id: 'ReCol27',
           attrs: {
             span: 12
           },
