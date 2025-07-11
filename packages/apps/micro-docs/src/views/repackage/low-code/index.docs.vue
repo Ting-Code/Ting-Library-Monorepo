@@ -21,13 +21,13 @@
 
 <script setup lang="ts">
   import { useNamespace } from '@tingcode/system'
+  import { addList, removeList, updateList } from '@tingcode/utils'
   import { useAppProviderContext } from '@/application/useAppContext'
   import ComponentPlate from './layout/component-plate/index.vue'
   import RendererPlate from '@/views/repackage/low-code/layout/renderer-plate/index.vue'
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
   import { useSchema } from './hooks/useSchema'
   import { defaultSchema } from '@/views/repackage/low-code/hooks/schema'
-  import { addList, removeList, updateList } from '@/views/repackage/low-code/hooks/useDrag'
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)
