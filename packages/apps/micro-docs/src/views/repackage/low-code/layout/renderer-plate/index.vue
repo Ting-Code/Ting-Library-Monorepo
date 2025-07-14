@@ -2,8 +2,8 @@
   <div :class="ns.b()">
     <div :class="ns.e('head')">
       <template v-if="isMobile">
-        <ReButton v-show="!isShowStencil" @click="emit('update:isShowStencil', true)" />
-        <ReButton v-show="isShowStencil" @click="emit('update:isShowStencil', false)" />
+        <ReButton v-show="!isShowStencil" @click="emits('update:isShowStencil', true)" />
+        <ReButton v-show="isShowStencil" @click="emits('update:isShowStencil', false)" />
       </template>
       <ReButton :icon="Share" />
       <ReButton :icon="CaretLeft" />
@@ -17,12 +17,17 @@
         :schema="renderSchema"
         :isDrag="true"
         :selectSchemaId="selectSchemaId"
-        @selectSchema="(schema) => emit('selectSchema', schema)"
-        @startSchema="(schema, evt) => emit('startSchema', schema, evt)"
-        @addSchema="(schema, evt) => emit('addSchema', schema, evt)"
-        @removeSchema="(schema, evt) => emit('removeSchema', schema, evt)"
-        @updateSchema="(schema, evt) => emit('updateSchema', schema, evt)"
-        @endSchema="(schema, evt) => emit('endSchema', schema, evt)"
+        @selectSchema="(schema) => emits('selectSchema', schema)"
+        @startSchema="(schema, evt) => emits('startSchema', schema, evt)"
+        @addSchema="(schema, evt) => emits('addSchema', schema, evt)"
+        @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
+        @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
+        @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
+        @upLevel="(parentSchema, schema, index) => emits('upLevel', parentSchema, schema, index)"
+        @moveUp="(parentSchema, schema, index) => emits('moveUp', parentSchema, schema, index)"
+        @moveDown="(parentSchema, schema, index) => emits('moveDown', parentSchema, schema, index)"
+        @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
+        @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
       >
         <template #one>
           <div>按钮#one</div>
@@ -49,7 +54,7 @@
     renderSchema: ISchema
   }
 
-  const emit = defineEmits<{
+  const emits = defineEmits<{
     (event: 'update:isShowStencil', value: boolean): void
     (event: 'selectSchema', schemaItem: ISchema): void
     (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
@@ -57,6 +62,11 @@
     (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
     (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
     (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
+    (event: 'upLevel', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+    (event: 'moveUp', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+    (event: 'moveDown', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+    (event: 'delete', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+    (event: 'copy', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
   }>()
 
   const props = withDefaults(defineProps<Props>(), {

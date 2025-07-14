@@ -13,6 +13,11 @@
         @addSchema="addSchema"
         @removeSchema="removeSchema"
         @updateSchema="updateSchema"
+        @upLevel="handleUpLevel"
+        @moveUp="handleMoveUp"
+        @moveDown="handleMoveDown"
+        @delete="handleDelete"
+        @copy="handleCopy"
       />
     </div>
     <div :class="ns.e('right')">右边</div>
@@ -28,6 +33,7 @@
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
   import { useSchema } from './hooks/useSchema'
   import { defaultSchema } from '@/views/repackage/low-code/hooks/schema'
+  import { ElMessage } from 'element-plus'
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowStencil = ref(true)
@@ -64,6 +70,26 @@
   }
   const updateSchema = (schema: ISchema, evt): void => {
     schema.child = updateList(schema.child as ISchema[], evt.newIndex, evt.oldIndex)
+  }
+  const handleUpLevel = (parentSchema) => {
+    if (parentSchema && parentSchema.id) {
+      selectSchema.value = parentSchema
+      selectSchemaId.value = parentSchema.id
+    } else {
+      ElMessage.warning('已到最高层级')
+    }
+  }
+  const handleMoveUp = (parentSchema, schema, index) => {
+    console.log(parentSchema, schema, index)
+  }
+  const handleMoveDown = (parentSchema, schema, index) => {
+    console.log(parentSchema, schema, index)
+  }
+  const handleDelete = (parentSchema, schema, index) => {
+    console.log(parentSchema, schema, index)
+  }
+  const handleCopy = (parentSchema, schema, index) => {
+    console.log(parentSchema, schema, index)
   }
 </script>
 

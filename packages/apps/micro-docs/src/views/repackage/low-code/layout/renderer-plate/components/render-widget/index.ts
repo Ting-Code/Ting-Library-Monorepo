@@ -45,6 +45,8 @@ export interface RenderWidgetProps {
   schema: ISchema
   model?: any
   isDrag?: boolean
+  index?: number
+  parentSchema?: ISchema
   parentSchemaId?: string
   parentSchemaType?: keyof typeof ComponentMap
   selectSchemaId?: string
@@ -58,6 +60,11 @@ export interface RenderWidgetEmits {
   (event: 'removeSchema', schemaItem: ISchema, evt: SortableEvent): void
   (event: 'updateSchema', schemaItem: ISchema, evt: SortableEvent): void
   (event: 'endSchema', schemaItem: ISchema, evt: SortableEvent): void
+  (event: 'upLevel', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+  (event: 'moveUp', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+  (event: 'moveDown', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+  (event: 'delete', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
+  (event: 'copy', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
 }
 
 export { default as RenderWidget, default } from './index.vue'

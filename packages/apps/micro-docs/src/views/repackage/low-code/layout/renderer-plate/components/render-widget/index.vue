@@ -12,6 +12,8 @@
         :schema="item"
         :model="model"
         :isDrag="isDrag"
+        :index="index"
+        :parentSchema="schema"
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
         :selectSchemaId="selectSchemaId"
@@ -21,6 +23,11 @@
         @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
         @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
         @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
+        @upLevel="(parentSchema, schema, index) => emits('upLevel', parentSchema, schema, index)"
+        @moveUp="(parentSchema, schema, index) => emits('moveUp', parentSchema, schema, index)"
+        @moveDown="(parentSchema, schema, index) => emits('moveDown', parentSchema, schema, index)"
+        @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
+        @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
       >
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
@@ -29,11 +36,11 @@
     </template>
     <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
       <div :class="ns.e('action')">
-        <ElIcon><Back /></ElIcon>
-        <ElIcon><Top /></ElIcon>
-        <ElIcon><Bottom /></ElIcon>
-        <ElIcon><Delete /></ElIcon>
-        <ElIcon><CopyDocument /></ElIcon>
+        <ElIcon @click="handleUpLevel"><Back /></ElIcon>
+        <ElIcon @click="handleMoveUp"><Top /></ElIcon>
+        <ElIcon @click="handleMoveDown"><Bottom /></ElIcon>
+        <ElIcon @click="handleDelete"><Delete /></ElIcon>
+        <ElIcon @click="handleCopy"><CopyDocument /></ElIcon>
       </div>
 
       <div :class="ns.e('handler')">
@@ -53,6 +60,8 @@
         :schema="item"
         :model="model"
         :isDrag="isDrag"
+        :index="index"
+        :parentSchema="schema"
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
         :selectSchemaId="selectSchemaId"
@@ -62,6 +71,11 @@
         @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
         @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
         @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
+        @upLevel="(parentSchema, schema, index) => emits('upLevel', parentSchema, schema, index)"
+        @moveUp="(parentSchema, schema, index) => emits('moveUp', parentSchema, schema, index)"
+        @moveDown="(parentSchema, schema, index) => emits('moveDown', parentSchema, schema, index)"
+        @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
+        @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
       >
         <template v-for="(_, name) in slots" #[name]="native">
           <slot :name="name" v-bind="native || {}"></slot>
@@ -82,9 +96,19 @@
   import { filterSlots } from '@tingcode/lib-vue'
   defineOptions({ name: 'RenderWidget' })
   const props = withDefaults(defineProps<RenderWidgetProps>(), {
-    isDrag: false
+    isDrag: false,
+    index: 0
   })
-  const { model, schema, isDrag, selectSchemaId, parentSchemaId, parentSchemaType } = toRefs(props)
+  const {
+    model,
+    schema,
+    isDrag,
+    selectSchemaId,
+    parentSchemaId,
+    parentSchemaType,
+    parentSchema,
+    index
+  } = toRefs(props)
   const emits = defineEmits<RenderWidgetEmits>()
   const slots = defineSlots()
 
@@ -143,6 +167,21 @@
     emits('click', event)
     if (!toValue(isChildDrag)) return
     emits('selectSchema', toValue(schema))
+  }
+  const handleUpLevel = () => {
+    emits('upLevel', toValue(parentSchema), toValue(schema), toValue(index))
+  }
+  const handleMoveUp = () => {
+    emits('moveUp', toValue(parentSchema), toValue(schema), toValue(index))
+  }
+  const handleMoveDown = () => {
+    emits('moveDown', toValue(parentSchema), toValue(schema), toValue(index))
+  }
+  const handleDelete = () => {
+    emits('delete', toValue(parentSchema), toValue(schema), toValue(index))
+  }
+  const handleCopy = () => {
+    emits('copy', toValue(parentSchema), toValue(schema), toValue(index))
   }
 </script>
 
