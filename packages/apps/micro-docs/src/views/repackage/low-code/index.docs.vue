@@ -41,11 +41,7 @@
   watch(
     isMobile,
     (val) => {
-      if (val) {
-        isShowStencil.value = false
-      } else {
-        isShowStencil.value = true
-      }
+      isShowStencil.value = !val
     },
     { immediate: true }
   )
@@ -73,11 +69,11 @@
   }
   const handleUpLevel = (parentSchema) => {
     if (parentSchema && parentSchema.id) {
-      selectSchema.value = parentSchema
-      selectSchemaId.value = parentSchema.id
+      setSelectSchema(parentSchema)
     } else {
       ElMessage.warning('已到最高层级')
     }
+    console.log(parentSchema, selectSchemaId.value, selectSchema.value)
   }
   const handleMoveUp = (parentSchema, schema, index) => {
     console.log(parentSchema, schema, index)
