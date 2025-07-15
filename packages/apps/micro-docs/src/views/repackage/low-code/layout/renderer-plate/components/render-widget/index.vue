@@ -7,12 +7,12 @@
     ref="el"
     @click.stop="handleClickEl"
   >
-    <template v-for="(item, index) in schema.child || []" :key="`${schema.id}${item.id}${index}`">
+    <template v-for="(item, idx) in schema.child || []" :key="`${schema.id}${item.id}${idx}`">
       <RenderWidget
         :schema="item"
         :model="model"
         :isDrag="isDrag"
-        :index="index"
+        :index="idx"
         :parentSchema="schema"
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
@@ -53,12 +53,12 @@
   </component>
 
   <component v-else :is="getComponent(schema.type)" v-bind="schema.attrs || {}" ref="el">
-    <template v-for="item in schema.child || []" :key="item.type + JSON.stringify(item.attrs)">
+    <template v-for="(item, idx) in schema.child || []" :key="`${schema.id}${item.id}${idx}`">
       <RenderWidget
         :schema="item"
         :model="model"
         :isDrag="isDrag"
-        :index="index"
+        :index="idx"
         :parentSchema="schema"
         :parentSchemaId="schema.id"
         :parentSchemaType="schema.type"
@@ -118,23 +118,24 @@
 
   const isActive = toRef(() => schema.value.id === selectSchemaId.value)
 
+  const dragVessel = ['ReForm']
   const isChildDrag = computed(() => {
     return (
       toValue(isDrag) &&
       toValue(parentSchemaId) &&
-      ['ReRow'].includes(toValue(parentSchemaType) || '')
+      dragVessel.includes(toValue(parentSchemaType) || '')
     )
   })
 
   const isInitSortable = computed(() => {
-    return toValue(isDrag) && toValue(schema)?.id && ['ReRow'].includes(toValue(schema)?.type)
+    return toValue(isDrag) && toValue(schema)?.id && dragVessel.includes(toValue(schema)?.type)
   })
 
   const el = useTemplateRef<HTMLElement>('el')
 
   if (toValue(isInitSortable)) {
     useSortable(el, (schema.value.child || []) as any[], {
-      group: 'items',
+      group: schema.value.type,
       animation: 150, // ms, number 单位：ms，定义排序动画的时间
       sort: true, // 是否日期内可以拖拽排序
       handle: `.${ns.e('handler')}`,
@@ -193,7 +194,7 @@
       width: 100%;
       height: 100%;
       min-height: 28px;
-      padding: 6px;
+      padding: 12px;
       outline: 1px dotted getCssVar('border-color', 'darker');
     }
     @include e(drag) {
@@ -202,10 +203,11 @@
     @include e(ghost) {
       content: '';
       font-size: 0;
-      height: 3px;
       box-sizing: border-box;
+      width: 100%;
+      height: 100%;
       background: getCssVar('text-color', 'placeholder');
-      border: getCssVar('text-color', 'primary');
+      border: 3px solid getCssVar('text-color', 'primary');
       outline-width: 0;
       padding: 0;
       overflow: hidden;

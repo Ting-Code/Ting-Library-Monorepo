@@ -5,7 +5,7 @@
         <ReButton v-show="!isShowStencil" @click="emits('update:isShowStencil', true)" />
         <ReButton v-show="isShowStencil" @click="emits('update:isShowStencil', false)" />
       </template>
-      <ReButton :icon="Share" />
+      <ReButton :icon="Share" @click="handleClick" />
       <ReButton :icon="CaretLeft" />
       <ReButton :icon="CaretRight" />
       <ReButton :icon="Delete" />
@@ -76,6 +76,10 @@
 
   const { isShowStencil, isMobile, renderSchema, selectSchemaId } = toRefs(props)
   const ns = useNamespace('renderer-plate')
+
+  const handleClick = () => {
+    console.log('🚀 ~ handleClick ~ renderSchema:', renderSchema)
+  }
 </script>
 
 <style lang="scss" scoped>
