@@ -36,11 +36,11 @@
     </template>
     <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
       <div :class="ns.e('action')">
-        <ElIcon @click="handleUpLevel"><Back /></ElIcon>
-        <ElIcon @click="handleMoveUp"><Top /></ElIcon>
-        <ElIcon @click="handleMoveDown"><Bottom /></ElIcon>
-        <ElIcon @click="handleDelete"><Delete /></ElIcon>
-        <ElIcon @click="handleCopy"><CopyDocument /></ElIcon>
+        <ElIcon @click.stop="handleUpLevel"><Back /></ElIcon>
+        <ElIcon @click.stop="handleMoveUp"><Top /></ElIcon>
+        <ElIcon @click.stop="handleMoveDown"><Bottom /></ElIcon>
+        <ElIcon @click.stop="handleDelete"><Delete /></ElIcon>
+        <ElIcon @click.stop="handleCopy"><CopyDocument /></ElIcon>
       </div>
 
       <div :class="ns.e('handler')">
@@ -114,6 +114,10 @@
 
   const ns = useNamespace('render-widget')
 
+  watch(selectSchemaId, () => {
+    console.log('selectSchemaId', selectSchemaId.value)
+  })
+
   const getComponent = (type: string) => {
     return ComponentMap[type] || type
   }
@@ -166,6 +170,7 @@
   const handleClickEl = (event) => {
     emits('click', event)
     if (!toValue(isChildDrag)) return
+    console.log('=====handleClickEl====', schema)
     emits('selectSchema', toValue(schema))
   }
   const handleUpLevel = () => {
