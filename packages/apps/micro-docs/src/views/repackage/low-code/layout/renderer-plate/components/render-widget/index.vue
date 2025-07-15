@@ -2,8 +2,8 @@
   <component
     :is="getComponent(schema.type)"
     v-bind="schema.attrs || {}"
-    v-if="isChildDrag || isInitSortable"
-    :class="[ns.e('wrapper'), schema.id]"
+    v-if="isChildDrag"
+    :class="[ns.e('wrapper'), isActive && ns.e('active')]"
     ref="el"
     @click.stop="handleClickEl"
   >
@@ -34,19 +34,17 @@
         </template>
       </RenderWidget>
     </template>
-    <div :class="ns.e('active')" v-if="schema.id === selectSchemaId">
-      <div :class="ns.e('action')">
-        <ElIcon @click.stop="handleUpLevel"><Back /></ElIcon>
-        <ElIcon @click.stop="handleMoveUp"><Top /></ElIcon>
-        <ElIcon @click.stop="handleMoveDown"><Bottom /></ElIcon>
-        <ElIcon @click.stop="handleDelete"><Delete /></ElIcon>
-        <ElIcon @click.stop="handleCopy"><CopyDocument /></ElIcon>
-      </div>
+    <div :class="ns.e('action')" v-if="isActive">
+      <ElIcon @click.stop="handleUpLevel"><Back /></ElIcon>
+      <ElIcon @click.stop="handleMoveUp"><Top /></ElIcon>
+      <ElIcon @click.stop="handleMoveDown"><Bottom /></ElIcon>
+      <ElIcon @click.stop="handleDelete"><Delete /></ElIcon>
+      <ElIcon @click.stop="handleCopy"><CopyDocument /></ElIcon>
+    </div>
 
-      <div :class="ns.e('handler')">
-        <ElIcon><Rank /></ElIcon>
-        <span>{{ `${schema.type}-${schema.id}` }}</span>
-      </div>
+    <div :class="ns.e('handler')" v-if="isActive">
+      <ElIcon><Rank /></ElIcon>
+      <span>{{ `${schema.type}-${schema.id}` }}</span>
     </div>
 
     <template v-for="{ name, native } in filterSlots(slots, schema.slotName)" #[native]="scope">
@@ -54,7 +52,7 @@
     </template>
   </component>
 
-  <component v-else :is="getComponent(schema.type)" v-bind="schema.attrs || {}">
+  <component v-else :is="getComponent(schema.type)" v-bind="schema.attrs || {}" ref="el">
     <template v-for="item in schema.child || []" :key="item.type + JSON.stringify(item.attrs)">
       <RenderWidget
         :schema="item"
@@ -114,24 +112,26 @@
 
   const ns = useNamespace('render-widget')
 
-  watch(selectSchemaId, () => {
-    console.log('selectSchemaId', selectSchemaId.value)
-  })
-
   const getComponent = (type: string) => {
     return ComponentMap[type] || type
   }
+
+  const isActive = toRef(() => schema.value.id === selectSchemaId.value)
 
   const isChildDrag = computed(() => {
     return (
       toValue(isDrag) &&
       toValue(parentSchemaId) &&
-      ['ReRow'].includes(toValue(parentSchemaType) || '')
+      ['ReRow', 'ReForm', 'ReCol'].includes(toValue(parentSchemaType) || '')
     )
   })
 
   const isInitSortable = computed(() => {
-    return toValue(isDrag) && toValue(schema)?.id && ['ReRow'].includes(toValue(schema)?.type)
+    return (
+      toValue(isDrag) &&
+      toValue(schema)?.id &&
+      ['ReRow', 'ReForm', 'ReCol'].includes(toValue(schema)?.type)
+    )
   })
 
   const el = useTemplateRef<HTMLElement>('el')
@@ -195,11 +195,9 @@
     @include e(wrapper) {
       width: 100%;
       height: 100%;
-      display: inline-block;
       min-height: 28px;
       padding: 6px;
       outline: 1px dotted getCssVar('border-color', 'darker');
-      position: relative;
     }
     @include e(drag) {
       outline: 1px dotted getCssVar('text-color', 'primary');
@@ -216,13 +214,7 @@
       overflow: hidden;
     }
     @include e(active) {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
+      position: relative;
       border: 2px solid getCssVar('text-color', 'placeholder');
     }
     @include e(action) {

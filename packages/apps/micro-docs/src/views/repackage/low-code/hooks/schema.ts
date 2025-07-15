@@ -2,6 +2,7 @@ import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/compon
 
 export const defaultSchema: ISchema = {
   type: 'ReForm',
+  id: 'ReForm',
   slotName: { native: 'icon', name: 'one' },
   child: [
     {
