@@ -60,6 +60,9 @@
       toValue(selectSchema!)!,
       evt.newIndex
     )
+    if (evt.item) {
+      evt.item.remove()
+    }
     console.log('========addSchema=======', schema.child)
   }
   const removeSchema = (schema: ISchema, evt): void => {

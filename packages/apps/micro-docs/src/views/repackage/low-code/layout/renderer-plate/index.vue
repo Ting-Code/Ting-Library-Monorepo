@@ -13,29 +13,33 @@
       <ReButton :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
-      <RenderWidget
-        :schema="renderSchema"
-        :isDrag="true"
-        :selectSchemaId="selectSchemaId"
-        @selectSchema="(schema) => emits('selectSchema', schema)"
-        @startSchema="(schema, evt) => emits('startSchema', schema, evt)"
-        @addSchema="(schema, evt) => emits('addSchema', schema, evt)"
-        @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
-        @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
-        @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
-        @upLevel="(parentSchema, schema, index) => emits('upLevel', parentSchema, schema, index)"
-        @moveUp="(parentSchema, schema, index) => emits('moveUp', parentSchema, schema, index)"
-        @moveDown="(parentSchema, schema, index) => emits('moveDown', parentSchema, schema, index)"
-        @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
-        @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
-      >
-        <template #one>
-          <div>按钮#one</div>
-        </template>
-        <template #tow>
-          <div>按钮#tow</div>
-        </template>
-      </RenderWidget>
+      <div :class="ns.em('main', 'box')">
+        <RenderWidget
+          :schema="renderSchema"
+          :isDrag="true"
+          :selectSchemaId="selectSchemaId"
+          @selectSchema="(schema) => emits('selectSchema', schema)"
+          @startSchema="(schema, evt) => emits('startSchema', schema, evt)"
+          @addSchema="(schema, evt) => emits('addSchema', schema, evt)"
+          @removeSchema="(schema, evt) => emits('removeSchema', schema, evt)"
+          @updateSchema="(schema, evt) => emits('updateSchema', schema, evt)"
+          @endSchema="(schema, evt) => emits('endSchema', schema, evt)"
+          @upLevel="(parentSchema, schema, index) => emits('upLevel', parentSchema, schema, index)"
+          @moveUp="(parentSchema, schema, index) => emits('moveUp', parentSchema, schema, index)"
+          @moveDown="
+            (parentSchema, schema, index) => emits('moveDown', parentSchema, schema, index)
+          "
+          @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
+          @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
+        >
+          <template #one>
+            <div>按钮#one</div>
+          </template>
+          <template #tow>
+            <div>按钮#tow</div>
+          </template>
+        </RenderWidget>
+      </div>
     </div>
   </div>
 </template>
@@ -85,7 +89,17 @@
 <style lang="scss" scoped>
   @include b(renderer-plate) {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    @include e(main) {
+      flex: 1;
+      overflow: hidden;
+      @include m(box) {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
   }
 </style>

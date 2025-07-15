@@ -192,8 +192,6 @@
   @include b('render-widget') {
     @include e(wrapper) {
       position: relative;
-      width: 100%;
-      height: 100%;
       min-height: 28px;
       padding: 12px;
       outline: 1px dotted getCssVar('border-color', 'darker');
