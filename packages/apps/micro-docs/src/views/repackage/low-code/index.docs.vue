@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
-  import { addList, removeList, updateList } from '@tingcode/utils'
+  import { addList, removeList, updateList, cloneDeep } from '@tingcode/utils'
   import { useAppProviderContext } from '@/application/useAppContext'
   import ComponentPlate from './layout/component-plate/index.vue'
   import RendererPlate from '@/views/repackage/low-code/layout/renderer-plate/index.vue'
@@ -73,19 +73,43 @@
     } else {
       ElMessage.warning('已到最高层级')
     }
-    console.log(parentSchema, selectSchemaId.value, selectSchema.value)
   }
   const handleMoveUp = (parentSchema, schema, index) => {
-    console.log(parentSchema, schema, index)
+    if (parentSchema.child && parentSchema.child.length && index > 0) {
+      updateSchema(parentSchema, {
+        newIndex: index + 1,
+        oldIndex: index
+      })
+    } else {
+      ElMessage.warning('已到最高排序')
+    }
   }
   const handleMoveDown = (parentSchema, schema, index) => {
-    console.log(parentSchema, schema, index)
+    if (parentSchema.child && parentSchema.child.length && index + 1 < parentSchema.child.length) {
+      updateSchema(parentSchema, {
+        newIndex: index + 1,
+        oldIndex: index
+      })
+    } else {
+      ElMessage.warning('已到最末排序')
+    }
   }
   const handleDelete = (parentSchema, schema, index) => {
-    console.log(parentSchema, schema, index)
+    if (parentSchema.child && parentSchema.child.length) {
+      removeList(parentSchema.child, index)
+    }
   }
   const handleCopy = (parentSchema, schema, index) => {
-    console.log(parentSchema, schema, index)
+    if (parentSchema.child && parentSchema.child.length) {
+      addList(
+        parentSchema.child,
+        {
+          ...cloneDeep(schema),
+          id: schema.id
+        },
+        index + 1
+      )
+    }
   }
 </script>
 
