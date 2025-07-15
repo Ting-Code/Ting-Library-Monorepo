@@ -39,15 +39,16 @@
     handle: `.${ns.em('vessel-box', 'item')}`,
     group: { name: 'ReForm', pull: 'clone', put: false },
     onStart: (evt) => {
-      console.log('🚀 ~ onStart:', evt)
+      const type = vesselList.value[evt.oldIndex!]
+      console.log('🚀 ~ onStart:', evt, type)
     }
   })
   useSortable(widgetRef, widgetList, {
     handle: `.${ns.em('widget-box', 'item')}`,
     group: { name: 'ReRow', pull: 'clone', put: false },
-    draggable: `.${ns.em('widget-box', 'item')}`,
     onStart: (evt) => {
-      console.log('🚀 ~ onStart:', evt)
+      const type = widgetList.value[evt.oldIndex!]
+      console.log('🚀 ~ onStart:', evt, type)
     }
   })
 </script>
@@ -76,7 +77,7 @@
       display: flex;
       flex-wrap: wrap;
       @include m(item) {
-        width: 80px;
+        width: 86px;
         margin: 2px 6px !important;
       }
     }
