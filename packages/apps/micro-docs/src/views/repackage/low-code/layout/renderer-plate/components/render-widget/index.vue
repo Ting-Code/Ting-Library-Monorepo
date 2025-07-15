@@ -118,7 +118,7 @@
 
   const isActive = toRef(() => schema.value.id === selectSchemaId.value)
 
-  const dragVessel = ['ReForm']
+  const dragVessel = ['ReForm', 'ReRow']
   const isChildDrag = computed(() => {
     return (
       toValue(isDrag) &&
@@ -134,6 +134,7 @@
   const el = useTemplateRef<HTMLElement>('el')
 
   if (toValue(isInitSortable)) {
+    console.log('===========isInitSortable=========', schema.value.id)
     useSortable(el, (schema.value.child || []) as any[], {
       group: schema.value.type,
       animation: 150, // ms, number 单位：ms，定义排序动画的时间

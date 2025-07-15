@@ -60,13 +60,14 @@
       toValue(selectSchema!)!,
       evt.newIndex
     )
+    console.log('========addSchema=======', schema.child)
   }
   const removeSchema = (schema: ISchema, evt): void => {
     schema.child = removeList(schema.child as ISchema[], evt.oldIndex)
+    console.log('========removeSchema=======', schema.child)
   }
   const updateSchema = (schema: ISchema, evt): void => {
     schema.child = updateList(schema.child as ISchema[], evt.newIndex, evt.oldIndex)
-    console.log('========schema.child========', schema.child)
   }
   const handleUpLevel = (parentSchema) => {
     if (parentSchema && parentSchema.id) {
