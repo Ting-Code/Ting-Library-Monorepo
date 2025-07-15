@@ -10,19 +10,19 @@ import {
 } from '@tingcode/utils'
 
 // eslint-ignore
-export const ReCheckboxGroupFormatMap = {
+export const ReCheckboxFormatMap = {
   keepNumbers,
   keepString,
   stringSplitArray,
   stringSplitNumberArray,
   arrayJoinString
 }
-export type ReCheckboxGroupFormatFn = (value: unknown) => any
-export type ReCheckboxGroupFormatName = keyof typeof ReCheckboxGroupFormatMap
-export type ReCheckboxGroupFormat =
-  | (ReCheckboxGroupFormatName | ReCheckboxGroupFormatFn | string)[]
-  | ReCheckboxGroupFormatName
-  | ReCheckboxGroupFormatFn
+export type ReCheckboxFormatFn = (value: unknown) => any
+export type ReCheckboxFormatName = keyof typeof ReCheckboxFormatMap
+export type ReCheckboxFormat =
+  | (ReCheckboxFormatName | ReCheckboxFormatFn | string)[]
+  | ReCheckboxFormatName
+  | ReCheckboxFormatFn
   | string
 export type ElCheckboxGroupInstance = InstanceType<typeof ElCheckboxGroup>
 export type IElCheckboxGroupAttrs = ElCheckboxGroupInstance['$props']
@@ -31,23 +31,23 @@ export type IElCheckboxGroupEmits = ElCheckboxGroupInstance['$emit']
 
 export type ElCheckboxInstance = InstanceType<typeof ElCheckbox>
 export type IElCheckboxAttrs = ElCheckboxInstance['$props']
-export interface ReCheckboxGroupOptionItem extends /** @vue-ignore */ IElCheckboxAttrs {}
+export interface ReCheckboxOptionItem extends /** @vue-ignore */ IElCheckboxAttrs {}
 
-export interface ReCheckboxGroupProps extends /** @vue-ignore */ IElCheckboxGroupAttrs {
+export interface ReCheckboxProps extends /** @vue-ignore */ IElCheckboxGroupAttrs {
   modelValue: string[] | number[] | undefined
-  options: ReCheckboxGroupOptionItem[]
+  options: ReCheckboxOptionItem[]
   type?: 'default' | 'button'
-  format?: ReCheckboxGroupFormat
-  valueFormat?: ReCheckboxGroupFormat
+  format?: ReCheckboxFormat
+  valueFormat?: ReCheckboxFormat
 }
 
-export interface ReCheckboxGroupEmits {
+export interface ReCheckboxEmits {
   (event: 'change', events: unknown, updateValue: unknown): void
   (event: 'update:modelValue', events: unknown): void
 }
 
-export type ReCheckboxGroupSlots = IElCheckboxGroupSlots & {
-  default(props: ReCheckboxGroupOptionItem): any
+export type ReCheckboxSlots = IElCheckboxGroupSlots & {
+  default(props: ReCheckboxOptionItem): any
 }
-export const ReCheckboxGroup = CheckboxGroup
-export default ReCheckboxGroup
+export const ReCheckbox = CheckboxGroup
+export default ReCheckbox

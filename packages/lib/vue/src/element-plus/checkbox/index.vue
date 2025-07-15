@@ -2,7 +2,7 @@
   <ElCheckboxGroup v-bind="$attrs" :model-value="displayValue" @change="handleChange">
     <template v-if="props.type === 'button'">
       <ElCheckboxButton
-        v-for="item in props.options as ReCheckboxGroupOptionItem[]"
+        v-for="item in props.options as ReCheckboxOptionItem[]"
         :disabled="!!item.disabled"
         :value="item.value"
         :label="item.label"
@@ -19,7 +19,7 @@
     </template>
     <template v-else>
       <ElCheckbox
-        v-for="item in props.options as ReCheckboxGroupOptionItem[]"
+        v-for="item in props.options as ReCheckboxOptionItem[]"
         :disabled="!!item.disabled"
         :value="item.value"
         :label="item.label"
@@ -40,31 +40,31 @@
 <script setup lang="ts">
   import { ElCheckboxGroup, ElCheckbox, ElCheckboxButton } from 'element-plus'
   import {
-    ReCheckboxGroupProps,
-    ReCheckboxGroupSlots,
-    ReCheckboxGroupEmits,
-    ReCheckboxGroupFormat,
-    ReCheckboxGroupFormatMap,
-    ReCheckboxGroupOptionItem
+    ReCheckboxProps,
+    ReCheckboxSlots,
+    ReCheckboxEmits,
+    ReCheckboxFormat,
+    ReCheckboxFormatMap,
+    ReCheckboxOptionItem
   } from './index'
   import { computed } from 'vue'
   import { isArray, isFunction, isString } from '@tingcode/utils'
 
   defineOptions({
-    name: 'ReCheckboxGroup',
+    name: 'ReCheckbox',
     inheritAttrs: false
   })
 
   // 继承子组件props类型
-  const props = withDefaults(defineProps<ReCheckboxGroupProps>(), {
+  const props = withDefaults(defineProps<ReCheckboxProps>(), {
     type: 'default',
     format: () => (val: unknown) => val,
     valueFormat: () => (val: unknown) => val
   })
 
-  const slots = defineSlots<ReCheckboxGroupSlots>()
+  const slots = defineSlots<ReCheckboxSlots>()
 
-  const emits = defineEmits<ReCheckboxGroupEmits>()
+  const emits = defineEmits<ReCheckboxEmits>()
 
   const displayValue = computed(() => {
     if (isArray(props.format)) {
@@ -75,9 +75,9 @@
     return transformFormatValue(props.format, props.modelValue)
   })
 
-  const transformFormatValue = (format: ReCheckboxGroupFormat, value: unknown) => {
+  const transformFormatValue = (format: ReCheckboxFormat, value: unknown) => {
     if (isString(format)) {
-      return ReCheckboxGroupFormatMap[format] ? ReCheckboxGroupFormatMap[format]?.(value) : value
+      return ReCheckboxFormatMap[format] ? ReCheckboxFormatMap[format]?.(value) : value
     }
     if (isFunction(format)) {
       return format(value)

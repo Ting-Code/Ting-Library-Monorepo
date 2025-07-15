@@ -132,7 +132,7 @@
       flex: 1;
     }
     @include e(left) {
-      width: 200px;
+      width: 280px;
       height: 100%;
       overflow: hidden;
     }

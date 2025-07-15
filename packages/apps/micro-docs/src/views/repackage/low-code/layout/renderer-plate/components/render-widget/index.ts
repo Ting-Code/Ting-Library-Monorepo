@@ -4,7 +4,11 @@ import {
   ReInput,
   ReInputProps,
   ReRadio,
-  ReRadioProps
+  ReRadioProps,
+  ReSelect,
+  ReSelectProps,
+  ReCheckbox,
+  ReCheckboxProps
 } from '@tingcode/lib-vue'
 import { ReForm, ReFormProps } from '../form/index'
 import { ReFormItem, ReFormItemProps } from '../form-item/index'
@@ -19,7 +23,9 @@ export const ComponentMap = {
   ReInput,
   ReRadio,
   ReRow,
-  ReCol
+  ReCol,
+  ReSelect,
+  ReCheckbox
 }
 
 type ISchemaAttrs =
@@ -30,6 +36,8 @@ type ISchemaAttrs =
   | ReRadioProps
   | ReRowProps
   | ReColProps
+  | ReSelectProps
+  | ReCheckboxProps
 
 export interface ISchema {
   type: keyof typeof ComponentMap
