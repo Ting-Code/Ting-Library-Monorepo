@@ -12,16 +12,16 @@ export function recursionSchema<T extends ISchema>(schema: T, callback: (item: T
     }
   }
 }
-export function getParent<T extends ISchema>(root: T, target: T): T | null {
+export function getSchemaParent<T extends ISchema>(root: T, target: T): T | null {
   if (root.child === target) return root
   if (isArray(root.child)) {
     if (root.child.includes(target)) return root
     for (const child of root.child) {
-      const result = getParent(child as T, target)
+      const result = getSchemaParent(child as T, target)
       if (result) return result
     }
   } else if (root.child) {
-    return getParent(root.child as T, target)
+    return getSchemaParent(root.child as T, target)
   }
   return null
 }
@@ -50,20 +50,19 @@ export function findSchema<T extends ISchema>(schema: T, conditions: Partial<T>)
   })
   return result
 }
-export function conductChild<T extends ISchema>(schema: T) {
+export function conductSchemaChild<T extends ISchema>(schema: T) {
   if (!schema.child) return
   if (isArray(schema.child)) return
   if (isObject(schema.child)) {
     schema.child = [schema.child]
   }
 }
-
 /**
  * @description bind model & bing updateModel
  * @param schemaItem
  * @param model
  */
-export function conductFormModel<T extends ISchema, U extends Record<string, any>>(
+export function conductSchemaFormModel<T extends ISchema, U extends Record<string, any>>(
   schemaItem: T,
   model: Ref<U>
 ) {
@@ -85,15 +84,14 @@ export function conductFormModel<T extends ISchema, U extends Record<string, any
     }
   }
 }
-
 /**
  * @description hide to remove
  * @param schema
  * @param schemaItem
  */
-export function conductHide<T extends ISchema>(schema: T, schemaItem: T) {
+export function conductSchemaHide<T extends ISchema>(schema: T, schemaItem: T) {
   if (schemaItem.hide) {
-    const parent = getParent(schema, schemaItem)
+    const parent = getSchemaParent(schema, schemaItem)
     if (parent) {
       if (isArray(parent.child)) {
         parent.child = parent.child.filter((child) => child !== schemaItem)
@@ -103,7 +101,6 @@ export function conductHide<T extends ISchema>(schema: T, schemaItem: T) {
     }
   }
 }
-
 /**
  * @description generate renderSchema
  * @param schema
@@ -114,9 +111,9 @@ export function generateRenderSchema<T extends ISchema, U extends Record<string,
   model: Ref<U>
 ) {
   recursionSchema(schema, (schemaItem: T) => {
-    conductFormModel(schemaItem, model)
-    conductHide(schema, schemaItem)
-    conductChild(schemaItem)
+    conductSchemaFormModel(schemaItem, model)
+    conductSchemaHide(schema, schemaItem)
+    conductSchemaChild(schemaItem)
   })
 
   return schema
