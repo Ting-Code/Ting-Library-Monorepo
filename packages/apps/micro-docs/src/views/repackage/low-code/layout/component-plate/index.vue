@@ -37,14 +37,14 @@
 
   useSortable(vesselRef, vesselList, {
     handle: `.${ns.em('vessel-box', 'item')}`,
-    group: 'ReForm',
+    group: { name: 'ReForm', pull: 'clone', put: false },
     onStart: (evt) => {
       console.log('🚀 ~ onStart:', evt)
     }
   })
   useSortable(widgetRef, widgetList, {
     handle: `.${ns.em('widget-box', 'item')}`,
-    group: 'ReRow',
+    group: { name: 'ReRow', pull: 'clone', put: false },
     draggable: `.${ns.em('widget-box', 'item')}`,
     onStart: (evt) => {
       console.log('🚀 ~ onStart:', evt)
