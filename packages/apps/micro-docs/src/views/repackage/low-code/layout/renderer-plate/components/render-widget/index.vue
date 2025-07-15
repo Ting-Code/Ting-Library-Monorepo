@@ -2,7 +2,7 @@
   <component
     :is="getComponent(schema.type)"
     v-bind="schema.attrs || {}"
-    v-if="isChildDrag"
+    v-if="isChildDrag || isInitSortable"
     :class="[ns.e('wrapper'), isActive && ns.e('active')]"
     ref="el"
     @click.stop="handleClickEl"
@@ -34,7 +34,7 @@
         </template>
       </RenderWidget>
     </template>
-    <div :class="ns.e('action')" v-if="isActive">
+    <div :class="ns.e('action')" v-if="isActive && isChildDrag">
       <ElIcon @click.stop="handleUpLevel"><Back /></ElIcon>
       <ElIcon @click.stop="handleMoveUp"><Top /></ElIcon>
       <ElIcon @click.stop="handleMoveDown"><Bottom /></ElIcon>
@@ -42,7 +42,7 @@
       <ElIcon @click.stop="handleCopy"><CopyDocument /></ElIcon>
     </div>
 
-    <div :class="ns.e('handler')" v-if="isActive">
+    <div :class="ns.e('handler')" v-if="isActive && isChildDrag">
       <ElIcon><Rank /></ElIcon>
       <span>{{ `${schema.type}-${schema.id}` }}</span>
     </div>
@@ -122,16 +122,12 @@
     return (
       toValue(isDrag) &&
       toValue(parentSchemaId) &&
-      ['ReRow', 'ReForm', 'ReCol'].includes(toValue(parentSchemaType) || '')
+      ['ReRow'].includes(toValue(parentSchemaType) || '')
     )
   })
 
   const isInitSortable = computed(() => {
-    return (
-      toValue(isDrag) &&
-      toValue(schema)?.id &&
-      ['ReRow', 'ReForm', 'ReCol'].includes(toValue(schema)?.type)
-    )
+    return toValue(isDrag) && toValue(schema)?.id && ['ReRow'].includes(toValue(schema)?.type)
   })
 
   const el = useTemplateRef<HTMLElement>('el')
@@ -193,6 +189,7 @@
 <style lang="scss">
   @include b('render-widget') {
     @include e(wrapper) {
+      position: relative;
       width: 100%;
       height: 100%;
       min-height: 28px;
