@@ -4,9 +4,17 @@
 
 <script setup lang="ts">
   import { useNamespace } from '@tingcode/system'
-
+  import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
   defineOptions({ name: 'ConfigPlate' })
   const ns = useNamespace('config-plate')
+  const { selectSchema } = defineProps<{
+    renderSchema: ISchema
+    selectSchema: ISchema
+  }>()
+
+  watch(selectSchema, () => {
+    console.log('=====props.selectSchema', selectSchema, toValue(selectSchema))
+  })
 </script>
 
 <style lang="scss" scoped>

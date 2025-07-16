@@ -21,7 +21,7 @@
       />
     </div>
     <div :class="ns.e('right')">
-      <ConfigPlate />
+      <ConfigPlate :renderSchema="renderSchema" :selectSchema="selectSchema" />
     </div>
   </div>
 </template>
@@ -140,7 +140,7 @@
       overflow: hidden;
     }
     @include e(right) {
-      width: 200px;
+      width: 280px;
       height: 100%;
       overflow: hidden;
     }
