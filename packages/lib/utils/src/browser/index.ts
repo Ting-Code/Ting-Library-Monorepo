@@ -184,3 +184,37 @@ export function off(
     element.removeEventListener(event, handler, false)
   }
 }
+
+/**
+ * @deprecated copy text to clipboard
+ * @param text
+ * @returns  { success: boolean, message?: string }
+ */
+export const copyToClipboard = async (
+  text: string
+): Promise<{ success: boolean; message?: string }> => {
+  if (!text) {
+    return { success: false, message: '复制内容不能为空' }
+  }
+  try {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text)
+      return { success: true }
+    }
+    const input = document.createElement('input')
+    input.value = text
+    document.body.appendChild(input)
+    input.select()
+    const success = document.execCommand('copy')
+    document.body.removeChild(input)
+    if (!success) {
+      return { success: false, message: '复制命令执行失败' }
+    }
+    return { success: true }
+  } catch (error) {
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : '复制失败'
+    }
+  }
+}
