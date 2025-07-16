@@ -12,9 +12,12 @@
     selectSchema: ISchema
   }>()
 
-  watch(selectSchema, () => {
-    console.log('=====props.selectSchema', selectSchema, toValue(selectSchema))
-  })
+  watch(
+    () => selectSchema,
+    () => {
+      console.log('=====props.selectSchema', selectSchema, toValue(selectSchema))
+    }
+  )
 </script>
 
 <style lang="scss" scoped>
