@@ -198,3 +198,17 @@ export const defaultSchema: ISchema = {
     }
   ]
 }
+
+export const getReInputSchema = () => {
+  return {
+    type: 'ReCol',
+    id: 'ReColLLL1',
+    child: [
+      {
+        id: 'ReRow',
+        type: 'ReRow',
+        child: []
+      }
+    ]
+  }
+}
