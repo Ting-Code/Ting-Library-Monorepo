@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
   import { ReButton } from '@tingcode/lib-vue'
-  import { useNamespace } from '@tingcode/system'
+  import { useNamespace, getGlobalDataElement } from '@tingcode/system'
   import { copyToClipboard } from '@tingcode/utils'
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
   import { ISchema, RenderWidget } from './components/render-widget/index'
@@ -82,13 +82,21 @@
   const { isShowStencil, isMobile, renderSchema, selectSchemaId } = toRefs(props)
   const ns = useNamespace('renderer-plate')
 
+  const { ElMessage } = getGlobalDataElement()
+
   const handleShare = async () => {
     console.log('🚀 ~ handleShare ~ renderSchema:', renderSchema)
     const { success, message } = await copyToClipboard(toValue(JSON.stringify(renderSchema.value)))
     if (success) {
-      console.log('复制成功', success, message)
+      ElMessage({
+        message: '复制到剪贴板成功',
+        type: 'success'
+      })
     } else {
-      console.log('复制失败', success, message)
+      ElMessage({
+        message: `复制到剪贴失败： ${message}`,
+        type: 'error'
+      })
     }
   }
 </script>
