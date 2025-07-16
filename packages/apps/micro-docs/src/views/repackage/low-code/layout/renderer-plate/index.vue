@@ -29,11 +29,8 @@
           @delete="(parentSchema, schema, index) => emits('delete', parentSchema, schema, index)"
           @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
         >
-          <template #one>
-            <div>按钮#one</div>
-          </template>
-          <template #tow>
-            <div>按钮#tow</div>
+          <template #default="{ label }">
+            <div>label：{{ label }}</div>
           </template>
         </RenderWidget>
       </div>

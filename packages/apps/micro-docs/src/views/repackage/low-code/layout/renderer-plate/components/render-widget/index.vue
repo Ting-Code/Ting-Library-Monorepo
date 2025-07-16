@@ -44,7 +44,7 @@
 
     <div :class="ns.e('handler')" v-if="isActive && isChildDrag">
       <ElIcon><Rank /></ElIcon>
-      <span>{{ `${schema.type}-${schema.id}` }}</span>
+      <span>{{ `${schema.type}-${((schema.attrs || {}) as any).name || ''}` }}</span>
     </div>
 
     <template v-for="{ name, native } in filterSlots(slots, schema.slotName)" #[native]="scope">
@@ -168,7 +168,6 @@
   const handleClickEl = (event) => {
     emits('click', event)
     if (!toValue(isChildDrag)) return
-    console.log('=====handleClickEl====', schema)
     emits('selectSchema', toValue(schema))
   }
   const handleUpLevel = () => {

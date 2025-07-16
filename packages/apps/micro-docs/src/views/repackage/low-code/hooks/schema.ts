@@ -17,7 +17,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -35,7 +36,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -53,7 +55,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -84,7 +87,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -102,7 +106,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -120,7 +125,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -139,7 +145,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -158,7 +165,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -177,7 +185,8 @@ export const defaultSchema: ISchema = {
               type: 'ReCol',
               id: uuid(),
               attrs: {
-                span: 12
+                span: 12,
+                name: '输入框'
               },
               child: {
                 type: 'ReFormItem',
@@ -284,10 +293,11 @@ export function getReRadioSchema() {
           {
             type: 'ReRadio',
             attrs: {
+              modelValue: '1',
               options: [
                 { value: '1', label: '是' },
                 { value: '2', label: '否' },
-                { value: '3', label: '弃权', disabled: true }
+                { value: '3', label: '弃权' }
               ]
             }
           }
@@ -315,10 +325,11 @@ export function getReSelectSchema() {
           {
             type: 'ReSelect',
             attrs: {
+              modelValue: '',
               options: [
                 { value: '1', label: '是' },
                 { value: '2', label: '否' },
-                { value: '3', label: '弃权', disabled: true }
+                { value: '3', label: '弃权' }
               ]
             }
           }
@@ -347,10 +358,11 @@ export function getReCheckboxSchema() {
           {
             type: 'ReCheckbox',
             attrs: {
+              modelValue: ['1'],
               options: [
                 { value: '1', label: '是' },
                 { value: '2', label: '否' },
-                { value: '3', label: '弃权', disabled: true }
+                { value: '3', label: '弃权' }
               ]
             }
           }
