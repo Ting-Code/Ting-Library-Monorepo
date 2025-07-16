@@ -324,6 +324,7 @@ export function getReSelectSchema() {
         child: [
           {
             type: 'ReSelect',
+            slotName: 'default',
             attrs: {
               modelValue: '',
               options: [
@@ -357,6 +358,7 @@ export function getReCheckboxSchema() {
         child: [
           {
             type: 'ReCheckbox',
+            slotName: 'default',
             attrs: {
               modelValue: ['1'],
               options: [

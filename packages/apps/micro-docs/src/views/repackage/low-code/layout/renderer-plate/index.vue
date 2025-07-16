@@ -30,7 +30,7 @@
           @copy="(parentSchema, schema, index) => emits('copy', parentSchema, schema, index)"
         >
           <template #default="{ label }">
-            <div>label：{{ label }}</div>
+            <div>{{ label }}</div>
           </template>
         </RenderWidget>
       </div>
