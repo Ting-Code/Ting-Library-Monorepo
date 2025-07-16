@@ -1,20 +1,33 @@
 <template>
-  <div :class="ns.b()"> </div>
+  <div :class="ns.b()">
+    <el-text size="large" type="primary">配置项</el-text>
+    <RenderWidget v-if="renderSchema" :schema="renderSchema" />
+  </div>
 </template>
 
 <script setup lang="ts">
   import { useNamespace } from '@tingcode/system'
-  import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
+  import {
+    ISchema,
+    RenderWidget
+  } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
+  import { useSchema } from '@/views/repackage/low-code/hooks/useSchema'
+  import { getConfigSchema } from '@/views/repackage/low-code/hooks/schema'
   defineOptions({ name: 'ConfigPlate' })
   const ns = useNamespace('config-plate')
   const { selectSchema } = defineProps<{
     selectSchema: ISchema | undefined
   }>()
+  const { renderSchema, generateRenderSchema } = useSchema<ISchema, any>(undefined, selectSchema)
 
   watch(
     () => selectSchema,
     () => {
-      console.log('=====props.selectSchema', selectSchema, toValue(selectSchema))
+      if (selectSchema) {
+        const schema = getConfigSchema()
+        generateRenderSchema(schema as ISchema, selectSchema)
+      }
+      console.log('=====props.selectSchema', toValue(selectSchema), renderSchema)
     }
   )
 </script>

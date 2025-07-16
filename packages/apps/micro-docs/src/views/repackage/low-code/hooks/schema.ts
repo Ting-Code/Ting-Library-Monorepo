@@ -221,7 +221,6 @@ export function getReRowSchema() {
     ]
   }
 }
-
 export function getReInputSchema() {
   return {
     type: 'ReCol',
@@ -245,7 +244,6 @@ export function getReInputSchema() {
     ]
   }
 }
-
 export function getReButtonSchema() {
   return {
     type: 'ReCol',
@@ -273,7 +271,6 @@ export function getReButtonSchema() {
     ]
   }
 }
-
 export function getReRadioSchema() {
   return {
     type: 'ReCol',
@@ -339,7 +336,6 @@ export function getReSelectSchema() {
     ]
   }
 }
-
 export function getReCheckboxSchema() {
   return {
     type: 'ReCol',
@@ -373,7 +369,6 @@ export function getReCheckboxSchema() {
     ]
   }
 }
-
 export const typeToSchemaMap = {
   ReRow: getReRowSchema,
   ReInput: getReInputSchema,
@@ -386,4 +381,47 @@ export const typeToSchemaMap = {
 export function getTypeToSchema(type: keyof typeof typeToSchemaMap) {
   const getSchemaFn = typeToSchemaMap[type]
   return getSchemaFn()
+}
+
+export function getConfigSchema() {
+  return {
+    type: 'ReRow',
+    child: [
+      {
+        type: 'ReCol',
+        attrs: {
+          span: 24
+        },
+        child: {
+          type: 'ReFormItem',
+          attrs: {
+            label: 'Col宽度：'
+          },
+          child: {
+            attrs: {
+              valueFormat: 'roundDown'
+            },
+            type: 'ReInput',
+            field: 'attrs.span'
+          }
+        }
+      },
+      {
+        type: 'ReCol',
+        attrs: {
+          span: 24
+        },
+        child: {
+          type: 'ReFormItem',
+          attrs: {
+            label: 'label：'
+          },
+          child: {
+            type: 'ReInput',
+            field: 'child[0].attrs.label'
+          }
+        }
+      }
+    ]
+  }
 }

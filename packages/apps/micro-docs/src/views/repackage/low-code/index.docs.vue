@@ -7,7 +7,7 @@
       <RendererPlate
         v-model:isShowStencil="isShowStencil"
         :isMobile="isMobile"
-        :renderSchema="renderSchema"
+        :renderSchema="renderSchema!"
         :selectSchemaId="selectSchemaId"
         @selectSchema="setSelectSchema"
         @addSchema="addSchema"

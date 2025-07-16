@@ -1,4 +1,4 @@
-import { ref, Ref, toValue, toRef, watch } from 'vue'
+import { ref, Ref, toValue, toRef } from 'vue'
 import { isArray, isObject, set, get, cloneDeep } from '@tingcode/utils'
 import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
 
@@ -15,7 +15,7 @@ export function recursionSchema<T extends ISchema>(schema: T, callback: (item: T
 export function getSchemaParent<T extends ISchema>(root: T, target: T): T | null {
   if (root.child === target) return root
   if (isArray(root.child)) {
-    if (root.child.includes(target)) return root
+    if ((root.child as T[]).includes(target)) return root
     for (const child of root.child) {
       const result = getSchemaParent(child as T, target)
       if (result) return result
@@ -64,7 +64,7 @@ export function conductSchemaChild<T extends ISchema>(schema: T) {
  */
 export function conductSchemaFormModel<T extends ISchema, U extends Record<string, any>>(
   schemaItem: T,
-  model: Ref<U>
+  model: U
 ) {
   if (schemaItem.type === 'ReForm') {
     if (!schemaItem.attrs) {
@@ -106,9 +106,9 @@ export function conductSchemaHide<T extends ISchema>(schema: T, schemaItem: T) {
  * @param schema
  * @param model
  */
-export function generateRenderSchema<T extends ISchema, U extends Record<string, any>>(
+export function generateSchema<T extends ISchema, U extends Record<string, any>>(
   schema: T,
-  model: Ref<U>
+  model: U
 ) {
   recursionSchema(schema, (schemaItem: T) => {
     conductSchemaFormModel(schemaItem, model)
@@ -119,21 +119,25 @@ export function generateRenderSchema<T extends ISchema, U extends Record<string,
   return schema
 }
 
-export function useSchema<T extends ISchema, U extends Record<string, any>>(schema: T, model: U) {
-  const originSchema = ref<T>(schema) as Ref<T>
+export function useSchema<T extends ISchema, U extends Record<string, any>>(
+  schema?: T,
+  model: U = {} as U
+) {
+  const originSchema = ref<T | undefined>(schema) as Ref<T | undefined>
   const originModel = ref<U>(model) as Ref<U>
-  const renderSchema = ref<T>(schema) as Ref<T>
+  const renderSchema = ref<T | undefined>(schema) as Ref<T | undefined>
 
-  watch(
-    originSchema,
-    () => {
-      renderSchema.value = generateRenderSchema(cloneDeep(toValue(originSchema)), originModel)
-    },
-    { deep: true, immediate: true }
-  )
-
+  function generateRenderSchema(schema = toValue(originSchema!)!, model = toValue(originModel)) {
+    if (!schema || !model) return
+    originSchema.value = schema
+    originModel.value = model
+    renderSchema.value = generateSchema(cloneDeep(schema), model)
+  }
+  if (schema) {
+    generateRenderSchema()
+  }
   function switchHide(conditions: Partial<T>, hide: boolean | 'switch') {
-    const target = findSchema(toValue(originSchema), conditions)
+    const target = findSchema(toValue(originSchema!)!, conditions)
     if (target) {
       if (hide === 'switch') {
         target.hide = !target.hide
@@ -146,7 +150,7 @@ export function useSchema<T extends ISchema, U extends Record<string, any>>(sche
     return originSchema
   }
   function switchAllHide(conditions: Partial<T>, hide: boolean | 'switch') {
-    const targets = filterSchema(toValue(originSchema), conditions)
+    const targets = filterSchema(toValue(originSchema!)!, conditions)
     if (targets && targets.length) {
       targets.forEach((target) => {
         if (hide === 'switch') {
@@ -165,6 +169,7 @@ export function useSchema<T extends ISchema, U extends Record<string, any>>(sche
     model: originModel,
     renderSchema: renderSchema,
     schema: originSchema,
+    generateRenderSchema,
     switchHide,
     switchAllHide
   }
