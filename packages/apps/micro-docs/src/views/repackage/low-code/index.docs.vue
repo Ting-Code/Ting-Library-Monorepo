@@ -20,7 +20,9 @@
         @copy="handleCopy"
       />
     </div>
-    <div :class="ns.e('right')">右边</div>
+    <div :class="ns.e('right')">
+      <ConfigPlate />
+    </div>
   </div>
 </template>
 
@@ -29,7 +31,8 @@
   import { addList, removeList, updateList, cloneDeep } from '@tingcode/utils'
   import { useAppProviderContext } from '@/application/useAppContext'
   import ComponentPlate from './layout/component-plate/index.vue'
-  import RendererPlate from '@/views/repackage/low-code/layout/renderer-plate/index.vue'
+  import RendererPlate from './layout/renderer-plate/index.vue'
+  import ConfigPlate from './layout/config-plate/index.vue'
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
   import { useSchema } from './hooks/useSchema'
   import { defaultSchema } from '@/views/repackage/low-code/hooks/schema'
