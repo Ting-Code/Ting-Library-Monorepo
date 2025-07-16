@@ -8,9 +8,6 @@
       <ReButton :icon="Share" @click="handleShare" />
       <ReButton :icon="CaretLeft" />
       <ReButton :icon="CaretRight" />
-      <ReButton :icon="Delete" />
-      <ReButton :icon="ZoomIn" />
-      <ReButton :icon="ZoomOut" />
     </div>
     <div :class="ns.e('main')">
       <div :class="ns.em('main', 'box')">
@@ -48,7 +45,7 @@
   import { ReButton } from '@tingcode/lib-vue'
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
   import { copyToClipboard } from '@tingcode/utils'
-  import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
+  import { CaretLeft, CaretRight, Share } from '@element-plus/icons-vue'
   import { ISchema, RenderWidget } from './components/render-widget/index'
   import type { SortableEvent } from 'sortablejs'
   defineOptions({ name: 'RendererPlate' })
@@ -107,6 +104,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    border: 2px solid getCssVar('text-color', 'placeholder');
     @include e(main) {
       flex: 1;
       overflow: hidden;

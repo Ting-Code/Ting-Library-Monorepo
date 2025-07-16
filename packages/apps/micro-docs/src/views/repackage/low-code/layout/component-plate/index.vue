@@ -70,7 +70,9 @@
 
 <style lang="scss" scoped>
   @include b(component-plate) {
+    border: 2px solid getCssVar('text-color', 'placeholder');
     padding-top: 20px;
+    height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
