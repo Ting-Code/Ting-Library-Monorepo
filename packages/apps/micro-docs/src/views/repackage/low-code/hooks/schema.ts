@@ -1,5 +1,5 @@
 import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
-
+import { uuid } from '@tingcode/utils'
 export const defaultSchema: ISchema = {
   type: 'ReForm',
   id: 'ReForm',
@@ -202,10 +202,10 @@ export const defaultSchema: ISchema = {
 export function getReRowSchema() {
   return {
     type: 'ReCol',
-    id: 'ReColLLL1231',
+    id: uuid(),
     child: [
       {
-        id: 'ReRow',
+        id: uuid(),
         type: 'ReRow',
         child: [] as any
       }
