@@ -84,9 +84,11 @@
 
   const handleShare = async () => {
     console.log('🚀 ~ handleShare ~ renderSchema:', renderSchema)
-    const { success } = await copyToClipboard(toValue(JSON.stringify(renderSchema)))
+    const { success, message } = await copyToClipboard(toValue(JSON.stringify(renderSchema.value)))
     if (success) {
-      console.log('复制成功')
+      console.log('复制成功', success, message)
+    } else {
+      console.log('复制失败', success, message)
     }
   }
 </script>

@@ -197,10 +197,6 @@ export async function copyToClipboard(
     return { success: false, message: '复制内容不能为空' }
   }
   try {
-    if (navigator.clipboard) {
-      await navigator.clipboard.writeText(text)
-      return { success: true }
-    }
     const input = document.createElement('input')
     input.value = text
     document.body.appendChild(input)
