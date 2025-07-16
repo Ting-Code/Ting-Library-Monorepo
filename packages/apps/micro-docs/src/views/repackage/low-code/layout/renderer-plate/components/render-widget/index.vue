@@ -203,6 +203,7 @@
       content: '';
       font-size: 0;
       box-sizing: border-box;
+      min-width: 200px;
       width: 100%;
       height: 100%;
       background: getCssVar('text-color', 'placeholder');

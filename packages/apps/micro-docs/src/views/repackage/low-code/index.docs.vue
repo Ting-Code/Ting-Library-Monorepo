@@ -82,7 +82,7 @@
   const handleMoveUp = (parentSchema, schema, index) => {
     if (parentSchema.child && parentSchema.child.length && index > 0) {
       updateSchema(parentSchema, {
-        newIndex: index + 1,
+        newIndex: index - 1,
         oldIndex: index
       })
     } else {
@@ -101,12 +101,12 @@
   }
   const handleDelete = (parentSchema, schema, index) => {
     if (parentSchema.child && parentSchema.child.length) {
-      removeList(parentSchema.child, index)
+      parentSchema.child = removeList(parentSchema.child, index)
     }
   }
   const handleCopy = (parentSchema, schema, index) => {
     if (parentSchema.child && parentSchema.child.length) {
-      addList(
+      parentSchema.child = addList(
         parentSchema.child,
         {
           ...cloneDeep(schema),
