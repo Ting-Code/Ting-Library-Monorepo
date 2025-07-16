@@ -2,26 +2,26 @@ import { ISchema } from '@/views/repackage/low-code/layout/renderer-plate/compon
 import { uuid } from '@tingcode/utils'
 export const defaultSchema: ISchema = {
   type: 'ReForm',
-  id: 'ReForm',
+  id: uuid(),
   slotName: { native: 'icon', name: 'one' },
   child: [
     {
       type: 'ReCol',
-      id: 'ReColLLL1',
+      id: uuid(),
       child: [
         {
-          id: 'ReRow',
+          id: uuid(),
           type: 'ReRow',
           child: [
             {
               type: 'ReCol',
-              id: 'ReCol1',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol1',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -33,13 +33,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol2',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol2',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -51,13 +51,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol3',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol3',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -74,21 +74,21 @@ export const defaultSchema: ISchema = {
     },
     {
       type: 'ReCol',
-      id: 'ReColLLL2',
+      id: uuid(),
       child: [
         {
-          id: 'ReRow2',
+          id: uuid(),
           type: 'ReRow',
           child: [
             {
               type: 'ReCol',
-              id: 'ReCol21',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol21',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -100,13 +100,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol22',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol22',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -118,13 +118,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol23',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol23',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -137,13 +137,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol25',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol24',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -156,13 +156,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol26',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol25',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -175,13 +175,13 @@ export const defaultSchema: ISchema = {
             },
             {
               type: 'ReCol',
-              id: 'ReCol27',
+              id: uuid(),
               attrs: {
                 span: 12
               },
               child: {
                 type: 'ReFormItem',
-                id: 'ReFormItemReCol26',
+                id: uuid(),
                 attrs: {
                   label: '请输入'
                 },
@@ -213,8 +213,160 @@ export function getReRowSchema() {
   }
 }
 
+export function getReInputSchema() {
+  return {
+    type: 'ReCol',
+    id: uuid(),
+    attrs: {
+      span: 12,
+      name: '输入框'
+    },
+    child: [
+      {
+        type: 'ReFormItem',
+        attrs: {
+          label: '请输入'
+        },
+        child: [
+          {
+            type: 'ReInput'
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export function getReButtonSchema() {
+  return {
+    type: 'ReCol',
+    id: uuid(),
+    attrs: {
+      name: '按钮',
+      span: 12
+    },
+    child: [
+      {
+        type: 'ReFormItem',
+        id: uuid(),
+        attrs: {
+          label: '按钮'
+        },
+        child: [
+          {
+            type: 'ReButton',
+            attrs: {
+              type: 'primary'
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export function getReRadioSchema() {
+  return {
+    type: 'ReCol',
+    id: uuid(),
+    attrs: {
+      name: '单选框',
+      span: 12
+    },
+    child: [
+      {
+        type: 'ReFormItem',
+        id: uuid(),
+        attrs: {
+          label: '单选框'
+        },
+        child: [
+          {
+            type: 'ReRadio',
+            attrs: {
+              options: [
+                { value: '1', label: '是' },
+                { value: '2', label: '否' },
+                { value: '3', label: '弃权', disabled: true }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+export function getReSelectSchema() {
+  return {
+    type: 'ReCol',
+    id: uuid(),
+    attrs: {
+      name: '下拉框',
+      span: 12
+    },
+    child: [
+      {
+        type: 'ReFormItem',
+        id: uuid(),
+        attrs: {
+          label: '下拉框'
+        },
+        child: [
+          {
+            type: 'ReSelect',
+            attrs: {
+              options: [
+                { value: '1', label: '是' },
+                { value: '2', label: '否' },
+                { value: '3', label: '弃权', disabled: true }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+export function getReCheckboxSchema() {
+  return {
+    type: 'ReCol',
+    id: uuid(),
+    attrs: {
+      name: '多选框',
+      span: 12
+    },
+    child: [
+      {
+        type: 'ReFormItem',
+        id: uuid(),
+        attrs: {
+          label: '多选框'
+        },
+        child: [
+          {
+            type: 'ReCheckbox',
+            attrs: {
+              options: [
+                { value: '1', label: '是' },
+                { value: '2', label: '否' },
+                { value: '3', label: '弃权', disabled: true }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
 export const typeToSchemaMap = {
-  ReRow: getReRowSchema
+  ReRow: getReRowSchema,
+  ReInput: getReInputSchema,
+  ReButton: getReButtonSchema,
+  ReRadio: getReRadioSchema,
+  ReSelect: getReSelectSchema,
+  ReCheckbox: getReCheckboxSchema
 }
 
 export function getTypeToSchema(type: keyof typeof typeToSchemaMap) {
