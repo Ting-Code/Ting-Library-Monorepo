@@ -5,7 +5,7 @@
         <ReButton v-show="!isShowStencil" @click="emits('update:isShowStencil', true)" />
         <ReButton v-show="isShowStencil" @click="emits('update:isShowStencil', false)" />
       </template>
-      <ReButton :icon="Share" @click="handleClick" />
+      <ReButton :icon="Share" @click="handleShare" />
       <ReButton :icon="CaretLeft" />
       <ReButton :icon="CaretRight" />
       <ReButton :icon="Delete" />
@@ -47,6 +47,7 @@
 <script setup lang="ts">
   import { ReButton } from '@tingcode/lib-vue'
   import { useNamespace } from '@tingcode/system'
+  import { copyToClipboard } from '@tingcode/utils'
   import { CaretLeft, CaretRight, Delete, Share, ZoomIn, ZoomOut } from '@element-plus/icons-vue'
   import { ISchema, RenderWidget } from './components/render-widget/index'
   import type { SortableEvent } from 'sortablejs'
@@ -81,8 +82,12 @@
   const { isShowStencil, isMobile, renderSchema, selectSchemaId } = toRefs(props)
   const ns = useNamespace('renderer-plate')
 
-  const handleClick = () => {
-    console.log('🚀 ~ handleClick ~ renderSchema:', renderSchema)
+  const handleShare = async () => {
+    console.log('🚀 ~ handleShare ~ renderSchema:', renderSchema)
+    const { success } = await copyToClipboard(toValue(JSON.stringify(renderSchema)))
+    if (success) {
+      console.log('复制成功')
+    }
   }
 </script>
 

@@ -190,9 +190,9 @@ export function off(
  * @param text
  * @returns  { success: boolean, message?: string }
  */
-export const copyToClipboard = async (
+export async function copyToClipboard(
   text: string
-): Promise<{ success: boolean; message?: string }> => {
+): Promise<{ success: boolean; message?: string }> {
   if (!text) {
     return { success: false, message: '复制内容不能为空' }
   }
