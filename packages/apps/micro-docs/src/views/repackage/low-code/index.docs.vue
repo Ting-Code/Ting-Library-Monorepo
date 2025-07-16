@@ -21,7 +21,7 @@
       />
     </div>
     <div :class="ns.e('right')">
-      <ConfigPlate :renderSchema="renderSchema" :selectSchema="selectSchema" />
+      <ConfigPlate :selectSchema="selectSchema" />
     </div>
   </div>
 </template>

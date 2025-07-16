@@ -8,8 +8,7 @@
   defineOptions({ name: 'ConfigPlate' })
   const ns = useNamespace('config-plate')
   const { selectSchema } = defineProps<{
-    renderSchema: ISchema
-    selectSchema: ISchema
+    selectSchema: ISchema | undefined
   }>()
 
   watch(
