@@ -44,7 +44,7 @@ export interface ISchema {
   field?: string
   attrs?: ISchemaAttrs
   slotName?: string | ISlotName[] | ISlotName
-  child?: ISchema[] | ISchema
+  child?: ISchema[] | ISchema | never[]
   hide?: boolean
   id?: string
 }

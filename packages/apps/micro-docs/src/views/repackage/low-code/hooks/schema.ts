@@ -199,16 +199,25 @@ export const defaultSchema: ISchema = {
   ]
 }
 
-export const getReInputSchema = () => {
+export function getReRowSchema() {
   return {
     type: 'ReCol',
-    id: 'ReColLLL1',
+    id: 'ReColLLL1231',
     child: [
       {
         id: 'ReRow',
         type: 'ReRow',
-        child: []
+        child: [] as any
       }
     ]
   }
+}
+
+export const typeToSchemaMap = {
+  ReRow: getReRowSchema
+}
+
+export function getTypeToSchema(type: keyof typeof typeToSchemaMap) {
+  const getSchemaFn = typeToSchemaMap[type]
+  return getSchemaFn()
 }

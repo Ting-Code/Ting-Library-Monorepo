@@ -19,10 +19,18 @@
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { useNamespace } from '@tingcode/system'
   import { ReButton } from '@tingcode/lib-vue'
-  import { ComponentMap } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
+  import {
+    ComponentMap,
+    ISchema
+  } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
+  import { getTypeToSchema, typeToSchemaMap } from '@/views/repackage/low-code/hooks/schema'
 
   defineOptions({ name: 'ComponentPlate' })
   const ns = useNamespace('component-plate')
+
+  const emits = defineEmits<{
+    (event: 'selectSchema', schemaItem: ISchema): void
+  }>()
 
   const vesselList = ref(['ReRow'])
   const widgetList = ref<(keyof typeof ComponentMap)[]>([
@@ -40,6 +48,7 @@
     group: { name: 'ReForm', pull: 'clone', put: false },
     onStart: (evt) => {
       const type = vesselList.value[evt.oldIndex!]
+      handleSetSchema(type as keyof typeof typeToSchemaMap)
       console.log('🚀 ~ onStart:', evt, type)
     }
   })
@@ -48,9 +57,15 @@
     group: { name: 'ReRow', pull: 'clone', put: false },
     onStart: (evt) => {
       const type = widgetList.value[evt.oldIndex!]
+      handleSetSchema(type as keyof typeof typeToSchemaMap)
       console.log('🚀 ~ onStart:', evt, type)
     }
   })
+
+  const handleSetSchema = (type: keyof typeof typeToSchemaMap) => {
+    const schema = getTypeToSchema(type)
+    emits('selectSchema', schema as ISchema)
+  }
 </script>
 
 <style lang="scss" scoped>

@@ -1,7 +1,7 @@
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('left')">
-      <ComponentPlate />
+      <ComponentPlate @selectSchema="setSelectSchema" />
     </div>
     <div :class="ns.e('main')">
       <RendererPlate
