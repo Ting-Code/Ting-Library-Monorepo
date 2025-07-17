@@ -57,11 +57,11 @@
 </template>
 
 <script setup lang="ts">
-  import { ReButton } from '@tingcode/lib-vue'
+  import { ReButton, ISchema } from '@tingcode/lib-vue'
+  import { RenderWidget } from './components/render-widget/index'
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
   import { copyToClipboard } from '@tingcode/utils'
   import { DArrowLeft, DArrowRight, Share } from '@element-plus/icons-vue'
-  import { ISchema, RenderWidget } from './components/render-widget/index'
   import type { SortableEvent } from 'sortablejs'
   defineOptions({ name: 'RendererPlate' })
   interface Props {

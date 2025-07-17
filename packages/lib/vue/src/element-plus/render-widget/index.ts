@@ -1,23 +1,16 @@
-import RenderWidget from './index.vue'
-
-import {
-  ReButton,
-  ReButtonProps,
-  ReInput,
-  ReInputProps,
-  ReRadio,
-  ReRadioProps,
-  ReSelect,
-  ReSelectProps,
-  ReCheckbox,
-  ReCheckboxProps
-} from '@/element-plus/index'
+import Render from './index.vue'
+import { ReButton, ReButtonProps } from '../button/index'
+import { ReInput, ReInputProps } from '../input/index'
+import { ReRadio, ReRadioProps } from '../radio/index'
+import { ReSelect, ReSelectProps } from '../select/index'
+import { ReCheckbox, ReCheckboxProps } from '../checkbox/index'
 import { ReForm, ReFormProps } from '../form/index'
 import { ReFormItem, ReFormItemProps } from '../form-item/index'
 import { ReRow, ReRowProps } from '../row/index'
 import { ReCol, ReColProps } from '../col/index'
 import type { ISlotName } from '@/hooks'
 import type { SortableEvent } from 'sortablejs'
+
 export const ComponentMap = {
   ReButton,
   ReForm,
@@ -77,5 +70,5 @@ export interface RenderWidgetEmits {
   (event: 'copy', parentSchema: ISchema | undefined, schema: ISchema, index: number): void
 }
 
-export { RenderWidget }
-export default RenderWidget
+export const RenderWidget = Render
+export default Render

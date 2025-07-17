@@ -18,11 +18,7 @@
 <script setup lang="ts">
   import { useSortable } from '@vueuse/integrations/useSortable'
   import { useNamespace } from '@tingcode/system'
-  import { ReButton } from '@tingcode/lib-vue'
-  import {
-    ComponentMap,
-    ISchema
-  } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
+  import { ReButton, ComponentMap, ISchema } from '@tingcode/lib-vue'
   import { getTypeToSchema, typeToSchemaMap } from '@/views/repackage/low-code/hooks/schema'
 
   defineOptions({ name: 'ComponentPlate' })

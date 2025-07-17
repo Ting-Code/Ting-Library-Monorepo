@@ -7,11 +7,8 @@
 
 <script setup lang="ts">
   import { useNamespace } from '@tingcode/system'
-  import {
-    ISchema,
-    RenderWidget
-  } from '@/views/repackage/low-code/layout/renderer-plate/components/render-widget/index'
-  import { useSchema } from '@/views/repackage/low-code/hooks/useSchema'
+  import { useSchema, ISchema } from '@tingcode/lib-vue'
+  import { RenderWidget } from '../renderer-plate/components/render-widget/index'
   import { getConfigSchema } from '@/views/repackage/low-code/hooks/schema'
   defineOptions({ name: 'ConfigPlate' })
   const ns = useNamespace('config-plate')

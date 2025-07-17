@@ -142,23 +142,18 @@
       ghostClass: ns.e('ghost'), // drop placeholder的css类名
       dragClass: ns.e('drag'), // 正在被拖拽中的css类名
       onStart: (evt) => {
-        console.log('🚀 ~ onStart:', schema.value?.id, evt)
         emits('startSchema', toValue(schema), evt)
       },
       onAdd: (evt) => {
-        console.log('🚀 ~ onAdd:', schema.value?.id, evt)
         emits('addSchema', toValue(schema), evt)
       },
       onRemove: (evt) => {
-        console.log('🚀 ~ onRemove:', schema.value?.id, evt)
         emits('removeSchema', toValue(schema), evt)
       },
       onUpdate: (evt) => {
-        console.log('🚀 ~ onUpdate:', schema.value?.id, evt)
         emits('updateSchema', toValue(schema), evt)
       },
       onEnd: (evt) => {
-        console.log('🚀 ~ onEnd:', schema.value?.id, evt)
         emits('endSchema', toValue(schema), evt)
       }
     })
