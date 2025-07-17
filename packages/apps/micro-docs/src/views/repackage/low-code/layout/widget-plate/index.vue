@@ -79,9 +79,9 @@
     @include e(vessel-box) {
       padding: 10px;
       margin: 10px;
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
       @include m(item) {
         width: 80px;
         margin: 2px 6px !important;
@@ -90,9 +90,9 @@
     @include e(widget-box) {
       padding: 10px;
       margin: 10px;
-      width: 100%;
       display: flex;
       flex-wrap: wrap;
+      justify-content: space-around;
       @include m(item) {
         width: 86px;
         margin: 2px 6px !important;

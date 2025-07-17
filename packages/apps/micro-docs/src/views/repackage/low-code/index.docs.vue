@@ -138,12 +138,12 @@
       flex: 1;
     }
     @include e(left) {
-      width: 280px;
+      width: calc(86px + 12vw);
       height: 100%;
       overflow: hidden;
     }
     @include e(right) {
-      width: 280px;
+      width: calc(86px + 12vw);
       height: 100%;
       overflow: hidden;
     }

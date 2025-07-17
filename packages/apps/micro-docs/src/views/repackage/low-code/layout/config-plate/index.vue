@@ -35,7 +35,7 @@
 <style lang="scss" scoped>
   @include b(config-plate) {
     border: 2px solid getCssVar('text-color', 'placeholder');
-    padding-top: 20px;
+    padding: 20px 12px;
     height: 100%;
     width: 100%;
     display: flex;
