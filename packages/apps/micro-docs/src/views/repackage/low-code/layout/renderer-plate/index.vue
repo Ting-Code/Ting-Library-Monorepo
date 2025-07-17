@@ -2,12 +2,18 @@
   <div :class="ns.b()">
     <div :class="ns.e('head')">
       <template v-if="isMobile">
-        <ReButton v-show="!isShowStencil" @click="emits('update:isShowStencil', true)" />
-        <ReButton v-show="isShowStencil" @click="emits('update:isShowStencil', false)" />
+        <ReButton
+          v-show="!isShowWidget"
+          @click="emits('update:isShowWidget', true)"
+          :icon="DArrowRight"
+        />
+        <ReButton
+          v-show="isShowWidget"
+          @click="emits('update:isShowWidget', false)"
+          :icon="DArrowLeft"
+        />
       </template>
       <ReButton :icon="Share" @click="handleShare" />
-      <ReButton :icon="CaretLeft" />
-      <ReButton :icon="CaretRight" />
     </div>
     <div :class="ns.e('main')">
       <div :class="ns.em('main', 'box')">
@@ -42,19 +48,19 @@
   import { ReButton } from '@tingcode/lib-vue'
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
   import { copyToClipboard } from '@tingcode/utils'
-  import { CaretLeft, CaretRight, Share } from '@element-plus/icons-vue'
+  import { DArrowLeft, DArrowRight, Share } from '@element-plus/icons-vue'
   import { ISchema, RenderWidget } from './components/render-widget/index'
   import type { SortableEvent } from 'sortablejs'
   defineOptions({ name: 'RendererPlate' })
   interface Props {
-    isShowStencil: boolean
+    isShowWidget: boolean
     isMobile: boolean
     selectSchemaId?: string
     renderSchema: ISchema
   }
 
   const emits = defineEmits<{
-    (event: 'update:isShowStencil', value: boolean): void
+    (event: 'update:isShowWidget', value: boolean): void
     (event: 'selectSchema', schemaItem: ISchema): void
     (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
     (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
@@ -69,11 +75,10 @@
   }>()
 
   const props = withDefaults(defineProps<Props>(), {
-    isShowStencil: false,
+    isShowWidget: false,
     isMobile: false
   })
-
-  const { isShowStencil, isMobile, renderSchema, selectSchemaId } = toRefs(props)
+  const { isShowWidget, isMobile, renderSchema, selectSchemaId } = toRefs(props)
   const ns = useNamespace('renderer-plate')
 
   const { ElMessage } = getGlobalDataElement()

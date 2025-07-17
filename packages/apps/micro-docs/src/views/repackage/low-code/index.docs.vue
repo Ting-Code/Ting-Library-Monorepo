@@ -1,11 +1,11 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('left')">
-      <ComponentPlate @selectSchema="setSelectSchema" />
+    <div :class="ns.e('left')" v-if="isShowWidget">
+      <WidgetPlate @selectSchema="setSelectSchema" />
     </div>
     <div :class="ns.e('main')">
       <RendererPlate
-        v-model:isShowStencil="isShowStencil"
+        v-model:isShowWidget="isShowWidget"
         :isMobile="isMobile"
         :renderSchema="renderSchema!"
         :selectSchemaId="selectSchemaId"
@@ -20,7 +20,7 @@
         @copy="handleCopy"
       />
     </div>
-    <div :class="ns.e('right')">
+    <div :class="ns.e('right')" v-if="isShowWidget">
       <ConfigPlate :selectSchema="selectSchema" />
     </div>
   </div>
@@ -30,7 +30,7 @@
   import { useNamespace, getGlobalDataElement } from '@tingcode/system'
   import { addList, removeList, updateList, cloneDeep } from '@tingcode/utils'
   import { useAppProviderContext } from '@/application/useAppContext'
-  import ComponentPlate from './layout/component-plate/index.vue'
+  import WidgetPlate from './layout/widget-plate/index.vue'
   import RendererPlate from './layout/renderer-plate/index.vue'
   import ConfigPlate from './layout/config-plate/index.vue'
   import { ISchema } from './layout/renderer-plate/components/render-widget/index'
@@ -39,12 +39,12 @@
   const { ElMessage } = getGlobalDataElement()
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
-  const isShowStencil = ref(true)
+  const isShowWidget = ref(true)
   const ns = useNamespace('low-code')
   watch(
     isMobile,
     (val) => {
-      isShowStencil.value = !val
+      isShowWidget.value = !val
     },
     { immediate: true }
   )
