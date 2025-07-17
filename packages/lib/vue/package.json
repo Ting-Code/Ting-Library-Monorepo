@@ -32,6 +32,7 @@
     "sortablejs": "catalog:",
     "@tingcode/utils": "workspace:*",
     "@vueuse/core": "catalog:",
+    "@vueuse/integrations": "catalog:",
     "element-plus": "catalog:",
     "vue": "catalog:"
   }

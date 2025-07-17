@@ -67,7 +67,11 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/index.scss";`
+        additionalData: `
+          @use "@/index.scss";
+          @use "element-plus/theme-chalk/src/mixins/mixins" as *;
+          @use "element-plus/theme-chalk/src/mixins/function" as *;
+        `
       }
     }
   },
