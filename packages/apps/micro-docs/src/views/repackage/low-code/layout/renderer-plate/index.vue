@@ -1,7 +1,7 @@
 <template>
   <div :class="ns.b()">
     <div :class="ns.e('head')">
-      <template v-if="isMobile">
+      <div v-if="isMobile">
         <ReButton
           v-show="!isShowWidget"
           @click="emits('update:isShowWidget', true)"
@@ -12,8 +12,20 @@
           @click="emits('update:isShowWidget', false)"
           :icon="DArrowLeft"
         />
-      </template>
+      </div>
       <ReButton :icon="Share" @click="handleShare" />
+      <div v-if="isMobile">
+        <ReButton
+          v-show="isShowConfig"
+          @click="emits('update:isShowConfig', false)"
+          :icon="DArrowRight"
+        />
+        <ReButton
+          v-show="!isShowConfig"
+          @click="emits('update:isShowConfig', true)"
+          :icon="DArrowLeft"
+        />
+      </div>
     </div>
     <div :class="ns.e('main')">
       <div :class="ns.em('main', 'box')">
@@ -54,6 +66,7 @@
   defineOptions({ name: 'RendererPlate' })
   interface Props {
     isShowWidget: boolean
+    isShowConfig: boolean
     isMobile: boolean
     selectSchemaId?: string
     renderSchema: ISchema
@@ -61,6 +74,7 @@
 
   const emits = defineEmits<{
     (event: 'update:isShowWidget', value: boolean): void
+    (event: 'update:isShowConfig', value: boolean): void
     (event: 'selectSchema', schemaItem: ISchema): void
     (event: 'startSchema', schemaItem: ISchema, evt: SortableEvent): void
     (event: 'addSchema', schemaItem: ISchema, evt: SortableEvent): void
@@ -76,9 +90,10 @@
 
   const props = withDefaults(defineProps<Props>(), {
     isShowWidget: false,
+    isShowConfig: false,
     isMobile: false
   })
-  const { isShowWidget, isMobile, renderSchema, selectSchemaId } = toRefs(props)
+  const { isShowWidget, isShowConfig, isMobile, renderSchema, selectSchemaId } = toRefs(props)
   const ns = useNamespace('renderer-plate')
 
   const { ElMessage } = getGlobalDataElement()
@@ -107,6 +122,10 @@
     display: flex;
     flex-direction: column;
     border: 2px solid getCssVar('text-color', 'placeholder');
+    @include e(head) {
+      display: flex;
+      justify-content: space-between;
+    }
     @include e(main) {
       flex: 1;
       overflow: hidden;

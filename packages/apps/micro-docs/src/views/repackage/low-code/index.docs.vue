@@ -6,6 +6,7 @@
     <div :class="ns.e('main')">
       <RendererPlate
         v-model:isShowWidget="isShowWidget"
+        v-model:isShowConfig="isShowConfig"
         :isMobile="isMobile"
         :renderSchema="renderSchema!"
         :selectSchemaId="selectSchemaId"
@@ -20,7 +21,7 @@
         @copy="handleCopy"
       />
     </div>
-    <div :class="ns.e('right')" v-if="isShowWidget">
+    <div :class="ns.e('right')" v-if="isShowConfig">
       <ConfigPlate :selectSchema="selectSchema" />
     </div>
   </div>
@@ -40,11 +41,13 @@
   const { isMobile } = toRefs(useAppProviderContext())
   defineOptions({ name: 'LowCode' })
   const isShowWidget = ref(true)
+  const isShowConfig = ref(true)
   const ns = useNamespace('low-code')
   watch(
     isMobile,
     (val) => {
       isShowWidget.value = !val
+      isShowConfig.value = !val
     },
     { immediate: true }
   )
