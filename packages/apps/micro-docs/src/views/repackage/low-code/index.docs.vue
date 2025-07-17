@@ -69,11 +69,9 @@
     if (evt.item) {
       evt.item.remove()
     }
-    console.log('========addSchema=======', schema.child)
   }
   const removeSchema = (schema: ISchema, evt): void => {
     schema.child = removeList(schema.child as ISchema[], evt.oldIndex)
-    console.log('========removeSchema=======', schema.child)
   }
   const updateSchema = (schema: ISchema, evt): void => {
     schema.child = updateList(schema.child as ISchema[], evt.newIndex, evt.oldIndex)

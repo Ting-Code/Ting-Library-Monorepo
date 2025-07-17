@@ -99,7 +99,6 @@
   const { ElMessage } = getGlobalDataElement()
 
   const handleShare = async () => {
-    console.log('🚀 ~ handleShare ~ renderSchema:', renderSchema)
     const { success, message } = await copyToClipboard(toValue(JSON.stringify(renderSchema.value)))
     if (success) {
       ElMessage({

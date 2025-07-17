@@ -49,7 +49,6 @@
     onStart: (evt) => {
       const type = vesselList.value[evt.oldIndex!]
       handleSetSchema(type as keyof typeof typeToSchemaMap)
-      console.log('🚀 ~ onStart:', evt, type)
     }
   })
   useSortable(widgetRef, widgetList, {
@@ -58,7 +57,6 @@
     onStart: (evt) => {
       const type = widgetList.value[evt.oldIndex!]
       handleSetSchema(type as keyof typeof typeToSchemaMap)
-      console.log('🚀 ~ onStart:', evt, type)
     }
   })
 

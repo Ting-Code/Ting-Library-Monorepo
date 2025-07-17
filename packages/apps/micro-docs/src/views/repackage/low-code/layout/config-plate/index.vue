@@ -27,7 +27,6 @@
         const schema = getConfigSchema()
         generateRenderSchema(schema as ISchema, selectSchema)
       }
-      console.log('=====props.selectSchema', toValue(selectSchema), renderSchema)
     }
   )
 </script>
