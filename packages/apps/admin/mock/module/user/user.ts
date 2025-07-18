@@ -220,14 +220,14 @@ const menu = {
           name: 'visual_matter',
           path: '/docs/visual/matter',
           meta: {
-            title: '🎞️2D物理邀请'
+            title: '🎮2D物理邀请'
           }
         },
         {
           name: 'visual_modeling',
           path: '/modeling',
           meta: {
-            title: '🎞️3D模型',
+            title: '🗿3D模型',
             module: 'modeling'
           }
         }
