@@ -1,4 +1,8 @@
+body {
+  margin: 0;
+}
 #modeling {
+  background: #0a0a0a;
   position: relative;
   top: 0;
   left: 0;
