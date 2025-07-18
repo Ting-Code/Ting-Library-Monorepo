@@ -33,6 +33,14 @@ const routes: Array<RouteRecordRaw> = [
       transition: true
     },
     component: () => import('@/views/common/error/404.vue')
+  },
+  {
+    path: '/visual/matter',
+    name: 'visual_matter',
+    meta: {
+      transition: true
+    },
+    component: () => import('@/views/common/login/components/matter/index.vue')
   }
 ]
 

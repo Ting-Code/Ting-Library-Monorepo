@@ -215,6 +215,21 @@ const menu = {
             title: '🎞️动画',
             module: 'docs'
           }
+        },
+        {
+          name: 'visual_matter',
+          path: '/docs/visual/matter',
+          meta: {
+            title: '🎞️2D物理邀请'
+          }
+        },
+        {
+          name: 'visual_modeling',
+          path: '/modeling',
+          meta: {
+            title: '🎞️3D模型',
+            module: 'modeling'
+          }
         }
       ]
     }

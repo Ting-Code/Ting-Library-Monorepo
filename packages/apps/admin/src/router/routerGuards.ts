@@ -119,7 +119,7 @@ export function createRouterGuards(router: Router) {
 }
 
 /**
- * 按model来分组（已弃用）
+ * 按model来分组
  * @param auth
  */
 export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[] {

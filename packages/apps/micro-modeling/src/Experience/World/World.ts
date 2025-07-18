@@ -130,7 +130,7 @@ export default class World extends kokomi.Component {
       // this.enterDirectly();
 
       const bgm = new Howl({
-        src: 'audio/bgm.mp3',
+        src: `${import.meta.env.BASE_URL}/audio/bgm.mp3`,
         loop: true
       })
       bgm.play()

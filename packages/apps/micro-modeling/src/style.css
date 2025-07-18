@@ -1,18 +1,9 @@
-body {
-  margin: 0;
-}
-
-.hollow {
-  opacity: 0;
-  pointer-events: none;
-}
-
 #modeling {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 #sketch {
@@ -24,7 +15,7 @@ body {
   overflow: hidden;
 }
 
-.loader-screen {
+#modeling .loader-screen {
   position: fixed;
   z-index: 5;
   top: 0;
@@ -35,25 +26,24 @@ body {
   background: black;
 }
 
-.loading-container {
+#modeling .hollow {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#modeling .loading-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.loading {
+#modeling .loading {
   color: white;
   font-size: 1.875rem;
   letter-spacing: 0.1em;
 }
 
-.loading span {
+#modeling .loading span {
   animation: blur 1.5s calc(var(--i) / 5 * 1s) alternate infinite;
-}
-
-@keyframes blur {
-  to {
-    filter: blur(2px);
-  }
 }
