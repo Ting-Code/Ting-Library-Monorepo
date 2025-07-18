@@ -56,6 +56,7 @@
   const { renderSchema } = useSchema<ISchema, any>(defaultSchema, {})
 
   const setSelectSchema = (schema: ISchema): void => {
+    console.log('==========schema', schema)
     selectSchemaId.value = schema.id || ''
     selectSchema.value = schema
   }

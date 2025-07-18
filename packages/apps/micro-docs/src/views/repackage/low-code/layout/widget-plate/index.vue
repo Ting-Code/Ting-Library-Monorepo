@@ -71,7 +71,7 @@
     display: flex;
     flex-direction: column;
     @include e(vessel-box) {
-      padding: 10px;
+      padding: 10px 0;
       margin: 10px;
       display: flex;
       flex-wrap: wrap;
@@ -82,7 +82,7 @@
       }
     }
     @include e(widget-box) {
-      padding: 10px;
+      padding: 10px 0;
       margin: 10px;
       display: flex;
       flex-wrap: wrap;
