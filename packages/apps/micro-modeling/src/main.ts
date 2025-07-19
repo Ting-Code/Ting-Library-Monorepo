@@ -39,4 +39,10 @@ if (!window.__MICRO_APP_ENVIRONMENT__) {
   if (modelingElement) {
     modelingElement.style.position = 'absolute'
   }
+} else {
+  const modelingElement = document.getElementById('modeling')
+  if (modelingElement) {
+    modelingElement.style.width = '100% !important'
+    modelingElement.style.height = '100% !important'
+  }
 }
