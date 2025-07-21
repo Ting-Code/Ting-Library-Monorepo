@@ -22,6 +22,7 @@
       const handleSelect = (key: string) => {
         const auth = toRaw(getAuth)
         const name = auth.find((item) => item.path === key)?.meta?.module
+        console.log('setUrl：', key, name)
         setUrl({ path: key, name })
       }
       const renderMenus = (menus, parentPath = '') => {
