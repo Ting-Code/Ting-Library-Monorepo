@@ -220,7 +220,7 @@ const menu = {
           name: 'visual_matter',
           path: '/docs/visual/matter',
           meta: {
-            title: '🎮2D物理邀请'
+            title: '🎮2D物理引擎'
           }
         },
         {
