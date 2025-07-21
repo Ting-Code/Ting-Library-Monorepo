@@ -1,7 +1,7 @@
 import NProgress from 'nprogress'
 import type { RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, ErrorPageRoute } from '@/router'
-import { groupBy } from '@tingcode/utils'
+// import { groupBy } from '@tingcode/utils'
 import 'nprogress/nprogress.css'
 import { isNavigationFailure, Router } from 'vue-router'
 import { useUserStoreWidthOut } from '@/store/modules/user'
@@ -119,11 +119,49 @@ export function createRouterGuards(router: Router) {
 }
 
 /**
- * 按model来分组
- * @param auth
+ * 递归拍平菜单树形结构
+ * @param menu 树形菜单结构
+ * @returns 拍平后的菜单数组
  */
-export function transRouter(auth: Omit<IMenu, 'children'>[]): AppRouteRecordRaw[] {
-  const grouped = groupBy(auth, 'meta.module')
+function flattenMenu(menu: IMenu[]): Omit<IMenu, 'children'>[] {
+  return menu.reduce(
+    (acc, item) => {
+      // 复制当前项，排除children
+      const { children, ...rest } = item
+      acc.push(rest)
+
+      // 递归处理子菜单
+      if (children && children.length > 0) {
+        acc.push(...flattenMenu(children))
+      }
+
+      return acc
+    },
+    [] as Omit<IMenu, 'children'>[]
+  )
+}
+
+/**
+ * 按module来分组，没有module的分为admin组
+ * @param menu 树形菜单结构
+ */
+export function transRouter(menu: IMenu[]): AppRouteRecordRaw[] {
+  // 拍平菜单结构
+  const flatMenu = flattenMenu(menu)
+
+  // 分组，没有module的归入admin组
+  const grouped = flatMenu.reduce(
+    (acc, item) => {
+      const module = item.meta?.module || 'admin'
+      if (!acc[module]) {
+        acc[module] = []
+      }
+      acc[module].push(item)
+      return acc
+    },
+    {} as Record<string, Omit<IMenu, 'children'>[]>
+  )
+
   return Object.keys(grouped).map((key) => ({
     name: key,
     component: 'LAYOUT',
