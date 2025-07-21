@@ -2,7 +2,8 @@
 
 <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 15px 0;">
   <img src="https://img.shields.io/badge/pnpm-10.0+-brown.svg" alt="pnpm" style="height: 24px;" />
-    <img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0+-blue.svg" alt="TypeScript" style="height: 24px;" />
 </div>
 <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 15px 0;">
   <img src="https://img.shields.io/badge/Rspack-1.0+-red.svg" alt="Rspack" style="height: 24px;" />
