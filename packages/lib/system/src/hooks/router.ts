@@ -96,9 +96,8 @@ export async function setUrl(to: RouterTarget) {
     }
     return await microApp.router.push({ name, path: urlObj.toString(), replace: !!replace })
   } catch (e) {
-    // 使用 history.replaceState 更新浏览器的 URL 而不刷新页面
+    console.log('==========urlObj.toString()========', urlObj.toString(), urlObj.pathname, urlObj)
     mainWindow.history[replace ? 'replaceState' : 'pushState']({}, '', urlObj.toString())
-    // 手动触发 popstate 事件
     const popStateEvent = new PopStateEvent('popstate', { state: { path: urlObj.pathname } })
     mainWindow.dispatchEvent(popStateEvent)
   }

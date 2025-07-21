@@ -64,7 +64,6 @@ export function createRouterGuards(router: Router) {
       const userStore = useUserStoreWidthOut()
       const { auth, menu } = await getUserInfo()
       const addRouters = generateRoutes(transRouter(menu))
-      console.log('======addRouters======', addRouters)
       userStore.setAuth(auth)
       userStore.setMenu(menu)
       userStore.setRouters(addRouters)
