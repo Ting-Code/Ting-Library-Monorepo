@@ -31,7 +31,7 @@
         }
       })
 
-      return () => <el-empty description="无内容" />
+      return () => <el-empty description="无内容" style={{ height: '100%' }} v-loading={true} />
     }
   })
 </script>

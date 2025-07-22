@@ -26,7 +26,7 @@ export const publicRoutes: AppRouteRecordRaw[] = [
 ]
 // 404 on a page
 export const ErrorPageRoute: AppRouteRecordRaw = {
-  path: '/:path(.*)*',
+  path: '/:module(.*)*',
   name: 'ErrorPage',
   component: Layout,
   meta: {
@@ -34,7 +34,15 @@ export const ErrorPageRoute: AppRouteRecordRaw = {
   },
   children: [
     {
-      path: '/:path(.*)*',
+      path: '/:module(.*)*/redirect/:path(.*)*',
+      name: PageEnum.REDIRECT_NAME,
+      component: () => import('@/views/common/redirect/index.vue'),
+      meta: {
+        title: PageEnum.REDIRECT_NAME
+      }
+    },
+    {
+      path: '/:module(.*)*',
       name: 'ErrorPageSon',
       component: ErrorPage,
       meta: {

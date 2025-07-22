@@ -3,7 +3,7 @@
   import { useSetting } from '@/hooks/useSetting'
   import { defineComponent, toRaw, toRefs } from 'vue'
   import { useUserStoreWidthOut } from '@/store/modules/user'
-  import { setUrl, useNamespace } from '@tingcode/system'
+  import { setUrl, useNamespace, PageEnum } from '@tingcode/system'
   import { useRoute } from 'vue-router'
   import { EPIcon } from '@/main'
   import { useAppProviderContext } from '@/views/application/useAppContext'
@@ -22,8 +22,11 @@
       const handleSelect = (key: string) => {
         const auth = toRaw(getAuth)
         const name = auth.find((item) => item.path === key)?.meta?.module
-        console.log('setUrl：', key, name)
-        setUrl({ path: key, name })
+        if (route.meta.module === name) {
+          setUrl({ path: key, name })
+        } else {
+          setUrl({ path: `${PageEnum.REDIRECT}${key}` })
+        }
       }
       const renderMenus = (menus, parentPath = '') => {
         return menus.map((item) => {
