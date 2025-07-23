@@ -1,9 +1,9 @@
 # <a id="ting">📖Ting Library 介绍</a>
 
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 15px 0;">
-  <img src="https://img.shields.io/badge/pnpm-10.0+-brown.svg" alt="pnpm" style="height: 24px;" />
-  <img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" style="height: 24px;" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0+-blue.svg" alt="TypeScript" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/Vite-6.0+-violet.svg" alt="Vite" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/Vue-3.5+-green.svg" alt="Vue" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/VueUse-13.0+-orange.svg" alt="VueUse" style="height: 24px;" />
 </div>
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 15px 0;">
   <img src="https://img.shields.io/badge/Rspack-1.0+-red.svg" alt="Rspack" style="height: 24px;" />
@@ -11,9 +11,11 @@
   <img src="https://img.shields.io/badge/Nextjs-15+-black.svg" alt="Nextjs" style="height: 24px;" />
 </div>
 <div align="center" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 15px 0;">
-  <img src="https://img.shields.io/badge/Vite-6.0+-violet.svg" alt="Vite" style="height: 24px;" />
-  <img src="https://img.shields.io/badge/Vue-3.5+-green.svg" alt="Vue" style="height: 24px;" />
-  <img src="https://img.shields.io/badge/VueUse-13.0+-orange.svg" alt="VueUse" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/-Nginx-green.svg" alt="Nginx" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/pnpm-10.0+-brown.svg" alt="pnpm" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/MicroApp-1.0+-cyan.svg" alt="MicroApp" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0+-blue.svg" alt="TypeScript" style="height: 24px;" />
+  <img src="https://img.shields.io/badge/-Docker-navy.svg" alt="Docker" style="height: 24px;" />
 </div>
 
 Ting Library：基于 pnpm 搭建的 monorepo 架构的知识库。架构与文档于一体的知识库，沉淀各种解决方案并直达源码的直观文档。
