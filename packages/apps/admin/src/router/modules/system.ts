@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       transition: true
     },
-    component: () => import('@/views/common/login/components/matter/index.vue')
+    component: () => import('@/views/common/matter/index.vue')
   }
 ]
 
