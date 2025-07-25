@@ -5,11 +5,17 @@
 </template>
 
 <script setup lang="ts">
-  import { useNamespace } from '@tingcode/system'
+  import { useNamespace, loginSystem } from '@tingcode/system'
 
   defineOptions({
     name: 'LoginMain'
   })
+
+  const handleLogin = () => {
+    loginSystem()
+  }
+
+  console.log(handleLogin)
 
   const ns = useNamespace('login-main')
 </script>
