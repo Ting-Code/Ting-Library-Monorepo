@@ -14,8 +14,7 @@
   const handleLogin = () => {
     loginSystem()
   }
-
-  console.log(handleLogin)
+  console.log('🚀 ~ handleLogin ~ handleLogin:', handleLogin)
 
   const ns = useNamespace('login-main')
 </script>
@@ -25,8 +24,6 @@
     height: 100%;
 
     @include e(main) {
-      padding: 0;
-      background-color: getCssVar('bg-color', 'main');
     }
   }
 </style>
