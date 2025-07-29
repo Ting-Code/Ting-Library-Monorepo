@@ -20,6 +20,7 @@
     "@vueuse/integrations": "catalog:",
     "dayjs": "catalog:",
     "element-plus": "catalog:",
+    "gsap": "catalog:",
     "lodash-es": "^4.17.21",
     "matter-js": "^0.20.0",
     "nprogress": "^0.2.0",
@@ -33,6 +34,7 @@
     "vue-router": "catalog:"
   },
   "devDependencies": {
+    "@types/gsap": "catalog:",
     "@types/matter-js": "^0.19.8",
     "@types/sortablejs": "catalog:",
     "@vitejs/plugin-vue": "catalog:",

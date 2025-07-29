@@ -1,35 +1,28 @@
 <template>
-  <div
-    ref="containerRef"
-    class="card-swap-container absolute bottom-0 right-0 transform translate-x-[5%] translate-y-[20%] origin-bottom-right perspective-[900px] overflow-visible max-[768px]:translate-x-[25%] max-[768px]:translate-y-[25%] max-[768px]:scale-[0.75] max-[480px]:translate-x-[25%] max-[480px]:translate-y-[25%] max-[480px]:scale-[0.55]"
-    :style="{
-      width: typeof width === 'number' ? `${width}px` : width,
-      height: typeof height === 'number' ? `${height}px` : height
-    }"
-  >
-    <div
-      v-for="(_, index) in 3"
-      :key="index"
-      ref="cardRefs"
-      class="card-swap-card absolute top-1/2 left-1/2 rounded-xl border border-white bg-black [transform-style:preserve-3d] [will-change:transform] [backface-visibility:hidden]"
-      :style="{
-        width: typeof width === 'number' ? `${width}px` : width,
-        height: typeof height === 'number' ? `${height}px` : height
-      }"
-      @click="handleCardClick(index)"
-    >
-      <slot :name="`card-${index}`" :index="index"></slot>
+  <div ref="containerRef" :class="ns.b()">
+    <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
+      <div :class="ns.em('card', 'head')"> aaaaaa </div>
+      <div :class="ns.em('card', 'main')">11111111</div>
+    </div>
+    <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
+      <div :class="ns.em('card', 'head')"> bbbbbbb </div>
+      <div :class="ns.em('card', 'main')">222222222</div>
+    </div>
+    <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
+      <div :class="ns.em('card', 'head')"> ccccccc </div>
+      <div :class="ns.em('card', 'main')">333333333</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { useNamespace } from '@tingcode/system'
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
 
+  const ns = useNamespace('card-swap')
+
   export interface CardSwapProps {
-    width?: number | string
-    height?: number | string
     cardDistance?: number
     verticalDistance?: number
     delay?: number
@@ -39,11 +32,9 @@
     easing?: 'linear' | 'elastic'
   }
   const props = withDefaults(defineProps<CardSwapProps>(), {
-    width: 500,
-    height: 400,
     cardDistance: 60,
     verticalDistance: 70,
-    delay: 5000,
+    delay: 2000,
     pauseOnHover: false,
     skewAmount: 6,
     easing: 'elastic'
@@ -75,20 +66,11 @@
       force3D: true
     })
   }
-  const emit = defineEmits<{
-    'card-click': [index: number]
-  }>()
-
   const containerRef = useTemplateRef<HTMLDivElement>('containerRef')
   const cardRefs = ref<HTMLElement[]>([])
   const order = ref<number[]>([0, 1, 2])
   const tlRef = ref<gsap.core.Timeline | null>(null)
   const intervalRef = ref<number>()
-
-  const handleCardClick = (index: number) => {
-    emit('card-click', index)
-    props.onCardClick?.(index)
-  }
 
   const config = computed(() => {
     return props.easing === 'elastic'
@@ -111,11 +93,13 @@
   })
 
   const initializeCards = () => {
+    console.log('==============el', cardRefs.value)
     if (!cardRefs.value.length) return
 
     const total = cardRefs.value.length
 
     cardRefs.value.forEach((el, i) => {
+      console.log('==============el', el)
       if (el) {
         placeNow(
           el,
@@ -285,3 +269,39 @@
     removeHoverListeners()
   })
 </script>
+
+<style lang="scss" scoped>
+  @include b(card-swap) {
+    position: absolute;
+    transform: translate(5%, 20%);
+    transform-origin: bottom right;
+    perspective: 900px;
+    overflow: visible;
+    width: 200px;
+    height: 200px;
+
+    @include e(card) {
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 0.75rem;
+      border: 1px solid white;
+      background-color: black;
+      transform-style: preserve-3d;
+      will-change: transform;
+      backface-visibility: hidden;
+
+      @include m(head) {
+        border-bottom: 1px solid white;
+        background: linear-gradient(to top, #222, #0b0b0b);
+      }
+
+      @include m(main) {
+        position: relative;
+        padding: 0.5rem;
+      }
+    }
+  }
+</style>
