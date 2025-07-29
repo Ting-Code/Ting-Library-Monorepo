@@ -30,7 +30,7 @@ $bg-color: () !default;
 $bg-color: map.merge(
   (
     '': #ffffff,
-    'main': #e7eaef
+    'main': #f8f8f8
   ),
   $bg-color
 );

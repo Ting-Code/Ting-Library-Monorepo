@@ -23,16 +23,17 @@
 <style lang="scss" scoped>
   @include b(login) {
     height: 100%;
+    display: flex;
+    flex-direction: column;
 
     @include e(header) {
-      position: absolute;
       width: 100%;
       background-color: getCssVar('bg-color');
-      z-index: 100;
     }
 
     @include e(main) {
-      padding: 0;
+      flex: 1;
+      overflow: hidden;
       background-color: getCssVar('bg-color', 'main');
     }
   }

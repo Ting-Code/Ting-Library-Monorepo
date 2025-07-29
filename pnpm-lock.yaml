@@ -228,6 +228,9 @@ importers:
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
+      ogl:
+        specifier: ^1.0.11
+        version: 1.0.11
       pinia:
         specifier: 'catalog:'
         version: 3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
@@ -10232,6 +10235,12 @@ packages:
     resolution:
       {
         integrity: sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg==
+      }
+
+  ogl@1.0.11:
+    resolution:
+      {
+        integrity: sha512-kUpC154AFfxi16pmZUK4jk3J+8zxwTWGPo03EoYA8QPbzikHoaC82n6pNTbd+oEaJonaE8aPWBlX7ad9zrqLsA==
       }
 
   on-finished@2.3.0:
@@ -20266,6 +20275,8 @@ snapshots:
       es-abstract: 1.22.5
 
   obuf@1.1.2: {}
+
+  ogl@1.0.11: {}
 
   on-finished@2.3.0:
     dependencies:

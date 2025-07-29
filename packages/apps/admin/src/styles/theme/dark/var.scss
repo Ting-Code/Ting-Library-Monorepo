@@ -33,8 +33,8 @@ $border-color: map.merge(
 $bg-color: () !default;
 $bg-color: map.merge(
   (
-    '': #141414,
-    'main': #444a54
+    '': #000000,
+    'main': #222223
   ),
   $bg-color
 );

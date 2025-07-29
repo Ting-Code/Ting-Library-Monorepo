@@ -71,7 +71,7 @@ Instructions:
 
 ### 如果无法启动可以尝试
 
-```
+```bash
 # 允许下载依赖
 pnpm approve-builds
 
