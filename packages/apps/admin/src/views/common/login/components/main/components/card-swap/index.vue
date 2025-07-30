@@ -2,23 +2,31 @@
   <div ref="containerRef" :class="ns.b()">
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')"> aaaaaa </div>
-      <div :class="ns.em('card', 'main')">11111111</div>
+      <div :class="ns.em('card', 'main')">
+        <iframe :src="`${url}system/home`"></iframe>
+      </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')"> bbbbbbb </div>
-      <div :class="ns.em('card', 'main')">222222222</div>
+      <div :class="ns.em('card', 'main')">
+        <iframe :src="`${url}system/engineering`"></iframe>
+      </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
-      <div :class="ns.em('card', 'head')"> ccccccc </div>
-      <div :class="ns.em('card', 'main')">333333333</div>
+      <div :class="ns.em('card', 'head')"> {{ url }} </div>
+      <div :class="ns.em('card', 'main')">
+        <iframe :src="`${url}system/markdown`"></iframe>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useNamespace } from '@tingcode/system'
+  import { useNamespace, useMicro } from '@tingcode/system'
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
+
+  const { url } = useMicro('docs')
 
   const ns = useNamespace('card-swap')
 
@@ -37,7 +45,7 @@
     delay: 2000,
     pauseOnHover: false,
     skewAmount: 6,
-    easing: 'elastic'
+    easing: 'linear'
   })
   interface Slot {
     x: number
@@ -93,13 +101,11 @@
   })
 
   const initializeCards = () => {
-    console.log('==============el', cardRefs.value)
     if (!cardRefs.value.length) return
 
     const total = cardRefs.value.length
 
     cardRefs.value.forEach((el, i) => {
-      console.log('==============el', el)
       if (el) {
         placeNow(
           el,
@@ -273,34 +279,26 @@
 <style lang="scss" scoped>
   @include b(card-swap) {
     position: absolute;
-    transform: translate(5%, 20%);
-    transform-origin: bottom right;
-    perspective: 900px;
-    overflow: visible;
-    width: 200px;
-    height: 200px;
 
     @include e(card) {
-      width: 200px;
-      height: 200px;
+      transform: scale(0.6);
       position: absolute;
-      top: 50%;
-      left: 50%;
-      border-radius: 0.75rem;
-      border: 1px solid white;
-      background-color: black;
-      transform-style: preserve-3d;
-      will-change: transform;
-      backface-visibility: hidden;
+      border-radius: 8px;
+      border: 1px solid getCssVar('text-color', 'primary');
+      color: getCssVar('text-color', 'primary');
 
       @include m(head) {
-        border-bottom: 1px solid white;
-        background: linear-gradient(to top, #222, #0b0b0b);
+        font-size: 32px;
+        padding: 8px 16px;
+        border-bottom: 1px solid getCssVar('text-color', 'primary');
       }
 
       @include m(main) {
-        position: relative;
-        padding: 0.5rem;
+        background: #0a3069;
+        > iframe {
+          width: 800px;
+          height: 600px;
+        }
       }
     }
   }

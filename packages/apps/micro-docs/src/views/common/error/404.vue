@@ -9,7 +9,8 @@
 </template>
 
 <script setup lang="ts">
-  console.log('404页面DOCS')
+  const route = useRoute()
+  console.log('404页面DOCS', route.fullPath)
 </script>
 
 <style lang="sass" scoped>

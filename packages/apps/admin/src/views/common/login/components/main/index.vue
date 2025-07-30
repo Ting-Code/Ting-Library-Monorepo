@@ -47,6 +47,8 @@
     @include e(one-box) {
       position: relative;
       width: 100%;
+      height: 1900px;
+      overflow: hidden;
 
       @include m(threads) {
         height: 500px;
@@ -54,17 +56,17 @@
       }
 
       @include m(right) {
+        position: absolute;
         width: 100px;
         height: 100px;
-        position: relative;
-        //top: 200px;
-        //right: 20px;
+        top: 300px;
+        right: 900px;
       }
 
       @include m(left) {
         position: absolute;
         top: 200px;
-        left: 120px;
+        left: 220px;
       }
       @include m(title) {
         font-size: 52px;
