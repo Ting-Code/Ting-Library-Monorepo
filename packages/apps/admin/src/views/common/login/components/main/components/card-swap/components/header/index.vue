@@ -15,10 +15,7 @@
     </div>
 
     <!-- 右侧功能按钮 -->
-    <div :class="ns.e('function-buttons')">
-      <div :class="ns.em('button', 'share')"></div>
-      <div :class="ns.em('button', 'menu')"></div>
-    </div>
+    <div :class="ns.e('function-buttons')"> </div>
   </div>
 </template>
 
