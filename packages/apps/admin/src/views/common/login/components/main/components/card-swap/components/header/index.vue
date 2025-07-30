@@ -1,20 +1,17 @@
 <template>
-  <div :class="ns.b()">
-    <!-- 左侧控制按钮 -->
+  <div :class="ns.b()" @click="handleAddressClick">
     <div :class="ns.e('left-buttons')">
       <div :class="ns.em('left-buttons', 'close')"></div>
       <div :class="ns.em('left-buttons', 'minimize')"></div>
       <div :class="ns.em('left-buttons', 'maximize')"></div>
     </div>
 
-    <!-- 地址栏 -->
     <div :class="ns.e('address-bar')">
       <div :class="ns.em('address-bar', 'security-icon')"></div>
       <div :class="ns.em('address-bar', 'url')">{{ url }}</div>
       <div :class="ns.em('address-bar', 'refresh-icon')"></div>
     </div>
 
-    <!-- 右侧功能按钮 -->
     <div :class="ns.e('function-buttons')"> </div>
   </div>
 </template>
@@ -31,6 +28,17 @@
 
   const url = ref(props.url)
   const ns = useNamespace('browser-header')
+
+  // 处理地址栏点击事件
+  const handleAddressClick = () => {
+    if (url.value) {
+      let targetUrl = url.value
+      if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
+        targetUrl = `https://${targetUrl}`
+      }
+      window.open(targetUrl, '_blank')
+    }
+  }
 </script>
 
 <style scoped lang="scss">
@@ -80,6 +88,16 @@
       padding: 3px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
       white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: scale(1.01);
+      }
+
+      &:active {
+        transform: scale(0.99);
+      }
 
       @include m(security-icon) {
         width: 8px;
