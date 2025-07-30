@@ -1,19 +1,25 @@
 <template>
   <div ref="containerRef" :class="ns.b()">
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
-      <div :class="ns.em('card', 'head')"> aaaaaa </div>
+      <div :class="ns.em('card', 'head')">
+        <Header :url="`${url}system/home`" />
+      </div>
       <div :class="ns.em('card', 'main')">
         <iframe :src="`${url}system/home`"></iframe>
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
-      <div :class="ns.em('card', 'head')"> bbbbbbb </div>
+      <div :class="ns.em('card', 'head')">
+        <Header :url="`${url}system/engineering`" />
+      </div>
       <div :class="ns.em('card', 'main')">
         <iframe :src="`${url}system/engineering`"></iframe>
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
-      <div :class="ns.em('card', 'head')"> {{ url }} </div>
+      <div :class="ns.em('card', 'head')">
+        <Header :url="`${url}system/markdown`" />
+      </div>
       <div :class="ns.em('card', 'main')">
         <iframe :src="`${url}system/markdown`"></iframe>
       </div>
@@ -23,6 +29,7 @@
 
 <script setup lang="ts">
   import { useNamespace, useMicro } from '@tingcode/system'
+  import Header from './components/header/index.vue'
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
 
@@ -281,7 +288,7 @@
     position: absolute;
 
     @include e(card) {
-      transform: scale(0.6);
+      transform: scale(0.8);
       position: absolute;
       border-radius: 8px;
       background-color: getCssVar('bg-color', 'main');
@@ -296,8 +303,8 @@
 
       @include m(main) {
         > iframe {
-          width: 800px;
-          height: 600px;
+          width: 600px;
+          height: 500px;
         }
       }
     }
