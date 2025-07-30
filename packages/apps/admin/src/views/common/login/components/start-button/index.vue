@@ -1,12 +1,16 @@
 <template>
   <div :class="ns.b()">
-    <div @click="handleLogin" :class="ns.e('text')">
-      {{ props.text }}
+    <div @click="handleLogin" :class="ns.e('button-box')">
+      <sapn :class="ns.em('button-box', 'text')">{{ props.text }}</sapn>
+      <span :class="ns.em('button-box', 'icon')">
+        <el-icon><ArrowRightBold /></el-icon>
+      </span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ArrowRightBold } from '@element-plus/icons-vue'
   import { useNamespace, loginSystem } from '@tingcode/system'
 
   interface ShinyTextProps {
@@ -14,7 +18,7 @@
   }
 
   const props = withDefaults(defineProps<ShinyTextProps>(), {
-    text: '开始'
+    text: ''
   })
 
   defineOptions({
@@ -51,7 +55,7 @@
     background-size: 200% 200%;
     border-radius: 50px;
     border: none;
-    padding: 20px 30px;
+    padding: 18px 26px;
     color: white;
     cursor: pointer;
     isolation: isolate;
@@ -120,8 +124,10 @@
       transform: translateY(-2px) scale(1.02);
       transition: all 0.1s ease;
     }
-    @include e(text) {
-      padding: 12px 24px;
+    @include e(button-box) {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
       font-weight: bold;
       background-image: linear-gradient(
         120deg,
@@ -129,12 +135,29 @@
         rgba(255, 255, 255, 0.8) 50%,
         rgba(255, 255, 255, 0) 60%
       );
-      color: #b5b5b5a4;
+      color: rgba(255, 255, 255, 0.64);
       background-clip: text;
       background-size: 200% 100%;
       -webkit-background-clip: text;
       animation-duration: 2s;
       animation: shine 2s linear infinite;
+
+      @include m(text) {
+        font-size: 20px;
+        padding-right: 12px;
+      }
+
+      @include m(icon) {
+        font-size: 12px;
+        color: #313131;
+        background: rgba(255, 255, 255, 0.8);
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 </style>

@@ -25,7 +25,7 @@
       <div :class="ns.em('left', 'text')">
         基于 Monorepo 搭建的架构与文档于一体的知识库，沉淀技术解决方案并提供直达源码的直观文档。
       </div>
-      <ShinyText />
+      <ShinyText text="快速开始" />
     </div>
     <div :class="ns.e('right')">
       <CardSwap />
