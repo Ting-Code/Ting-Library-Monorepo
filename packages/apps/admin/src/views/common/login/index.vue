@@ -6,10 +6,11 @@
       <Galaxy
         :mouse-repulsion="true"
         :mouse-interaction="true"
-        :density="1.5"
-        :glow-intensity="0.5"
-        :saturation="0.8"
-        :hue-shift="240"
+        :density="2"
+        :glow-intensity="0.3"
+        :saturation="0.6"
+        :hue-shift="280"
+        :star-speed="0.2"
       />
     </el-main>
     <div :class="ns.e('left')">
@@ -21,6 +22,9 @@
         cursorCharacter="_"
         :className="ns.em('left', 'title')"
       />
+      <div :class="ns.em('left', 'text')">
+        基于 Monorepo 搭建的架构与文档于一体的知识库，沉淀技术解决方案并提供直达源码的直观文档。
+      </div>
       <ShinyText />
     </div>
     <div :class="ns.e('right')">
@@ -65,12 +69,24 @@
 
     @include e(left) {
       position: absolute;
-      top: 200px;
-      left: 20px;
+      top: calc(32vh + 100px);
+      left: calc(12vh + 100px);
       @include m(title) {
-        font-size: 52px;
+        font-size: calc(1vw + 30px);
         font-weight: bold;
         color: getCssVar('text-color', 'primary');
+        padding-bottom: 20px;
+      }
+      @include m(text) {
+        font-size: calc(0.5vw + 8px);
+        padding-bottom: 38px;
+        color: #a7ef9e;
+        max-width: calc(28vh + 220px);
+        text-shadow:
+          0 0 2px rgba(255, 255, 255, 0.1),
+          0 0 4px rgba(255, 255, 255, 0.3),
+          0 0 8px rgba(255, 255, 255, 0.4),
+          0 0 136px rgba(60, 255, 79, 0.8);
       }
     }
     @include e(right) {
@@ -78,7 +94,7 @@
       width: 100px;
       height: 100px;
       top: calc(38vh + 200px);
-      right: calc(18vh + 100px);
+      right: calc(16vw + 100px);
     }
   }
 </style>
