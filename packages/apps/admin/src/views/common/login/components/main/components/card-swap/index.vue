@@ -284,6 +284,7 @@
       transform: scale(0.6);
       position: absolute;
       border-radius: 8px;
+      background-color: getCssVar('bg-color', 'main');
       border: 1px solid getCssVar('text-color', 'primary');
       color: getCssVar('text-color', 'primary');
 
@@ -294,7 +295,6 @@
       }
 
       @include m(main) {
-        background: #0a3069;
         > iframe {
           width: 800px;
           height: 600px;
