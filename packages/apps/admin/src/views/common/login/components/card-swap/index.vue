@@ -295,6 +295,10 @@
       border: 1px solid getCssVar('text-color', 'primary');
       color: getCssVar('text-color', 'primary');
 
+      @include max-XXL {
+        transform: scale(1);
+      }
+
       @include m(head) {
         font-size: 32px;
         padding: 8px 16px;
