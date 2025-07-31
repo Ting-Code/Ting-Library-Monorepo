@@ -1,7 +1,7 @@
 @use 'sass:map';
 
 // CSS3 var
-@use '../mixin/mixins' as *;
+@use 'element-plus/theme-chalk/src/mixins/mixins' as *;
 @use 'default/var' as *;
 @use 'default/github-markdown' as *;
 @use 'default/prism' as *;

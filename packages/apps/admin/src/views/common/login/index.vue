@@ -94,7 +94,7 @@
       width: 100px;
       height: 100px;
       top: calc(38vh + 200px);
-      right: calc(16vw + 100px);
+      right: calc(12vw + 100px);
     }
   }
 </style>

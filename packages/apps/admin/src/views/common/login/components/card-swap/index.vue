@@ -303,8 +303,8 @@
 
       @include m(main) {
         > iframe {
-          width: calc(50vw + 200px);
-          height: calc(50vh + 200px);
+          width: calc(20vw + 600px);
+          height: calc(10vh + 380px);
         }
       }
     }
