@@ -1,10 +1,10 @@
 $screen-widths: (
-  XS: 480px,
-  SM: 576px,
-  MD: 768px,
-  LG: 992px,
-  XL: 1200px,
-  XXL: 1600px
+  XS: 576px,
+  SM: 768px,
+  MD: 992px,
+  LG: 1300px,
+  XL: 2000px,
+  XXL: 2600px
 );
 
 @function get-breakpoint($key) {

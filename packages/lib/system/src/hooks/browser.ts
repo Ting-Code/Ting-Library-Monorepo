@@ -12,12 +12,12 @@ export enum screenSizeEnum {
 }
 
 export enum screenWidthEnum {
-  XS = 480,
-  SM = 576,
-  MD = 768,
-  LG = 992,
-  XL = 1200,
-  XXL = 1600
+  XS = 576,
+  SM = 768,
+  MD = 992,
+  LG = 1300,
+  XL = 2000,
+  XXL = 2600
 }
 
 const screenMap = new Map<screenSizeEnum, number>()
@@ -59,7 +59,7 @@ export function getWindowScreen() {
     screen = screenSizeEnum.XXL
   }
   const screenWidth = screenMap.get(screen)
-  const lgWidth = screenMap.get(screenSizeEnum.LG)!
+  const lgWidth = screenMap.get(screenSizeEnum.MD)!
   const isMobile = width - 1 < lgWidth
   return { screen, width, screenWidth, isMobile }
 }

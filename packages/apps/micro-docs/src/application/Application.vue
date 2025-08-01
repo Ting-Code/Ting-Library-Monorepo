@@ -18,7 +18,7 @@
   } = getWindowScreen()
   const namespace = ref(NAMESPACE)
   const isMobile = ref<boolean>(isMobileInit)
-  const screen = ref<screenSizeEnum>(screenInit || screenSizeEnum.XXL)
+  const screen = ref<screenSizeEnum>(screenInit || screenSizeEnum.LG)
   const width = ref(widthInit)
   const screenWidth = ref<number>(screenWidthInit || 0)
   let offSettingMitt
@@ -29,7 +29,7 @@
       isMobile.value = opt.isMobile
       width.value = opt.width
       screenWidth.value = opt.screenWidth || 0
-      screen.value = opt.screen || screenSizeEnum.XXL
+      screen.value = opt.screen || screenSizeEnum.LG
     })
     // 初始化监听setting
     offSettingMitt = initSettingMitt()
