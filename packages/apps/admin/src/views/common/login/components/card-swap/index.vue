@@ -295,8 +295,8 @@
       border: 1px solid getCssVar('text-color', 'primary');
       color: getCssVar('text-color', 'primary');
 
-      @include max-XXL {
-        transform: scale(1);
+      @include min-XXL {
+        transform: scale(2);
       }
 
       @include m(head) {
@@ -309,6 +309,11 @@
         > iframe {
           width: calc(20vw + 600px);
           height: calc(10vh + 380px);
+
+          @include min-XXL {
+            width: calc(18vw + 600px);
+            height: calc(12vh + 380px);
+          }
         }
       }
     }

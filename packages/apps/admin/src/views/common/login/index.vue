@@ -95,6 +95,11 @@
       height: 100px;
       top: calc(38vh + 200px);
       right: calc(12vw + 100px);
+
+      @include min-XXL {
+        top: calc(38vh + 300px);
+        right: calc(12vw + 100px);
+      }
     }
   }
 </style>
