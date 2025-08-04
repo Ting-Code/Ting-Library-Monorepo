@@ -191,7 +191,7 @@ export type RouteLocationRawEx = PathAsPageEnum<RouteLocationRaw>
  * @description: redo current page
  */
 export function useRedo(_router?: Router) {
-  const { replace, currentRoute } = _router || useRouter()
+  const { currentRoute } = _router || useRouter()
   const { query, params = {}, name, fullPath } = unref(currentRoute.value)
   function redo(): Promise<boolean> {
     return new Promise((resolve) => {
@@ -199,16 +199,13 @@ export function useRedo(_router?: Router) {
         resolve(false)
         return
       }
-      if (name && Object.keys(params).length > 0) {
-        params['_origin_params'] = JSON.stringify(params ?? {})
-        params['_redirect_type'] = 'name'
-        params['path'] = String(name)
-      } else {
-        params['_origin_params'] = 'null'
-        params['_redirect_type'] = 'path'
-        params['path'] = fullPath
-      }
-      replace({ name: PageEnum.REDIRECT_NAME, params, query }).then(() => resolve(true))
+      params['_origin_params'] = 'null'
+      params['_redirect_type'] = 'path'
+      params['path'] = fullPath
+      setUrl({
+        path: PageEnum.BASE_HOME,
+        query
+      })
     })
   }
   return redo

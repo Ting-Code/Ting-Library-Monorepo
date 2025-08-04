@@ -14,7 +14,7 @@
           :key="item.path"
           :label="item?.meta?.title as string"
           :name="item.path"
-          :closable="true"
+          :closable="item.path !== PageEnum.BASE_HOME"
         />
       </el-tabs>
     </div>
@@ -54,6 +54,7 @@
   initTabs()
 
   onMittRouter((route) => {
+    if (route.path?.includes('redirect')) return
     targetTabRef.value = route.path
     addTabsList(getRouteItem(route))
   })

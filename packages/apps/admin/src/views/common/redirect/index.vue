@@ -1,7 +1,7 @@
 <script lang="tsx">
   import { defineComponent, nextTick } from 'vue'
   import { useRoute, useRouter } from 'vue-router'
-
+  import { setUrl } from '@tingcode/system'
   export default defineComponent({
     name: 'Redirect',
     setup() {
@@ -17,16 +17,16 @@
       const _path = Array.isArray(path) ? path.join('/') : path
 
       nextTick(() => {
-        if (_redirect_type === 'name') {
+        if (_redirect_type === 'path') {
+          setUrl({
+            path: _path.startsWith('/') ? _path : '/' + _path,
+            query
+          })
+        } else {
           router.replace({
             name: _path,
             query,
             params: JSON.parse((params._origin_params as string) ?? '{}')
-          })
-        } else {
-          router.replace({
-            path: _path.startsWith('/') ? _path : '/' + _path,
-            query
           })
         }
       })
