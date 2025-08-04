@@ -1,5 +1,6 @@
 import { App } from 'vue'
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router'
+import type { AppRouteRecordRaw } from '@apps/admin/src/router/type'
 export const ErrorPage = () => import('@/views/common/error/404.vue')
 
 // 404 on a page
@@ -11,6 +12,17 @@ export const ErrorPageRoute = {
     title: 'ErrorPage'
   }
 }
+
+export const publicRoutes: AppRouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'Root',
+    redirect: '/system/home',
+    meta: {
+      title: 'Root'
+    }
+  }
+]
 
 const modules: any = import.meta.glob('./modules/**/*.ts', { eager: true })
 const routeModuleList: RouteRecordRaw[] = []
@@ -24,7 +36,7 @@ Object.keys(modules).forEach((key) => {
 //需要验证权限
 export const asyncRoutes = [...routeModuleList]
 //普通路由 无需验证权限
-export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute]
+export const constantRouter: any[] = [...routeModuleList, ErrorPageRoute, ...publicRoutes]
 
 let router: null | Router = null
 export function initRouter() {

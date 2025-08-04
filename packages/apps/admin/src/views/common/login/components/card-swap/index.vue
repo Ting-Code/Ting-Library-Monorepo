@@ -2,10 +2,10 @@
   <div ref="containerRef" :class="ns.b()">
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`${url}system/home`" />
+        <Header :url="`${url}`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <iframe :src="`${url}system/home`"></iframe>
+        <iframe :src="`${url}`"></iframe>
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
@@ -13,15 +13,22 @@
         <Header :url="`${url}system/engineering`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <iframe :src="`${url}system/engineering`"></iframe>
+        <micro-app
+          :name="name"
+          :url="url"
+          :baseroute="`/${name}/`"
+          :iframe="isIframe"
+          default-page="system/engineering"
+          router-mode="pure"
+        />
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`${url}system/markdown`" />
+        <Header :url="`${modelingUrl}`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <iframe :src="`${url}system/markdown`"></iframe>
+        <iframe :src="`${modelingUrl}`"></iframe>
       </div>
     </div>
   </div>
@@ -33,7 +40,8 @@
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
 
-  const { url } = useMicro('docs')
+  const { url, name, isIframe } = useMicro('docs')
+  const { url: modelingUrl } = useMicro('modeling')
 
   const ns = useNamespace('card-swap')
 
@@ -306,7 +314,8 @@
       }
 
       @include m(main) {
-        > iframe {
+        overflow: hidden;
+        > * {
           width: calc(20vw + 600px);
           height: calc(10vh + 380px);
 

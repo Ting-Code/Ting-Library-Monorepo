@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $screen-widths: (
   XS: 576px,
   SM: 768px,
@@ -8,7 +10,7 @@ $screen-widths: (
 );
 
 @function get-breakpoint($key) {
-  $val: map-get($screen-widths, $key);
+  $val: map.get($screen-widths, $key);
   @if $val == null {
     @error "❌ 未知断点 `#{$key}`，请检查名称是否拼错。";
   }

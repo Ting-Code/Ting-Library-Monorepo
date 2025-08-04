@@ -33,9 +33,6 @@
   const handleAddressClick = () => {
     if (url.value) {
       let targetUrl = url.value
-      if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
-        targetUrl = `https://${targetUrl}`
-      }
       window.open(targetUrl, '_blank')
     }
   }
