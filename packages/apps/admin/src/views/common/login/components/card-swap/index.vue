@@ -2,23 +2,23 @@
   <div ref="containerRef" :class="ns.b()">
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`${url}`" />
+        <Header :url="`http://159.75.104.173/docs/`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <iframe :src="`${url}`"></iframe>
+        <iframe :src="`http://159.75.104.173/docs/`"></iframe>
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`${url}system/engineering`" />
+        <Header :url="`159.75.104.173/docs/micro/system/engineering`" />
       </div>
       <div :class="ns.em('card', 'main')">
         <micro-app
-          :name="name"
-          :url="url"
-          :baseroute="`/${name}/`"
-          :iframe="isIframe"
+          name="home"
+          url="http://159.75.104.173/micro/docs/"
+          :baseroute="`/docs/`"
           default-page="system/engineering"
+          :iframe="true"
           router-mode="pure"
         />
       </div>
@@ -40,7 +40,6 @@
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
 
-  const { url, name, isIframe } = useMicro('docs')
   const { url: modelingUrl } = useMicro('modeling')
 
   const ns = useNamespace('card-swap')
