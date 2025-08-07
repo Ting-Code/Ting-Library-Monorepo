@@ -5,7 +5,6 @@ const Layout = () => {
     <div>
       Home
       <div>
-        <div>asdasd</div>
         <div>{<TransitionLayout />}</div>
       </div>
     </div>

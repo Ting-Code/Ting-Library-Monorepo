@@ -18,10 +18,10 @@
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`${modelingUrl}`" />
+        <Header :url="`${url}projectIntro`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <iframe :src="`${modelingUrl}`"></iframe>
+        <iframe :src="`${url}projectIntro`"></iframe>
       </div>
     </div>
   </div>
@@ -33,8 +33,6 @@
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
   const { url } = useMicro('demo')
-  const { url: modelingUrl } = useMicro('modeling')
-
   const ns = useNamespace('card-swap')
 
   export interface CardSwapProps {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 // 辅助函数：将hex颜色转换为rgb字符串
 const hexToRgb = (hex) => {
@@ -137,19 +137,6 @@ const AppCard = ({
 }
 
 const MicroAppDemo = () => {
-  // 用于脉冲动画的状态
-  const [pulseScale, setPulseScale] = useState(1)
-  const [pulseOpacity, setPulseOpacity] = useState(1)
-
-  // 模拟CSS脉冲动画
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPulseScale((prev) => (prev === 1 ? 1.05 : 1))
-      setPulseOpacity((prev) => (prev === 1 ? 0.8 : 1))
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <div
       style={{
@@ -177,44 +164,6 @@ const MicroAppDemo = () => {
           transition: 'transform 0.3s ease'
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px' }}>
-          <div
-            style={{
-              position: 'relative',
-              width: '100px',
-              height: '100px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center'
-            }}
-          >
-            <div
-              style={{
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)',
-                position: 'absolute',
-                transform: `scale(${pulseScale})`,
-                opacity: pulseOpacity,
-                transition: 'transform 0.5s ease, opacity 0.5s ease',
-                boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)'
-              }}
-            ></div>
-            <div
-              style={{
-                position: 'relative',
-                color: 'white',
-                fontSize: '24px',
-                fontWeight: 'bold',
-                zIndex: 1
-              }}
-            >
-              &lt;/&gt;
-            </div>
-          </div>
-        </div>
-
         <h1
           style={{
             fontSize: '2.5rem',
