@@ -10,17 +10,10 @@
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
       <div :class="ns.em('card', 'head')">
-        <Header :url="`159.75.104.173/docs/micro/system/engineering`" />
+        <Header :url="`${url}microAppDemo`" />
       </div>
       <div :class="ns.em('card', 'main')">
-        <micro-app
-          name="home"
-          url="http://159.75.104.173/micro/docs/"
-          :baseroute="`/docs/`"
-          default-page="system/engineering"
-          :iframe="true"
-          router-mode="pure"
-        />
+        <iframe :src="`${url}microAppDemo`"></iframe>
       </div>
     </div>
     <div :ref="(el) => el && cardRefs.push(el as HTMLElement)" :class="ns.e('card')">
@@ -39,7 +32,7 @@
   import Header from './components/header/index.vue'
   import { ref, onMounted, onUnmounted, watch, nextTick, computed, useTemplateRef } from 'vue'
   import gsap from 'gsap'
-
+  const { url } = useMicro('demo')
   const { url: modelingUrl } = useMicro('modeling')
 
   const ns = useNamespace('card-swap')
