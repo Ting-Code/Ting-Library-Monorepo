@@ -83,6 +83,7 @@
       flex: 1;
       overflow: hidden;
       background-color: getCssVar('bg-color', 'main');
+      padding: 0;
     }
 
     @include e(left) {
