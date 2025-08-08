@@ -115,13 +115,18 @@
       top: calc(38vh + 200px);
       right: calc(12vw + 100px);
 
-      @include max-LG {
+      @include max-XXL {
+        top: calc(38vh + 260px);
+        right: calc(12vw + 80px);
+      }
+
+      @include max-XL {
         top: calc(36vh + 160px);
         right: calc(12vw + 80px);
       }
 
-      @include max-XXL {
-        top: calc(38vh + 260px);
+      @include max-LG {
+        top: calc(36vh + 160px);
         right: calc(12vw + 80px);
       }
 

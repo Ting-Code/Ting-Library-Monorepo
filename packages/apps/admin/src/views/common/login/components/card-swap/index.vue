@@ -293,12 +293,24 @@
       border: 1px solid getCssVar('text-color', 'primary');
       color: getCssVar('text-color', 'primary');
 
+      @include max-XXL {
+        transform: scale(1.2);
+      }
+
+      @include max-XL {
+        transform: scale(1);
+      }
+
+      @include max-LG {
+        transform: scale(0.8);
+      }
+
       @include max-MD {
         transform: scale(0.6);
       }
 
       @include min-XXL {
-        transform: scale(2);
+        transform: scale(1.6);
       }
 
       @include m(head) {
@@ -313,14 +325,19 @@
           width: calc(20vw + 600px);
           height: calc(10vh + 380px);
 
-          @include max-MD {
-            width: calc(100vw + 200px);
-            height: calc(60vh - 10px);
+          @include max-XXL {
+            width: calc(50vw + 200px);
+            height: calc(50vh + 160px);
           }
 
           @include max-LG {
             width: calc(38vw + 200px);
             height: calc(50vh + 80px);
+          }
+
+          @include max-MD {
+            width: calc(100vw + 200px);
+            height: calc(60vh - 10px);
           }
 
           @include min-XXL {
