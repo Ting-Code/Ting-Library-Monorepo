@@ -126,9 +126,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      top: calc(20vh - 30px);
+      top: calc(20vh - 60px);
       @include m(title) {
-        font-size: calc(1vw + 26px);
+        font-size: calc(1vw + 22px);
         font-weight: bold;
         color: getCssVar('text-color', 'primary');
         padding-bottom: 20px;
@@ -137,7 +137,7 @@
         font-size: calc(0.5vw + 12px);
         padding-bottom: 38px;
         color: #a7ef9e;
-        max-width: calc(60vw);
+        max-width: calc(80vw);
         text-align: center;
         text-shadow:
           0 0 2px rgba(255, 255, 255, 0.1),
@@ -148,8 +148,8 @@
     }
     @include e(bottom) {
       position: absolute;
-      top: calc(62vh + 260px);
-      right: calc(50vw + 100px);
+      top: calc(60vh + 220px);
+      right: calc(50vw);
     }
   }
 </style>
