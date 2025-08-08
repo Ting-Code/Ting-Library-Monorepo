@@ -318,6 +318,11 @@
             height: calc(60vh - 10px);
           }
 
+          @include max-LG {
+            width: calc(38vw + 200px);
+            height: calc(50vh + 80px);
+          }
+
           @include min-XXL {
             width: calc(18vw + 600px);
             height: calc(12vh + 380px);

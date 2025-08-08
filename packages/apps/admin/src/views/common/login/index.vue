@@ -89,18 +89,18 @@
     @include e(left) {
       position: absolute;
       top: calc(50vh - 100px);
-      left: calc(8vw + 20px);
+      left: calc(10vw - 30px);
       @include m(title) {
-        font-size: calc(1vw + 30px);
+        font-size: calc(2vw + 10px);
         font-weight: bold;
         color: getCssVar('text-color', 'primary');
         padding-bottom: 20px;
       }
       @include m(text) {
-        font-size: calc(0.5vw + 8px);
+        font-size: calc(1vw + 2px);
         padding-bottom: 38px;
         color: #a7ef9e;
-        max-width: calc(28vh + 220px);
+        max-width: calc(36vh + 100px);
         text-shadow:
           0 0 2px rgba(255, 255, 255, 0.1),
           0 0 4px rgba(255, 255, 255, 0.3),
@@ -114,6 +114,16 @@
       height: 100px;
       top: calc(38vh + 200px);
       right: calc(12vw + 100px);
+
+      @include max-LG {
+        top: calc(36vh + 160px);
+        right: calc(12vw + 80px);
+      }
+
+      @include max-XXL {
+        top: calc(38vh + 260px);
+        right: calc(12vw + 80px);
+      }
 
       @include min-XXL {
         top: calc(38vh + 300px);
