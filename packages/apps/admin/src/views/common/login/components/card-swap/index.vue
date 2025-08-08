@@ -283,7 +283,7 @@
 
 <style lang="scss" scoped>
   @include b(card-swap) {
-    position: absolute;
+    position: relative;
 
     @include e(card) {
       transform: scale(0.8);
@@ -292,6 +292,10 @@
       background-color: getCssVar('bg-color', 'main');
       border: 1px solid getCssVar('text-color', 'primary');
       color: getCssVar('text-color', 'primary');
+
+      @include max-MD {
+        transform: scale(0.6);
+      }
 
       @include min-XXL {
         transform: scale(2);
@@ -308,6 +312,11 @@
         > * {
           width: calc(20vw + 600px);
           height: calc(10vh + 380px);
+
+          @include max-MD {
+            width: calc(100vw + 200px);
+            height: calc(60vh - 10px);
+          }
 
           @include min-XXL {
             width: calc(18vw + 600px);

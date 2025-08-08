@@ -126,18 +126,18 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      top: calc(20vh + 20px);
+      top: calc(20vh - 30px);
       @include m(title) {
-        font-size: calc(1vw + 30px);
+        font-size: calc(1vw + 26px);
         font-weight: bold;
         color: getCssVar('text-color', 'primary');
         padding-bottom: 20px;
       }
       @include m(text) {
-        font-size: calc(0.5vw + 8px);
+        font-size: calc(0.5vw + 12px);
         padding-bottom: 38px;
         color: #a7ef9e;
-        max-width: calc(50vw);
+        max-width: calc(60vw);
         text-align: center;
         text-shadow:
           0 0 2px rgba(255, 255, 255, 0.1),
@@ -148,12 +148,8 @@
     }
     @include e(bottom) {
       position: absolute;
-      top: calc(80vh + 200px);
-
-      @include min-XXL {
-        top: calc(38vh + 300px);
-        right: calc(12vw + 100px);
-      }
+      top: calc(62vh + 260px);
+      right: calc(50vw + 100px);
     }
   }
 </style>
