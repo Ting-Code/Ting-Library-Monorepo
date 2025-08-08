@@ -326,13 +326,18 @@
           height: calc(10vh + 380px);
 
           @include max-XXL {
-            width: calc(50vw + 200px);
-            height: calc(50vh + 160px);
+            width: calc(50vw - 180px);
+            height: calc(50vh + 80px);
+          }
+
+          @include max-XL {
+            width: calc(56vw - 80px);
+            height: calc(50vh + 80px);
           }
 
           @include max-LG {
-            width: calc(38vw + 200px);
-            height: calc(50vh + 80px);
+            width: calc(50vw + 120px);
+            height: calc(56vh + 80px);
           }
 
           @include max-MD {
@@ -341,8 +346,8 @@
           }
 
           @include min-XXL {
-            width: calc(18vw + 600px);
-            height: calc(12vh + 380px);
+            width: calc(50vw - 280px);
+            height: calc(50vh - 80px);
           }
         }
       }

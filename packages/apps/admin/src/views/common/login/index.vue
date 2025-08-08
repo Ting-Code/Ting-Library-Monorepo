@@ -116,23 +116,23 @@
       right: calc(12vw + 100px);
 
       @include max-XXL {
-        top: calc(38vh + 260px);
-        right: calc(12vw + 80px);
+        top: calc(56vh + 160px);
+        right: calc(16vw + 80px);
       }
 
       @include max-XL {
-        top: calc(36vh + 160px);
-        right: calc(12vw + 80px);
+        top: calc(50vh + 160px);
+        right: calc(16vw + 80px);
       }
 
       @include max-LG {
-        top: calc(36vh + 160px);
+        top: calc(50vh + 160px);
         right: calc(12vw + 80px);
       }
 
       @include min-XXL {
-        top: calc(38vh + 300px);
-        right: calc(12vw + 100px);
+        top: calc(60vh + 160px);
+        right: calc(16vw + 80px);
       }
     }
     @include e(top) {
