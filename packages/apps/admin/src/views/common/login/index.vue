@@ -4,6 +4,7 @@
     <el-header :class="ns.e('header')"> <LoginNav /> </el-header>
     <el-main :class="ns.e('main')">
       <Galaxy
+        v-if="false"
         :mouse-repulsion="true"
         :mouse-interaction="true"
         :density="2"
