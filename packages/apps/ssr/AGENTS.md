@@ -55,3 +55,8 @@ Project-specific reusable skills are available in:
 
 - `.cursor/skills/fix-bug-workflow/SKILL.md`
 - `.cursor/skills/pr-review-checklist/SKILL.md`
+- `.cursor/skills/new-feature-nextjs-workflow/SKILL.md`
+- `.cursor/skills/server-actions-safety-checklist/SKILL.md`
+- `.cursor/skills/route-handler-api-best-practices/SKILL.md`
+- `.cursor/skills/data-fetching-cache-playbook/SKILL.md`
+- `.cursor/skills/release-readiness-checklist/SKILL.md`
