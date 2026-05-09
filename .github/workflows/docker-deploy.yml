@@ -15,11 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 与 package.json 中 packageManager / engines.pnpm 对齐（pnpm 11 + workspace lockfile）
+      # 版本仅由根目录 package.json 的 packageManager 字段指定（勿在此处再写 version，否则会与 action 冲突）
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 11
           run_install: false
 
       # engines.node 要求 >=20.19；使用当前 LTS 系列避免旧 20.x 边界版本
