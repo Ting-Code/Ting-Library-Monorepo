@@ -24,6 +24,7 @@
     "build": "unbuild",
     "dev": "unbuild",
     "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint:check": "eslint . --cache --max-warnings 0",
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "keywords": [],

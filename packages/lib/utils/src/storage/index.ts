@@ -41,7 +41,7 @@ export const createStorage = ({ prefixKey = '', storage = localStorage } = {}) =
           return value
         }
         remove(key)
-      } catch (e) {
+      } catch {
         return def
       }
     }

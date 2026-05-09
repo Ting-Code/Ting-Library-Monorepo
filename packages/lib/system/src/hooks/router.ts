@@ -95,7 +95,7 @@ export async function setUrl(to: RouterTarget) {
       return error('no app name')
     }
     return await microApp.router.push({ name, path: urlObj.toString(), replace: !!replace })
-  } catch (e) {
+  } catch {
     mainWindow.history[replace ? 'replaceState' : 'pushState']({}, '', urlObj.toString())
     const popStateEvent = new PopStateEvent('popstate', { state: { path: urlObj.pathname } })
     mainWindow.dispatchEvent(popStateEvent)

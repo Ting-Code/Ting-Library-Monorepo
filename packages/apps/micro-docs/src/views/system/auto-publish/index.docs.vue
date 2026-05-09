@@ -60,7 +60,7 @@ CI/CD工具有很多，比如Jenkins、GitLab CI/CD、GitHub Actions等。有些
 ESLint + Prettier 代码规范检查
       </pre>
     </Markdown>
-    <CodeBlock src="@root/configs/lint/eslint.js" />
+    <CodeBlock src="@root/configs/lint/eslint.mjs" />
     <Markdown>
       <pre>
 ## 最终方案实践

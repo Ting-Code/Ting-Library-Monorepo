@@ -7,7 +7,8 @@
     "dev": "vite --port 8682",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint:eslint": "eslint . --cache --max-warnings 0 --fix --ignore-path=../../../.eslintignore",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint:check": "eslint . --cache --max-warnings 0",
     "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
   },
   "dependencies": {
@@ -19,13 +20,13 @@
     "@antv/x6-plugin-snapline": "^2.1.7",
     "@antv/x6-plugin-stencil": "^2.1.5",
     "@antv/x6-plugin-transform": "^2.1.8",
+    "@apps/admin": "workspace:*",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
-    "@apps/admin": "workspace:*",
+    "@element-plus/icons-vue": "catalog:",
     "@tingcode/lib-vue": "workspace:*",
     "@tingcode/system": "workspace:*",
     "@tingcode/utils": "workspace:*",
-    "@element-plus/icons-vue": "catalog:",
     "@vueuse/core": "catalog:",
     "@vueuse/integrations": "catalog:",
     "dayjs": "catalog:",
@@ -56,7 +57,6 @@
     "unplugin-vue-components": "catalog:",
     "vite": "catalog:",
     "vite-plugin-compression": "catalog:",
-    "vite-plugin-eslint": "catalog:",
     "vite-plugin-md": "catalog:",
     "vite-plugin-mock": "catalog:",
     "vue-tsc": "catalog:"

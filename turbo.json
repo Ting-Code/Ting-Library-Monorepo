@@ -17,7 +17,24 @@
     "dev": {
       "cache": false
     },
-    "lint:eslint": {},
+    "lint:eslint": {
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../../eslint.config.mjs",
+        "../../configs/lint/eslint.mjs",
+        "../../configs/lint/package.json"
+      ]
+    },
+    "lint:eslint:check": {
+      "outputs": [],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../../eslint.config.mjs",
+        "../../configs/lint/eslint.mjs",
+        "../../configs/lint/package.json"
+      ]
+    },
     "lint:prettier": {},
     "lint:stylelint": {}
   }

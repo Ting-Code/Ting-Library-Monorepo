@@ -36,7 +36,6 @@ catalog:
   three-stdlib: 2.36.1
   simplex-noise: 4.0.3
   vite-plugin-compression: 0.5.1
-  vite-plugin-eslint: 1.8.1
   vite-plugin-md: 0.21.5
   vite-plugin-mock: 3.0.2
   vite-plugin-svg-icons: 2.0.1

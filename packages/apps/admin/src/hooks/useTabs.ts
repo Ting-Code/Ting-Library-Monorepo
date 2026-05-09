@@ -130,7 +130,7 @@ export const useTabs = (_router?: Router) => {
     let cacheRoutes: RouteItem[] = []
     try {
       cacheRoutes = routesStr ? JSON.parse(routesStr) : [routerItem]
-    } catch (e) {
+    } catch {
       // @ts-ignore
       cacheRoutes = [routerItem] as RouteItem[]
     }

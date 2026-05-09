@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 import { PrismaClient } from '@prisma/client'
 
 const prismaClientSingleton = () => {
@@ -5,7 +7,8 @@ const prismaClientSingleton = () => {
 }
 
 declare global {
-  // eslint-disable-next-line no-var
+  // Prisma recommends a global cache in development to avoid exhausting connections.
+  // eslint-disable-next-line vars-on-top
   var prisma: undefined | ReturnType<typeof prismaClientSingleton>
 }
 

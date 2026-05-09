@@ -32,7 +32,7 @@
   // 处理地址栏点击事件
   const handleAddressClick = () => {
     if (url.value) {
-      let targetUrl = url.value
+      const targetUrl = url.value
       window.open(targetUrl, '_blank')
     }
   }

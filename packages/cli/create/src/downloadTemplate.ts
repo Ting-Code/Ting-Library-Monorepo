@@ -23,7 +23,7 @@ export const downloadTemplate = async (type: string, name: string) => {
     } else {
       await downloadGitTemplate(type, name)
     }
-  } catch (e) {
+  } catch {
     console.log('失败', '模板下载失败')
   }
 }
@@ -43,11 +43,11 @@ export const downloadCliTemplate = async (type: string, name: string) => {
     const rootDir = process.cwd()
     fse.ensureDirSync(originFile)
     const installDir = path.resolve(`${rootDir}/${name}`)
-    fileList.map((file) => {
+    fileList.forEach((file) => {
       fse.copySync(`${originFile}/${file}`, `${installDir}/${file}`)
     })
     spinner.succeed('下载成功')
-  } catch (e) {
+  } catch {
     spinner.fail('下载失败')
   }
 }
