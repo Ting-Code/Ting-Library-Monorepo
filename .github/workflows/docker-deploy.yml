@@ -8,28 +8,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      # 跳过 husky 安装；CI 无本地 Git 钩子需求，避免 prepare 阶段异常
-      HUSKY: '0'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v3
 
-      # 版本仅由根目录 package.json 的 packageManager 字段指定（勿在此处再写 version，否则会与 action 冲突）
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      # engines.node 要求 >=20.19；使用当前 LTS 系列避免旧 20.x 边界版本
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: '22.x'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+      - name: install pnpm
+        run: npm install -g pnpm@11.0.9
+
+      - name: pnpm install
+        run: pnpm install
 
       - name: build @apps/admin
         run: pnpm --filter @apps/admin... build
@@ -44,13 +36,13 @@ jobs:
         run: pnpm --filter @apps/micro-modeling... build
 
       - name: Login to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: Build and push the Docker image
-        uses: docker/build-push-action@v7
+        uses: docker/build-push-action@v5
         with:
           context: .
           file: ./.github/workflows/Dockerfile
@@ -58,7 +50,7 @@ jobs:
           tags: tingcode/web-admin:latest
 
       - name: ssh docker login
-        uses: appleboy/ssh-action@v1.2.5
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
