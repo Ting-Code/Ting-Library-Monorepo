@@ -89,7 +89,7 @@ export default defineConfig({
     vueJsx(),
     dts({
       entryRoot: './src',
-      outDir: ['dist'],
+      outDirs: ['dist'],
       tsconfigPath: './tsconfig.json'
     })
   ]

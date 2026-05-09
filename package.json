@@ -2,6 +2,7 @@
   "name": "ting-library-monorepo",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@11.0.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/TINGCYGF/Ting-Library-Monorepo.git"
@@ -29,7 +30,7 @@
   "license": "ISC",
   "config": {
     "commitizen": {
-      "path": "configs/lint/node_modules/cz-customizable"
+      "path": "./node_modules/cz-customizable"
     },
     "cz-customizable": {
       "config": "configs/lint/cz-config.js"
@@ -39,6 +40,11 @@
     "@changesets/cli": "^2.26.2",
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
+    "commitizen": "^4.3.0",
+    "cz-customizable": "^7.5.4",
+    "husky": "^9.1.7",
+    "lint-staged": "15.2.2",
+    "pretty-quick": "^4.0.0",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
     "turbo": "^1.12.4",
@@ -46,7 +52,7 @@
     "vitest": "catalog:"
   },
   "engines": {
-    "node": ">=18",
-    "pnpm": ">=9"
+    "node": ">=20.19.0",
+    "pnpm": ">=11.0.0"
   }
 }

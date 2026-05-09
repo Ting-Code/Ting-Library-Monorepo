@@ -3,8 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 
-// 自动ESLint检测热更新
-import eslintPlugin from 'vite-plugin-eslint'
 // 按需引入 element-plus vue自动导入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -21,7 +19,7 @@ import ViteCode from 'vite-plugin-code'
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
 }
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode }): any => {
   // 获取.env文件里定义的环境变量
   const env = loadEnv(mode, process.cwd())
   console.log(env, command)
@@ -43,9 +41,7 @@ export default defineConfig(({ command, mode }) => {
         // exclude: [/once\.vue$/, /once\.vue\?vue/],
         dts: 'src/components.d.ts'
       }),
-      eslintPlugin({
-        include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
-      }),
+
       ViteCode(),
       Markdown()
     ],
@@ -103,6 +99,9 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     server: {
+      host: true,
+      port: 8682,
+      strictPort: true,
       headers: {
         'Access-Control-Allow-Origin': '*'
       }

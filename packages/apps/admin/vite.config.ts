@@ -3,8 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
 
-// 自动ESLint检测热更新
-import eslintPlugin from 'vite-plugin-eslint'
 // 按需引入 element-plus vue自动导入
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -19,7 +17,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 function pathResolve(dir: string) {
   return resolve(process.cwd(), '.', dir)
 }
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ command, mode }): any => {
   // 获取.env文件里定义的环境变量
   const env = loadEnv(mode, process.cwd())
   console.log(env, command)
@@ -47,15 +45,7 @@ export default defineConfig(({ command, mode }) => {
       }),
       viteMockServe({
         mockPath: 'mock',
-        localEnabled: command === 'serve', // 线下用mock
-        prodEnabled: command !== 'serve', // 线上环境用mock
-        injectCode: `
-          import { setupProdMockServer } from '../mock/index.ts';
-          setupProdMockServer();
-        `
-      }),
-      eslintPlugin({
-        include: ['src/**/*.vue', 'src/**/*.js', 'src/**/*.ts', 'src/**/*.tsx'] // 检查的文件
+        enable: true
       })
     ],
     css: {
@@ -88,6 +78,12 @@ export default defineConfig(({ command, mode }) => {
           replacement: pathResolve('src') + '/styles/'
         }
       ]
+    },
+    server: {
+      // Windows 上常见只监听 [::1]，用 127.0.0.1 会「连不上」；对外也可局域网访问
+      host: true,
+      port: 8681,
+      strictPort: true
     },
     build: {
       // minify: 'terser', // 要配置terser压缩才有这个功能 默认es buildld

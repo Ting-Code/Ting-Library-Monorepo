@@ -1,4 +1,4 @@
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 export function addList<T>(list: T[], item: T, to: number): T[] {
   const cloneList: T[] = cloneDeep(list)

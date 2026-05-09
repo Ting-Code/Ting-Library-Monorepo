@@ -3,16 +3,26 @@ packages:
   - configs/*
   - scripts
 
+allowBuilds:
+  '@parcel/watcher': true
+  '@prisma/client': true
+  '@prisma/engines': true
+  '@tailwindcss/oxide': true
+  esbuild: true
+  prisma: true
+  sharp: true
+  vue-demi: true
+
 catalog:
   '@vueuse/core': 13.3.0
   '@vueuse/integrations': 13.3.0
-  '@vitejs/plugin-vue': 5.2.1
-  '@vitejs/plugin-vue-jsx': 4.1.1
+  '@vitejs/plugin-vue': 6.0.6
+  '@vitejs/plugin-vue-jsx': 5.1.5
   '@types/sortablejs': 1.15.8
   '@types/gsap': 3.0.0
   gsap: 3.12.7
   typescript: 5.8.2
-  vite: 6.2.1
+  vite: 8.0.11
   vitest: 3.1.1
   unbuild: 3.5.0
   vue: 3.5.13
@@ -21,11 +31,17 @@ catalog:
   vue-router: 4.5.0
   sass: 1.85.1
   dayjs: 1.11.13
+  '@element-plus/icons-vue': 2.3.2
+  lodash-es: 4.18.1
+  three-stdlib: 2.36.1
+  simplex-noise: 4.0.3
   vite-plugin-compression: 0.5.1
   vite-plugin-eslint: 1.8.1
   vite-plugin-md: 0.21.5
-  vite-plugin-mock: 2.9.6
+  vite-plugin-mock: 3.0.2
   vite-plugin-svg-icons: 2.0.1
+  vite-plugin-dts: 5.0.0
+  vite-plugin-glsl: 1.6.0
   vue-tsc: 2.2.8
   sortablejs: 1.15.6
   unplugin-auto-import: 19.1.1

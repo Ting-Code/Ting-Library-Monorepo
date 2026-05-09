@@ -10,12 +10,12 @@ export async function runDev() {
     }
 
     if (packages.length === 1) {
-      runSingleScript(packages[0], command)
+      await runSingleScript(packages[0], command)
       return
     }
     const { value } = await runPromptsSelect(packages, { type: 'multiselect' })
 
-    runScript(
+    await runScript(
       packages.filter((p) => value.includes(p.name)),
       command
     )

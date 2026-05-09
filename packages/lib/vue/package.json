@@ -24,7 +24,7 @@
     "postcss": "8.4.49",
     "sass": "catalog:",
     "vite": "catalog:",
-    "vite-plugin-dts": "^4.3.0",
+    "vite-plugin-dts": "catalog:",
     "vite-plugin-svg-icons": "catalog:"
   },
   "dependencies": {

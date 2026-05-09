@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/prompts": "^2.4.0",
+    "esno": "^0.16.3",
     "execa": "^7.0.0",
     "prompts": "^2.4.2"
   }

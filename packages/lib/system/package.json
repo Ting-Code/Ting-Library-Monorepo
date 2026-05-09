@@ -21,8 +21,8 @@
       }
     },
     "./apiSystem": {
-      "import": "./dist/apiSystem.mjs",
-      "types": "./dist/apiSystem.d.ts"
+      "import": "./dist/api/apiSystem.mjs",
+      "types": "./dist/api/apiSystem.d.ts"
     }
   },
   "typesVersions": {
@@ -47,6 +47,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "unbuild": "catalog:"
+  },
   "dependencies": {
     "@micro-zoe/micro-app": "1.0.0-rc.6",
     "@tingcode/request": "workspace:*",

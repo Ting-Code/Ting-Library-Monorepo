@@ -14,11 +14,17 @@ export async function getPackages(filter: (p?: WorkspacePackage) => Boolean = ()
  * @param script
  */
 export async function runScript(pkgArr: WorkspacePackage[], script: string) {
-  pkgArr.forEach((pkg) => {
-    execa('pnpm', ['--filter', `${pkg.name}...`, script], {
-      stdio: 'inherit',
-      preferLocal: true
-    })
+  if (!pkgArr.length) return
+  const isDev = script === 'dev'
+  const filterSuffix = isDev ? '' : '...'
+  const args = [
+    ...(isDev ? ['--parallel', '--no-bail'] : []),
+    ...pkgArr.flatMap((pkg) => ['--filter', `${pkg.name}${filterSuffix}`]),
+    script
+  ]
+  await execa('pnpm', args, {
+    stdio: 'inherit',
+    preferLocal: true
   })
 }
 
@@ -28,7 +34,8 @@ export async function runScript(pkgArr: WorkspacePackage[], script: string) {
  * @param script
  */
 export async function runSingleScript(pkg: WorkspacePackage, script: string) {
-  execa('pnpm', ['--filter', `${pkg.name}...`, script], {
+  const filterSuffix = script === 'dev' ? '' : '...'
+  await execa('pnpm', ['--filter', `${pkg.name}${filterSuffix}`, script], {
     stdio: 'inherit',
     preferLocal: true
   })

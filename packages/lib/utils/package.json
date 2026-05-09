@@ -22,6 +22,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "unbuild": "catalog:"
+  },
   "dependencies": {
     "@types/lodash-es": "^4.17.9",
     "bignumber.js": "^9.1.2",
