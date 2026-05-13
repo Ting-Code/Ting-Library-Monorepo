@@ -20,6 +20,11 @@ import {
 import { useEnv } from '@/hooks/useEnv'
 import { NAMESPACE } from '@/hooks/useSetting'
 async function bootstrap() {
+  // vite-plugin-mock v3 起，生产环境的 mock 不再由插件自动注入，需要手动启用
+  if (import.meta.env.PROD) {
+    const { setupProdMockServer } = await import('../mock')
+    setupProdMockServer()
+  }
   initMicroApp()
   initNamespace(NAMESPACE)
   setGlobalDataEnv(useEnv())

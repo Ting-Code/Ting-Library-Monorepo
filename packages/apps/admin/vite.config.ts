@@ -45,7 +45,9 @@ export default defineConfig(({ command, mode }): any => {
       }),
       viteMockServe({
         mockPath: 'mock',
-        enable: true
+        // v3 起 enable 仅控制开发环境的 mock 服务器；
+        // 生产环境的 mock 改为在 src/main.ts 中手动调用 setupProdMockServer()
+        enable: command === 'serve'
       })
     ],
     css: {
