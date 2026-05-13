@@ -5,8 +5,8 @@ import { error } from '@tingcode/utils'
 // 'development' | 'production'
 export const devMicroUrlMap = {
   docs: 'http://localhost:8682/docs/',
-  demo: ' http://localhost:8080/',
-  modeling: ' http://localhost:8683/modeling/'
+  demo: 'http://localhost:8080/',
+  modeling: 'http://localhost:8683/modeling/'
 }
 export const proMicroUrlMap = {
   docs: 'http://159.75.104.173/micro/docs/',

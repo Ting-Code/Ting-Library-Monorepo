@@ -76,7 +76,8 @@ const menuList = () => {
 
 export default [
   {
-    url: '/api/menu/list',
+    // 与 .env 中 VITE_GLOB_API_URL_PREFIX=/fake-api 一致，否则只会命中 /fake-api/login、/fake-api/admin_info
+    url: '/fake-api/api/menu/list',
     timeout: 1000,
     method: 'get',
     response: () => {

@@ -28,7 +28,7 @@ const roleList = (pageSize) => {
 
 export default [
   {
-    url: '/api/role/list',
+    url: '/fake-api/api/role/list',
     timeout: 1000,
     method: 'get',
     response: ({ query }) => {
