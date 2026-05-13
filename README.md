@@ -26,7 +26,7 @@ Ting Library 目前实现基于 MicroApp 搭建微前端, rspack搭建React、Vi
 ## 快速开始
 
 ```bash
-# 执行tingcli （必须是最新版pnpm）
+# 执行tingcli （项目版本的pnpm和node）
 pnpm create tingcli
 
 # 选择monorepo
