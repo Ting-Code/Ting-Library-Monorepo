@@ -239,7 +239,7 @@ const menu = {
 export default [
   {
     url: '/fake-api/login',
-    timeout: 1000,
+    timeout: 1,
     method: 'post',
     response: () => {
       return resultSuccess({ token })
@@ -247,7 +247,7 @@ export default [
   },
   {
     url: '/fake-api/admin_info',
-    timeout: 1000,
+    timeout: 1,
     method: 'get',
     response: () => {
       return resultSuccess(menu)

@@ -4,6 +4,6 @@ import system from './module/system/menu'
 import role from './module/system/role'
 import user from './module/user/user'
 
-export function setupProdMockServer() {
-  createProdMockServer([...system, ...role, ...user])
+export async function setupProdMockServer() {
+  await createProdMockServer([...system, ...role, ...user])
 }

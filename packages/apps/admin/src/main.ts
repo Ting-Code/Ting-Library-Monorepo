@@ -23,7 +23,7 @@ async function bootstrap() {
   // vite-plugin-mock v3 起，生产环境的 mock 不再由插件自动注入，需要手动启用
   if (import.meta.env.PROD) {
     const { setupProdMockServer } = await import('../mock')
-    setupProdMockServer()
+    await setupProdMockServer()
   }
   initMicroApp()
   initNamespace(NAMESPACE)
