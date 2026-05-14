@@ -1,0 +1,64 @@
+name: Micro Nexus CI/CD
+
+on:
+  push:
+    branches: ['master']
+    paths:
+      - 'packages/apps/micro-nexus/**'
+      - 'configs/**'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - 'package.json'
+      - '.github/workflows/micro-nexus-deploy.yml'
+      - '.github/workflows/Dockerfile.micro-nexus'
+      - '.dockerignore'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitHub Action
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x'
+
+      - name: Install pnpm
+        run: npm install -g pnpm@11.0.9
+
+      - name: pnpm install
+        run: pnpm install
+
+      - name: Build @apps/micro-nexus
+        run: pnpm --filter @apps/micro-nexus... build
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build and push the Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./.github/workflows/Dockerfile.micro-nexus
+          push: true
+          tags: tingcode/micro-nexus:latest
+
+      - name: Deploy micro-nexus container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            docker stop micro-nexus || true
+            docker rm micro-nexus || true
+            docker rmi tingcode/micro-nexus:latest || true
+            docker pull tingcode/micro-nexus:latest
+            docker run -d -p 8086:8086 --name micro-nexus --restart unless-stopped tingcode/micro-nexus:latest
