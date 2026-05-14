@@ -39,33 +39,23 @@ jobs:
       - name: Verify micro-nexus build output
         run: test -f packages/apps/micro-nexus/.next/standalone/packages/apps/micro-nexus/server.js
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push the Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./.github/workflows/Dockerfile.micro-nexus
-          push: true
-          tags: tingcode/micro-nexus:latest
-
-      - name: Export image
+      - name: Package runtime bundle
         run: |
-          docker pull tingcode/micro-nexus:latest
-          docker save tingcode/micro-nexus:latest | gzip -1 > micro-nexus-image.tar.gz
+          rm -rf /tmp/micro-nexus-runtime
+          mkdir -p /tmp/micro-nexus-runtime/packages/apps/micro-nexus/.next
+          cp -a packages/apps/micro-nexus/.next/standalone/. /tmp/micro-nexus-runtime/
+          cp -a packages/apps/micro-nexus/.next/static /tmp/micro-nexus-runtime/packages/apps/micro-nexus/.next/static
+          cp -a packages/apps/micro-nexus/public /tmp/micro-nexus-runtime/packages/apps/micro-nexus/public
+          tar -C /tmp -czf micro-nexus-runtime.tar.gz micro-nexus-runtime
 
-      - name: Copy image to server
+      - name: Copy runtime to server
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
-          source: micro-nexus-image.tar.gz
+          source: micro-nexus-runtime.tar.gz
           target: /tmp
           timeout: 30m
           command_timeout: 30m
@@ -80,8 +70,21 @@ jobs:
           timeout: 30m
           command_timeout: 30m
           script: |
-            gunzip -c /tmp/micro-nexus-image.tar.gz | docker load
-            rm -f /tmp/micro-nexus-image.tar.gz
+            docker image inspect node:22-alpine >/dev/null 2>&1 || docker pull node:22-alpine
+            rm -rf /opt/micro-nexus
+            mkdir -p /opt/micro-nexus
+            tar -C /opt/micro-nexus --strip-components=1 -xzf /tmp/micro-nexus-runtime.tar.gz
+            rm -f /tmp/micro-nexus-runtime.tar.gz
             docker stop micro-nexus || true
             docker rm micro-nexus || true
-            docker run -d -p 8086:8086 --name micro-nexus --restart unless-stopped tingcode/micro-nexus:latest
+            docker run -d \
+              --name micro-nexus \
+              --restart unless-stopped \
+              -p 8086:8086 \
+              -e NODE_ENV=production \
+              -e PORT=8086 \
+              -e HOSTNAME=0.0.0.0 \
+              -v /opt/micro-nexus:/app:ro \
+              -w /app \
+              node:22-alpine \
+              node packages/apps/micro-nexus/server.js
