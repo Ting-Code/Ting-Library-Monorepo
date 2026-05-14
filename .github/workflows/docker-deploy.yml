@@ -35,7 +35,7 @@ jobs:
       - name: build @apps/micro-modeling
         run: pnpm --filter @apps/micro-modeling... build
 
-      - name: Prepare site assets
+      - name: Package site assets
         run: |
           rm -rf /tmp/web-admin-site
           mkdir -p /tmp/web-admin-site/html/demo /tmp/web-admin-site/html/docs /tmp/web-admin-site/html/modeling
@@ -44,25 +44,20 @@ jobs:
           cp -a packages/apps/micro-docs/dist/. /tmp/web-admin-site/html/docs/
           cp -a packages/apps/micro-modeling/dist/. /tmp/web-admin-site/html/modeling/
           cp .github/workflows/nginx.conf /tmp/web-admin-site/nginx.conf
+          tar -C /tmp -czf web-admin-assets.tar.gz web-admin-site
+          ls -lh web-admin-assets.tar.gz
 
-      - name: Install rsync and sshpass
-        run: sudo apt-get update && sudo apt-get install -y rsync sshpass
-
-      - name: Sync site assets to server
-        env:
-          SSHPASS: ${{ secrets.SSH_PASSWORD }}
-        run: |
-          sshpass -e ssh -o StrictHostKeyChecking=no -p "${{ secrets.SSH_PORT }}" \
-            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}" \
-            "mkdir -p /opt/web-admin-site/html"
-          sshpass -e rsync -az --delete \
-            -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }}" \
-            /tmp/web-admin-site/html/ \
-            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/opt/web-admin-site/html/"
-          sshpass -e rsync -az \
-            -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }}" \
-            /tmp/web-admin-site/nginx.conf \
-            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/opt/web-admin-site/nginx.conf"
+      - name: Copy assets to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: web-admin-assets.tar.gz
+          target: /tmp
+          timeout: 30m
+          command_timeout: 30m
 
       - name: Deploy web-admin container
         uses: appleboy/ssh-action@master
@@ -74,6 +69,9 @@ jobs:
           timeout: 30m
           command_timeout: 30m
           script: |
+            rm -rf /opt/web-admin-site
+            tar -C /opt -xzf /tmp/web-admin-assets.tar.gz
+            rm -f /tmp/web-admin-assets.tar.gz
             docker image inspect nginx:alpine >/dev/null 2>&1 || docker pull nginx:alpine
             docker stop web-admin || true
             docker rm web-admin || true
