@@ -1,10 +1,15 @@
 import type { Metadata } from 'next'
+import { Toaster } from 'sonner'
 
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'micro-nexus',
-  description: 'Minimal Next.js app in the Ting Library monorepo.'
+  title: 'A 股市场热力图',
+  description: '按行业与流通市值权重展示 A 股市场涨跌结构，支持缩放、拖拽、全屏与截图分享。',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg'
+  }
 }
 
 export default function RootLayout({
@@ -13,8 +18,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN">
-      <body>{children}</body>
+    <html lang="zh-CN" className="min-h-dvh antialiased dark">
+      <body className="flex min-h-dvh flex-col">
+        {children}
+        <Toaster richColors position="top-center" />
+      </body>
     </html>
   )
 }
