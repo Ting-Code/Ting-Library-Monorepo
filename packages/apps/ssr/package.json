@@ -1,0 +1,26 @@
+{
+  "name": "@apps/ssr",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "pnpm lint:eslint",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint:check": "eslint . --cache --max-warnings 0"
+  },
+  "dependencies": {
+    "next": "16.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@config/lint": "workspace:*",
+    "@config/tsconfig": "workspace:*",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "catalog:"
+  }
+}
