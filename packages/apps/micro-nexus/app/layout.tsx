@@ -20,8 +20,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN" className="min-h-dvh antialiased dark">
-      <body className="flex min-h-dvh flex-col">
+    <html lang="zh-CN" className="h-full">
+      <body className="nexus-app dark flex min-h-0 flex-col antialiased">
         {children}
         <Toaster richColors position="top-center" />
       </body>

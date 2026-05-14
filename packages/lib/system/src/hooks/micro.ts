@@ -7,7 +7,7 @@ export const devMicroUrlMap = {
   docs: 'http://localhost:8682/docs/',
   demo: 'http://localhost:8080/',
   modeling: 'http://localhost:8683/modeling/',
-  nexus: 'http://localhost:8086/'
+  nexus: 'http://localhost:8086/nexus/'
 }
 export const proMicroUrlMap = {
   docs: 'http://159.75.104.173/micro/docs/',

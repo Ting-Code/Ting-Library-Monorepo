@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.nexus-app.dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -27,7 +27,7 @@
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 }
 
-:root {
+.nexus-app {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -50,7 +50,7 @@
   --brand-foreground: #ffffff;
 }
 
-.dark {
+.nexus-app.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -74,31 +74,23 @@
 }
 
 @layer base {
-  * {
+  .nexus-app,
+  .nexus-app * {
     @apply border-border outline-ring/50;
   }
 
-  html,
-  body {
+  .nexus-app {
     @apply bg-background text-foreground;
-  }
-
-  html {
-    height: 100dvh;
-    max-height: 100dvh;
-    overflow: hidden;
-  }
-
-  body {
     height: 100%;
-    max-height: 100%;
+    min-height: 100dvh;
+    max-height: 100dvh;
     overflow: hidden;
   }
 }
 
-html.heatmap-page-active,
-body.heatmap-page-active {
-  height: 100dvh;
+.heatmap-page-active {
+  height: 100%;
+  min-height: 100dvh;
   max-height: 100dvh;
   overflow: hidden;
 }

@@ -1612,10 +1612,6 @@ export function MarketHeatmap() {
   })
 
   useEffect(() => {
-    document.documentElement.lang = 'zh-CN'
-  }, [])
-
-  useEffect(() => {
     try {
       window.localStorage.setItem('heatmap-theme-color', themeColor)
     } catch {
@@ -1732,12 +1728,15 @@ export function MarketHeatmap() {
   )
 
   useEffect(() => {
-    document.documentElement.classList.add('heatmap-page-active')
-    document.body.classList.add('heatmap-page-active')
+    const root = document.querySelector('.nexus-app')
+    if (!root) {
+      return
+    }
+
+    root.classList.add('heatmap-page-active')
 
     return () => {
-      document.documentElement.classList.remove('heatmap-page-active')
-      document.body.classList.remove('heatmap-page-active')
+      root.classList.remove('heatmap-page-active')
     }
   }, [])
 
