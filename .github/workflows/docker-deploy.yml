@@ -49,6 +49,23 @@ jobs:
           push: true
           tags: tingcode/web-admin:latest
 
+      - name: Export image
+        run: |
+          docker pull tingcode/web-admin:latest
+          docker save tingcode/web-admin:latest | gzip -1 > web-admin-image.tar.gz
+
+      - name: Copy image to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.SSH_PORT }}
+          source: web-admin-image.tar.gz
+          target: /tmp
+          timeout: 30m
+          command_timeout: 30m
+
       - name: Deploy web-admin container
         uses: appleboy/ssh-action@master
         with:
@@ -56,9 +73,11 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           port: ${{ secrets.SSH_PORT }}
+          timeout: 30m
+          command_timeout: 30m
           script: |
+            gunzip -c /tmp/web-admin-image.tar.gz | docker load
+            rm -f /tmp/web-admin-image.tar.gz
             docker stop web-admin || true
             docker rm web-admin || true
-            docker rmi tingcode/web-admin:latest || true
-            docker pull tingcode/web-admin:latest
-            docker run -d -p 8680:8680 -p 80:80 --name web-admin tingcode/web-admin:latest
+            docker run -d -p 8680:8680 -p 80:80 --name web-admin --restart unless-stopped tingcode/web-admin:latest

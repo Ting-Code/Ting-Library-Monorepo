@@ -1,30 +1,12 @@
-FROM node:22-alpine AS base
-WORKDIR /app
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable && corepack prepare pnpm@11.0.9 --activate
-
-FROM base AS deps
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY configs ./configs
-COPY packages/apps/micro-nexus/package.json ./packages/apps/micro-nexus/
-RUN pnpm install --frozen-lockfile --filter @apps/micro-nexus...
-
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/packages/apps/micro-nexus/node_modules ./packages/apps/micro-nexus/node_modules
-COPY . .
-RUN pnpm --filter @apps/micro-nexus... build
-
 FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=8086
 ENV HOSTNAME=0.0.0.0
 RUN addgroup --system --gid 1001 nodejs && adduser --system --uid 1001 nextjs
-COPY --from=builder /app/packages/apps/micro-nexus/public ./packages/apps/micro-nexus/public
-COPY --from=builder --chown=nextjs:nodejs /app/packages/apps/micro-nexus/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/packages/apps/micro-nexus/.next/static ./packages/apps/micro-nexus/.next/static
+COPY packages/apps/micro-nexus/public ./packages/apps/micro-nexus/public
+COPY --chown=nextjs:nodejs packages/apps/micro-nexus/.next/standalone ./
+COPY --chown=nextjs:nodejs packages/apps/micro-nexus/.next/static ./packages/apps/micro-nexus/.next/static
 USER nextjs
 EXPOSE 8086
 CMD ["node", "packages/apps/micro-nexus/server.js"]
