@@ -6,14 +6,16 @@ import { error } from '@tingcode/utils'
 export const devMicroUrlMap = {
   docs: 'http://localhost:8682/docs/',
   demo: 'http://localhost:8080/',
-  modeling: 'http://localhost:8683/modeling/'
+  modeling: 'http://localhost:8683/modeling/',
+  nexus: 'http://localhost:8086/'
 }
 export const proMicroUrlMap = {
   docs: 'http://159.75.104.173/micro/docs/',
   demo: 'http://159.75.104.173/micro/demo/',
-  modeling: 'http://159.75.104.173/micro/modeling/'
+  modeling: 'http://159.75.104.173/micro/modeling/',
+  nexus: 'http://159.75.104.173/micro/nexus/'
 }
-const IFRAME = ['docs', 'modeling']
+const IFRAME = ['docs', 'modeling', 'nexus']
 
 export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
   const url = getUrl()

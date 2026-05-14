@@ -34,6 +34,7 @@ jobs:
       - name: Build @apps/micro-nexus
         env:
           CI: true
+          NODE_ENV: production
         run: pnpm --filter @apps/micro-nexus build
 
       - name: Verify micro-nexus build output

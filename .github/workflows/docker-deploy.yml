@@ -80,4 +80,4 @@ jobs:
             rm -f /tmp/web-admin-image.tar.gz
             docker stop web-admin || true
             docker rm web-admin || true
-            docker run -d -p 8680:8680 -p 80:80 --name web-admin --restart unless-stopped tingcode/web-admin:latest
+            docker run -d -p 8680:8680 -p 80:80 --add-host=host.docker.internal:host-gateway --name web-admin --restart unless-stopped tingcode/web-admin:latest

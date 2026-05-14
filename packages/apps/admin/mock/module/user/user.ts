@@ -201,6 +201,14 @@ const menu = {
           }
         },
         {
+          name: 'visual_heatmap',
+          path: '/nexus',
+          meta: {
+            title: '🌡️热力图',
+            module: 'nexus'
+          }
+        },
+        {
           name: 'visual_chart',
           path: '/docs/visual/chart',
           meta: {

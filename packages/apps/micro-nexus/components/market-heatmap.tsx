@@ -29,7 +29,7 @@ import {
 import { toast } from 'sonner'
 
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
+import { cn, withBasePath } from '@/lib/utils'
 import { heatmapText } from '@/lib/heatmap-text'
 import type { HeatmapText } from '@/lib/heatmap-text'
 import { heatmapPeriodKeys } from '@/lib/market-heatmap'
@@ -336,7 +336,7 @@ type ShareLogoRaster =
  * (`naturalWidth` 0 or empty draw). Fetch + Blob + createImageBitmap / decode() is reliable.
  */
 async function loadShareLogoRaster(): Promise<ShareLogoRaster> {
-  const response = await fetch('/logo-share.svg', { cache: 'force-cache' })
+  const response = await fetch(withBasePath('/logo-share.svg'), { cache: 'force-cache' })
   if (!response.ok) {
     throw new Error(`Logo fetch failed: ${response.status}`)
   }
@@ -1652,7 +1652,7 @@ export function MarketHeatmap() {
   const fetchTreemap = useCallback(
     async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
       const response = await fetch(
-        `/api/heatmap/treemap?market=${nextMarket}&period=${nextPeriod}`,
+        withBasePath(`/api/heatmap/treemap?market=${nextMarket}&period=${nextPeriod}`),
         {
           cache: 'no-store'
         }
@@ -1671,7 +1671,7 @@ export function MarketHeatmap() {
   const fetchQuotes = useCallback(
     async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
       const response = await fetch(
-        `/api/heatmap/quotes?market=${nextMarket}&period=${nextPeriod}`,
+        withBasePath(`/api/heatmap/quotes?market=${nextMarket}&period=${nextPeriod}`),
         {
           cache: 'no-store'
         }
@@ -1692,7 +1692,7 @@ export function MarketHeatmap() {
       const results = await Promise.all(
         marketOptions.map(async (option) => {
           const response = await fetch(
-            `/api/heatmap/treemap?market=${option}&period=${nextPeriod}`,
+            withBasePath(`/api/heatmap/treemap?market=${option}&period=${nextPeriod}`),
             {
               cache: 'no-store'
             }
@@ -3233,7 +3233,12 @@ export function MarketHeatmap() {
               )}
             >
               <div className="flex min-w-0 items-center gap-2">
-                <img src="/icon.svg" alt="" className="size-7 shrink-0" decoding="async" />
+                <img
+                  src={withBasePath('/icon.svg')}
+                  alt=""
+                  className="size-7 shrink-0"
+                  decoding="async"
+                />
                 <h2
                   className={cn(
                     'min-w-0 truncate whitespace-nowrap font-semibold leading-tight tracking-[0.01em]',
