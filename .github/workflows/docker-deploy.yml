@@ -35,36 +35,34 @@ jobs:
       - name: build @apps/micro-modeling
         run: pnpm --filter @apps/micro-modeling... build
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-
-      - name: Build and push the Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./.github/workflows/Dockerfile
-          push: true
-          tags: tingcode/web-admin:latest
-
-      - name: Export image
+      - name: Prepare site assets
         run: |
-          docker pull tingcode/web-admin:latest
-          docker save tingcode/web-admin:latest | gzip -1 > web-admin-image.tar.gz
+          rm -rf /tmp/web-admin-site
+          mkdir -p /tmp/web-admin-site/html/demo /tmp/web-admin-site/html/docs /tmp/web-admin-site/html/modeling
+          cp -a packages/apps/admin/dist/. /tmp/web-admin-site/html/
+          cp -a packages/apps/micro-demo/dist/. /tmp/web-admin-site/html/demo/
+          cp -a packages/apps/micro-docs/dist/. /tmp/web-admin-site/html/docs/
+          cp -a packages/apps/micro-modeling/dist/. /tmp/web-admin-site/html/modeling/
+          cp .github/workflows/nginx.conf /tmp/web-admin-site/nginx.conf
 
-      - name: Copy image to server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: ${{ secrets.SSH_PORT }}
-          source: web-admin-image.tar.gz
-          target: /tmp
-          timeout: 30m
-          command_timeout: 30m
+      - name: Install rsync and sshpass
+        run: sudo apt-get update && sudo apt-get install -y rsync sshpass
+
+      - name: Sync site assets to server
+        env:
+          SSHPASS: ${{ secrets.SSH_PASSWORD }}
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no -p "${{ secrets.SSH_PORT }}" \
+            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}" \
+            "mkdir -p /opt/web-admin-site/html"
+          sshpass -e rsync -az --delete \
+            -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }}" \
+            /tmp/web-admin-site/html/ \
+            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/opt/web-admin-site/html/"
+          sshpass -e rsync -az \
+            -e "ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }}" \
+            /tmp/web-admin-site/nginx.conf \
+            "${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}:/opt/web-admin-site/nginx.conf"
 
       - name: Deploy web-admin container
         uses: appleboy/ssh-action@master
@@ -76,8 +74,14 @@ jobs:
           timeout: 30m
           command_timeout: 30m
           script: |
-            gunzip -c /tmp/web-admin-image.tar.gz | docker load
-            rm -f /tmp/web-admin-image.tar.gz
+            docker image inspect nginx:alpine >/dev/null 2>&1 || docker pull nginx:alpine
             docker stop web-admin || true
             docker rm web-admin || true
-            docker run -d -p 8680:8680 -p 80:80 --add-host=host.docker.internal:host-gateway --name web-admin --restart unless-stopped tingcode/web-admin:latest
+            docker run -d \
+              --name web-admin \
+              --restart unless-stopped \
+              --add-host=host.docker.internal:host-gateway \
+              -p 80:80 \
+              -v /opt/web-admin-site/html:/usr/share/nginx/html:ro \
+              -v /opt/web-admin-site/nginx.conf:/etc/nginx/nginx.conf:ro \
+              nginx:alpine
