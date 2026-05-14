@@ -6,15 +6,20 @@ const codeFiles = ['**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,vue}']
 const reactFiles = [
   'packages/apps/micro-demo/**/*.{js,jsx,ts,tsx}',
   'packages/apps/ssr/**/*.{js,jsx,ts,tsx}',
+  'packages/apps/micro-nexus/**/*.{js,jsx,ts,tsx}',
   'packages/lib/react/**/*.{js,jsx,ts,tsx}'
 ]
 const nextFiles = [
   'packages/apps/ssr/**/*.{js,jsx,ts,tsx}',
+  'packages/apps/micro-nexus/**/*.{js,jsx,ts,tsx}',
   'app/**/*.{js,jsx,ts,tsx}',
   'lib/**/*.{js,jsx,ts,tsx}',
   'next.config.{js,jsx,ts,tsx}'
 ]
-const nextRootDir = fileURLToPath(new URL('../../packages/apps/ssr/', import.meta.url))
+const ssrRootDir = fileURLToPath(new URL('../../packages/apps/ssr/', import.meta.url))
+const microNexusRootDir = fileURLToPath(
+  new URL('../../packages/apps/micro-nexus/', import.meta.url)
+)
 
 export default antfu(
   {
@@ -159,11 +164,20 @@ export default antfu(
     files: nextFiles
   }),
   {
-    name: 'ting/next-settings',
-    files: nextFiles,
+    name: 'ting/next-settings-ssr',
+    files: ['packages/apps/ssr/**/*.{js,jsx,ts,tsx}'],
     settings: {
       next: {
-        rootDir: nextRootDir
+        rootDir: ssrRootDir
+      }
+    }
+  },
+  {
+    name: 'ting/next-settings-micro-nexus',
+    files: ['packages/apps/micro-nexus/**/*.{js,jsx,ts,tsx}'],
+    settings: {
+      next: {
+        rootDir: microNexusRootDir
       }
     }
   }

@@ -1,5 +1,5 @@
 {
-  "name": "@apps/ssr",
+  "name": "@apps/micro-nexus",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,19 +11,16 @@
     "lint:eslint:check": "eslint . --cache --max-warnings 0"
   },
   "dependencies": {
-    "@prisma/client": "^5.22.0",
     "next": "16.2.3",
-    "prisma": "^5.22.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@config/lint": "workspace:*",
-    "@tailwindcss/postcss": "^4",
+    "@config/tsconfig": "workspace:*",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "catalog:"
   }
 }
