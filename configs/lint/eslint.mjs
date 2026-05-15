@@ -11,15 +11,11 @@ const reactFiles = [
 ]
 const nextFiles = [
   'packages/apps/ssr/**/*.{js,jsx,ts,tsx}',
-  'packages/apps/micro-nexus/**/*.{js,jsx,ts,tsx}',
   'app/**/*.{js,jsx,ts,tsx}',
   'lib/**/*.{js,jsx,ts,tsx}',
   'next.config.{js,jsx,ts,tsx}'
 ]
 const ssrRootDir = fileURLToPath(new URL('../../packages/apps/ssr/', import.meta.url))
-const microNexusRootDir = fileURLToPath(
-  new URL('../../packages/apps/micro-nexus/', import.meta.url)
-)
 
 export default antfu(
   {
@@ -88,6 +84,7 @@ export default antfu(
       '**/.vscode/**',
       '**/bin/**',
       '**/dist/**',
+      '**/dist-api/**',
       '**/docs/**',
       '**/node_modules/**',
       '**/public/**',
@@ -169,15 +166,6 @@ export default antfu(
     settings: {
       next: {
         rootDir: ssrRootDir
-      }
-    }
-  },
-  {
-    name: 'ting/next-settings-micro-nexus',
-    files: ['packages/apps/micro-nexus/**/*.{js,jsx,ts,tsx}'],
-    settings: {
-      next: {
-        rootDir: microNexusRootDir
       }
     }
   }

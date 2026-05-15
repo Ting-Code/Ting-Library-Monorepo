@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8086",
-    "build": "next build",
-    "start": "next start",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "pnpm lint:eslint",
     "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
     "lint:eslint:check": "eslint . --cache --max-warnings 0"
@@ -13,9 +13,9 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lucide-react": "^1.8.0",
-    "next": "16.2.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-router-dom": "^6.28.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.5.0"
   },
@@ -26,7 +26,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.5.1",
     "tailwindcss": "^4",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vite": "catalog:"
   }
 }

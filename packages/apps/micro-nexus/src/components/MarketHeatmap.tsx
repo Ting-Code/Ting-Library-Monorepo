@@ -1,7 +1,3 @@
-'use client'
-
-/* eslint-disable next/no-img-element -- external quote charts and SVG logos use plain img tags */
-
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react'
 import type {
   CSSProperties,
@@ -28,11 +24,11 @@ import {
 } from 'lucide-react'
 import { toast } from 'sonner'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/shared/ui/button'
 import { cn, withBasePath } from '@/lib/utils'
 import { heatmapText } from '@/lib/heatmap-text'
 import type { HeatmapText } from '@/lib/heatmap-text'
-import { heatmapPeriodKeys } from '@/lib/market-heatmap'
+import { getQuoteData, getTreemapData, heatmapPeriodKeys } from '@/lib/market-heatmap'
 import type { HeatmapPeriodKey, MarketKey, TreemapResponse } from '@/lib/market-heatmap'
 
 type QuoteMap = Record<string, { price: number; changePct: number }>
@@ -1645,87 +1641,48 @@ export function MarketHeatmap() {
     })
   }, [])
 
-  const fetchTreemap = useCallback(
-    async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
-      const response = await fetch(
-        withBasePath(`/api/heatmap/treemap?market=${nextMarket}&period=${nextPeriod}`),
-        {
-          cache: 'no-store'
-        }
-      )
-      if (!response.ok) {
-        throw new Error(messages.errorLoad)
-      }
+  const fetchTreemap = useCallback(async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
+    const payload = await getTreemapData(nextMarket, nextPeriod)
+    setTreemapData(payload)
+    setUpdatedAt(payload.updatedAt)
+  }, [])
 
-      const payload = (await response.json()) as TreemapResponse
-      setTreemapData(payload)
-      setUpdatedAt(payload.updatedAt)
-    },
-    [messages.errorLoad]
-  )
+  const fetchQuotes = useCallback(async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
+    const payload = await getQuoteData(nextMarket, nextPeriod, '1')
+    setQuotes(payload.quotes)
+    setUpdatedAt(payload.updatedAt)
+  }, [])
 
-  const fetchQuotes = useCallback(
-    async (nextMarket: MarketKey, nextPeriod: HeatmapPeriodKey) => {
-      const response = await fetch(
-        withBasePath(`/api/heatmap/quotes?market=${nextMarket}&period=${nextPeriod}`),
-        {
-          cache: 'no-store'
-        }
-      )
-      if (!response.ok) {
-        throw new Error(messages.errorLoad)
-      }
+  const fetchMarketSummaries = useCallback(async (nextPeriod: HeatmapPeriodKey) => {
+    const results = await Promise.all(
+      marketOptions.map(async (option) => {
+        const payload = await getTreemapData(option, nextPeriod)
+        let weightedSum = 0
+        let totalValue = 0
 
-      const payload = (await response.json()) as { updatedAt: string; quotes: QuoteMap }
-      setQuotes(payload.quotes)
-      setUpdatedAt(payload.updatedAt)
-    },
-    [messages.errorLoad]
-  )
-
-  const fetchMarketSummaries = useCallback(
-    async (nextPeriod: HeatmapPeriodKey) => {
-      const results = await Promise.all(
-        marketOptions.map(async (option) => {
-          const response = await fetch(
-            withBasePath(`/api/heatmap/treemap?market=${option}&period=${nextPeriod}`),
-            {
-              cache: 'no-store'
-            }
-          )
-          if (!response.ok) {
-            throw new Error(messages.errorLoad)
+        for (const board of payload.nodes) {
+          for (const stock of board.children) {
+            weightedSum += stock.changePct * stock.value
+            totalValue += stock.value
           }
+        }
 
-          const payload = (await response.json()) as TreemapResponse
-          let weightedSum = 0
-          let totalValue = 0
+        const computedChangePct = totalValue > 0 ? weightedSum / totalValue : 0
+        const indexChangePct = payload.summary.indexChangePct
 
-          for (const board of payload.nodes) {
-            for (const stock of board.children) {
-              weightedSum += stock.changePct * stock.value
-              totalValue += stock.value
-            }
+        return [
+          option,
+          {
+            changePct: Number.isFinite(indexChangePct) ? indexChangePct : computedChangePct,
+            stockCount: payload.stockCount,
+            updatedAt: payload.updatedAt
           }
+        ] as const
+      })
+    )
 
-          const computedChangePct = totalValue > 0 ? weightedSum / totalValue : 0
-          const indexChangePct = payload.summary.indexChangePct
-
-          return [
-            option,
-            {
-              changePct: Number.isFinite(indexChangePct) ? indexChangePct : computedChangePct,
-              stockCount: payload.stockCount,
-              updatedAt: payload.updatedAt
-            }
-          ] as const
-        })
-      )
-
-      setMarketSummaries(Object.fromEntries(results) as Partial<Record<MarketKey, MarketSummary>>)
-    },
-    [messages.errorLoad]
-  )
+    setMarketSummaries(Object.fromEntries(results) as Partial<Record<MarketKey, MarketSummary>>)
+  }, [])
 
   useEffect(() => {
     const root = document.querySelector('.nexus-app')

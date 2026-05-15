@@ -1,7 +1,9 @@
-import { Buffer } from 'node:buffer'
+import fallbackMarketSnapshot from './data/market-heatmap-fallback.json'
+import subboardSnapshot from './data/market-heatmap-subboards.json'
 
-import fallbackMarketSnapshot from '@/lib/data/market-heatmap-fallback.json'
-import subboardSnapshot from '@/lib/data/market-heatmap-subboards.json'
+function decodeLatin1FromArrayBuffer(buffer: ArrayBuffer) {
+  return new TextDecoder('iso-8859-1').decode(buffer)
+}
 
 export const marketKeys = ['all', 'sse', 'szse', 'hs300', 'zza500', 'cyb', 'kcb'] as const
 
@@ -556,7 +558,6 @@ function parseEastmoneyQuoteBatch(payload: unknown) {
 async function fetchSinaQuoteBatch(symbols: string[]) {
   const response = await fetch(`${sinaQuoteBaseUrl}${symbols.join(',')}`, {
     headers: sinaRequestHeaders,
-    next: { revalidate: 0 },
     cache: 'no-store'
   })
 
@@ -564,7 +565,7 @@ async function fetchSinaQuoteBatch(symbols: string[]) {
     throw new Error(`Sina quote request failed: ${response.status}`)
   }
 
-  const rawText = Buffer.from(await response.arrayBuffer()).toString('latin1')
+  const rawText = decodeLatin1FromArrayBuffer(await response.arrayBuffer())
   return parseSinaQuoteBatch(rawText)
 }
 
@@ -578,7 +579,6 @@ async function fetchEastmoneyQuoteBatch(secids: string[]) {
   })
   const response = await fetch(`${eastmoneyQuoteBaseUrl}?${params.toString()}`, {
     headers: eastmoneyRequestHeaders,
-    next: { revalidate: 0 },
     cache: 'no-store'
   })
 
@@ -680,7 +680,6 @@ async function fetchEastmoneyMarketIndexSnapshotFromRemote(): Promise<MarketInde
   })
   const response = await fetch(`${eastmoneyQuoteBaseUrl}?${params.toString()}`, {
     headers: eastmoneyRequestHeaders,
-    next: { revalidate: 0 },
     cache: 'no-store'
   })
 
@@ -706,7 +705,6 @@ async function fetchSinaMarketIndexSnapshotFromRemote(): Promise<MarketIndexSnap
   const symbols = Object.values(marketIndexSymbols).map((symbol) => `s_${symbol}`)
   const response = await fetch(`${sinaQuoteBaseUrl}${symbols.join(',')}`, {
     headers: sinaRequestHeaders,
-    next: { revalidate: 0 },
     cache: 'no-store'
   })
 
@@ -714,7 +712,7 @@ async function fetchSinaMarketIndexSnapshotFromRemote(): Promise<MarketIndexSnap
     throw new Error(`Sina index request failed: ${response.status}`)
   }
 
-  const rawText = Buffer.from(await response.arrayBuffer()).toString('latin1')
+  const rawText = decodeLatin1FromArrayBuffer(await response.arrayBuffer())
   const summaries = parseSinaIndexBatch(rawText)
 
   if (Object.keys(summaries).length < marketKeys.length * 0.75) {
@@ -867,12 +865,10 @@ async function fetchMarketSummaryFromRemote(): Promise<MarketSummarySnapshot> {
   const [distributionResponse, turnoverResponse] = await Promise.all([
     fetch(upDownDistributionUrl, {
       headers: summaryRequestHeaders,
-      next: { revalidate: 0 },
       cache: 'no-store'
     }),
     fetch(turnoverSummaryUrl, {
       headers: summaryRequestHeaders,
-      next: { revalidate: 0 },
       cache: 'no-store'
     })
   ])

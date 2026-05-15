@@ -35,14 +35,21 @@ jobs:
       - name: build @apps/micro-modeling
         run: pnpm --filter @apps/micro-modeling... build
 
+      - name: build @apps/micro-nexus
+        env:
+          CI: true
+          NODE_ENV: production
+        run: pnpm --filter @apps/micro-nexus... build
+
       - name: Package site assets
         run: |
           rm -rf /tmp/web-admin-site
-          mkdir -p /tmp/web-admin-site/html/demo /tmp/web-admin-site/html/docs /tmp/web-admin-site/html/modeling
+          mkdir -p /tmp/web-admin-site/html/demo /tmp/web-admin-site/html/docs /tmp/web-admin-site/html/modeling /tmp/web-admin-site/html/nexus
           cp -a packages/apps/admin/dist/. /tmp/web-admin-site/html/
           cp -a packages/apps/micro-demo/dist/. /tmp/web-admin-site/html/demo/
           cp -a packages/apps/micro-docs/dist/. /tmp/web-admin-site/html/docs/
           cp -a packages/apps/micro-modeling/dist/. /tmp/web-admin-site/html/modeling/
+          cp -a packages/apps/micro-nexus/dist/. /tmp/web-admin-site/html/nexus/
           cp .github/workflows/nginx.conf /tmp/web-admin-site/nginx.conf
           tar -C /tmp -czf web-admin-assets.tar.gz web-admin-site
           ls -lh web-admin-assets.tar.gz

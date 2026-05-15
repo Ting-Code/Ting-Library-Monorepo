@@ -2,11 +2,11 @@ import { clsx } from 'clsx'
 import type { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+const basePath = (import.meta.env.BASE_URL ?? '/').replace(/\/$/, '')
 
 export function withBasePath(path: string) {
   if (!path.startsWith('/')) {
-    return path
+    return `${basePath}/${path}`.replace(/\/{2,}/g, '/')
   }
 
   return `${basePath}${path}`
