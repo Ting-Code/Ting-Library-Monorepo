@@ -29,7 +29,8 @@ export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
       isIframe: IFRAME.includes(module)
     }
   }
-  const route = auth?.find((route) => route.path === url?.pathname)
+  const norm = (p?: string) => (p && p !== '/' ? p.replace(/\/+$/, '') : p || '/')
+  const route = auth?.find((r) => norm(r.path) === norm(url?.pathname))
   if (route && route?.meta?.module && ENV?.env) {
     return {
       name: route.meta.module,
