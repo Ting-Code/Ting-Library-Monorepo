@@ -6,9 +6,16 @@ import { Toaster } from 'sonner'
 import { router } from '@/router'
 import '@/styles/globals.css'
 
-createRoot(document.getElementById('root')!).render(
+const mount = typeof document !== 'undefined' ? document.getElementById('nexus') : null
+if (!mount) {
+  throw new Error('[micro-nexus] 挂载节点 #nexus 不存在，请检查 index.html')
+}
+
+createRoot(mount).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    <Toaster richColors position="top-center" />
+    <div className="nexus-app-shell">
+      <RouterProvider router={router} />
+      <Toaster richColors position="top-center" />
+    </div>
   </StrictMode>
 )

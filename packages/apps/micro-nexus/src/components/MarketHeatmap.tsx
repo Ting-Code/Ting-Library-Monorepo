@@ -1685,19 +1685,6 @@ export function MarketHeatmap() {
   }, [])
 
   useEffect(() => {
-    const root = document.querySelector('.nexus-app')
-    if (!root) {
-      return
-    }
-
-    root.classList.add('heatmap-page-active')
-
-    return () => {
-      root.classList.remove('heatmap-page-active')
-    }
-  }, [])
-
-  useEffect(() => {
     if (!isFullscreen) {
       return
     }

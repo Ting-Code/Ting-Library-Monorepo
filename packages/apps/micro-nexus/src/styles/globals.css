@@ -81,16 +81,55 @@
 
   .nexus-app {
     @apply bg-background text-foreground;
-    height: 100%;
-    min-height: 100dvh;
-    max-height: 100dvh;
-    overflow: hidden;
   }
 }
 
-.heatmap-page-active {
+/*
+ * 不放在 @layer base：整页刷新时 Tailwind 与 preflight 合并顺序可能压过后续 layer；
+ * HMR 往往把补丁插在文档末尾，效果像「热更新有效、刷新无效」。此处无 layer，且置于文件最后，与 HMR 补丁同级优先。
+ */
+html {
   height: 100%;
-  min-height: 100dvh;
-  max-height: 100dvh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color-scheme: dark;
+  background-color: oklch(0.145 0 0);
+}
+
+body.nexus-app.dark,
+body.nexus-app {
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
   overflow: hidden;
+}
+
+/* 挂载点 #nexus：与 micro-app name 一致，便于同事按子应用隔离排查 / 写选择器 */
+#nexus {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.nexus-app-shell {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  min-height: 0;
+  padding: 0;
+  width: 100%;
 }
