@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:is(.nexus-app.dark *));
+/*
+ * 命名空间根：#nexus（React 挂载点，与 micro-app name 一致）
+ * dark 变体、主题变量、布局、背景均挂在 #nexus，不依赖 body class。
+ */
+@custom-variant dark (&:is(#nexus.dark, #nexus.dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -27,7 +31,27 @@
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
 }
 
-.nexus-app {
+@layer base {
+  #nexus,
+  #nexus * {
+    @apply border-border outline-ring/50;
+  }
+}
+
+/* html/body 只做文档级重置与高度传递，不设主题色（避免 iframe 里 body 与 #nexus 脱节出现白边） */
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+/* 子应用命名空间根：变量 + 布局 + 背景 */
+#nexus {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -48,9 +72,21 @@
   --ring: color-mix(in srgb, var(--foreground) 16%, transparent);
   --brand: #ef4444;
   --brand-foreground: #ffffff;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
-.nexus-app.dark {
+#nexus.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -71,55 +107,8 @@
   --ring: color-mix(in srgb, var(--foreground) 22%, transparent);
   --brand: #ef4444;
   --brand-foreground: #ffffff;
-}
 
-@layer base {
-  .nexus-app,
-  .nexus-app * {
-    @apply border-border outline-ring/50;
-  }
-
-  .nexus-app {
-    @apply bg-background text-foreground;
-  }
-}
-
-/*
- * 不放在 @layer base：整页刷新时 Tailwind 与 preflight 合并顺序可能压过后续 layer；
- * HMR 往往把补丁插在文档末尾，效果像「热更新有效、刷新无效」。此处无 layer，且置于文件最后，与 HMR 补丁同级优先。
- */
-html {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   color-scheme: dark;
-  background-color: oklch(0.145 0 0);
-}
-
-body.nexus-app.dark,
-body.nexus-app {
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  max-height: 100%;
-  overflow: hidden;
-}
-
-/* 挂载点 #nexus：与 micro-app name 一致，便于同事按子应用隔离排查 / 写选择器 */
-#nexus {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 0;
-  min-height: 0;
-  padding: 0;
-  width: 100%;
 }
 
 .nexus-app-shell {
@@ -127,9 +116,9 @@ body.nexus-app {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  height: 100%;
-  margin: 0;
-  min-height: 0;
-  padding: 0;
   width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }

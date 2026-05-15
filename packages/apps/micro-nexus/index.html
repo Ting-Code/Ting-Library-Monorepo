@@ -10,9 +10,9 @@
     />
     <link rel="icon" type="image/svg+xml" href="icon.svg" />
   </head>
-  <body class="nexus-app dark">
-    <!-- 与同仓库 micro-modeling(#modeling)、micro-demo(#rspack) 一致：子应用名挂载点，便于微前端命名空间 -->
-    <div id="nexus"></div>
+  <body>
+    <!-- 命名空间根：#nexus.dark，dark 变体与 CSS 变量均以此为锚点 -->
+    <div id="nexus" class="dark"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

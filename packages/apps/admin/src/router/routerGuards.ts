@@ -142,6 +142,24 @@ function flattenMenu(menu: IMenu[]): Omit<IMenu, 'children'>[] {
 }
 
 /**
+ * 微应用模块子路由 path：相对父级 `/${module}`，避免父/子同为 `/nexus` 导致刷新后 router-view 空白。
+ * 菜单仍用完整 path（如 `/nexus`、`/docs/visual/flow`），仅影响 Vue Router 的 children 注册。
+ */
+export function moduleChildRoutePath(moduleKey: string, menuPath: string) {
+  const base = `/${moduleKey}`
+  if (!menuPath) {
+    return ''
+  }
+  if (menuPath === base || menuPath === `${base}/`) {
+    return ''
+  }
+  if (menuPath.startsWith(`${base}/`)) {
+    return menuPath.slice(base.length + 1)
+  }
+  return menuPath
+}
+
+/**
  * 按module来分组，没有module的分为admin组
  * @param menu 树形菜单结构
  */
@@ -167,11 +185,14 @@ export function transRouter(menu: IMenu[]): AppRouteRecordRaw[] {
     component: 'LAYOUT',
     path: `/${key}`,
     redirect: grouped[key]?.[0]?.path || '/',
-    children: grouped[key].map((item) => ({
-      component: item?.name,
-      path: item?.path || '',
-      ...item
-    }))
+    children: grouped[key].map((item) => {
+      const { path: menuPath, ...rest } = item
+      return {
+        ...rest,
+        component: item?.name,
+        path: moduleChildRoutePath(key, menuPath || '')
+      }
+    })
   }))
 }
 
