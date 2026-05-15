@@ -15,7 +15,7 @@ createRoot(mount).render(
   <StrictMode>
     <div className="nexus-app-shell">
       <RouterProvider router={router} />
+      <Toaster richColors position="top-center" />
     </div>
-    <Toaster richColors position="top-center" />
   </StrictMode>
 )

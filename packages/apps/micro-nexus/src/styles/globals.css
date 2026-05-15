@@ -1,9 +1,16 @@
-@import 'tailwindcss';
-
 /*
- * 命名空间根：#nexus（React 挂载点，与 micro-app name 一致）
- * dark 变体、主题变量、布局、背景均挂在 #nexus，不依赖 body class。
+ * 子应用样式命名空间：仅 #nexus 内生效。
+ * - 不引入完整 tailwindcss（含 preflight），避免重置 admin 全局样式
+ * - important: '#nexus'（tailwind.config.mjs）将 utilities 限定在 #nexus 下
+ * - @source 必须在顶层，保证冷刷新时扫描到 src 中的 class
  */
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
+
+@config '../../tailwind.config.mjs';
+
+@source '../**/*.{ts,tsx}';
+
 @custom-variant dark (&:is(#nexus.dark, #nexus.dark *));
 
 @theme inline {
@@ -33,24 +40,14 @@
 
 @layer base {
   #nexus,
-  #nexus * {
+  #nexus *,
+  #nexus *::before,
+  #nexus *::after {
+    box-sizing: border-box;
     @apply border-border outline-ring/50;
   }
 }
 
-/* html/body 只做文档级重置与高度传递，不设主题色（避免 iframe 里 body 与 #nexus 脱节出现白边） */
-html,
-body {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  overflow: hidden;
-}
-
-/* 子应用命名空间根：变量 + 布局 + 背景 */
 #nexus {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -73,7 +70,6 @@ body {
   --brand: #ef4444;
   --brand-foreground: #ffffff;
 
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -111,8 +107,7 @@ body {
   color-scheme: dark;
 }
 
-.nexus-app-shell {
-  box-sizing: border-box;
+#nexus .nexus-app-shell {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
@@ -121,4 +116,5 @@ body {
   min-height: 0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
