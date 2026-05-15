@@ -1,17 +1,18 @@
 /*
- * 子应用样式命名空间：仅 #nexus 内生效。
- * - 不引入完整 tailwindcss（含 preflight），避免重置 admin 全局样式
- * - important: '#nexus'（tailwind.config.mjs）将 utilities 限定在 #nexus 下
- * - @source 必须在顶层，保证冷刷新时扫描到 src 中的 class
+ * 子应用样式（仅打进本应用文档：独立页 / micro-app iframe，不进入 admin）。
+ * - preflight：重置子文档内 button/border 等，避免嵌入后 border 不显示
+ * - important: '#nexus'：Tailwind utilities 限定在 #nexus 下
+ * - dark: 变体锚定 #nexus，不依赖 .dark class
  */
 @import 'tailwindcss/theme';
+@import 'tailwindcss/preflight' layer(base);
 @import 'tailwindcss/utilities';
 
 @config '../../tailwind.config.mjs';
 
 @source '../**/*.{ts,tsx}';
 
-@custom-variant dark (&:is(#nexus.dark, #nexus.dark *));
+@custom-variant dark (&:is(#nexus, #nexus *));
 
 @theme inline {
   --color-background: var(--background);
@@ -43,46 +44,13 @@
   #nexus *,
   #nexus *::before,
   #nexus *::after {
-    box-sizing: border-box;
-    @apply border-border outline-ring/50;
+    --tw-border-style: solid;
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
   }
 }
 
 #nexus {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: color-mix(in srgb, var(--foreground) 16%, transparent);
-  --brand: #ef4444;
-  --brand-foreground: #ffffff;
-
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  min-height: 0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: var(--background);
-  color: var(--foreground);
-}
-
-#nexus.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -104,6 +72,16 @@
   --brand: #ef4444;
   --brand-foreground: #ffffff;
 
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
   color-scheme: dark;
 }
 
