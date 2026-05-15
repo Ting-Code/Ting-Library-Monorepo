@@ -13,7 +13,7 @@ export default defineConfig(({ command }) => ({
   },
   server: {
     host: true,
-    port: 8086,
+    port: 8686,
     strictPort: true,
     headers: {
       'Access-Control-Allow-Origin': '*'
@@ -21,7 +21,7 @@ export default defineConfig(({ command }) => ({
   },
   preview: {
     host: true,
-    port: 8086,
+    port: 8686,
     strictPort: true
   },
   publicDir: 'public',

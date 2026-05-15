@@ -46,7 +46,10 @@ jobs:
           mkdir -p /tmp/ssr-runtime/packages/apps/ssr/.next
           cp -a packages/apps/ssr/.next/standalone/. /tmp/ssr-runtime/
           cp -a packages/apps/ssr/.next/static /tmp/ssr-runtime/packages/apps/ssr/.next/static
-          cp -a packages/apps/ssr/public /tmp/ssr-runtime/packages/apps/ssr/public
+          mkdir -p /tmp/ssr-runtime/packages/apps/ssr/public
+          if [ -d packages/apps/ssr/public ]; then
+            cp -a packages/apps/ssr/public/. /tmp/ssr-runtime/packages/apps/ssr/public/
+          fi
           find /tmp/ssr-runtime -name '*.map' -delete
           tar -C /tmp -czf ssr-runtime.tar.gz ssr-runtime
           ls -lh ssr-runtime.tar.gz

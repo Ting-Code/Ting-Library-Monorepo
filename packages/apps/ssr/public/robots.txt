@@ -1,0 +1,3 @@
+# Static assets root for Next.js `public/`
+User-agent: *
+Disallow:
