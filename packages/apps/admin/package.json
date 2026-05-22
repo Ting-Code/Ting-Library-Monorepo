@@ -15,6 +15,7 @@
     "@config/lint": "workspace:*",
     "@config/tsconfig": "workspace:*",
     "@element-plus/icons-vue": "catalog:",
+    "@tingcode/i18n": "workspace:*",
     "@tingcode/lib-vue": "workspace:*",
     "@tingcode/system": "workspace:*",
     "@tingcode/utils": "workspace:*",
@@ -32,7 +33,6 @@
     "sass": "catalog:",
     "sortablejs": "catalog:",
     "vue": "catalog:",
-    "vue-i18n": "^10.0.5",
     "vue-router": "catalog:"
   },
   "devDependencies": {

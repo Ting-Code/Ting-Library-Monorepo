@@ -5,8 +5,8 @@
     </template>
     <template #default>
       <div :class="ns.b()">
-        <el-divider>主题</el-divider>
-        <HeaderTheme />
+        <SettingTheme />
+        <SettingLocale />
         <!--    菜单模式    -->
       </div>
     </template>
@@ -14,10 +14,12 @@
 </template>
 
 <script lang="ts" setup>
-  import HeaderTheme from '../../theme/index.vue'
-  import { useI18n } from '@/locale/use-i18n'
+  import SettingLocale from './locale/index.vue'
+  import SettingTheme from './theme/index.vue'
+  import { useI18n } from '@/hooks/useI18n'
   import { useNamespace } from '@tingcode/system'
   import { useSetting } from '@/hooks/useSetting'
+
   const ns = useNamespace('setting-drawer')
   const { t } = useI18n()
   const { isOpenSettingRef } = useSetting()
@@ -28,5 +30,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
   }
 </style>

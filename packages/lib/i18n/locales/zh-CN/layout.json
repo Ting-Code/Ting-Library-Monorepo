@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "title": "系统设置",
+    "theme": "主题",
+    "locale": "语言"
+  },
+  "locale": {
+    "zh-CN": "简体中文",
+    "en": "English"
+  }
+}

@@ -7,6 +7,7 @@ export interface IMittEvents {
   [eventName: EventType]: unknown
   browserScreen: CreateCallbackParams
   router: IRouterInfo
+  locale: string
   theme: string
   isOpenSetting: boolean
   isOpenSlider: boolean

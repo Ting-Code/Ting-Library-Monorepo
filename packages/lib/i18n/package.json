@@ -1,0 +1,38 @@
+{
+  "name": "@tingcode/i18n",
+  "version": "0.0.1",
+  "type": "module",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "main": "dist/index.mjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "files": [
+    "dist",
+    "locales"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint:check": "eslint . --cache --max-warnings 0",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@config/lint": "workspace:*",
+    "@config/tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "unbuild": "catalog:"
+  }
+}
