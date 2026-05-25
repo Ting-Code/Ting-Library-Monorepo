@@ -1,5 +1,5 @@
 import { App } from 'vue'
-import type { AppRouteRecordRaw } from '@/router/type'
+import type { AppRouteRecordRaw } from '@tingcode/system'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { createRouterGuards } from './routerGuards.js'
 import { PageEnum } from '@tingcode/system'

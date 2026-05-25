@@ -67,6 +67,14 @@ const menu = {
           }
         },
         {
+          name: 'system_i18n',
+          path: '/docs/system/i18n',
+          meta: {
+            title: '🌐国际化(i18n)',
+            module: 'docs'
+          }
+        },
+        {
           name: 'system_404',
           path: '/docs/system/404',
           meta: {
@@ -179,6 +187,14 @@ const menu = {
           meta: {
             title: '🧱低代码',
             module: 'docs'
+          }
+        },
+        {
+          name: 'i18n_list',
+          path: '/i18n/list',
+          meta: {
+            title: '✏️国际化文案编辑',
+            module: 'i18n'
           }
         }
       ]

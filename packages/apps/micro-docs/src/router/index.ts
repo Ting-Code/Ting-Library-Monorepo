@@ -1,6 +1,6 @@
 import { App } from 'vue'
 import { createRouter, createWebHistory, Router, RouteRecordRaw } from 'vue-router'
-import type { AppRouteRecordRaw } from '@apps/admin/src/router/type'
+import type { AppRouteRecordRaw } from '@tingcode/system'
 export const ErrorPage = () => import('@/views/common/error/404.vue')
 
 // 404 on a page

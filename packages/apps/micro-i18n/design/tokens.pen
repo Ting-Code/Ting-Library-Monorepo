@@ -1,0 +1,33 @@
+{
+  "version": "2.11",
+  "themes": {
+    "mode": ["dark"]
+  },
+  "variables": {
+    "color.bg": {
+      "type": "color",
+      "value": "#141414"
+    },
+    "color.text": {
+      "type": "color",
+      "value": "#E5EAF3"
+    },
+    "color.text-secondary": {
+      "type": "color",
+      "value": "#A3A6AD"
+    },
+    "color.primary": {
+      "type": "color",
+      "value": "#409EFF"
+    },
+    "space.page": {
+      "type": "number",
+      "value": 20
+    },
+    "radius.card": {
+      "type": "number",
+      "value": 8
+    }
+  },
+  "children": []
+}

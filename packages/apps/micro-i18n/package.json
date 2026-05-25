@@ -1,0 +1,33 @@
+{
+  "name": "@apps/micro-i18n",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 8685",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "lint:eslint": "eslint . --cache --max-warnings 0 --fix",
+    "lint:eslint:check": "eslint . --cache --max-warnings 0",
+    "lint:prettier": "prettier --write --cache --ignore-unknown --ignore-path=../../../.prettierignore ."
+  },
+  "dependencies": {
+    "@config/lint": "workspace:*",
+    "@config/tsconfig": "workspace:*",
+    "@tingcode/i18n": "workspace:*",
+    "@tingcode/system": "workspace:*",
+    "element-plus": "catalog:",
+    "sass": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "catalog:",
+    "typescript": "catalog:",
+    "unplugin-auto-import": "catalog:",
+    "unplugin-vue-components": "catalog:",
+    "vite": "catalog:",
+    "vite-plugin-compression": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

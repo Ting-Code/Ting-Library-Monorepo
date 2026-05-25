@@ -1,0 +1,352 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "id": "route-list",
+      "type": "frame",
+      "name": "list → src/views/list/index.vue（选项目，非选语言）",
+      "x": 0,
+      "y": 0,
+      "width": 1100,
+      "height": 680,
+      "fill": "#303133",
+      "layout": "none",
+      "clip": true,
+      "children": [
+        {
+          "id": "title",
+          "type": "text",
+          "x": 24,
+          "y": 20,
+          "content": "✏️ 文案编辑",
+          "fill": "#FFFFFF",
+          "fontSize": 20,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "link-docs",
+          "type": "text",
+          "x": 920,
+          "y": 24,
+          "content": "🌐 国际化说明",
+          "fill": "#409EFF",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "search-box",
+          "type": "rectangle",
+          "x": 24,
+          "y": 60,
+          "width": 860,
+          "height": 36,
+          "fill": "#1D1E1F",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "search-placeholder",
+          "type": "text",
+          "x": 40,
+          "y": 70,
+          "content": "搜索项目",
+          "fill": "#A3A6AD",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "btn-new-project",
+          "type": "rectangle",
+          "x": 900,
+          "y": 60,
+          "width": 176,
+          "height": 36,
+          "fill": "#409EFF",
+          "cornerRadius": 4
+        },
+        {
+          "id": "btn-new-project-label",
+          "type": "text",
+          "x": 948,
+          "y": 70,
+          "content": "＋ 新建项目",
+          "fill": "#FFFFFF",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "table-panel",
+          "type": "rectangle",
+          "x": 24,
+          "y": 112,
+          "width": 1052,
+          "height": 400,
+          "fill": "#1D1E1F",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "table-head-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 112,
+          "width": 1052,
+          "height": 44,
+          "fill": "#262727",
+          "cornerRadius": 8
+        },
+        {
+          "id": "th-project",
+          "type": "text",
+          "x": 40,
+          "y": 126,
+          "content": "项目",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "th-files",
+          "type": "text",
+          "x": 220,
+          "y": 126,
+          "content": "语言包文件",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "th-count",
+          "type": "text",
+          "x": 640,
+          "y": 126,
+          "content": "词条数",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "th-action",
+          "type": "text",
+          "x": 980,
+          "y": 126,
+          "content": "操作",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row1-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 156,
+          "width": 1052,
+          "height": 48,
+          "fill": "#252628"
+        },
+        {
+          "id": "row1-project",
+          "type": "text",
+          "x": 40,
+          "y": 172,
+          "content": "layout",
+          "fill": "#E5EAF3",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row1-files",
+          "type": "text",
+          "x": 220,
+          "y": 174,
+          "content": "zh-CN/layout.json · en/layout.json",
+          "fill": "#A3A6AD",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row1-count",
+          "type": "text",
+          "x": 640,
+          "y": 172,
+          "content": "5",
+          "fill": "#E5EAF3",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row1-action",
+          "type": "text",
+          "x": 980,
+          "y": 172,
+          "content": "进入",
+          "fill": "#409EFF",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row2-project",
+          "type": "text",
+          "x": 40,
+          "y": 224,
+          "content": "common",
+          "fill": "#E5EAF3",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row2-draft-tag",
+          "type": "rectangle",
+          "x": 108,
+          "y": 220,
+          "width": 56,
+          "height": 22,
+          "fill": "#4A3A1F",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#E6A23C"
+          }
+        },
+        {
+          "id": "row2-draft-label",
+          "type": "text",
+          "x": 116,
+          "y": 224,
+          "content": "未落盘",
+          "fill": "#E6A23C",
+          "fontSize": 11,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row2-files",
+          "type": "text",
+          "x": 220,
+          "y": 226,
+          "content": "zh-CN/common.json · en/common.json",
+          "fill": "#A3A6AD",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row2-count",
+          "type": "text",
+          "x": 640,
+          "y": 224,
+          "content": "0",
+          "fill": "#E5EAF3",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "row2-action",
+          "type": "text",
+          "x": 980,
+          "y": 224,
+          "content": "进入",
+          "fill": "#409EFF",
+          "fontSize": 14,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "dialog-preview",
+          "type": "rectangle",
+          "x": 24,
+          "y": 530,
+          "width": 440,
+          "height": 130,
+          "fill": "#1D1E1F",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#409EFF"
+          }
+        },
+        {
+          "id": "dialog-title",
+          "type": "text",
+          "x": 40,
+          "y": 544,
+          "content": "新建项目（弹窗）",
+          "fill": "#FFFFFF",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "dialog-label",
+          "type": "text",
+          "x": 40,
+          "y": 576,
+          "content": "项目名称",
+          "fill": "#A3A6AD",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "dialog-input",
+          "type": "rectangle",
+          "x": 112,
+          "y": 568,
+          "width": 280,
+          "height": 28,
+          "fill": "#141414",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "dialog-input-ph",
+          "type": "text",
+          "x": 124,
+          "y": 576,
+          "content": "如 common、user",
+          "fill": "#606266",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "dialog-hint",
+          "type": "text",
+          "x": 40,
+          "y": 608,
+          "content": "→ 各语言目录新增 {语言}/{项目}.json",
+          "fill": "#A3A6AD",
+          "fontSize": 11,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "note-flow",
+          "type": "text",
+          "x": 500,
+          "y": 548,
+          "content": "点击项目行 → 进入 detail.pen 详情页（树 + 多语言编辑）",
+          "fill": "#67C23A",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        }
+      ]
+    }
+  ]
+}

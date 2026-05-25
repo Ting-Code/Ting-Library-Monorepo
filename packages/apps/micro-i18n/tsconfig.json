@@ -1,0 +1,16 @@
+{
+  "extends": "@config/tsconfig/base.json",
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@s/*": ["src/styles/*"]
+    },
+    "lib": ["dom", "esnext"],
+    "types": ["vite/client"]
+  },
+  "include": ["src", "vite.config.ts", "src/**/*.ts", "src/**/*.vue"]
+}

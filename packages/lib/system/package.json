@@ -56,6 +56,8 @@
     "@tingcode/request": "workspace:*",
     "@tingcode/utils": "workspace:*",
     "mitt": "^3.0.1",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "vue": "catalog:",
+    "vue-router": "catalog:"
   }
 }

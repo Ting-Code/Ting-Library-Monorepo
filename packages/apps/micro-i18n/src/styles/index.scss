@@ -1,0 +1,18 @@
+// index 会被全局引用，不能写需要未编译的功能（如 @mixin）；公共变量请放到 global.scss
+@use './base/index' as *;
+@use 'theme/tokens' as *;
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss';
+@use 'element-plus/theme-chalk/src/message.scss';
+@use 'element-plus/theme-chalk/src/message-box.scss';
+@use 'element-plus/theme-chalk/src/dialog.scss';
+@use 'element-plus/theme-chalk/src/button.scss';
+@use 'element-plus/theme-chalk/src/input.scss';
+@use 'element-plus/theme-chalk/src/table.scss';
+@use 'element-plus/theme-chalk/src/form.scss';
+@use 'element-plus/theme-chalk/src/form-item.scss';
+@use 'element-plus/theme-chalk/src/tag.scss';
+@use 'element-plus/theme-chalk/src/empty.scss';
+@use 'element-plus/theme-chalk/src/tree.scss';
+@use 'element-plus/theme-chalk/src/row.scss';
+@use 'element-plus/theme-chalk/src/col.scss';
+@use 'element-plus/theme-chalk/src/alert.scss';

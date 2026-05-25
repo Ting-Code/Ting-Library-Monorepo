@@ -4,4 +4,5 @@ export { microApp }
 export * from './init'
 export * from './global-data'
 export * from './hooks'
+export * from './router'
 // export * from './api'

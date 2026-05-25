@@ -7,7 +7,7 @@ import { isNavigationFailure, Router } from 'vue-router'
 import { useUserStoreWidthOut } from '@/store/modules/user'
 import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
 import { IMenu } from '@tingcode/system/apiSystem'
-import { AppRouteRecordRaw } from '@/router/type'
+import type { AppRouteRecordRaw } from '@tingcode/system'
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
 const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
 const Iframe = () => import('@/views/common/iframe/index.vue')

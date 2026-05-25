@@ -1,0 +1,297 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "id": "route-detail",
+      "type": "frame",
+      "name": "Route /i18n/editor/:namespace → src/views/detail/index.vue",
+      "x": 80,
+      "y": 80,
+      "width": 1200,
+      "height": 760,
+      "fill": "#303133",
+      "layout": "none",
+      "clip": true,
+      "children": [
+        {
+          "id": "back-title",
+          "type": "text",
+          "x": 24,
+          "y": 24,
+          "content": "← 项目 · layout",
+          "fill": "#FFFFFF",
+          "fontSize": 18,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tag-project",
+          "type": "text",
+          "x": 24,
+          "y": 58,
+          "content": "项目：layout",
+          "fill": "#A3A6AD",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tag-zh",
+          "type": "rectangle",
+          "x": 120,
+          "y": 54,
+          "width": 64,
+          "height": 24,
+          "fill": "#18222C",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#409EFF"
+          }
+        },
+        {
+          "id": "tag-zh-label",
+          "type": "text",
+          "x": 132,
+          "y": 60,
+          "content": "zh-CN",
+          "fill": "#409EFF",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tag-en",
+          "type": "rectangle",
+          "x": 192,
+          "y": 54,
+          "width": 48,
+          "height": 24,
+          "fill": "#18222C",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#409EFF"
+          }
+        },
+        {
+          "id": "tag-en-label",
+          "type": "text",
+          "x": 202,
+          "y": 60,
+          "content": "en",
+          "fill": "#409EFF",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tag-count",
+          "type": "text",
+          "x": 256,
+          "y": 60,
+          "content": "5 条词条",
+          "fill": "#67C23A",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-panel",
+          "type": "rectangle",
+          "x": 24,
+          "y": 96,
+          "width": 440,
+          "height": 560,
+          "fill": "#1D1E1F",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "tree-hint",
+          "type": "text",
+          "x": 36,
+          "y": 108,
+          "content": "分组可添加子词条；选中叶子后在右侧编辑各语言",
+          "fill": "#A3A6AD",
+          "fontSize": 11,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-group-settings",
+          "type": "text",
+          "x": 36,
+          "y": 136,
+          "content": "▾ settings",
+          "fill": "#E5EAF3",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-add-btn",
+          "type": "text",
+          "x": 320,
+          "y": 138,
+          "content": "添加子词条",
+          "fill": "#409EFF",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-title",
+          "type": "text",
+          "x": 52,
+          "y": 168,
+          "content": "title",
+          "fill": "#409EFF",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-panel",
+          "type": "rectangle",
+          "x": 480,
+          "y": 96,
+          "width": 696,
+          "height": 560,
+          "fill": "#1D1E1F",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "editor-title",
+          "type": "text",
+          "x": 496,
+          "y": 112,
+          "content": "词条：settings.title",
+          "fill": "#FFFFFF",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-zh-label",
+          "type": "text",
+          "x": 496,
+          "y": 152,
+          "content": "zh-CN",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-zh-input",
+          "type": "rectangle",
+          "x": 568,
+          "y": 144,
+          "width": 592,
+          "height": 32,
+          "fill": "#141414",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "editor-zh-value",
+          "type": "text",
+          "x": 580,
+          "y": 152,
+          "content": "系统设置",
+          "fill": "#E5EAF3",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-en-label",
+          "type": "text",
+          "x": 496,
+          "y": 192,
+          "content": "en",
+          "fill": "#A3A6AD",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-en-input",
+          "type": "rectangle",
+          "x": 568,
+          "y": 184,
+          "width": 592,
+          "height": 32,
+          "fill": "#141414",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "editor-en-value",
+          "type": "text",
+          "x": 580,
+          "y": 192,
+          "content": "Settings",
+          "fill": "#E5EAF3",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "btn-reset",
+          "type": "rectangle",
+          "x": 24,
+          "y": 672,
+          "width": 72,
+          "height": 32,
+          "fill": "#1D1E1F",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "#606266"
+          }
+        },
+        {
+          "id": "btn-reset-label",
+          "type": "text",
+          "x": 44,
+          "y": 680,
+          "content": "重置",
+          "fill": "#E5EAF3",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "btn-export",
+          "type": "rectangle",
+          "x": 108,
+          "y": 672,
+          "width": 120,
+          "height": 32,
+          "fill": "#409EFF",
+          "cornerRadius": 4
+        },
+        {
+          "id": "btn-export-label",
+          "type": "text",
+          "x": 120,
+          "y": 680,
+          "content": "导出全部语言",
+          "fill": "#FFFFFF",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        }
+      ]
+    }
+  ]
+}

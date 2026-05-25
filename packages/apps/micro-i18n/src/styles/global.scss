@@ -1,0 +1,4 @@
+// global 会被全局引用，可写 scss 变量、mixin 等
+@use 'theme/tokens' as *;
+@use 'mixin/config' as *;
+@use 'base/element';

@@ -306,7 +306,7 @@ importers:
         version: 8.0.11(@types/node@22.19.19)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4)
       vite-plugin-compression:
         specifier: 'catalog:'
-        version: 0.5.1(vite@8.0.11(@types/node@22.19.19)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))
+        version: 0.5.1(vite@8.0.11(@types/node@22.19.19)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))
       vite-plugin-mock:
         specifier: 'catalog:'
         version: 3.0.2(esbuild@0.25.9)(mockjs@1.1.0)(vite@8.0.11(@types/node@22.19.19)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))
@@ -410,9 +410,6 @@ importers:
       '@antv/x6-plugin-transform':
         specifier: ^2.1.8
         version: 2.1.8(@antv/x6@2.18.1)
-      '@apps/admin':
-        specifier: workspace:*
-        version: link:../admin
       '@config/lint':
         specifier: workspace:*
         version: link:../../../configs/lint
@@ -522,6 +519,55 @@ importers:
       vite-plugin-mock:
         specifier: 'catalog:'
         version: 3.0.2(esbuild@0.25.9)(mockjs@1.1.0)(vite@8.0.11(@types/node@20.19.40)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))
+      vue-tsc:
+        specifier: 'catalog:'
+        version: 2.2.8(typescript@5.8.2)
+
+  packages/apps/micro-i18n:
+    dependencies:
+      '@config/lint':
+        specifier: workspace:*
+        version: link:../../../configs/lint
+      '@config/tsconfig':
+        specifier: workspace:*
+        version: link:../../../configs/tsconfig
+      '@tingcode/i18n':
+        specifier: workspace:*
+        version: link:../../lib/i18n
+      '@tingcode/system':
+        specifier: workspace:*
+        version: link:../../lib/system
+      element-plus:
+        specifier: 'catalog:'
+        version: 2.9.6(vue@3.5.13(typescript@5.8.2))
+      sass:
+        specifier: 'catalog:'
+        version: 1.85.1
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.13(typescript@5.8.2)
+      vue-router:
+        specifier: 'catalog:'
+        version: 4.5.0(vue@3.5.13(typescript@5.8.2))
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: 'catalog:'
+        version: 6.0.6(vite@8.0.11(@types/node@22.19.19)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))(vue@3.5.13(typescript@5.8.2))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.2
+      unplugin-auto-import:
+        specifier: 'catalog:'
+        version: 19.1.1(@vueuse/core@13.3.0(vue@3.5.13(typescript@5.8.2)))
+      unplugin-vue-components:
+        specifier: 'catalog:'
+        version: 28.4.1(@babel/parser@7.29.3)(vue@3.5.13(typescript@5.8.2))
+      vite:
+        specifier: 'catalog:'
+        version: 8.0.11(@types/node@22.19.19)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4)
+      vite-plugin-compression:
+        specifier: 'catalog:'
+        version: 0.5.1(vite@8.0.11(@types/node@22.19.19)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4))
       vue-tsc:
         specifier: 'catalog:'
         version: 2.2.8(typescript@5.8.2)
@@ -772,7 +818,7 @@ importers:
         version: 5.8.2
       unbuild:
         specifier: 'catalog:'
-        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
 
   packages/lib/react: {}
 
@@ -811,10 +857,16 @@ importers:
       typescript:
         specifier: 'catalog:'
         version: 5.8.2
+      vue:
+        specifier: 'catalog:'
+        version: 3.5.13(typescript@5.8.2)
+      vue-router:
+        specifier: 'catalog:'
+        version: 4.5.0(vue@3.5.13(typescript@5.8.2))
     devDependencies:
       unbuild:
         specifier: 'catalog:'
-        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
 
   packages/lib/utils:
     dependencies:
@@ -836,7 +888,7 @@ importers:
     devDependencies:
       unbuild:
         specifier: 'catalog:'
-        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+        version: 3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
 
   packages/lib/vite-plugin-code:
     dependencies:
@@ -23335,7 +23387,7 @@ snapshots:
       sass: 1.85.1
       typescript: 5.8.2
 
-  mkdist@2.4.1(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2)):
+  mkdist@2.4.1(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       autoprefixer: 10.5.0(postcss@8.5.14)
       citty: 0.1.6
@@ -23353,6 +23405,7 @@ snapshots:
     optionalDependencies:
       sass: 1.85.1
       typescript: 5.8.2
+      vue: 3.5.13(typescript@5.8.2)
       vue-tsc: 2.2.8(typescript@5.8.2)
 
   mlly@1.7.3:
@@ -25829,7 +25882,7 @@ snapshots:
       - sass
       - supports-color
 
-  unbuild@3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2)):
+  unbuild@3.5.0(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       '@rollup/plugin-alias': 5.1.1(rollup@4.60.3)
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.60.3)
@@ -25845,7 +25898,7 @@ snapshots:
       hookable: 5.5.3
       jiti: 2.7.0
       magic-string: 0.30.21
-      mkdist: 2.4.1(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))
+      mkdist: 2.4.1(sass@1.85.1)(typescript@5.8.2)(vue-tsc@2.2.8(typescript@5.8.2))(vue@3.5.13(typescript@5.8.2))
       mlly: 1.8.2
       pathe: 2.0.3
       pkg-types: 2.3.1
@@ -26101,7 +26154,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vite-plugin-compression@0.5.1(vite@8.0.11(@types/node@22.19.19)(esbuild@0.25.9)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4)):
+  vite-plugin-compression@0.5.1(vite@8.0.11(@types/node@22.19.19)(jiti@2.7.0)(less@4.1.3)(sass@1.85.1)(terser@5.47.1)(yaml@2.8.4)):
     dependencies:
       chalk: 4.1.2
       debug: 4.4.0
