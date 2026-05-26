@@ -118,8 +118,8 @@
     min-height: 100%;
     padding: 20px 24px 32px;
     box-sizing: border-box;
-    background: $page-bg;
-    color: $text;
+    background: v('page-bg');
+    color: v('text');
 
     &__header {
       display: flex;
@@ -132,12 +132,12 @@
       margin: 0;
       font-size: 20px;
       font-weight: 600;
-      color: #fff;
+      color: v('text-title');
     }
 
     &__docs {
       font-size: 14px;
-      color: $primary;
+      color: v('primary');
       text-decoration: none;
 
       &:hover {
@@ -158,20 +158,20 @@
 
     &__table-wrap {
       padding: 0;
-      background: $panel-bg;
-      border: 1px solid $border;
-      border-radius: $radius;
+      background: v('panel-bg');
+      border: 1px solid v('border');
+      border-radius: v('radius');
       overflow: hidden;
 
       :deep(.el-table) {
-        --el-table-bg-color: #{$panel-bg};
-        --el-table-tr-bg-color: #{$panel-bg};
-        --el-table-header-bg-color: #{$header-bg};
-        --el-table-row-hover-bg-color: #{$row-stripe-bg};
-        --el-table-border-color: #{$border};
-        --el-table-text-color: #{$text};
-        --el-table-header-text-color: #{$text-secondary};
-        --el-fill-color-lighter: #{$row-stripe-bg};
+        --el-table-bg-color: #{v('panel-bg')};
+        --el-table-tr-bg-color: #{v('panel-bg')};
+        --el-table-header-bg-color: #{v('header-bg')};
+        --el-table-row-hover-bg-color: #{v('row-stripe-bg')};
+        --el-table-border-color: #{v('border')};
+        --el-table-text-color: #{v('text')};
+        --el-table-header-text-color: #{v('text-secondary')};
+        --el-fill-color-lighter: #{v('row-stripe-bg')};
       }
 
       :deep(.el-table__row) {
@@ -190,14 +190,14 @@
 
     &__files {
       font-size: 12px;
-      color: $text-secondary;
+      color: v('text-secondary');
     }
 
     &__dialog-hint {
       margin: 0;
       padding-left: 72px;
       font-size: 11px;
-      color: $text-secondary;
+      color: v('text-secondary');
     }
   }
 </style>

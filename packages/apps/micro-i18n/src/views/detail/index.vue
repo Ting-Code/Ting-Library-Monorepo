@@ -26,8 +26,8 @@
     min-height: 100%;
     padding: 24px;
     box-sizing: border-box;
-    background: $page-bg;
-    color: $text;
+    background: v('page-bg');
+    color: v('text');
 
     &__header {
       display: flex;
@@ -45,10 +45,10 @@
     &__hint {
       margin: 0;
       font-size: 13px;
-      color: $text-secondary;
+      color: v('text-secondary');
 
       code {
-        color: $primary;
+        color: v('primary');
       }
     }
   }

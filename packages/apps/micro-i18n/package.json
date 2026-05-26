@@ -16,7 +16,9 @@
     "@config/tsconfig": "workspace:*",
     "@tingcode/i18n": "workspace:*",
     "@tingcode/system": "workspace:*",
+    "@vueuse/core": "catalog:",
     "element-plus": "catalog:",
+    "pinia": "catalog:",
     "sass": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"

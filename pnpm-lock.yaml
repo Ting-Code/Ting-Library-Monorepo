@@ -537,9 +537,15 @@ importers:
       '@tingcode/system':
         specifier: workspace:*
         version: link:../../lib/system
+      '@vueuse/core':
+        specifier: 'catalog:'
+        version: 13.3.0(vue@3.5.13(typescript@5.8.2))
       element-plus:
         specifier: 'catalog:'
         version: 2.9.6(vue@3.5.13(typescript@5.8.2))
+      pinia:
+        specifier: 'catalog:'
+        version: 3.0.1(typescript@5.8.2)(vue@3.5.13(typescript@5.8.2))
       sass:
         specifier: 'catalog:'
         version: 1.85.1

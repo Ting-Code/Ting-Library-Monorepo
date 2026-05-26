@@ -1,33 +1,371 @@
 {
   "version": "2.11",
   "themes": {
-    "mode": ["dark"]
+    "mode": ["default", "dark"]
   },
   "variables": {
-    "color.bg": {
+    "color.page-bg": {
       "type": "color",
-      "value": "#141414"
+      "value": [
+        { "value": "#f0f2f5", "theme": { "mode": "default" } },
+        { "value": "#303133", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.panel-bg": {
+      "type": "color",
+      "value": [
+        { "value": "#ffffff", "theme": { "mode": "default" } },
+        { "value": "#1d1e1f", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.header-bg": {
+      "type": "color",
+      "value": [
+        { "value": "#f5f7fa", "theme": { "mode": "default" } },
+        { "value": "#262727", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.row-stripe-bg": {
+      "type": "color",
+      "value": [
+        { "value": "#fafafa", "theme": { "mode": "default" } },
+        { "value": "#252628", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.input-bg": {
+      "type": "color",
+      "value": [
+        { "value": "#ffffff", "theme": { "mode": "default" } },
+        { "value": "#141414", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.border": {
+      "type": "color",
+      "value": [
+        { "value": "#dcdfe6", "theme": { "mode": "default" } },
+        { "value": "#606266", "theme": { "mode": "dark" } }
+      ]
     },
     "color.text": {
       "type": "color",
-      "value": "#E5EAF3"
+      "value": [
+        { "value": "#303133", "theme": { "mode": "default" } },
+        { "value": "#e5eaf3", "theme": { "mode": "dark" } }
+      ]
+    },
+    "color.text-title": {
+      "type": "color",
+      "value": [
+        { "value": "#303133", "theme": { "mode": "default" } },
+        { "value": "#ffffff", "theme": { "mode": "dark" } }
+      ]
     },
     "color.text-secondary": {
       "type": "color",
-      "value": "#A3A6AD"
+      "value": [
+        { "value": "#909399", "theme": { "mode": "default" } },
+        { "value": "#a3a6ad", "theme": { "mode": "dark" } }
+      ]
     },
     "color.primary": {
       "type": "color",
-      "value": "#409EFF"
+      "value": "#409eff"
     },
-    "space.page": {
-      "type": "number",
-      "value": 20
+    "color.success": {
+      "type": "color",
+      "value": "#67c23a"
+    },
+    "color.warning": {
+      "type": "color",
+      "value": "#e6a23c"
+    },
+    "color.warning-bg": {
+      "type": "color",
+      "value": [
+        { "value": "#fdf6ec", "theme": { "mode": "default" } },
+        { "value": "#4a3a1f", "theme": { "mode": "dark" } }
+      ]
     },
     "radius.card": {
       "type": "number",
       "value": 8
+    },
+    "space.page": {
+      "type": "number",
+      "value": 20
     }
   },
-  "children": []
+  "children": [
+    {
+      "id": "tokens-board",
+      "type": "frame",
+      "name": "i18n 主题 Token 预览（右上角切换 default / dark）",
+      "x": 0,
+      "y": 0,
+      "width": 520,
+      "height": 720,
+      "fill": "$color.page-bg",
+      "layout": "none",
+      "clip": true,
+      "children": [
+        {
+          "id": "tokens-title",
+          "type": "text",
+          "x": 24,
+          "y": 20,
+          "content": "🎨 i18n Design Tokens",
+          "fill": "$color.text-title",
+          "fontSize": 20,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tokens-hint",
+          "type": "text",
+          "x": 24,
+          "y": 48,
+          "content": "仅登记变量 · 页面稿见 list.pen / detail.pen · 代码见 theme/index.scss",
+          "fill": "$color.text-secondary",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tokens-hint-theme",
+          "type": "text",
+          "x": 24,
+          "y": 68,
+          "content": "在 Pencil 主题面板切换 mode：default（默认）↔ dark（暗黑）",
+          "fill": "$color.primary",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-page-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 100,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.page-bg",
+          "cornerRadius": 8,
+          "stroke": { "align": "inside", "thickness": 1, "fill": "$color.border" }
+        },
+        {
+          "id": "label-page-bg",
+          "type": "text",
+          "x": 236,
+          "y": 116,
+          "content": "color.page-bg",
+          "fill": "$color.text",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-panel-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 160,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.panel-bg",
+          "cornerRadius": 8,
+          "stroke": { "align": "inside", "thickness": 1, "fill": "$color.border" }
+        },
+        {
+          "id": "label-panel-bg",
+          "type": "text",
+          "x": 236,
+          "y": 176,
+          "content": "color.panel-bg",
+          "fill": "$color.text",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-header-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 220,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.header-bg",
+          "cornerRadius": 8,
+          "stroke": { "align": "inside", "thickness": 1, "fill": "$color.border" }
+        },
+        {
+          "id": "label-header-bg",
+          "type": "text",
+          "x": 236,
+          "y": 236,
+          "content": "color.header-bg",
+          "fill": "$color.text",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-text",
+          "type": "rectangle",
+          "x": 24,
+          "y": 280,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.text",
+          "cornerRadius": 8
+        },
+        {
+          "id": "label-text",
+          "type": "text",
+          "x": 236,
+          "y": 296,
+          "content": "color.text",
+          "fill": "$color.text-secondary",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-text-title",
+          "type": "rectangle",
+          "x": 24,
+          "y": 340,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.text-title",
+          "cornerRadius": 8
+        },
+        {
+          "id": "label-text-title",
+          "type": "text",
+          "x": 236,
+          "y": 356,
+          "content": "color.text-title",
+          "fill": "$color.text-secondary",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-primary",
+          "type": "rectangle",
+          "x": 24,
+          "y": 400,
+          "width": 200,
+          "height": 48,
+          "fill": "$color.primary",
+          "cornerRadius": 8
+        },
+        {
+          "id": "label-primary",
+          "type": "text",
+          "x": 236,
+          "y": 416,
+          "content": "color.primary",
+          "fill": "$color.text",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-success",
+          "type": "rectangle",
+          "x": 24,
+          "y": 460,
+          "width": 96,
+          "height": 40,
+          "fill": "$color.success",
+          "cornerRadius": 8
+        },
+        {
+          "id": "label-success",
+          "type": "text",
+          "x": 24,
+          "y": 508,
+          "content": "success",
+          "fill": "$color.text-secondary",
+          "fontSize": 11,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-warning",
+          "type": "rectangle",
+          "x": 128,
+          "y": 460,
+          "width": 96,
+          "height": 40,
+          "fill": "$color.warning",
+          "cornerRadius": 8
+        },
+        {
+          "id": "label-warning",
+          "type": "text",
+          "x": 128,
+          "y": 508,
+          "content": "warning",
+          "fill": "$color.text-secondary",
+          "fontSize": 11,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "swatch-warning-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 540,
+          "width": 200,
+          "height": 40,
+          "fill": "$color.warning-bg",
+          "cornerRadius": 8,
+          "stroke": { "align": "inside", "thickness": 1, "fill": "$color.warning" }
+        },
+        {
+          "id": "label-warning-bg",
+          "type": "text",
+          "x": 236,
+          "y": 552,
+          "content": "color.warning-bg",
+          "fill": "$color.text-secondary",
+          "fontSize": 13,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "sample-card",
+          "type": "rectangle",
+          "x": 24,
+          "y": 600,
+          "width": 472,
+          "height": 96,
+          "fill": "$color.panel-bg",
+          "cornerRadius": 8,
+          "stroke": { "align": "inside", "thickness": 1, "fill": "$color.border" }
+        },
+        {
+          "id": "sample-card-title",
+          "type": "text",
+          "x": 40,
+          "y": 616,
+          "content": "示例卡片",
+          "fill": "$color.text-title",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "sample-card-body",
+          "type": "text",
+          "x": 40,
+          "y": 642,
+          "content": "次要说明文字",
+          "fill": "$color.text-secondary",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        },
+        {
+          "id": "sample-card-link",
+          "type": "text",
+          "x": 40,
+          "y": 666,
+          "content": "主色链接",
+          "fill": "$color.primary",
+          "fontSize": 12,
+          "textGrowth": "auto"
+        }
+      ]
+    }
+  ]
 }

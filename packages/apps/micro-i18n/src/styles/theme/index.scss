@@ -1,0 +1,57 @@
+@use '../mixin/config' as cfg;
+
+// 与 design/tokens.pen 同步：Pencil 变量 color.* → --{namespace}-*（default=亮色 :root，dark=html.dark）
+$light: (
+  'page-bg': #f0f2f5,
+  'panel-bg': #ffffff,
+  'header-bg': #f5f7fa,
+  'row-stripe-bg': #fafafa,
+  'input-bg': #ffffff,
+  'border': #dcdfe6,
+  'text': #303133,
+  'text-title': #303133,
+  'text-secondary': #909399,
+  'primary': #409eff,
+  'success': #67c23a,
+  'warning': #e6a23c,
+  'warning-bg': #fdf6ec,
+  'radius': 8px,
+  'content-max-width': 1100px
+);
+
+$dark: (
+  'page-bg': #303133,
+  'panel-bg': #1d1e1f,
+  'header-bg': #262727,
+  'row-stripe-bg': #252628,
+  'input-bg': #141414,
+  'border': #606266,
+  'text': #e5eaf3,
+  'text-title': #ffffff,
+  'text-secondary': #a3a6ad,
+  'primary': #409eff,
+  'success': #67c23a,
+  'warning': #e6a23c,
+  'warning-bg': #4a3a1f,
+  'radius': 8px,
+  'content-max-width': 1100px
+);
+
+/// 组件内：background: v('page-bg');  → var(--{namespace}-page-bg)
+@function v($key) {
+  @return var(--#{cfg.$namespace}-#{$key});
+}
+
+@mixin -emit($tokens) {
+  @each $key, $value in $tokens {
+    --#{cfg.$namespace}-#{$key}: #{$value};
+  }
+}
+
+:root {
+  @include -emit($light);
+}
+
+html.dark {
+  @include -emit($dark);
+}

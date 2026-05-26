@@ -1,4 +1,3 @@
-// vite additionalData 注入：设计 token + Element 命名空间（勿 @forward mixin/config，会与 EP $namespace 冲突）
-@forward 'theme/tokens';
-@use 'theme/tokens' as *;
+@forward 'theme/index' show v;
+@use 'theme/index' as *;
 @use 'base/element';

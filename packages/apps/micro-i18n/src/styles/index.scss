@@ -1,6 +1,6 @@
 // index 会被全局引用，不能写需要未编译的功能（如 @mixin）；公共变量请放到 global.scss
 @use './base/index' as *;
-@use 'theme/tokens' as *;
+@use 'theme/index' as *;
 @use 'element-plus/theme-chalk/src/dark/css-vars.scss';
 @use 'element-plus/theme-chalk/src/message.scss';
 @use 'element-plus/theme-chalk/src/message-box.scss';
