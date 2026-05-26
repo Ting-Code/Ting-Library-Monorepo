@@ -7,7 +7,9 @@
 
     <div class="i18n-list__toolbar">
       <el-input v-model="keyword" class="i18n-list__search" clearable placeholder="搜索项目" />
-      <el-button type="primary" @click="dialogVisible = true">＋ 新建项目</el-button>
+      <el-button type="primary" class="i18n-list__btn-new" @click="dialogVisible = true">
+        ＋ 新建项目
+      </el-button>
     </div>
 
     <div class="i18n-list__table-wrap">
@@ -15,9 +17,7 @@
         <el-table-column label="项目" min-width="180">
           <template #default="{ row }">
             <span class="i18n-list__project-name">{{ row.namespace }}</span>
-            <el-tag v-if="row.draft" class="i18n-list__draft-tag" size="small" type="warning">
-              未落盘
-            </el-tag>
+            <el-tag v-if="row.draft" class="i18n-list__draft-tag" size="small"> 未落盘 </el-tag>
           </template>
         </el-table-column>
         <el-table-column label="语言包文件" min-width="360" show-overflow-tooltip>
@@ -28,13 +28,26 @@
         <el-table-column label="词条数" prop="entryCount" width="100" align="center" />
         <el-table-column label="操作" width="100" align="center">
           <template #default="{ row }">
-            <el-button link type="primary" @click.stop="goDetail(row.namespace)">进入</el-button>
+            <el-button
+              link
+              type="primary"
+              class="i18n-list__row-action"
+              @click.stop="goDetail(row.namespace)"
+            >
+              进入
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
 
-    <el-dialog v-model="dialogVisible" title="新建项目" width="440px" @closed="resetDialog">
+    <el-dialog
+      v-model="dialogVisible"
+      class="i18n-list__dialog"
+      title="新建项目"
+      width="440px"
+      @closed="resetDialog"
+    >
       <el-form label-width="72px" @submit.prevent="submitNewProject">
         <el-form-item label="项目名称">
           <el-input
@@ -154,6 +167,27 @@
     &__search {
       flex: 1;
       max-width: 860px;
+
+      :deep(.el-input__wrapper) {
+        min-height: 36px;
+        background-color: v('input-bg');
+        border-radius: 4px;
+        box-shadow: 0 0 0 1px v('border') inset;
+      }
+
+      :deep(.el-input__inner) {
+        color: v('text');
+      }
+
+      :deep(.el-input__inner::placeholder) {
+        color: v('text-secondary');
+      }
+    }
+
+    &__btn-new {
+      min-height: 36px;
+      border-radius: 4px;
+      font-weight: 600;
     }
 
     &__table-wrap {
@@ -174,6 +208,11 @@
         --el-fill-color-lighter: #{v('row-stripe-bg')};
       }
 
+      :deep(.el-table__header th) {
+        font-size: 13px;
+        font-weight: 600;
+      }
+
       :deep(.el-table__row) {
         cursor: pointer;
       }
@@ -181,11 +220,15 @@
 
     &__project-name {
       font-weight: 600;
+      color: v('text');
       margin-right: 8px;
     }
 
     &__draft-tag {
       vertical-align: middle;
+      --el-tag-bg-color: #{v('warning-bg')};
+      --el-tag-border-color: #{v('warning')};
+      --el-tag-text-color: #{v('warning')};
     }
 
     &__files {
@@ -193,11 +236,57 @@
       color: v('text-secondary');
     }
 
+    &__row-action {
+      font-size: 14px;
+    }
+
     &__dialog-hint {
       margin: 0;
       padding-left: 72px;
       font-size: 11px;
       color: v('text-secondary');
+    }
+  }
+</style>
+
+<!-- 弹窗 teleport 到 body，需非 scoped -->
+<style lang="scss">
+  .i18n-list__dialog.el-dialog {
+    border-radius: v('radius');
+    border: 1px solid v('primary');
+    background: v('panel-bg');
+
+    .el-dialog__header {
+      padding-bottom: 8px;
+    }
+
+    .el-dialog__title {
+      font-size: 14px;
+      font-weight: 600;
+      color: v('text-title');
+    }
+
+    .el-dialog__body {
+      color: v('text');
+    }
+
+    .el-form-item__label {
+      font-size: 12px;
+      color: v('text-secondary');
+    }
+
+    .el-input__wrapper {
+      background-color: v('input-bg');
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px v('border') inset;
+    }
+
+    .el-input__inner {
+      color: v('text');
+
+      &::placeholder {
+        color: v('border');
+      }
     }
   }
 </style>

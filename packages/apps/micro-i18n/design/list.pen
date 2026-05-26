@@ -2,47 +2,51 @@
   "version": "2.11",
   "children": [
     {
-      "id": "route-list",
       "type": "frame",
-      "name": "list → src/views/list/index.vue（选项目，非选语言）",
+      "id": "route-list",
       "x": 0,
       "y": 0,
+      "name": "list → src/views/list/index.vue（选项目，非选语言）",
+      "theme": {
+        "mode": "default"
+      },
+      "clip": true,
       "width": 1100,
       "height": 680,
       "fill": "$color.page-bg",
       "layout": "none",
-      "clip": true,
       "children": [
         {
-          "id": "title",
           "type": "text",
+          "id": "title",
           "x": 24,
           "y": 20,
-          "content": "✏️ 文案编辑",
           "fill": "$color.text-title",
+          "content": "✏️ 文案编辑",
+          "fontFamily": "Inter",
           "fontSize": 20,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "link-docs",
           "type": "text",
+          "id": "link-docs",
           "x": 920,
           "y": 24,
-          "content": "🌐 国际化说明",
           "fill": "$color.primary",
+          "content": "🌐 国际化说明",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "search-box",
           "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "search-box",
           "x": 24,
           "y": 60,
+          "fill": "$color.input-bg",
           "width": 860,
           "height": 36,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
           "stroke": {
             "align": "inside",
             "thickness": 1,
@@ -50,45 +54,46 @@
           }
         },
         {
-          "id": "search-placeholder",
           "type": "text",
+          "id": "search-placeholder",
           "x": 40,
           "y": 70,
-          "content": "搜索项目",
           "fill": "$color.text-secondary",
+          "content": "搜索项目",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "btn-new-project",
           "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "btn-new-project",
           "x": 900,
           "y": 60,
-          "width": 176,
-          "height": 36,
           "fill": "$color.primary",
-          "cornerRadius": 4
+          "width": 176,
+          "height": 36
         },
         {
-          "id": "btn-new-project-label",
           "type": "text",
+          "id": "btn-new-project-label",
           "x": 948,
           "y": 70,
-          "content": "＋ 新建项目",
           "fill": "$color.text-title",
+          "content": "＋ 新建项目",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "table-panel",
           "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "table-panel",
           "x": 24,
           "y": 112,
+          "fill": "$color.panel-bg",
           "width": 1052,
           "height": 400,
-          "fill": "$color.panel-bg",
-          "cornerRadius": 8,
           "stroke": {
             "align": "inside",
             "thickness": 1,
@@ -96,129 +101,132 @@
           }
         },
         {
-          "id": "table-head-bg",
           "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "table-head-bg",
           "x": 24,
           "y": 112,
-          "width": 1052,
-          "height": 44,
           "fill": "$color.header-bg",
-          "cornerRadius": 8
+          "width": 1052,
+          "height": 44
         },
         {
-          "id": "th-project",
           "type": "text",
+          "id": "th-project",
           "x": 40,
           "y": 126,
-          "content": "项目",
           "fill": "$color.text-secondary",
+          "content": "项目",
+          "fontFamily": "Inter",
           "fontSize": 13,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "th-files",
           "type": "text",
+          "id": "th-files",
           "x": 220,
           "y": 126,
-          "content": "语言包文件",
           "fill": "$color.text-secondary",
+          "content": "语言包文件",
+          "fontFamily": "Inter",
           "fontSize": 13,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "th-count",
           "type": "text",
+          "id": "th-count",
           "x": 640,
           "y": 126,
-          "content": "词条数",
           "fill": "$color.text-secondary",
+          "content": "词条数",
+          "fontFamily": "Inter",
           "fontSize": 13,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "th-action",
           "type": "text",
+          "id": "th-action",
           "x": 980,
           "y": 126,
-          "content": "操作",
           "fill": "$color.text-secondary",
+          "content": "操作",
+          "fontFamily": "Inter",
           "fontSize": 13,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "row1-bg",
           "type": "rectangle",
+          "id": "row1-bg",
           "x": 24,
           "y": 156,
+          "fill": "$color.row-stripe-bg",
           "width": 1052,
-          "height": 48,
-          "fill": "$color.row-stripe-bg"
+          "height": 48
         },
         {
-          "id": "row1-project",
           "type": "text",
+          "id": "row1-project",
           "x": 40,
           "y": 172,
-          "content": "layout",
           "fill": "$color.text",
+          "content": "layout",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "row1-files",
           "type": "text",
+          "id": "row1-files",
           "x": 220,
           "y": 174,
-          "content": "zh-CN/layout.json · en/layout.json",
           "fill": "$color.text-secondary",
+          "content": "zh-CN/layout.json · en/layout.json",
+          "fontFamily": "Inter",
           "fontSize": 12,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row1-count",
           "type": "text",
+          "id": "row1-count",
           "x": 640,
           "y": 172,
-          "content": "5",
           "fill": "$color.text",
+          "content": "5",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row1-action",
           "type": "text",
+          "id": "row1-action",
           "x": 980,
           "y": 172,
-          "content": "进入",
           "fill": "$color.primary",
+          "content": "进入",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row2-project",
           "type": "text",
+          "id": "row2-project",
           "x": 40,
           "y": 224,
-          "content": "common",
           "fill": "$color.text",
+          "content": "common",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "row2-draft-tag",
           "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "row2-draft-tag",
           "x": 108,
           "y": 220,
+          "fill": "$color.warning-bg",
           "width": 56,
           "height": 22,
-          "fill": "$color.warning-bg",
-          "cornerRadius": 4,
           "stroke": {
             "align": "inside",
             "thickness": 1,
@@ -226,54 +234,58 @@
           }
         },
         {
-          "id": "row2-draft-label",
           "type": "text",
+          "id": "row2-draft-label",
           "x": 116,
           "y": 224,
-          "content": "未落盘",
           "fill": "$color.warning",
+          "content": "未落盘",
+          "fontFamily": "Inter",
           "fontSize": 11,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row2-files",
           "type": "text",
+          "id": "row2-files",
           "x": 220,
           "y": 226,
-          "content": "zh-CN/common.json · en/common.json",
           "fill": "$color.text-secondary",
+          "content": "zh-CN/common.json · en/common.json",
+          "fontFamily": "Inter",
           "fontSize": 12,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row2-count",
           "type": "text",
+          "id": "row2-count",
           "x": 640,
           "y": 224,
-          "content": "0",
           "fill": "$color.text",
+          "content": "0",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "row2-action",
           "type": "text",
+          "id": "row2-action",
           "x": 980,
           "y": 224,
-          "content": "进入",
           "fill": "$color.primary",
+          "content": "进入",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "dialog-preview",
           "type": "rectangle",
+          "cornerRadius": 8,
+          "id": "dialog-preview",
           "x": 24,
           "y": 530,
+          "fill": "$color.panel-bg",
           "width": 440,
           "height": 130,
-          "fill": "$color.panel-bg",
-          "cornerRadius": 8,
           "stroke": {
             "align": "inside",
             "thickness": 1,
@@ -281,35 +293,36 @@
           }
         },
         {
-          "id": "dialog-title",
           "type": "text",
+          "id": "dialog-title",
           "x": 40,
           "y": 544,
-          "content": "新建项目（弹窗）",
           "fill": "$color.text-title",
+          "content": "新建项目（弹窗）",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
+          "fontWeight": "600"
         },
         {
-          "id": "dialog-label",
           "type": "text",
+          "id": "dialog-label",
           "x": 40,
           "y": 576,
-          "content": "项目名称",
           "fill": "$color.text-secondary",
+          "content": "项目名称",
+          "fontFamily": "Inter",
           "fontSize": 12,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "dialog-input",
           "type": "rectangle",
+          "cornerRadius": 4,
+          "id": "dialog-input",
           "x": 112,
           "y": 568,
+          "fill": "$color.input-bg",
           "width": 280,
           "height": 28,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
           "stroke": {
             "align": "inside",
             "thickness": 1,
@@ -317,34 +330,37 @@
           }
         },
         {
-          "id": "dialog-input-ph",
           "type": "text",
+          "id": "dialog-input-ph",
           "x": 124,
           "y": 576,
-          "content": "如 common、user",
           "fill": "$color.border",
+          "content": "如 common、user",
+          "fontFamily": "Inter",
           "fontSize": 12,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "dialog-hint",
           "type": "text",
+          "id": "dialog-hint",
           "x": 40,
           "y": 608,
-          "content": "→ 各语言目录新增 {语言}/{项目}.json",
           "fill": "$color.text-secondary",
+          "content": "→ 各语言目录新增 {语言}/{项目}.json",
+          "fontFamily": "Inter",
           "fontSize": 11,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         },
         {
-          "id": "note-flow",
           "type": "text",
+          "id": "note-flow",
           "x": 500,
           "y": 548,
-          "content": "点击项目行 → 进入 detail.pen 详情页（树 + 多语言编辑）",
           "fill": "$color.success",
+          "content": "点击项目行 → 进入 detail.pen 详情页（树 + 多语言编辑）",
+          "fontFamily": "Inter",
           "fontSize": 12,
-          "textGrowth": "auto"
+          "fontWeight": "normal"
         }
       ]
     }
