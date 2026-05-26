@@ -35,6 +35,8 @@ export default defineConfig(({ command }) => ({
         api: 'modern-compiler',
         additionalData: `
           @use "@/styles/global.scss" as *;
+          @use "element-plus/theme-chalk/src/mixins/mixins" as *;
+          @use "element-plus/theme-chalk/src/mixins/function" as *;
         `
       }
     }

@@ -22,9 +22,9 @@ Object.keys(modules).forEach((key) => {
 })
 
 export const constantRouter = [
+  ...publicRoutes,
   ...routeModuleList,
-  { path: '/:pathMatch(.*)*', redirect: '/list' },
-  ...publicRoutes
+  { path: '/:pathMatch(.*)*', redirect: '/list' }
 ] as RouteRecordRaw[]
 
 let router: Router | null = null

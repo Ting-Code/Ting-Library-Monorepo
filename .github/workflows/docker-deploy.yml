@@ -32,6 +32,9 @@ jobs:
       - name: build @apps/micro-docs
         run: pnpm --filter @apps/micro-docs... build
 
+      - name: build @apps/micro-i18n
+        run: pnpm --filter @apps/micro-i18n... build
+
       - name: build @apps/micro-modeling
         run: pnpm --filter @apps/micro-modeling... build
 
