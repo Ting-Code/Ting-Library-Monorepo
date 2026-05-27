@@ -5,254 +5,48 @@
       "id": "route-detail",
       "type": "frame",
       "name": "Route /i18n/editor/:namespace → src/views/detail/index.vue",
-      "x": 80,
-      "y": 80,
+      "x": 0,
+      "y": 0,
       "width": 1200,
       "height": 760,
       "fill": "$color.page-bg",
       "layout": "none",
       "clip": true,
+      "theme": {
+        "mode": "default"
+      },
       "children": [
         {
           "id": "back-title",
           "type": "text",
           "x": 24,
-          "y": 24,
+          "y": 20,
           "content": "← 项目 · layout",
           "fill": "$color.text-title",
-          "fontSize": 18,
+          "fontFamily": "Inter",
+          "fontSize": 20,
           "fontWeight": "600",
           "textGrowth": "auto"
         },
         {
-          "id": "tag-project",
+          "id": "btn-delete-project",
           "type": "text",
-          "x": 24,
-          "y": 58,
-          "content": "项目：layout",
-          "fill": "$color.text-secondary",
-          "fontSize": 12,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tag-zh",
-          "type": "rectangle",
-          "x": 120,
-          "y": 54,
-          "width": 64,
-          "height": 24,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.primary"
-          }
-        },
-        {
-          "id": "tag-zh-label",
-          "type": "text",
-          "x": 132,
-          "y": 60,
-          "content": "zh-CN",
-          "fill": "$color.primary",
-          "fontSize": 12,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tag-en",
-          "type": "rectangle",
-          "x": 192,
-          "y": 54,
-          "width": 48,
-          "height": 24,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.primary"
-          }
-        },
-        {
-          "id": "tag-en-label",
-          "type": "text",
-          "x": 202,
-          "y": 60,
-          "content": "en",
-          "fill": "$color.primary",
-          "fontSize": 12,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tag-count",
-          "type": "text",
-          "x": 256,
-          "y": 60,
-          "content": "5 条词条",
-          "fill": "$color.success",
-          "fontSize": 12,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tree-panel",
-          "type": "rectangle",
-          "x": 24,
-          "y": 96,
-          "width": 440,
-          "height": 560,
-          "fill": "$color.panel-bg",
-          "cornerRadius": 8,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.border"
-          }
-        },
-        {
-          "id": "tree-hint",
-          "type": "text",
-          "x": 36,
-          "y": 108,
-          "content": "分组可添加子词条；选中叶子后在右侧编辑各语言",
-          "fill": "$color.text-secondary",
-          "fontSize": 11,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tree-group-settings",
-          "type": "text",
-          "x": 36,
-          "y": 136,
-          "content": "▾ settings",
-          "fill": "$color.text",
+          "x": 888,
+          "y": 30,
+          "content": "删除项目",
+          "fill": "#f56c6c",
+          "fontFamily": "Inter",
           "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tree-add-btn",
-          "type": "text",
-          "x": 320,
-          "y": 138,
-          "content": "添加子词条",
-          "fill": "$color.primary",
-          "fontSize": 12,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "tree-leaf-title",
-          "type": "text",
-          "x": 52,
-          "y": 168,
-          "content": "title",
-          "fill": "$color.primary",
-          "fontSize": 13,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "editor-panel",
-          "type": "rectangle",
-          "x": 480,
-          "y": 96,
-          "width": 696,
-          "height": 560,
-          "fill": "$color.panel-bg",
-          "cornerRadius": 8,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.border"
-          }
-        },
-        {
-          "id": "editor-title",
-          "type": "text",
-          "x": 496,
-          "y": 112,
-          "content": "词条：settings.title",
-          "fill": "$color.text-title",
-          "fontSize": 14,
-          "fontWeight": "600",
-          "textGrowth": "auto"
-        },
-        {
-          "id": "editor-zh-label",
-          "type": "text",
-          "x": 496,
-          "y": 152,
-          "content": "zh-CN",
-          "fill": "$color.text-secondary",
-          "fontSize": 13,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "editor-zh-input",
-          "type": "rectangle",
-          "x": 568,
-          "y": 144,
-          "width": 592,
-          "height": 32,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.border"
-          }
-        },
-        {
-          "id": "editor-zh-value",
-          "type": "text",
-          "x": 580,
-          "y": 152,
-          "content": "系统设置",
-          "fill": "$color.text",
-          "fontSize": 13,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "editor-en-label",
-          "type": "text",
-          "x": 496,
-          "y": 192,
-          "content": "en",
-          "fill": "$color.text-secondary",
-          "fontSize": 13,
-          "textGrowth": "auto"
-        },
-        {
-          "id": "editor-en-input",
-          "type": "rectangle",
-          "x": 568,
-          "y": 184,
-          "width": 592,
-          "height": 32,
-          "fill": "$color.input-bg",
-          "cornerRadius": 4,
-          "stroke": {
-            "align": "inside",
-            "thickness": 1,
-            "fill": "$color.border"
-          }
-        },
-        {
-          "id": "editor-en-value",
-          "type": "text",
-          "x": 580,
-          "y": 192,
-          "content": "Settings",
-          "fill": "$color.text",
-          "fontSize": 13,
+          "fontWeight": "normal",
           "textGrowth": "auto"
         },
         {
           "id": "btn-reset",
           "type": "rectangle",
-          "x": 24,
-          "y": 672,
+          "x": 1000,
+          "y": 20,
           "width": 72,
-          "height": 32,
+          "height": 36,
           "fill": "$color.panel-bg",
           "cornerRadius": 4,
           "stroke": {
@@ -264,31 +58,372 @@
         {
           "id": "btn-reset-label",
           "type": "text",
-          "x": 44,
-          "y": 680,
+          "x": 1022,
+          "y": 30,
           "content": "重置",
           "fill": "$color.text",
-          "fontSize": 13,
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal",
           "textGrowth": "auto"
         },
         {
           "id": "btn-export",
           "type": "rectangle",
-          "x": 108,
-          "y": 672,
-          "width": 120,
-          "height": 32,
+          "x": 1104,
+          "y": 20,
+          "width": 72,
+          "height": 36,
           "fill": "$color.primary",
           "cornerRadius": 4
         },
         {
           "id": "btn-export-label",
           "type": "text",
-          "x": 120,
-          "y": 680,
-          "content": "导出全部语言",
+          "x": 1126,
+          "y": 30,
+          "content": "导出",
           "fill": "$color.text-title",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-panel",
+          "type": "rectangle",
+          "x": 24,
+          "y": 68,
+          "width": 360,
+          "height": 668,
+          "fill": "$color.panel-bg",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color.border"
+          }
+        },
+        {
+          "id": "tree-header-bg",
+          "type": "rectangle",
+          "x": 24,
+          "y": 68,
+          "width": 360,
+          "height": 44,
+          "fill": "$color.header-bg",
+          "cornerRadius": 8
+        },
+        {
+          "id": "tree-header-divider",
+          "type": "rectangle",
+          "x": 24,
+          "y": 112,
+          "width": 360,
+          "height": 1,
+          "fill": "$color.border"
+        },
+        {
+          "id": "tree-header-title",
+          "type": "text",
+          "x": 40,
+          "y": 83,
+          "content": "词条树",
+          "fill": "$color.text-secondary",
+          "fontFamily": "Inter",
           "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-add-group-btn",
+          "type": "text",
+          "x": 268,
+          "y": 83,
+          "content": "＋ 添加词条组",
+          "fill": "$color.primary",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-hint",
+          "type": "text",
+          "x": 40,
+          "y": 124,
+          "content": "顶部添加词条组 · 组旁 ＋ 加子词条 · 复制/删除 · 右侧编辑各语言",
+          "fill": "$color.text-secondary",
+          "fontFamily": "Inter",
+          "fontSize": 11,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-group-row-bg",
+          "type": "rectangle",
+          "x": 32,
+          "y": 148,
+          "width": 344,
+          "height": 36,
+          "fill": "$color.header-bg",
+          "cornerRadius": 4
+        },
+        {
+          "id": "tree-group-settings",
+          "type": "text",
+          "x": 48,
+          "y": 159,
+          "content": "▾ settings",
+          "fill": "$color.text",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-group-settings-delete",
+          "type": "text",
+          "x": 296,
+          "y": 159,
+          "content": "删除",
+          "fill": "#f56c6c",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-group-settings-add",
+          "type": "rectangle",
+          "x": 344,
+          "y": 154,
+          "width": 24,
+          "height": 24,
+          "fill": "$color.input-bg",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color.primary"
+          }
+        },
+        {
+          "id": "tree-group-settings-add-label",
+          "type": "text",
+          "x": 351,
+          "y": 157,
+          "content": "＋",
+          "fill": "$color.primary",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-selected-bg",
+          "type": "rectangle",
+          "x": 32,
+          "y": 188,
+          "width": 344,
+          "height": 36,
+          "fill": "$color.row-stripe-bg",
+          "cornerRadius": 4
+        },
+        {
+          "id": "tree-leaf-title",
+          "type": "text",
+          "x": 64,
+          "y": 199,
+          "content": "title",
+          "fill": "$color.primary",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-title-copy",
+          "type": "text",
+          "x": 280,
+          "y": 199,
+          "content": "复制",
+          "fill": "$color.primary",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-title-delete",
+          "type": "text",
+          "x": 328,
+          "y": 199,
+          "content": "删除",
+          "fill": "#f56c6c",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-desc",
+          "type": "text",
+          "x": 64,
+          "y": 235,
+          "content": "desc",
+          "fill": "$color.text-secondary",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-desc-copy",
+          "type": "text",
+          "x": 280,
+          "y": 235,
+          "content": "复制",
+          "fill": "$color.primary",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "tree-leaf-desc-delete",
+          "type": "text",
+          "x": 328,
+          "y": 235,
+          "content": "删除",
+          "fill": "#f56c6c",
+          "fontFamily": "Inter",
+          "fontSize": 12,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-panel",
+          "type": "rectangle",
+          "x": 400,
+          "y": 68,
+          "width": 776,
+          "height": 668,
+          "fill": "$color.panel-bg",
+          "cornerRadius": 8,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color.border"
+          }
+        },
+        {
+          "id": "editor-header-bg",
+          "type": "rectangle",
+          "x": 400,
+          "y": 68,
+          "width": 776,
+          "height": 44,
+          "fill": "$color.header-bg",
+          "cornerRadius": 8
+        },
+        {
+          "id": "editor-header-divider",
+          "type": "rectangle",
+          "x": 400,
+          "y": 112,
+          "width": 776,
+          "height": 1,
+          "fill": "$color.border"
+        },
+        {
+          "id": "editor-title",
+          "type": "text",
+          "x": 416,
+          "y": 83,
+          "content": "编辑 · settings.title",
+          "fill": "$color.text-title",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-zh-label",
+          "type": "text",
+          "x": 416,
+          "y": 143,
+          "content": "zh-CN",
+          "fill": "$color.text-secondary",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-zh-input",
+          "type": "rectangle",
+          "x": 480,
+          "y": 132,
+          "width": 680,
+          "height": 36,
+          "fill": "$color.input-bg",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color.border"
+          }
+        },
+        {
+          "id": "editor-zh-value",
+          "type": "text",
+          "x": 492,
+          "y": 142,
+          "content": "系统设置",
+          "fill": "$color.text",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-en-label",
+          "type": "text",
+          "x": 416,
+          "y": 207,
+          "content": "en",
+          "fill": "$color.text-secondary",
+          "fontFamily": "Inter",
+          "fontSize": 13,
+          "fontWeight": "600",
+          "textGrowth": "auto"
+        },
+        {
+          "id": "editor-en-input",
+          "type": "rectangle",
+          "x": 480,
+          "y": 196,
+          "width": 680,
+          "height": 36,
+          "fill": "$color.input-bg",
+          "cornerRadius": 4,
+          "stroke": {
+            "align": "inside",
+            "thickness": 1,
+            "fill": "$color.border"
+          }
+        },
+        {
+          "id": "editor-en-value",
+          "type": "text",
+          "x": 492,
+          "y": 206,
+          "content": "Settings",
+          "fill": "$color.text",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal",
           "textGrowth": "auto"
         }
       ]

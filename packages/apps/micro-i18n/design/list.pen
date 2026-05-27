@@ -198,11 +198,22 @@
         },
         {
           "type": "text",
-          "id": "row1-action",
-          "x": 980,
+          "id": "row1-action-enter",
+          "x": 940,
           "y": 172,
           "fill": "$color.primary",
           "content": "进入",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "row1-action-delete",
+          "x": 1000,
+          "y": 172,
+          "fill": "#f56c6c",
+          "content": "删除",
           "fontFamily": "Inter",
           "fontSize": 14,
           "fontWeight": "normal"
@@ -268,11 +279,22 @@
         },
         {
           "type": "text",
-          "id": "row2-action",
-          "x": 980,
+          "id": "row2-action-enter",
+          "x": 940,
           "y": 224,
           "fill": "$color.primary",
           "content": "进入",
+          "fontFamily": "Inter",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "row2-action-delete",
+          "x": 1000,
+          "y": 224,
+          "fill": "#f56c6c",
+          "content": "删除",
           "fontFamily": "Inter",
           "fontSize": 14,
           "fontWeight": "normal"

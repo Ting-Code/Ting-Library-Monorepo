@@ -26,7 +26,7 @@
           </template>
         </el-table-column>
         <el-table-column label="词条数" prop="entryCount" width="100" align="center" />
-        <el-table-column label="操作" width="100" align="center">
+        <el-table-column label="操作" width="140" align="center">
           <template #default="{ row }">
             <el-button
               link
@@ -35,6 +35,14 @@
               @click.stop="goDetail(row.namespace)"
             >
               进入
+            </el-button>
+            <el-button
+              link
+              type="danger"
+              class="i18n-list__row-action"
+              @click.stop="onDeleteProject(row)"
+            >
+              删除
             </el-button>
           </template>
         </el-table-column>
@@ -70,8 +78,8 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { useRouter } from 'vue-router'
-  import { ElMessage } from 'element-plus'
-  import { addDraftProject, loadI18nProjects } from '@/utils/locale-files'
+  import { ElMessage, ElMessageBox } from 'element-plus'
+  import { addDraftProject, loadI18nProjects, removeProject } from '@/utils/locale-files'
 
   const router = useRouter()
   const keyword = ref('')
@@ -95,6 +103,27 @@
 
   function onRowClick(row: { namespace: string }) {
     goDetail(row.namespace)
+  }
+
+  async function onDeleteProject(row: { namespace: string; draft?: boolean }) {
+    try {
+      await ElMessageBox.confirm(
+        row.draft
+          ? `确定删除草稿项目「${row.namespace}」？`
+          : `确定从列表移除「${row.namespace}」？已落盘项目还需手动删除仓库中的 JSON 文件。`,
+        '删除项目',
+        { type: 'warning', confirmButtonText: '删除', cancelButtonText: '取消' }
+      )
+    } catch {
+      return
+    }
+    const { needManualFileDelete } = removeProject(row.namespace)
+    refreshProjects()
+    ElMessage.success(
+      needManualFileDelete
+        ? '已从列表移除，请手动删除 locales 目录下对应 JSON 并提交 Git'
+        : '已删除项目'
+    )
   }
 
   function resetDialog() {
