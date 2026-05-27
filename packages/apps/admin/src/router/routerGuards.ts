@@ -8,6 +8,7 @@ import { useUserStoreWidthOut } from '@/store/modules/user'
 import { PageEnum, getGlobalStorageToken, getUserInfo } from '@tingcode/system'
 import { IMenu } from '@tingcode/system/apiSystem'
 import type { AppRouteRecordRaw } from '@tingcode/system'
+import { devMicroUrlMap } from '@tingcode/system'
 const LayoutMap = new Map<string, () => Promise<typeof import('*.vue')>>()
 const ParentLayout = () => import('@/views/layouts/parentLayout/index.vue')
 const Iframe = () => import('@/views/common/iframe/index.vue')
@@ -159,6 +160,16 @@ export function moduleChildRoutePath(moduleKey: string, menuPath: string) {
   return menuPath
 }
 
+/** 微应用模块：/{module}/* 全部走 Micro 容器，子路径由子应用自己路由 */
+function createMicroModuleCatchAllChild(moduleKey: string): AppRouteRecordRaw {
+  return {
+    name: `${moduleKey}_micro_sub`,
+    path: ':pathMatch(.*)*',
+    meta: { module: moduleKey, title: moduleKey },
+    component: `${moduleKey}_micro_sub`
+  }
+}
+
 /**
  * 按module来分组，没有module的分为admin组
  * @param menu 树形菜单结构
@@ -185,14 +196,17 @@ export function transRouter(menu: IMenu[]): AppRouteRecordRaw[] {
     component: 'LAYOUT',
     path: `/${key}`,
     redirect: grouped[key]?.[0]?.path || '/',
-    children: grouped[key].map((item) => {
-      const { path: menuPath, ...rest } = item
-      return {
-        ...rest,
-        component: item?.name,
-        path: moduleChildRoutePath(key, menuPath || '')
-      }
-    })
+    children: [
+      ...grouped[key].map((item) => {
+        const { path: menuPath, ...rest } = item
+        return {
+          ...rest,
+          component: item?.name,
+          path: moduleChildRoutePath(key, menuPath || '')
+        }
+      }),
+      ...(key in devMicroUrlMap ? [createMicroModuleCatchAllChild(key)] : [])
+    ]
   }))
 }
 

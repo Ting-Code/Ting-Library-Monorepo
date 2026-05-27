@@ -150,7 +150,12 @@ export function findRouteMatched(path: string, menu: IMenu[]) {
       if (matchedItem && matchedItem.length > 0) {
         matched = [menuItem, ...matchedItem]
       }
-    } else if (menuItem.path === path) {
+    } else if (
+      menuItem.path === path ||
+      (menuItem.meta?.module &&
+        menuItem.path &&
+        path.startsWith(`${menuItem.path.replace(/\/+$/, '')}/`))
+    ) {
       matched.push(menuItem)
     }
   })

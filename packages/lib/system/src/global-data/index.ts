@@ -34,7 +34,7 @@ export function getMicroAppFn() {
 
 export function getMainWindow(): Window {
   const namespace = window?.namespace
-  return namespace === 'admin' ? window : window.rawWindow
+  return namespace === 'admin' ? window : window.rawWindow ?? window
 }
 
 export function getGlobalData() {

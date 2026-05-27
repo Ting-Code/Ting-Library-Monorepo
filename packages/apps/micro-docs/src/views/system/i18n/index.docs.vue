@@ -101,9 +101,7 @@ JSON 结构：**顶层 key = 词条组**，其下 **叶子 key = 子词条**（�
 
 1. 启动时 `setupI18n(app)`：读持久化语言 → `resolveInitialLocale()` → `init()`。
 2. 用户在设置抽屉切换语言 → `changeLocale()` → 内部 `onLocaleChange` → **`emitLocale`** 广播。
-3. 组件内 `const { t } = useI18n()` 或 `useI18n('layout')`，模板 `{{
-          t('layout.settings.title')
-        }}`。
+3. 组件内 `const { t } = useI18n()` 或 `useI18n('layout')`，模板中写 `t('layout.settings.title')` 即可。
 
 ### 2.6 子应用用法（micro-i18n 等）
 

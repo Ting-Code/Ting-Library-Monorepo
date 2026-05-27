@@ -17,7 +17,49 @@ export const proMicroUrlMap = {
   modeling: 'http://159.75.104.173/micro/modeling/',
   nexus: 'http://159.75.104.173/micro/nexus/'
 }
+export const MICRO_MODULE_KEYS = Object.keys(devMicroUrlMap)
+
 const IFRAME = ['docs', 'i18n', 'modeling', 'nexus']
+
+const normPath = (p?: string) => (p && p !== '/' ? p.replace(/\/+$/, '') : p || '/')
+
+export function isMicroModuleKey(moduleKey: string): boolean {
+  return Object.prototype.hasOwnProperty.call(devMicroUrlMap, moduleKey)
+}
+
+/** 按 URL 前缀解析微应用模块，如 /docs/visual/flow → docs */
+export function resolveMicroModuleByPath(pathname?: string): string | undefined {
+  const current = normPath(pathname)
+  return MICRO_MODULE_KEYS.find((module) => {
+    const base = `/${module}`
+    return current === base || current.startsWith(`${base}/`)
+  })
+}
+
+/** 菜单 path 精确/前缀匹配；未登记子路由时按 /{module}/ 前缀回落到对应微应用 */
+export function findAuthRouteByPath(
+  pathname: string | undefined,
+  auth?: { path?: string; meta?: { module?: string } }[]
+) {
+  if (!pathname) return undefined
+  const current = normPath(pathname)
+  if (auth?.length) {
+    const exact = auth.find((r) => normPath(r.path) === current)
+    if (exact) return exact
+    const byMenuPrefix = auth
+      .filter((r) => {
+        const base = normPath(r.path)
+        return r.meta?.module && base !== '/' && current.startsWith(`${base}/`)
+      })
+      .sort((a, b) => normPath(b.path).length - normPath(a.path).length)[0]
+    if (byMenuPrefix) return byMenuPrefix
+  }
+  const module = resolveMicroModuleByPath(pathname)
+  if (module) {
+    return { path: current, meta: { module } }
+  }
+  return undefined
+}
 
 export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
   const url = getUrl()
@@ -31,8 +73,7 @@ export const useMicro = (module?: keyof typeof devMicroUrlMap) => {
       isIframe: IFRAME.includes(module)
     }
   }
-  const norm = (p?: string) => (p && p !== '/' ? p.replace(/\/+$/, '') : p || '/')
-  const route = auth?.find((r) => norm(r.path) === norm(url?.pathname))
+  const route = findAuthRouteByPath(url?.pathname, auth)
   if (route && route?.meta?.module && ENV?.env) {
     return {
       name: route.meta.module,
