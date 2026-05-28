@@ -1,6 +1,7 @@
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 
+import { ShellBackButton } from '@/components/layout/ShellBackButton'
 import { TabBar } from '@/components/layout/TabBar'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
 import { cn } from '@/lib/utils'
@@ -11,6 +12,7 @@ export function MobileShell({
   hideTabBar = false,
   showBack = false,
   backHref = '/',
+  backMode = 'link',
   className,
   mainClassName
 }: {
@@ -19,6 +21,8 @@ export function MobileShell({
   hideTabBar?: boolean
   /** 二级页左上角返回 */
   showBack?: boolean
+  /** `history`：router.back()，无历史时回 fallback；`link`：固定跳转 backHref */
+  backMode?: 'history' | 'link'
   backHref?: string
   className?: string
   /** 默认整页滚动；传 min-h-0 overflow-hidden 供子级中间区域滚动 */
@@ -44,16 +48,20 @@ export function MobileShell({
         )}
       >
         {showBack ? (
-          <Link
-            href={backHref}
-            aria-label="返回"
-            className={cn(
-              'inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full',
-              'text-foreground transition-colors active:bg-muted'
-            )}
-          >
-            <ChevronLeft className="h-6 w-6" strokeWidth={2} aria-hidden />
-          </Link>
+          backMode === 'history' ? (
+            <ShellBackButton fallbackHref={backHref} />
+          ) : (
+            <Link
+              href={backHref}
+              aria-label="返回"
+              className={cn(
+                'inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full',
+                'text-foreground transition-colors active:bg-muted'
+              )}
+            >
+              <ChevronLeft className="h-6 w-6" strokeWidth={2} aria-hidden />
+            </Link>
+          )
         ) : null}
         <h1
           className={cn(

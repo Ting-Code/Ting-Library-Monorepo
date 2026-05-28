@@ -1,6 +1,7 @@
 'use client'
 
 import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react'
+import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { cn } from '@/lib/utils'
@@ -204,51 +205,54 @@ export function DividendRankView({ dividend }: { dividend: Dividend2025Data }) {
           <ul className="flex flex-col gap-2 pb-1">
             {pageRows.map((row) => {
               const rank = rankByCode.get(row.code) ?? 0
+              const klineHref = `/kline/${row.code}?name=${encodeURIComponent(row.name)}`
               return (
-                <li
-                  key={row.code}
-                  className="rounded-2xl border border-border/80 bg-card px-3 py-3 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={cn(
-                            'flex h-6 min-w-6 shrink-0 items-center justify-center rounded-md px-1 text-xs font-semibold',
-                            rank <= 3
-                              ? 'bg-primary/15 text-primary'
-                              : 'bg-muted text-muted-foreground'
-                          )}
-                        >
-                          {rank}
-                        </span>
-                        <span className="truncate text-[15px] font-semibold text-foreground">
-                          {row.name}
-                        </span>
+                <li key={row.code}>
+                  <Link
+                    href={klineHref}
+                    className="block rounded-2xl border border-border/80 bg-card px-3 py-3 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition-colors active:bg-muted/40"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2">
+                          <span
+                            className={cn(
+                              'flex h-6 min-w-6 shrink-0 items-center justify-center rounded-md px-1 text-xs font-semibold',
+                              rank <= 3
+                                ? 'bg-primary/15 text-primary'
+                                : 'bg-muted text-muted-foreground'
+                            )}
+                          >
+                            {rank}
+                          </span>
+                          <span className="truncate text-[15px] font-semibold text-foreground">
+                            {row.name}
+                          </span>
+                        </div>
+                        <p className="mt-1 pl-8 text-xs text-muted-foreground">{row.code}</p>
                       </div>
-                      <p className="mt-1 pl-8 text-xs text-muted-foreground">{row.code}</p>
+                      <div className="shrink-0 text-right">
+                        <p className="text-lg font-semibold tabular-nums text-primary">
+                          {row.yieldPct.toFixed(2)}%
+                        </p>
+                        <p className="text-[11px] text-muted-foreground">股息率</p>
+                      </div>
                     </div>
-                    <div className="shrink-0 text-right">
-                      <p className="text-lg font-semibold tabular-nums text-primary">
-                        {row.yieldPct.toFixed(2)}%
-                      </p>
-                      <p className="text-[11px] text-muted-foreground">股息率</p>
-                    </div>
-                  </div>
-                  <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 border-t border-border/60 pt-2 pl-8 text-xs">
-                    <div className="flex justify-between gap-2">
-                      <dt className="text-muted-foreground">最新价</dt>
-                      <dd className="tabular-nums font-medium text-foreground">
-                        ¥{row.price.toFixed(2)}
-                      </dd>
-                    </div>
-                    <div className="flex justify-between gap-2">
-                      <dt className="text-muted-foreground">每股分红</dt>
-                      <dd className="tabular-nums font-medium text-foreground">
-                        ¥{row.dps.toFixed(4)}
-                      </dd>
-                    </div>
-                  </dl>
+                    <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 border-t border-border/60 pt-2 pl-8 text-xs">
+                      <div className="flex justify-between gap-2">
+                        <dt className="text-muted-foreground">最新价</dt>
+                        <dd className="tabular-nums font-medium text-foreground">
+                          ¥{row.price.toFixed(2)}
+                        </dd>
+                      </div>
+                      <div className="flex justify-between gap-2">
+                        <dt className="text-muted-foreground">每股分红</dt>
+                        <dd className="tabular-nums font-medium text-foreground">
+                          ¥{row.dps.toFixed(4)}
+                        </dd>
+                      </div>
+                    </dl>
+                  </Link>
                 </li>
               )
             })}

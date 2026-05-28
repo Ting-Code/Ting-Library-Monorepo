@@ -15,6 +15,8 @@
   --color-accent: var(--accent);
   --color-warning: var(--warning);
   --color-warning-bg: var(--warning-bg);
+  --color-stock-up: var(--stock-up);
+  --color-stock-down: var(--stock-down);
 }
 
 :root {
@@ -30,6 +32,10 @@
   --accent: #e8f3ff;
   --warning: #fa8c16;
   --warning-bg: #fff7e6;
+  --stock-up: #e84855;
+  --stock-down: #2faf7a;
+  --stock-up-bg: rgba(232, 72, 85, 0.1);
+  --stock-down-bg: rgba(47, 175, 122, 0.1);
   color-scheme: light;
 }
 
@@ -46,6 +52,10 @@
   --accent: #122a44;
   --warning: #d48806;
   --warning-bg: #2b2111;
+  --stock-up: #ff5a5f;
+  --stock-down: #45d09b;
+  --stock-up-bg: rgba(255, 90, 95, 0.14);
+  --stock-down-bg: rgba(69, 208, 155, 0.12);
   color-scheme: dark;
 }
 

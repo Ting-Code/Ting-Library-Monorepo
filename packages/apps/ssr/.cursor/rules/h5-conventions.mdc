@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## 目录
 
-- Tab 页：`app/(main)/`（`/`、`/profile`）
+- Tab 页：`app/(main)/`（`/` 首页、`/profile` 自选）
 - 功能子页：`app/<feature>/` + 同级的 `components/` 或 `_components/`、`lib/`、`data/`、`api/`
 - 勿把单路由 UI 放进顶层 `components/<page>/`；全站复用才放 `components/layout`、`theme`
 - 维护脚本：`scripts/*.mjs`，不放 `app/`

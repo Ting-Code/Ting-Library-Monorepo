@@ -1,6 +1,6 @@
 'use client'
 
-import { Home, User } from 'lucide-react'
+import { Home, Star } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 const tabs = [
   { href: '/', label: '首页', icon: Home },
-  { href: '/profile', label: '我的', icon: User }
+  { href: '/profile', label: '自选', icon: Star }
 ] as const
 
 export function TabBar() {

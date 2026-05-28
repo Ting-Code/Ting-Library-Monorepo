@@ -18,7 +18,7 @@ packages/apps/ssr/
 │   ├── (main)/                 # 路由组：带底 Tab（URL 不变）
 │   │   ├── page.tsx            # / 首页
 │   │   ├── HomeEntryList.tsx
-│   │   └── profile/page.tsx    # /profile
+│   │   └── profile/page.tsx    # /profile 自选（localStorage）
 │   ├── heatmap/                # /heatmap 全屏子页
 │   │   ├── page.tsx
 │   │   ├── _components/        # 私有 UI（非路由）
@@ -61,7 +61,7 @@ node packages/apps/ssr/scripts/validate-dividend.mjs
 
 - 主题：`next-themes`，`attribute="class"`，`storageKey="h5-theme"`；禁止 `bg-white` / 硬编码色值
 - 布局：`MobileShell`（Header 44px、TabBar 50px、safe-area）；二级页 `showBack` + `hideTabBar`
-- 路由：`/`、`/profile`（Tab）→ `/heatmap`、`/dividend-rank`（全屏子页）
+- 路由：`/`、`/profile`（Tab 自选，读 `lib/watchlist`）→ `/heatmap`、`/dividend-rank`、`/kline/[code]`（全屏子页）
 - **不使用 Pencil**：UI 以代码与 `lib/tokens.ts` 为准
 - 不改 monorepo 内其他应用（`admin` / `micro-*`）
 

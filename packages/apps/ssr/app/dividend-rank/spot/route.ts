@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
 
+import { fetchEastmoneyUlist } from '@/lib/eastmoney-fetch'
+
 import dividendData from '../data/dividend-2025.json'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
-
-const ULIST = 'https://push2.eastmoney.com/api/qt/ulist.np/get'
 const BATCH = 200
 const CONCURRENCY = 8
 
@@ -21,17 +21,12 @@ async function fetchBatch(
 ): Promise<{ f12?: string; f14?: string; f2?: number }[]> {
   const qs = new URLSearchParams({
     fltt: '2',
+    invt: '2',
     fields: 'f12,f14,f2',
     ut: 'bd1d9ddb04089700cf9c27f6f7426281',
     secids: secids.join(',')
   })
-  const res = await fetch(`${ULIST}?${qs}`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0',
-      Referer: 'https://quote.eastmoney.com/'
-    },
-    next: { revalidate: 0 }
-  })
+  const res = await fetchEastmoneyUlist(qs)
   if (!res.ok) throw new Error(`ulist HTTP ${res.status}`)
   const json = (await res.json()) as {
     rc?: number
@@ -42,12 +37,17 @@ async function fetchBatch(
 }
 
 async function fetchBatchWithRetry(secids: string[]) {
+  let lastError: unknown
   for (let attempt = 0; attempt < 4; attempt++) {
     try {
       return await fetchBatch(secids)
-    } catch {
-      await new Promise((r) => setTimeout(r, 400 * (attempt + 1)))
+    } catch (e) {
+      lastError = e
+      await new Promise((r) => setTimeout(r, 500 * (attempt + 1)))
     }
+  }
+  if (lastError instanceof Error) {
+    console.warn('[dividend-rank/spot] eastmoney batch failed:', lastError.message)
   }
   return []
 }
