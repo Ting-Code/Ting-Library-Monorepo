@@ -1,13 +1,21 @@
 ---
-description: H5 SSR 应用约定（尺寸、路由）
+description: H5 SSR 应用约定（尺寸、路由、目录）
 globs: "**/*.{ts,tsx}"
 alwaysApply: false
 ---
 
 # @apps/ssr H5 约定
 
+## 目录
+
+- Tab 页：`app/(main)/`（`/`、`/profile`）
+- 功能子页：`app/<feature>/` + 同级的 `components/` 或 `_components/`、`lib/`、`data/`、`api/`
+- 勿把单路由 UI 放进顶层 `components/<page>/`；全站复用才放 `components/layout`、`theme`
+- 维护脚本：`scripts/*.mjs`，不放 `app/`
+
+## UI
+
 - 颜色仅用语义 class：`bg-background`、`text-foreground`、`bg-card`、`border-border`、`text-primary`
 - 触控目标 ≥ 44×44（`min-h-11 min-w-11`）
 - 内容区：`max-w-[430px] mx-auto px-4`
-- 路由仅 `/` 与 `/profile`；勿引入 Vue / 微前端
-- 不使用 Pencil / `.pen` 设计稿
+- 勿引入 Vue / 微前端；不使用 Pencil / `.pen`

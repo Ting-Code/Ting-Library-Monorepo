@@ -14,6 +14,11 @@ disable-model-invocation: true
 - [AGENTS.md](../../../AGENTS.md)
 - `lib/tokens.ts`、`app/globals.css`
 
+## 目录
+
+- Tab 页：`app/(main)/`；子功能：`app/heatmap/`、`app/dividend-rank/`（见 [AGENTS.md](../../../AGENTS.md)）
+- 跨页壳层：`components/layout/MobileShell.tsx`、`TabBar.tsx`
+
 ## 布局
 
 - `MobileShell`：顶栏 title + `ThemeToggle`，底栏 Tab（首页 / 我的），`max-w-[430px]`

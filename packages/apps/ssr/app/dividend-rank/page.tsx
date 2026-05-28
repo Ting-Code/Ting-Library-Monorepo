@@ -1,8 +1,8 @@
 import { MobileShell } from '@/components/layout/MobileShell'
 
-import { DividendRankView } from './DividendRankView'
-import dividendData from './dividend-2025.json'
-import type { Dividend2025Data } from './types'
+import { DividendRankView } from './components/DividendRankView'
+import dividendData from './data/dividend-2025.json'
+import type { Dividend2025Data } from './lib/types'
 
 const dividend = dividendData as Dividend2025Data
 

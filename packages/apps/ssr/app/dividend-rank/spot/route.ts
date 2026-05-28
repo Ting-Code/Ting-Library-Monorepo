@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 
-import dividendData from '../dividend-2025.json'
+import dividendData from '../data/dividend-2025.json'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'

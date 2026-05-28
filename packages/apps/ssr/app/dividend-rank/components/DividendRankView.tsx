@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
-import type { Dividend2025Data, RankRow, SpotResponse } from './types'
+import type { Dividend2025Data, RankRow, SpotResponse } from '../lib/types'
 
 const PAGE_SIZE = 20
 

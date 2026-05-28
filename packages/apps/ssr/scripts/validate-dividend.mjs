@@ -1,6 +1,6 @@
 /**
  * 校验 dividend-2025.json 与东方财富 2025 年报分红是否一致
- * 运行: node packages/apps/ssr/app/dividend-rank/validate-dividend.mjs
+ * 运行: node packages/apps/ssr/scripts/validate-dividend.mjs
  */
 import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
@@ -8,7 +8,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dir = dirname(fileURLToPath(import.meta.url))
-const jsonPath = join(__dir, 'dividend-2025.json')
+const jsonPath = join(__dir, '../app/dividend-rank/data/dividend-2025.json')
 const DC = 'https://datacenter-web.eastmoney.com/api/data/v1/get'
 
 function curlGet(params) {

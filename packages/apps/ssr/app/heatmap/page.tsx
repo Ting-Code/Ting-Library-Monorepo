@@ -1,6 +1,6 @@
 import { MobileShell } from '@/components/layout/MobileShell'
 
-import { HeatmapApp } from './components/HeatmapApp'
+import { HeatmapApp } from './_components/HeatmapApp'
 
 export default function HeatmapPage() {
   return (

@@ -1,4 +1,4 @@
-import { HomeEntryList } from '@/components/home/HomeEntryList'
+import { HomeEntryList } from './HomeEntryList'
 import { MobileShell } from '@/components/layout/MobileShell'
 
 export default function HomePage() {
