@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "H5: Open Preview (Simple Browser)",
+      "command": "${input:openH5Preview}",
+      "problemMatcher": []
+    },
+    {
+      "label": "H5: Open Heatmap Preview",
+      "command": "${input:openHeatmapPreview}",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "openH5Preview",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8080"]
+    },
+    {
+      "id": "openHeatmapPreview",
+      "type": "command",
+      "command": "simpleBrowser.show",
+      "args": ["http://localhost:8080/heatmap"]
+    }
+  ]
+}

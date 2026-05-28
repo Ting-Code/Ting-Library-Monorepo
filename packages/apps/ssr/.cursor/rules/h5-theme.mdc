@@ -1,0 +1,12 @@
+---
+description: H5 SSR 主题切换（next-themes + Tailwind dark）
+globs: "**/*.{css,tsx}"
+alwaysApply: false
+---
+
+# H5 主题
+
+- `ThemeProvider` 只包裹 `<body>` 内子树；`<html suppressHydrationWarning>`
+- `attribute="class"` + `@custom-variant dark (&:where(.dark, .dark *))`
+- 改色须同步：`:root`/`.dark`、`lib/tokens.ts`
+- `ThemeToggle` 用 `dark:hidden` / `hidden dark:inline`

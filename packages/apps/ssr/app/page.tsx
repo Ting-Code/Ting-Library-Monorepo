@@ -1,3 +1,10 @@
+import { HomeEntryList } from '@/components/home/HomeEntryList'
+import { MobileShell } from '@/components/layout/MobileShell'
+
 export default function HomePage() {
-  return <main>micro-nexus</main>
+  return (
+    <MobileShell title="首页">
+      <HomeEntryList />
+    </MobileShell>
+  )
 }

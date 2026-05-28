@@ -1,10 +1,20 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+
+import { Providers } from '@/app/providers'
 
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'micro-nexus',
-  description: 'Minimal Next.js app in the Ting Library monorepo.'
+  title: '首页',
+  description: 'H5 手机端'
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#F7F8FA'
 }
 
 export default function RootLayout({
@@ -13,8 +23,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN">
-      <body>{children}</body>
+    <html lang="zh-CN" suppressHydrationWarning>
+      <body className="min-h-dvh bg-background text-foreground antialiased">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

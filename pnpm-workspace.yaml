@@ -9,6 +9,7 @@ allowBuilds:
   '@prisma/engines': true
   '@tailwindcss/oxide': true
   esbuild: true
+  msw: set this to true or false
   prisma: true
   sharp: true
   vue-demi: true
